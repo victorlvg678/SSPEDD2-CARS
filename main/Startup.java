@@ -24,6 +24,7 @@ import java.awt.Toolkit;
 import views.Login;
 import models.Ventana;
 import models.Registro;
+import controllers.RegistroCRUD;
 
 // Parámetros que indican autor(es) de programa
 /**
@@ -61,12 +62,15 @@ public class Startup
         Ventana TamanoVentanaAAsignar = new Ventana();
         // Instanciar objeto Registro
         Registro Registros = new Registro();
+        RegistroCRUD RegistroInicial = new RegistroCRUD();
+        RegistroInicial.Cargar(Registros);
         // Asignamos valores a objeto
         TamanoVentanaAAsignar.setMaxAncho(Ancho);
         TamanoVentanaAAsignar.setMaxAltura(Altura);
         TamanoVentanaAAsignar.setAncho(480);
         TamanoVentanaAAsignar.setAltura(600);
         
+        System.out.println(RegistroInicial.getRegistroTemp());
         System.out.println("Resolución de pantalla - Ancho : " +
                 TamanoVentanaAAsignar.getMaxAncho() + 
                 " px Alto : " + 
