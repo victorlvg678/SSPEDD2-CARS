@@ -544,6 +544,7 @@ public class Login extends javax.swing.JFrame
         // Asigna color predeterminado
         this.CampoUsuario.setForeground(ColorNoEscrito);
         this.CampoContrasena.setForeground(ColorNoEscrito);
+        ContrasenaTemp = "";
     }//GEN-LAST:event_BotonReestablecerActionPerformed
 
     // Método para cuando se hace click en BotonCrearCuenta
@@ -680,6 +681,7 @@ public class Login extends javax.swing.JFrame
                 }
             }
         }
+        CampoContrasenaCubrirContrasena();
     }//GEN-LAST:event_CampoContrasenaFocusLost
 
     private void CampoContrasenaCubrirContrasena()
