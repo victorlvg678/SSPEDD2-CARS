@@ -19,6 +19,7 @@
 // Paquete donde se incluye dicho archivo
 package views;
 // Librerías a importar
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import models.Ventana;
@@ -174,16 +175,31 @@ public class Login extends javax.swing.JFrame
         ImagenUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ImagenUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        CampoUsuario.setText("Nombre de usuario");
+        CampoUsuario.setForeground(new java.awt.Color(102, 102, 102));
+        CampoUsuario.setText("Nombre de Usuario");
         CampoUsuario.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
         CampoUsuario.setBorder(null);
         CampoUsuario.setNextFocusableComponent(CampoUsuario);
+        CampoUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoUsuarioFocusLost(evt);
+            }
+        });
+        CampoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoUsuarioMousePressed(evt);
+            }
+        });
         CampoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoUsuarioActionPerformed(evt);
             }
         });
 
+        CampoContrasena.setForeground(new java.awt.Color(102, 102, 102));
         CampoContrasena.setText("Contraseña");
         CampoContrasena.setToolTipText("<html><p><strong>Ingrese contraseña</strong></p></html>");
         CampoContrasena.setBorder(null);
@@ -218,6 +234,11 @@ public class Login extends javax.swing.JFrame
         BotonCrearCuenta.setToolTipText("<html><p><strong>¿No recuerdas tu contraseña?</strong></p></html>");
         BotonCrearCuenta.setBorder(null);
         BotonCrearCuenta.setBorderPainted(false);
+        BotonCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCrearCuentaActionPerformed(evt);
+            }
+        });
 
         ImagenLogo.setBackground(new java.awt.Color(255, 255, 255));
         ImagenLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/logo/CARS-Logo2.png"))); // NOI18N
@@ -471,9 +492,81 @@ public class Login extends javax.swing.JFrame
         ReestablecerContrasenaVentana.setVisible(true);
     }//GEN-LAST:event_BotonReestablecerContrasenaActionPerformed
 
+    // Método para cuando se hace click en BotonReestablecer
     private void BotonReestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReestablecerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonReestablecerActionPerformed
+
+    // Método para cuando se hace click en BotonCrearCuenta
+    private void BotonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonCrearCuentaActionPerformed
+    
+    // Método cuandos presiona el mouse en CampoUsuario
+    private void CampoUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoUsuarioMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoUsuario.getText();
+        Color ColorActual = this.CampoUsuario.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Nombre de Usuario"))
+        {
+            // Elimina contenido
+            this.CampoUsuario.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoUsuario.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoUsuarioMousePressed
+
+    // Método para cuando se enfoca en CampoUsuario
+    private void CampoUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoUsuarioFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoUsuario.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoUsuario.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Nombre de Usuario") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoUsuario.setText("");
+            this.CampoUsuario.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoUsuario.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoUsuarioFocusGained
+
+    // Método para cuando se desenfoca de CampoUsuario
+    private void CampoUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoUsuarioFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoUsuario.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoUsuario.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Nombre de Usuario"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoUsuario.setText("Nombre de Usuario");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoUsuario.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoUsuarioFocusLost
 
     // Argumentos a pasar a main de dicha clase
     /**
