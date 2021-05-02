@@ -19,6 +19,7 @@
 // Paquete donde se incluye dicho archivo
 package views;
 // Librerías a importar
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -42,6 +43,8 @@ public class Login extends javax.swing.JFrame
     // |------------------------Atributos privados-----------------------------|
     private Ventana TamanoVentana;
     private Registro RegistrosVentana;
+    private String ContrasenaTemp;
+    private Boolean MostrandoContrasena;
     
     // |------------------------Métodos privados-------------------------------|
     
@@ -59,6 +62,7 @@ public class Login extends javax.swing.JFrame
         // Pasar argumentos de constructor a atributos
         TamanoVentana = TamanoVentanaAAsignar;
         RegistrosVentana = Registros;
+        MostrandoContrasena = false;
         // Colar imagen de icono de programa
         ImageIcon Icono = new ImageIcon(getClass().getResource(
             "/content/images/logo/CARS-Logo-IcosahedronTransparenteSinTexto.png"));
@@ -204,9 +208,32 @@ public class Login extends javax.swing.JFrame
         CampoContrasena.setToolTipText("<html><p><strong>Ingrese contraseña</strong></p></html>");
         CampoContrasena.setBorder(null);
         CampoContrasena.setNextFocusableComponent(BotonMostrarContrasena);
+        CampoContrasena.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                CampoContrasenaCaretUpdate(evt);
+            }
+        });
+        CampoContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoContrasenaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoContrasenaFocusLost(evt);
+            }
+        });
+        CampoContrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoContrasenaMousePressed(evt);
+            }
+        });
         CampoContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoContrasenaActionPerformed(evt);
+            }
+        });
+        CampoContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoContrasenaKeyTyped(evt);
             }
         });
 
@@ -223,6 +250,7 @@ public class Login extends javax.swing.JFrame
         BotonReestablecerContrasena.setToolTipText("<html><p><strong>¿No recuerdas tu contraseña?</strong></p></html>");
         BotonReestablecerContrasena.setBorder(null);
         BotonReestablecerContrasena.setBorderPainted(false);
+        BotonReestablecerContrasena.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonReestablecerContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonReestablecerContrasenaActionPerformed(evt);
@@ -234,6 +262,7 @@ public class Login extends javax.swing.JFrame
         BotonCrearCuenta.setToolTipText("<html><p><strong>¿No recuerdas tu contraseña?</strong></p></html>");
         BotonCrearCuenta.setBorder(null);
         BotonCrearCuenta.setBorderPainted(false);
+        BotonCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearCuentaActionPerformed(evt);
@@ -268,6 +297,7 @@ public class Login extends javax.swing.JFrame
         BotonMostrarContrasena.setToolTipText("<html><p><strong>Mostrar contraseña</strong></p></html>");
         BotonMostrarContrasena.setBorder(null);
         BotonMostrarContrasena.setBorderPainted(false);
+        BotonMostrarContrasena.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonMostrarContrasena.setFocusPainted(false);
         BotonMostrarContrasena.setNextFocusableComponent(BotonReestablecerContrasena);
         BotonMostrarContrasena.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/login/MostrarContrasenaTextFieldClicked-BelizHole-24x24.png"))); // NOI18N
@@ -293,6 +323,7 @@ public class Login extends javax.swing.JFrame
         BotonIniciarSesion.setText("Iniciar Sesión");
         BotonIniciarSesion.setToolTipText("<html><p><strong>Iniciar sesión</strong></p></hmtl>");
         BotonIniciarSesion.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BotonIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonIniciarSesion.setFocusPainted(false);
 
         BotonReestablecer.setBackground(new java.awt.Color(41, 128, 185));
@@ -300,6 +331,7 @@ public class Login extends javax.swing.JFrame
         BotonReestablecer.setText("Reestablecer");
         BotonReestablecer.setToolTipText("<html><p><strong>Iniciar sesión</strong></p></hmtl>");
         BotonReestablecer.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BotonReestablecer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonReestablecer.setFocusPainted(false);
         BotonReestablecer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -462,8 +494,18 @@ public class Login extends javax.swing.JFrame
         InfoVentana.setVisible(true);
     }//GEN-LAST:event_BotonInfoActionPerformed
 
+    // Método para cuando se hace click en BotonMostrarContrasena
     private void BotonMostrarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMostrarContrasenaActionPerformed
-        // TODO add your handling code here:
+        if(MostrandoContrasena)
+        {
+            CampoContrasenaCubrirContrasena();
+            MostrandoContrasena = false;
+        }
+        else
+        {
+            this.CampoContrasena.setText(ContrasenaTemp);
+            MostrandoContrasena = true;
+        }
     }//GEN-LAST:event_BotonMostrarContrasenaActionPerformed
 
     // Método privado para cerrar ventana
@@ -494,7 +536,14 @@ public class Login extends javax.swing.JFrame
 
     // Método para cuando se hace click en BotonReestablecer
     private void BotonReestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReestablecerActionPerformed
-        // TODO add your handling code here:
+        // Color para indicar que aún no se ha llenado
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Elimina o setea a predeterminado todos los contenidos de ambos campos
+        this.CampoUsuario.setText("Nombre de Usuario");
+        this.CampoContrasena.setText("Contraseña");
+        // Asigna color predeterminado
+        this.CampoUsuario.setForeground(ColorNoEscrito);
+        this.CampoContrasena.setForeground(ColorNoEscrito);
     }//GEN-LAST:event_BotonReestablecerActionPerformed
 
     // Método para cuando se hace click en BotonCrearCuenta
@@ -566,7 +615,131 @@ public class Login extends javax.swing.JFrame
                 }
             }
         }
+        // CampoContrasenaCubrirContrasena();
     }//GEN-LAST:event_CampoUsuarioFocusLost
+
+    // Método cuando se presiona con el mouse CampoContrasena
+    private void CampoContrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoContrasenaMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoContrasena.getText();
+        Color ColorActual = this.CampoContrasena.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Contraseña"))
+        {
+            // Elimina contenido
+            this.CampoContrasena.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoContrasena.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoContrasenaMousePressed
+
+    private void CampoContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoContrasenaFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoContrasena.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoContrasena.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Contraseña") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoContrasena.setText("");
+            this.CampoContrasena.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoContrasena.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoContrasenaFocusGained
+
+    private void CampoContrasenaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoContrasenaFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoContrasena.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoContrasena.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Contraseña"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoContrasena.setText("Contraseña");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoContrasena.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoContrasenaFocusLost
+
+    private void CampoContrasenaCubrirContrasena()
+    {
+        // Obtiene contenido actual de Contraseña
+        String Contenido = this.CampoContrasena.getText();
+        String ContenidoReemplazar;
+        ContenidoReemplazar = "";
+        // Obtiene color actual
+        Color ColorActual = this.CampoContrasena.getForeground();        
+        // Contador
+        int x;
+        for(x = 0; x < Contenido.length(); x++)
+        {
+            ContenidoReemplazar += "•";
+        }
+        if(!Contenido.equals("Contraseña"))
+        {
+            this.CampoContrasena.setText(ContenidoReemplazar);
+        }
+    }
+    
+    private void CampoContrasenaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_CampoContrasenaCaretUpdate
+        
+    }//GEN-LAST:event_CampoContrasenaCaretUpdate
+
+    private void CampoContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoContrasenaKeyTyped
+        // Obtiene contenido actual de Contraseña
+        String Contenido = this.CampoContrasena.getText();
+        String ContenidoReemplazar;
+        ContenidoReemplazar = "";
+        // Obtiene color actual
+        Color ColorActual = this.CampoContrasena.getForeground();
+        if(Contenido.equals(""))
+        {
+            ContrasenaTemp = "";
+        }
+        if(evt.getKeyChar() >= ' ' && evt.getKeyChar() <= '■')
+        {
+            ContrasenaTemp += evt.getKeyChar();
+        }
+        else
+        {
+            if(evt.getKeyChar() == '\b')
+            {
+                ContrasenaTemp = ContrasenaTemp.substring(0, ContrasenaTemp.length() - 1);
+            }
+        }
+        
+        // Contador
+        int x;
+        for(x = 0; x < Contenido.length(); x++)
+        {
+            ContenidoReemplazar += "•";
+        }
+        if(!Contenido.equals("Contraseña"))
+        {
+            this.CampoContrasena.setText(ContenidoReemplazar);
+        }
+    }//GEN-LAST:event_CampoContrasenaKeyTyped
 
     // Argumentos a pasar a main de dicha clase
     /**
