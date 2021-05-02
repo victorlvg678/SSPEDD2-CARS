@@ -687,9 +687,7 @@ public class Login extends javax.swing.JFrame
         // Obtiene contenido actual de Contraseña
         String Contenido = this.CampoContrasena.getText();
         String ContenidoReemplazar;
-        ContenidoReemplazar = "";
-        // Obtiene color actual
-        Color ColorActual = this.CampoContrasena.getForeground();        
+        ContenidoReemplazar = "";      
         // Contador
         int x;
         for(x = 0; x < Contenido.length(); x++)
@@ -711,8 +709,6 @@ public class Login extends javax.swing.JFrame
         String Contenido = this.CampoContrasena.getText();
         String ContenidoReemplazar;
         ContenidoReemplazar = "";
-        // Obtiene color actual
-        Color ColorActual = this.CampoContrasena.getForeground();
         if(Contenido.equals(""))
         {
             ContrasenaTemp = "";
