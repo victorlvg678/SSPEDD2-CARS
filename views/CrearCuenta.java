@@ -1,22 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************************
+ *                                                                             *
+ * Práctica 5 - Login                                                          *
+ * Autor: Valle Guerra, Victor Leonardo                                        *
+ * Proyecto: CARS(Car Automated Repair System)                                 *
+ * [Major].[Minor].[Revision].[Build]                                          *
+ * Versión : 1.0.0.0 (dev_release20210313_build_0)                             *
+ * Nombre de Archivo: CrearCuenta.java                                         *
+ * Fecha: 13/Abr/2021                                                          *
+ * Materia: Seminario de solución de Problemas de Estructura de Datos II       *
+ * NRC: 138619                                                                 *      
+ * CVE: I5889                                                                  *
+ * Sección: D21                                                                *
+ * Profesor: Lupercio Coronel, Ramiro                                          *
+ * Centro Universitario de Ciencias Exactas e Ingenierías                      *
+ *                                                                             *
+ ******************************************************************************/
+
+// Paquete donde se incluye dicho archivo
 package views;
 
+// Paquetes a user en esta clase
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import models.Ventana;
+import models.Registro;
+
+// Parámetros que indican autor(es) de programa
 /**
- *
- * @author xbox_
+ * @author Valle Guerra, Victor Leonardo 
  */
+// Clase principal de Archivo que se extiende desde JDialog
 public class CrearCuenta extends javax.swing.JDialog {
 
     /**
-     * Creates new form CrearCuenta
+     * Parámetros a usar en clase
+     * @param TamanoVentanaAAsignar
+     * @param Registros
      */
-    public CrearCuenta(java.awt.Frame parent, boolean modal) {
+    // |------------------------Atributos privados-----------------------------|
+    private Ventana TamanoVentana;
+    private Registro RegistrosVentana;
+    
+    // |------------------------Métodos privados-------------------------------|
+    
+    // |------------------------Atributos públicos-----------------------------|
+    
+    // |------------------------Métodos públicos-------------------------------|
+    
+    // Constructor de clase
+    public CrearCuenta(java.awt.Frame parent, boolean modal, 
+            Ventana TamanoVentanaAAsignar, Registro Registros) {
         super(parent, modal);
+        // Colar imagen de icono de programa
+        ImageIcon Icono = new ImageIcon(getClass().getResource(
+            "/content/images/logo/CARS-Logo-IcosahedronTransparenteSinTexto.png"));
+        setIconImage(Icono.getImage());
         initComponents();
+        // Pasar argumentos de constructor a atributos
+        TamanoVentana = TamanoVentanaAAsignar;
+        RegistrosVentana = Registros;
     }
 
     /**
@@ -30,6 +73,31 @@ public class CrearCuenta extends javax.swing.JDialog {
 
         PanelFondo = new javax.swing.JPanel();
         BotonCerrar = new javax.swing.JButton();
+        TextoCrearCuentaNueva = new javax.swing.JLabel();
+        TextoNombreUsuario = new javax.swing.JLabel();
+        CampoNombreUsuario = new javax.swing.JTextField();
+        SeparadorNombreUsuario = new javax.swing.JSeparator();
+        TextoContrasena = new javax.swing.JLabel();
+        CampoContrasena = new javax.swing.JTextField();
+        SeparadorContrasena = new javax.swing.JSeparator();
+        TextoNombre = new javax.swing.JLabel();
+        CampoNombre = new javax.swing.JTextField();
+        SeparadorNombre = new javax.swing.JSeparator();
+        TextoApellidoPaterno = new javax.swing.JLabel();
+        CampoApellidoPaterno = new javax.swing.JTextField();
+        SeparadorApellidoPaterno = new javax.swing.JSeparator();
+        TextoApellidoMaterno = new javax.swing.JLabel();
+        CampoApellidoMaterno = new javax.swing.JTextField();
+        SeparadorApellidoMaterno = new javax.swing.JSeparator();
+        CampoDireccion = new javax.swing.JTextField();
+        SeparadorDireccion = new javax.swing.JSeparator();
+        TextoDireccion = new javax.swing.JLabel();
+        CampoTelefono = new javax.swing.JTextField();
+        SeparadorTelefono = new javax.swing.JSeparator();
+        TextoTelefono = new javax.swing.JLabel();
+        BotonMostrarContrasena = new javax.swing.JButton();
+        BotonReestablecer = new javax.swing.JButton();
+        BotonRegistrarse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear cuenta en CARS");
@@ -56,21 +124,297 @@ public class CrearCuenta extends javax.swing.JDialog {
             }
         });
 
+        TextoCrearCuentaNueva.setText("Crear una nueva cuenta");
+
+        TextoNombreUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        TextoNombreUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/signup/NombreUsuario-BelizeHope-24x24.png"))); // NOI18N
+        TextoNombreUsuario.setText("Nombre de Usuario:");
+
+        CampoNombreUsuario.setForeground(new java.awt.Color(102, 102, 102));
+        CampoNombreUsuario.setText("Nombre de Usuario");
+        CampoNombreUsuario.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoNombreUsuario.setBorder(null);
+        CampoNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoNombreUsuarioActionPerformed(evt);
+            }
+        });
+
+        SeparadorNombreUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        SeparadorNombreUsuario.setMinimumSize(new java.awt.Dimension(50, 15));
+        SeparadorNombreUsuario.setPreferredSize(new java.awt.Dimension(50, 15));
+
+        TextoContrasena.setBackground(new java.awt.Color(255, 255, 255));
+        TextoContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/signup/Contrasena-24x24.png"))); // NOI18N
+        TextoContrasena.setText("Contraseña:");
+
+        CampoContrasena.setForeground(new java.awt.Color(102, 102, 102));
+        CampoContrasena.setText("Contraseña");
+        CampoContrasena.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoContrasena.setBorder(null);
+        CampoContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoContrasenaActionPerformed(evt);
+            }
+        });
+
+        SeparadorContrasena.setForeground(new java.awt.Color(51, 51, 51));
+        SeparadorContrasena.setMinimumSize(new java.awt.Dimension(50, 15));
+        SeparadorContrasena.setPreferredSize(new java.awt.Dimension(50, 15));
+
+        TextoNombre.setBackground(new java.awt.Color(255, 255, 255));
+        TextoNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/signup/Nombre-BelizeHope-24x24.png"))); // NOI18N
+        TextoNombre.setText("Nombre(s):");
+
+        CampoNombre.setForeground(new java.awt.Color(102, 102, 102));
+        CampoNombre.setText("Nombre(s)");
+        CampoNombre.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoNombre.setBorder(null);
+        CampoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoNombreActionPerformed(evt);
+            }
+        });
+
+        SeparadorNombre.setForeground(new java.awt.Color(51, 51, 51));
+        SeparadorNombre.setMinimumSize(new java.awt.Dimension(50, 15));
+        SeparadorNombre.setPreferredSize(new java.awt.Dimension(50, 15));
+
+        TextoApellidoPaterno.setBackground(new java.awt.Color(255, 255, 255));
+        TextoApellidoPaterno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/signup/Nombre-BelizeHope-24x24.png"))); // NOI18N
+        TextoApellidoPaterno.setText("Apellido Paterno:");
+
+        CampoApellidoPaterno.setForeground(new java.awt.Color(102, 102, 102));
+        CampoApellidoPaterno.setText("Apellido Paterno");
+        CampoApellidoPaterno.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoApellidoPaterno.setBorder(null);
+        CampoApellidoPaterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoApellidoPaternoActionPerformed(evt);
+            }
+        });
+
+        SeparadorApellidoPaterno.setForeground(new java.awt.Color(51, 51, 51));
+        SeparadorApellidoPaterno.setMinimumSize(new java.awt.Dimension(50, 15));
+        SeparadorApellidoPaterno.setPreferredSize(new java.awt.Dimension(50, 15));
+
+        TextoApellidoMaterno.setBackground(new java.awt.Color(255, 255, 255));
+        TextoApellidoMaterno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/signup/Nombre-BelizeHope-24x24.png"))); // NOI18N
+        TextoApellidoMaterno.setText("Apellido Materno:");
+
+        CampoApellidoMaterno.setForeground(new java.awt.Color(102, 102, 102));
+        CampoApellidoMaterno.setText("Apellido Materno");
+        CampoApellidoMaterno.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoApellidoMaterno.setBorder(null);
+        CampoApellidoMaterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoApellidoMaternoActionPerformed(evt);
+            }
+        });
+
+        SeparadorApellidoMaterno.setForeground(new java.awt.Color(51, 51, 51));
+        SeparadorApellidoMaterno.setMinimumSize(new java.awt.Dimension(50, 15));
+        SeparadorApellidoMaterno.setPreferredSize(new java.awt.Dimension(50, 15));
+
+        CampoDireccion.setForeground(new java.awt.Color(102, 102, 102));
+        CampoDireccion.setText("Dirección");
+        CampoDireccion.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoDireccion.setBorder(null);
+        CampoDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoDireccionActionPerformed(evt);
+            }
+        });
+
+        SeparadorDireccion.setForeground(new java.awt.Color(51, 51, 51));
+        SeparadorDireccion.setMinimumSize(new java.awt.Dimension(50, 15));
+        SeparadorDireccion.setPreferredSize(new java.awt.Dimension(50, 15));
+
+        TextoDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        TextoDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/signup/Direccion-BelizeHope-24x24.png"))); // NOI18N
+        TextoDireccion.setText("Dirección:");
+
+        CampoTelefono.setForeground(new java.awt.Color(102, 102, 102));
+        CampoTelefono.setText("Teléfono");
+        CampoTelefono.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoTelefono.setBorder(null);
+        CampoTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoTelefonoActionPerformed(evt);
+            }
+        });
+
+        SeparadorTelefono.setForeground(new java.awt.Color(51, 51, 51));
+        SeparadorTelefono.setMinimumSize(new java.awt.Dimension(50, 15));
+        SeparadorTelefono.setPreferredSize(new java.awt.Dimension(50, 15));
+
+        TextoTelefono.setBackground(new java.awt.Color(255, 255, 255));
+        TextoTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/signup/Telefono-BelizeHope-24x24.png"))); // NOI18N
+        TextoTelefono.setText("Teléfono:");
+
+        BotonMostrarContrasena.setBackground(new java.awt.Color(255, 255, 255));
+        BotonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/login/MostrarContrasenaTextField-BelizeHole-24x24.png"))); // NOI18N
+        BotonMostrarContrasena.setToolTipText("<html><p><strong>Mostrar contraseña</strong></p></html>");
+        BotonMostrarContrasena.setBorder(null);
+        BotonMostrarContrasena.setBorderPainted(false);
+        BotonMostrarContrasena.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonMostrarContrasena.setFocusPainted(false);
+        BotonMostrarContrasena.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/login/MostrarContrasenaTextFieldClicked-BelizHole-24x24.png"))); // NOI18N
+        BotonMostrarContrasena.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/login/MostrarContrasenaTextFieldOver-BelizHole-24x24.png"))); // NOI18N
+        BotonMostrarContrasena.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/login/MostrarContrasenaTextFieldOver-BelizHole-24x24.png"))); // NOI18N
+        BotonMostrarContrasena.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/login/MostrarContrasenaTextFieldOver-BelizHole-24x24.png"))); // NOI18N
+        BotonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonMostrarContrasenaActionPerformed(evt);
+            }
+        });
+
+        BotonReestablecer.setBackground(new java.awt.Color(41, 128, 185));
+        BotonReestablecer.setForeground(new java.awt.Color(255, 255, 255));
+        BotonReestablecer.setText("Reestablecer");
+        BotonReestablecer.setToolTipText("<html><p><strong>Iniciar sesión</strong></p></hmtl>");
+        BotonReestablecer.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BotonReestablecer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonReestablecer.setFocusPainted(false);
+        BotonReestablecer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonReestablecerActionPerformed(evt);
+            }
+        });
+
+        BotonRegistrarse.setBackground(new java.awt.Color(41, 128, 185));
+        BotonRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
+        BotonRegistrarse.setText("Registrarse");
+        BotonRegistrarse.setToolTipText("<html><p><strong>Iniciar sesión</strong></p></hmtl>");
+        BotonRegistrarse.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BotonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonRegistrarse.setFocusPainted(false);
+        BotonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelFondoLayout = new javax.swing.GroupLayout(PanelFondo);
         PanelFondo.setLayout(PanelFondoLayout);
         PanelFondoLayout.setHorizontalGroup(
             PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFondoLayout.createSequentialGroup()
-                .addContainerGap(369, Short.MAX_VALUE)
-                .addComponent(BotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(PanelFondoLayout.createSequentialGroup()
+                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFondoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelFondoLayout.createSequentialGroup()
+                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelFondoLayout.createSequentialGroup()
+                                .addGap(193, 193, 193)
+                                .addComponent(TextoCrearCuentaNueva))
+                            .addGroup(PanelFondoLayout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextoDireccion)
+                                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TextoContrasena)
+                                            .addComponent(TextoNombreUsuario)
+                                            .addComponent(TextoNombre)
+                                            .addComponent(TextoApellidoPaterno))
+                                        .addGroup(PanelFondoLayout.createSequentialGroup()
+                                            .addComponent(TextoApellidoMaterno)
+                                            .addGap(16, 16, 16)))
+                                    .addComponent(TextoTelefono))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(CampoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SeparadorNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(CampoContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SeparadorContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(SeparadorTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CampoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(SeparadorDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CampoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(SeparadorApellidoMaterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CampoApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(SeparadorApellidoPaterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CampoApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(CampoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SeparadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(BotonMostrarContrasena)))
+                        .addGap(0, 67, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(PanelFondoLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(BotonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(BotonReestablecer, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelFondoLayout.setVerticalGroup(
             PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelFondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(TextoCrearCuentaNueva)
+                        .addGap(35, 35, 35)
+                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TextoNombreUsuario)
+                            .addComponent(CampoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeparadorNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(TextoContrasena)
+                        .addGap(18, 18, 18)
+                        .addComponent(TextoNombre)
+                        .addGap(21, 21, 21)
+                        .addComponent(TextoApellidoPaterno)
+                        .addGap(22, 22, 22)
+                        .addComponent(TextoApellidoMaterno)
+                        .addGap(22, 22, 22)
+                        .addComponent(TextoDireccion)
+                        .addGap(22, 22, 22)
+                        .addComponent(TextoTelefono))
+                    .addGroup(PanelFondoLayout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(CampoContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonMostrarContrasena))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeparadorContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CampoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeparadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addComponent(CampoApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeparadorApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CampoApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeparadorApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CampoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeparadorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CampoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeparadorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonReestablecer)
+                    .addComponent(BotonRegistrarse))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         getContentPane().add(PanelFondo);
@@ -83,6 +427,46 @@ public class CrearCuenta extends javax.swing.JDialog {
         System.out.println("Saliendo de ventana " + getTitle());
         dispose();
     }//GEN-LAST:event_BotonCerrarActionPerformed
+
+    private void CampoNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoNombreUsuarioActionPerformed
+
+    private void CampoContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoContrasenaActionPerformed
+
+    private void CampoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoNombreActionPerformed
+
+    private void CampoApellidoPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoApellidoPaternoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoApellidoPaternoActionPerformed
+
+    private void CampoApellidoMaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoApellidoMaternoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoApellidoMaternoActionPerformed
+
+    private void CampoDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoDireccionActionPerformed
+
+    private void CampoTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoTelefonoActionPerformed
+
+    private void BotonMostrarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMostrarContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonMostrarContrasenaActionPerformed
+
+    private void BotonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonRegistrarseActionPerformed
+
+    private void BotonReestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReestablecerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonReestablecerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +498,12 @@ public class CrearCuenta extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CrearCuenta dialog = new CrearCuenta(new javax.swing.JFrame(), true);
+                Ventana TamanoVentana;
+                TamanoVentana = new Ventana();
+                Registro RegistrosVentana;
+                RegistrosVentana = new Registro();
+                CrearCuenta dialog = new CrearCuenta(new javax.swing.JFrame(), true,
+                TamanoVentana, RegistrosVentana);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -128,6 +517,31 @@ public class CrearCuenta extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCerrar;
+    private javax.swing.JButton BotonMostrarContrasena;
+    private javax.swing.JButton BotonReestablecer;
+    private javax.swing.JButton BotonRegistrarse;
+    private javax.swing.JTextField CampoApellidoMaterno;
+    private javax.swing.JTextField CampoApellidoPaterno;
+    private javax.swing.JTextField CampoContrasena;
+    private javax.swing.JTextField CampoDireccion;
+    private javax.swing.JTextField CampoNombre;
+    private javax.swing.JTextField CampoNombreUsuario;
+    private javax.swing.JTextField CampoTelefono;
     private javax.swing.JPanel PanelFondo;
+    private javax.swing.JSeparator SeparadorApellidoMaterno;
+    private javax.swing.JSeparator SeparadorApellidoPaterno;
+    private javax.swing.JSeparator SeparadorContrasena;
+    private javax.swing.JSeparator SeparadorDireccion;
+    private javax.swing.JSeparator SeparadorNombre;
+    private javax.swing.JSeparator SeparadorNombreUsuario;
+    private javax.swing.JSeparator SeparadorTelefono;
+    private javax.swing.JLabel TextoApellidoMaterno;
+    private javax.swing.JLabel TextoApellidoPaterno;
+    private javax.swing.JLabel TextoContrasena;
+    private javax.swing.JLabel TextoCrearCuentaNueva;
+    private javax.swing.JLabel TextoDireccion;
+    private javax.swing.JLabel TextoNombre;
+    private javax.swing.JLabel TextoNombreUsuario;
+    private javax.swing.JLabel TextoTelefono;
     // End of variables declaration//GEN-END:variables
 }

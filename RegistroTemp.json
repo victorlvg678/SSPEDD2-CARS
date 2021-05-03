@@ -1,0 +1,98 @@
+{
+	"Usuarios":{
+		"0":{
+			"IDUsuario":"1",
+			"Username":"victor.valle",
+			"Contrasena":"victor.valle1917",
+			"Nombre":"Victor Leonardo",
+			"Apellido Paterno":"Valle",
+			"Apellido Materno":"Guerra",
+			"Dirección":"Blvd. Gral. Marcelino García Barragán 1421, Olímpica, 44430 Guadalajara, Jal.",
+			"Teléfono":"+52 (33)33-33-33-33"
+		},
+		"1":{
+			"IDUsuario":"2",
+			"Username":"luis.daniel",
+			"Contrasena":"luis.daniel1917",
+			"Nombre":"Luis Daniel",
+			"Apellido Paterno":"Figueroa",
+			"Apellido Materno":"de la Cruz",
+			"Dirección":"Blvd. Gral. Marcelino García Barragán 1421, Olímpica, 44430 Guadalajara, Jal.",
+			"Teléfono":"+52 (33)33-33-33-33"
+		},
+		"2":{
+			"IDUsuario":"3",
+			"Username":"oscar.emmanuel",
+			"Contrasena":"oscar.emmanuel1917",
+			"Nombre":"Oscar Emmanuel",
+			"Apellido Paterno":"López",
+			"Apellido Materno":"Jiménez",
+			"Dirección":"Blvd. Gral. Marcelino García Barragán 1421, Olímpica, 44430 Guadalajara, Jal.",
+			"Teléfono":"+52 (33)33-33-33-33"
+		}
+	},
+	"Clientes":{
+		"0":{
+			"IDCliente":"1",
+			"Nombre":"Miguel Ángel",
+			"Apellido Paterno":"Valle",
+			"Apellido Materno":"Bermúdez"
+		},
+		"1":{
+			"IDCliente":"2",
+			"Nombre":"Sergio Eduardo",
+			"Apellido Paterno":"Cervantes",
+			"Apellido Materno":"Mata"
+		}
+	},
+	"Vehículos":{
+		"0":{
+			"IDVehículo":"1",
+			"Matrícula":"JDS-80-80",
+			"Marca":"Chevrolet",
+			"Modelo":"Chevy",
+			"Año":"2001",
+			"IDClienteVehículo":"1",
+			"Fecha":"13/04/2021"
+		},
+		"1":{
+			"IDVehículo":"2",
+			"Matrícula":"JDS-81-81",
+			"Marca":"Chrysler",
+			"Modelo":"Stratus",
+			"Año":"1998",
+			"IDClienteVehículo":"2",
+			"Fecha":"13/04/2021"
+		}
+	},
+	"Reparación":{
+		"0":{
+			"IDReparación":"1",
+			"Fecha de Entrada":"13/04/2021",
+			"Fecha de Salida":"22/04/2021",
+			"Falla":"Balatas",
+			"IDVehiculoReparación":"1",
+			"IDPiezaReparación":"1",
+			"Cantidad de Piezas":"2"
+		},
+		"1":{
+			"IDReparación":"2",
+			"Fecha de Entrada":"13/04/2021",
+			"Fecha de Salida":"22/04/2021",
+			"Falla":"Balatas",
+			"IDVehiculoReparación":"2",
+			"IDPiezaReparación":"1",
+			"Cantidad de Piezas":"1"
+		}
+	},
+	"Piezas":{
+		"0":{
+			"IDPieza":"1",
+			"Nombre":"Balatas",
+			"Marca":"ACDelco",
+			"Costo":"873",
+			"Descripción":"Balatas para Chevy 2001 marca ACDelco",
+			"Stock":"20"
+		}
+	}
+}

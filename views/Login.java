@@ -549,7 +549,14 @@ public class Login extends javax.swing.JFrame
 
     // Método para cuando se hace click en BotonCrearCuenta
     private void BotonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearCuentaActionPerformed
-        // TODO add your handling code here:
+        // Mostrar modal de CrearCuenta
+        CrearCuenta CrearCuentaVentana;
+        CrearCuentaVentana = new CrearCuenta(this, true, 
+                TamanoVentana, RegistrosVentana);
+        //CrearCuentaVentana.getContentPane().add(panel);
+        CrearCuentaVentana.pack();
+        CrearCuentaVentana.setLocationRelativeTo(null);
+        CrearCuentaVentana.setVisible(true);
     }//GEN-LAST:event_BotonCrearCuentaActionPerformed
     
     // Método cuandos presiona el mouse en CampoUsuario

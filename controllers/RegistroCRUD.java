@@ -19,6 +19,8 @@
 // Paquete donde se incluye dicho archivo
 package controllers;
 // Archivos a importar para usar dentro de clase
+import java.io.File;
+import org.apache.commons.io.FileUtils;
 import models.Cliente;
 import models.Pieza;
 import models.Reparacion;
@@ -134,6 +136,11 @@ public class RegistroCRUD
         Registro RegistroCargado = new Registro();
         // Instanciar JSONParser
         JSONParser jsonparser = new JSONParser();
+        File ArchivoTemporal = new File(RegistroTemp);
+        if(!ArchivoTemporal.exists())
+        {
+            
+        }
         RegistroCargado.InsertarListaUsuarios(jsonparser.getClaveUsuario(RegistroTemp));
         RegistroCargado.InsertarListaClientes(jsonparser.getClaveClientes(RegistroTemp));
         RegistroCargado.InsertarListaVehiculos(jsonparser.getClaveVehiculos(RegistroTemp));
