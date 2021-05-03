@@ -28,6 +28,8 @@ public class Usuario
 {
     // |------------------------Atributos privados-----------------------------|
     private String ID;
+    private String Username;
+    private String Contrasena;
     private String Nombre;
     private String ApellidoPaterno;
     private String ApellidoMaterno;
@@ -45,6 +47,8 @@ public class Usuario
     public Usuario()
     {
         ID = "0";
+        Username = "john.doe";
+        Contrasena = "john.doe";
         Nombre = "John";
         ApellidoPaterno = "Doe";
         ApellidoMaterno = "Doe";
@@ -58,6 +62,8 @@ public class Usuario
     public Usuario(Usuario UsuarioACopiar)
     {
         ID = UsuarioACopiar.ID;
+        Username = UsuarioACopiar.Username;
+        Contrasena = UsuarioACopiar.Contrasena;
         Nombre = UsuarioACopiar.Nombre;
         ApellidoPaterno = UsuarioACopiar.ApellidoPaterno;
         ApellidoMaterno = UsuarioACopiar.ApellidoMaterno;
@@ -71,6 +77,18 @@ public class Usuario
     public String getID()
     {
         return ID;
+    }
+    
+    // Getter para atributo Username
+    public String getUsername()
+    {
+        return Username;
+    }
+    
+    // Getter para atributo Contrasena
+    public String getContrasena()
+    {
+        return Contrasena;
     }
     
     // Getter para atributo Nombre
@@ -114,6 +132,18 @@ public class Usuario
     public void setID(String IDAAsignar)
     {
         ID = IDAAsignar;
+    }
+    
+    // Setter para atributo Username
+    public void setUsername(String UsernameAAsignar)
+    {
+        Username = UsernameAAsignar;
+    }
+    
+    // Setter para atributo Contrasena
+    public void setContrasena(String ContrasenaAAsignar)
+    {
+        Contrasena = ContrasenaAAsignar;
     }
     
     // Setter para atributo Nombre
