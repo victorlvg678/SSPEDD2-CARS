@@ -286,7 +286,7 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese nombre de usuario&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese contrase&#xf1;a&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -329,12 +329,15 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre(s)"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese nombre de usuario&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese nombre(s)&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoNombreFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoNombreFocusLost"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoNombreMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoNombreActionPerformed"/>
           </Events>
         </Component>
@@ -368,12 +371,15 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Apellido Paterno"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese nombre de usuario&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese apellido paterno&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoApellidoPaternoFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoApellidoPaternoFocusLost"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoApellidoPaternoMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoApellidoPaternoActionPerformed"/>
           </Events>
         </Component>
@@ -407,12 +413,15 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Apellido Materno"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese nombre de usuario&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese apellido materno&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoApellidoMaternoFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoApellidoMaternoFocusLost"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoApellidoMaternoMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoApellidoMaternoActionPerformed"/>
           </Events>
         </Component>
@@ -435,12 +444,15 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese nombre de usuario&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese direcci&#xf3;n o domicilio&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoDireccionFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoDireccionFocusLost"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoDireccionMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoDireccionActionPerformed"/>
           </Events>
         </Component>
@@ -474,12 +486,15 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese nombre de usuario&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;&lt;strong&gt;Ingrese n&#xfa;mero telef&#xf3;nico&lt;/strong&gt;&lt;/p&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoTelefonoFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CampoTelefonoFocusLost"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoTelefonoMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoTelefonoActionPerformed"/>
           </Events>
         </Component>

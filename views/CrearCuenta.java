@@ -167,7 +167,7 @@ public class CrearCuenta extends javax.swing.JDialog {
 
         CampoContrasena.setForeground(new java.awt.Color(102, 102, 102));
         CampoContrasena.setText("Contraseña");
-        CampoContrasena.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoContrasena.setToolTipText("<html><p><strong>Ingrese contraseña</strong></p></html>");
         CampoContrasena.setBorder(null);
         CampoContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -203,8 +203,21 @@ public class CrearCuenta extends javax.swing.JDialog {
 
         CampoNombre.setForeground(new java.awt.Color(102, 102, 102));
         CampoNombre.setText("Nombre(s)");
-        CampoNombre.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoNombre.setToolTipText("<html><p><strong>Ingrese nombre(s)</strong></p></html>");
         CampoNombre.setBorder(null);
+        CampoNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoNombreFocusLost(evt);
+            }
+        });
+        CampoNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoNombreMousePressed(evt);
+            }
+        });
         CampoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoNombreActionPerformed(evt);
@@ -221,8 +234,21 @@ public class CrearCuenta extends javax.swing.JDialog {
 
         CampoApellidoPaterno.setForeground(new java.awt.Color(102, 102, 102));
         CampoApellidoPaterno.setText("Apellido Paterno");
-        CampoApellidoPaterno.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoApellidoPaterno.setToolTipText("<html><p><strong>Ingrese apellido paterno</strong></p></html>");
         CampoApellidoPaterno.setBorder(null);
+        CampoApellidoPaterno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoApellidoPaternoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoApellidoPaternoFocusLost(evt);
+            }
+        });
+        CampoApellidoPaterno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoApellidoPaternoMousePressed(evt);
+            }
+        });
         CampoApellidoPaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoApellidoPaternoActionPerformed(evt);
@@ -239,8 +265,21 @@ public class CrearCuenta extends javax.swing.JDialog {
 
         CampoApellidoMaterno.setForeground(new java.awt.Color(102, 102, 102));
         CampoApellidoMaterno.setText("Apellido Materno");
-        CampoApellidoMaterno.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoApellidoMaterno.setToolTipText("<html><p><strong>Ingrese apellido materno</strong></p></html>");
         CampoApellidoMaterno.setBorder(null);
+        CampoApellidoMaterno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoApellidoMaternoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoApellidoMaternoFocusLost(evt);
+            }
+        });
+        CampoApellidoMaterno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoApellidoMaternoMousePressed(evt);
+            }
+        });
         CampoApellidoMaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoApellidoMaternoActionPerformed(evt);
@@ -253,8 +292,21 @@ public class CrearCuenta extends javax.swing.JDialog {
 
         CampoDireccion.setForeground(new java.awt.Color(102, 102, 102));
         CampoDireccion.setText("Dirección");
-        CampoDireccion.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoDireccion.setToolTipText("<html><p><strong>Ingrese dirección o domicilio</strong></p></html>");
         CampoDireccion.setBorder(null);
+        CampoDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoDireccionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoDireccionFocusLost(evt);
+            }
+        });
+        CampoDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoDireccionMousePressed(evt);
+            }
+        });
         CampoDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoDireccionActionPerformed(evt);
@@ -271,8 +323,21 @@ public class CrearCuenta extends javax.swing.JDialog {
 
         CampoTelefono.setForeground(new java.awt.Color(102, 102, 102));
         CampoTelefono.setText("Teléfono");
-        CampoTelefono.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
+        CampoTelefono.setToolTipText("<html><p><strong>Ingrese número telefónico</strong></p></html>");
         CampoTelefono.setBorder(null);
+        CampoTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoTelefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoTelefonoFocusLost(evt);
+            }
+        });
+        CampoTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoTelefonoMousePressed(evt);
+            }
+        });
         CampoTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoTelefonoActionPerformed(evt);
@@ -530,7 +595,25 @@ public class CrearCuenta extends javax.swing.JDialog {
 
     // Método para cuando se hace click en BotonReestablecer
     private void BotonReestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReestablecerActionPerformed
-        
+        // Color para indicar que aún no se ha llenado
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Elimina o setea a predeterminado todos los contenidos de ambos campos
+        this.CampoNombreUsuario.setText("Nombre de Usuario");
+        this.CampoContrasena.setText("Contraseña");
+        this.CampoNombre.setText("Nombre(s)");
+        this.CampoApellidoPaterno.setText("Apellido Paterno");
+        this.CampoApellidoMaterno.setText("Apellido Materno");
+        this.CampoDireccion.setText("Dirección");
+        this.CampoTelefono.setText("Teléfono");
+        // Asigna color predeterminado
+        this.CampoNombreUsuario.setForeground(ColorNoEscrito);
+        this.CampoContrasena.setForeground(ColorNoEscrito);
+        this.CampoNombre.setForeground(ColorNoEscrito);
+        this.CampoApellidoPaterno.setForeground(ColorNoEscrito);
+        this.CampoApellidoMaterno.setForeground(ColorNoEscrito);
+        this.CampoDireccion.setForeground(ColorNoEscrito);
+        this.CampoTelefono.setForeground(ColorNoEscrito);
+        ContrasenaTemp = "";
     }//GEN-LAST:event_BotonReestablecerActionPerformed
 
     // Método para cuando se está escribiendo en CampoContrasena
@@ -699,6 +782,336 @@ public class CrearCuenta extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_CampoNombreUsuarioFocusLost
+
+    // Método para cuando se presiona CampoNombre con el mouse
+    private void CampoNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoNombreMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoNombre.getText();
+        Color ColorActual = this.CampoNombre.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Nombre(s)"))
+        {
+            // Elimina contenido
+            this.CampoNombre.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoNombre.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoNombreMousePressed
+
+    // Método para cuando se enfoca en CampoNombre
+    private void CampoNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoNombreFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoNombre.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoNombre.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Nombre(s)") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoNombre.setText("");
+            this.CampoNombre.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoNombre.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoNombreFocusGained
+
+    // Método para cuando se desenfoca de CampoNombre
+    private void CampoNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoNombreFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoNombre.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoNombre.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Nombre(s)"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoNombre.setText("Nombre(s)");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoNombre.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoNombreFocusLost
+
+    // Método para cuando se presiona CampoApellidoPaterno con el mouse
+    private void CampoApellidoPaternoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoApellidoPaternoMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoApellidoPaterno.getText();
+        Color ColorActual = this.CampoApellidoPaterno.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Apellido Paterno"))
+        {
+            // Elimina contenido
+            this.CampoApellidoPaterno.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoApellidoPaterno.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoApellidoPaternoMousePressed
+
+    // Método para cuando se enfoca en CampoApellidoPaterno
+    private void CampoApellidoPaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoApellidoPaternoFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoApellidoPaterno.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoApellidoPaterno.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Apellido Paterno") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoApellidoPaterno.setText("");
+            this.CampoApellidoPaterno.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoApellidoPaterno.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoApellidoPaternoFocusGained
+
+    // Método para cuando se desenfoca de CampoApellidoPaterno
+    private void CampoApellidoPaternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoApellidoPaternoFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoApellidoPaterno.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoApellidoPaterno.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Apellido Paterno"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoApellidoPaterno.setText("Apellido Paterno");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoApellidoPaternoFocusLost
+
+    // Método para cuando se presiona en CampoApellidoMaterno con el mouse
+    private void CampoApellidoMaternoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoApellidoMaternoMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoApellidoMaterno.getText();
+        Color ColorActual = this.CampoApellidoMaterno.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Apellido Materno"))
+        {
+            // Elimina contenido
+            this.CampoApellidoMaterno.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoApellidoMaterno.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoApellidoMaternoMousePressed
+
+    // Método para cuando se enfoca en ApellidoMaterno
+    private void CampoApellidoMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoApellidoMaternoFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoApellidoMaterno.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoApellidoMaterno.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Apellido Materno") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoApellidoMaterno.setText("");
+            this.CampoApellidoMaterno.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoApellidoMaterno.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoApellidoMaternoFocusGained
+
+    // Método para cuando se desenfoca de CampoApellidoMaterno
+    private void CampoApellidoMaternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoApellidoMaternoFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoApellidoMaterno.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoApellidoMaterno.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Apellido Materno"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoApellidoMaterno.setText("Apellido Materno");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoApellidoMaternoFocusLost
+
+    // Método para cuando se presiona en CampoDireccion con el mouse
+    private void CampoDireccionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoDireccionMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoDireccion.getText();
+        Color ColorActual = this.CampoDireccion.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Dirección"))
+        {
+            // Elimina contenido
+            this.CampoDireccion.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoDireccion.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoDireccionMousePressed
+
+    // Método para cuando se enfoca en CampoDireccion
+    private void CampoDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoDireccionFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoDireccion.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoDireccion.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Dirección") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoDireccion.setText("");
+            this.CampoDireccion.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoDireccion.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoDireccionFocusGained
+
+    // Método para cuando se desenfoca de CampoDireccion
+    private void CampoDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoDireccionFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoDireccion.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoDireccion.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Dirección"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoDireccion.setText("Dirección");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoDireccion.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoDireccionFocusLost
+
+    // Método para cuando se presiona en CampoTelefono con el mouse
+    private void CampoTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoTelefonoMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoTelefono.getText();
+        Color ColorActual = this.CampoTelefono.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Teléfono"))
+        {
+            // Elimina contenido
+            this.CampoTelefono.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoTelefono.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoTelefonoMousePressed
+
+    // Método para cuando se enfoca en CampoTelefono
+    private void CampoTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoTelefonoFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoTelefono.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoTelefono.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Teléfono") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoTelefono.setText("");
+            this.CampoTelefono.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoTelefono.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoTelefonoFocusGained
+
+    // Método para cuando se desenfoca de CampoTelefono
+    private void CampoTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoTelefonoFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoTelefono.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoTelefono.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Teléfono"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoTelefono.setText("Teléfono");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoTelefono.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoTelefonoFocusLost
 
     /**
      * @param args the command line arguments
