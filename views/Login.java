@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import models.Ventana;
 import models.Registro;
+import models.Usuario;
 
 // Parámetros que indican autor(es) de programa
 /**
@@ -758,8 +759,10 @@ public class Login extends javax.swing.JFrame
     private void BotonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarSesionActionPerformed
         // Verifica si los campos no están vacíos
         String Username, Password;
-        int x;
+        Usuario SesionActiva;
+        int x, Posicion;
         Boolean Sesion;
+        Posicion = -1;
         Sesion = false;
         Username = this.CampoUsuario.getText();
         Password = this.CampoContrasena.getText();
@@ -782,12 +785,17 @@ public class Login extends javax.swing.JFrame
                         if(ContrasenaTemp.equals(RegistrosVentana.getUsuario(x).getContrasena()))
                         {
                             Sesion = true;
+                            Posicion = x;
                         }
                     }
                 }
                 if(Sesion)
                 {
                     System.out.println("Iniciando Sesión como " + Username);
+                    SesionActiva = RegistrosVentana.getUsuario(Posicion);
+                    Menu MenuVentana = new Menu(TamanoVentana, RegistrosVentana, SesionActiva);
+                    MenuVentana.setVisible(true);
+                    dispose();
                 }
                 else
                 {

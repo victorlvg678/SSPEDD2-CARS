@@ -109,6 +109,12 @@ public class Usuario
         return ApellidoMaterno;
     }
     
+    // Getter para obtener nombre completo
+    public String getNombreCompleto()
+    {
+        return Nombre + " " + ApellidoPaterno + " " + ApellidoMaterno;
+    }
+    
     // Getter para atributo Correo
     public String getCorreo()
     {
