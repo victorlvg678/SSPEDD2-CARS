@@ -128,8 +128,17 @@ public class RegistroCRUD
     }
     
     // |-----------------------Cargar------------------------------------------|
-    public void Cargar(Registro RegistroACargar)
+    public Registro Cargar()
     {
-        JSONParser.getClave("Usuarios", RegistroTemp);
+        // Instanciar Registro
+        Registro RegistroCargado = new Registro();
+        // Instanciar JSONParser
+        JSONParser jsonparser = new JSONParser();
+        RegistroCargado.InsertarListaUsuarios(jsonparser.getClaveUsuario(RegistroTemp));
+        RegistroCargado.InsertarListaClientes(jsonparser.getClaveClientes(RegistroTemp));
+        //RegistroCargado.InsertarListaVehiculos(jsonparser.getClaveVehiculos(RegistroTemp));
+        //RegistroCargado.InsertarListaReparaciones(jsonparser.getClaveReparaciones(RegistroTemp));
+        //RegistroCargado.InsertarListaPiezas(jsonparser.getClavePiezas(RegistroTemp));
+        return RegistroCargado;
     }
 }

@@ -63,7 +63,7 @@ public class Startup
         // Instanciar objeto Registro
         Registro Registros = new Registro();
         RegistroCRUD RegistroInicial = new RegistroCRUD();
-        RegistroInicial.Cargar(Registros);
+        Registros = RegistroInicial.Cargar();
         // Asignamos valores a objeto
         TamanoVentanaAAsignar.setMaxAncho(Ancho);
         TamanoVentanaAAsignar.setMaxAltura(Altura);

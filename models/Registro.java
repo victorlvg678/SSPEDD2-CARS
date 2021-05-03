@@ -20,7 +20,6 @@
 package models;
 // Librerías a usar para arreglos
 import java.util.ArrayList;
-import java.util.Collections;
 
 // Parámetros que indican autor(es) de programa
 /**
@@ -56,11 +55,11 @@ public class Registro
     // Constructor copia de clase
     public void Registro(Registro RegistroACopiar)
     {
-        Collections.copy(RegistroUsuarios, RegistroACopiar.RegistroUsuarios);
-        Collections.copy(RegistroClientes, RegistroACopiar.RegistroClientes);
-        Collections.copy(RegistroVehiculos, RegistroACopiar.RegistroVehiculos);
-        Collections.copy(RegistroReparaciones, RegistroACopiar.RegistroReparaciones);
-        Collections.copy(RegistroPiezas, RegistroACopiar.RegistroPiezas);
+        RegistroUsuarios = new ArrayList<>(RegistroACopiar.RegistroUsuarios);
+        RegistroClientes = new ArrayList<>(RegistroACopiar.RegistroClientes);
+        RegistroVehiculos = new ArrayList<>(RegistroACopiar.RegistroVehiculos);
+        RegistroReparaciones = new ArrayList<>(RegistroACopiar.RegistroReparaciones);
+        RegistroPiezas = new ArrayList<>(RegistroACopiar.RegistroPiezas);
     }
     
     // |--------------------------Anular---------------------------------------|
@@ -105,6 +104,11 @@ public class Registro
     }
     
     // |------------------------Insertar---------------------------------------|
+    // Método para insertar lista o arreglo de Usuarios completa
+    public void InsertarListaUsuarios(ArrayList<Usuario> ListaUsuarios)
+    {
+        RegistroUsuarios = new ArrayList<>(ListaUsuarios);
+    }
     
     // Método InsertarUsuarios
     public void InsertarUsuarios(Usuario UsuarioAAsignar)
@@ -116,6 +120,12 @@ public class Registro
     public void InsertarUsuarios(int Posicion, Usuario UsuarioAAsignar)
     {
         RegistroUsuarios.add(Posicion, UsuarioAAsignar);
+    }
+    
+    // Método para insertar lista o arreglo de clientes
+    public void InsertarListaClientes(ArrayList<Cliente> ListaClientes)
+    {
+        RegistroClientes = new ArrayList<>(ListaClientes);
     }
     
     // Método InsertarClientes
@@ -130,6 +140,12 @@ public class Registro
         RegistroClientes.add(Posicion, ClienteAAsignar);
     }
     
+    // Método para insertar lista o arreglo de vehículos
+    public void InsertarListaVehiculos(ArrayList<Vehiculo> ListaVehiculos)
+    {
+        RegistroVehiculos = new ArrayList<>(ListaVehiculos);
+    }
+    
     // Método InsertarVehiculos
     public void InsertarVehiculos(Vehiculo VehiculoAAsignar)
     {
@@ -142,6 +158,12 @@ public class Registro
         RegistroVehiculos.add(Posicion, VehiculoAAsignar);
     }
     
+    // Método para insertar lista o arreglo de reparaciones
+    public void InsertarListaReparaciones(ArrayList<Reparacion> ListaReparaciones)
+    {
+        RegistroReparaciones = new ArrayList<>(ListaReparaciones);
+    }
+    
     // Método InsertarReparaciones
     public void InsertarReparaciones(Reparacion ReparacionAAsignar)
     {
@@ -152,6 +174,12 @@ public class Registro
     public void InsertarReparaciones(int Posicion, Reparacion ReparacionAAsignar)
     {
         RegistroReparaciones.add(Posicion, ReparacionAAsignar);
+    }
+    
+    // Método para insertar lista o arreglo de piezas
+    public void InsertarListaPiezas(ArrayList<Pieza> ListaPiezas)
+    {
+        RegistroPiezas = new ArrayList<>(ListaPiezas);
     }
     
     // Método InsertarPiezas
