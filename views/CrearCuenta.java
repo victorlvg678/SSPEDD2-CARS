@@ -526,6 +526,8 @@ public class CrearCuenta extends javax.swing.JDialog {
     private void BotonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCerrarActionPerformed
         // Cierra ventana cuando es clickeado el botón de cerrar ventana
         System.out.println("Saliendo de ventana " + getTitle());
+        Login LoginVentana = new Login(TamanoVentana, RegistrosVentana);
+        LoginVentana.setVisible(true);
         dispose();
     }//GEN-LAST:event_BotonCerrarActionPerformed
 
