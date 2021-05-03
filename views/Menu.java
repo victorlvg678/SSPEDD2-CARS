@@ -21,7 +21,13 @@ package views;
 
 // Parámetros que indican autor(es) de programa
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 import models.Registro;
 import models.Ventana;
 import models.Usuario;
@@ -44,6 +50,17 @@ public class Menu extends javax.swing.JFrame {
     private String ContrasenaTemp;
     private Boolean MostrandoContrasena;
     private Usuario SesionActiva;
+    
+    class Horas implements ActionListener{
+    
+        public void actionPerformed(ActionEvent e){
+            Date HoraSistema = new Date();
+            String PMAM = "hh:mm:ss a";
+            SimpleDateFormat Formato = new SimpleDateFormat(PMAM);
+            Calendar Hoy = Calendar.getInstance();
+            TextoHora.setText(String.format(Formato.format(HoraSistema), Hoy));
+        }
+    }    
     
     // |------------------------Métodos privados-------------------------------|
     
@@ -72,6 +89,13 @@ public class Menu extends javax.swing.JFrame {
         setSize((int) TamanoVentana.getAncho(), (int) TamanoVentana.getAltura());
         // Coloca al centro de la pantalla la ventana
         setLocationRelativeTo(null);
+        // Fecha para el sistema
+        Date FechaSistema = new Date();
+        SimpleDateFormat Formato =new SimpleDateFormat("dd MMMMM YYYY");
+        TextoFecha.setText(Formato.format(FechaSistema));
+        // Actualizar hora del sistema
+        Timer Tiempo = new Timer(100, new Menu.Horas());
+        Tiempo.start();
     }
 
     /**
@@ -88,9 +112,14 @@ public class Menu extends javax.swing.JFrame {
         ImagenLogo = new javax.swing.JLabel();
         PanelSuperior = new javax.swing.JPanel();
         PanelRuta = new javax.swing.JPanel();
+        TextoRuta = new javax.swing.JLabel();
         PanelRutaContenido = new javax.swing.JPanel();
         PanelSuperiorDerecho = new javax.swing.JPanel();
         PanelFechaHora = new javax.swing.JPanel();
+        TextoFecha = new javax.swing.JLabel();
+        ImagenFecha = new javax.swing.JLabel();
+        TextoHora = new javax.swing.JLabel();
+        ImagenHora = new javax.swing.JLabel();
         PanelFechaHoraContenido = new javax.swing.JPanel();
         Panelzquierdo = new javax.swing.JPanel();
         PanelUsuarios = new javax.swing.JPanel();
@@ -153,15 +182,25 @@ public class Menu extends javax.swing.JFrame {
 
         PanelRuta.setBackground(new java.awt.Color(41, 128, 185));
 
+        TextoRuta.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        TextoRuta.setForeground(new java.awt.Color(238, 238, 238));
+        TextoRuta.setText("Menú Principal");
+
         javax.swing.GroupLayout PanelRutaLayout = new javax.swing.GroupLayout(PanelRuta);
         PanelRuta.setLayout(PanelRutaLayout);
         PanelRutaLayout.setHorizontalGroup(
             PanelRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGroup(PanelRutaLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(TextoRuta)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         PanelRutaLayout.setVerticalGroup(
             PanelRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(PanelRutaLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(TextoRuta)
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         PanelSuperior.add(PanelRuta);
@@ -187,15 +226,44 @@ public class Menu extends javax.swing.JFrame {
 
         PanelFechaHora.setBackground(new java.awt.Color(41, 128, 185));
 
+        TextoFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        TextoFecha.setForeground(new java.awt.Color(238, 238, 238));
+        TextoFecha.setText("Fecha");
+
+        ImagenFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/menu/Calendario-EEEEEE-24x24.png"))); // NOI18N
+
+        TextoHora.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        TextoHora.setForeground(new java.awt.Color(238, 238, 238));
+        TextoHora.setText("Hora");
+
+        ImagenHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/menu/Reloj-EEEEEE-24x24.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelFechaHoraLayout = new javax.swing.GroupLayout(PanelFechaHora);
         PanelFechaHora.setLayout(PanelFechaHoraLayout);
         PanelFechaHoraLayout.setHorizontalGroup(
             PanelFechaHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFechaHoraLayout.createSequentialGroup()
+                .addContainerGap(144, Short.MAX_VALUE)
+                .addComponent(ImagenFecha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextoFecha)
+                .addGap(59, 59, 59)
+                .addComponent(ImagenHora)
+                .addGap(18, 18, 18)
+                .addComponent(TextoHora)
+                .addGap(27, 27, 27))
         );
         PanelFechaHoraLayout.setVerticalGroup(
             PanelFechaHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(PanelFechaHoraLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(PanelFechaHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ImagenHora)
+                    .addGroup(PanelFechaHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TextoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ImagenFecha)
+                        .addComponent(TextoHora, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         PanelSuperiorDerecho.add(PanelFechaHora);
@@ -609,6 +677,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton BotonReparaciones;
     private javax.swing.JButton BotonUsuarios;
     private javax.swing.JButton BotonVehiculos;
+    private javax.swing.JLabel ImagenFecha;
+    private javax.swing.JLabel ImagenHora;
     private javax.swing.JLabel ImagenLogo;
     private javax.swing.JLabel ImagenUsuario;
     private javax.swing.JPanel PanelCentral;
@@ -630,5 +700,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelVehiculos;
     private javax.swing.JPanel PanelnferiorIzquierdo;
     private javax.swing.JPanel Panelzquierdo;
+    private javax.swing.JLabel TextoFecha;
+    private javax.swing.JLabel TextoHora;
+    private javax.swing.JLabel TextoRuta;
     // End of variables declaration//GEN-END:variables
 }
