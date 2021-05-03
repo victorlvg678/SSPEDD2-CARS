@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import models.Ventana;
 import models.Registro;
+import models.Usuario;
 
 // Parámetros que indican autor(es) de programa
 /**
@@ -46,7 +47,7 @@ public class CrearCuenta extends javax.swing.JDialog {
     private Boolean MostrandoContrasena;
     
     // |------------------------Métodos privados-------------------------------|
-    
+   
     // |------------------------Atributos públicos-----------------------------|
     
     // |------------------------Métodos públicos-------------------------------|
@@ -589,8 +590,104 @@ public class CrearCuenta extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BotonMostrarContrasenaActionPerformed
 
+    // Método para cuando se hace click en BotonRegistrarse
     private void BotonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarseActionPerformed
-        // TODO add your handling code here:
+        // Verifica si todos los campos están llenos
+        String NombreUsuario, Contrasena, Nombre, AP, AM, Direccion, Telefono;
+        int x, Mayor;
+        Mayor = 0;
+        Boolean Existente;
+        Existente = false;
+        NombreUsuario = this.CampoNombreUsuario.getText();
+        Contrasena = this.CampoContrasena.getText();
+        Nombre = this.CampoNombre.getText();
+        AP = this.CampoApellidoPaterno.getText();
+        AM = this.CampoApellidoMaterno.getText();
+        Direccion = this.CampoDireccion.getText();
+        Telefono = this.CampoTelefono.getText();
+        if(NombreUsuario.equals("Nombre de Usuario") || NombreUsuario.equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+        }
+        else
+        {
+            if(Contrasena.equals("Contraseña") || Contrasena.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+            }
+            else
+            {
+                if(Nombre.equals("Nombre(s)") || Nombre.equals(""))
+                {
+                    JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                }
+                else
+                {
+                    if(AP.equals("Apellido Paterno") || AP.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(AM.equals("Apellido Materno") || AM.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Direccion.equals("Dirección") || Direccion.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Telefono.equals("Teléfono") || Telefono.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                }
+                                else
+                                {
+                                    for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                    {
+                                        if(NombreUsuario.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                        {
+                                            Existente = true;
+                                        }
+                                        if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
+                                        {
+                                            Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
+                                        }
+                                    }
+                                    if(Existente)
+                                    {
+                                        JOptionPane.showMessageDialog(null, "Nombre de Usuario ya está registrado");
+                                    }
+                                    else
+                                    {
+                                        Usuario UsuarioARegistrar;
+                                        UsuarioARegistrar = new Usuario();
+                                        UsuarioARegistrar.setID(Integer.toString(Mayor + 1));
+                                        UsuarioARegistrar.setUsername(NombreUsuario);
+                                        UsuarioARegistrar.setContrasena(ContrasenaTemp);
+                                        UsuarioARegistrar.setNombre(Nombre);
+                                        UsuarioARegistrar.setApellidoPaterno(AP);
+                                        UsuarioARegistrar.setApellidoMaterno(AM);
+                                        UsuarioARegistrar.setDireccion(Direccion);
+                                        UsuarioARegistrar.setTelefono(Telefono);
+                                        RegistrosVentana.InsertarUsuarios(UsuarioARegistrar);
+                                        JOptionPane.showMessageDialog(null, "Se ha registrado nueva cuenta " +
+                                                NombreUsuario + " con éxito");
+                                        Login LoginVentana = new Login(TamanoVentana, RegistrosVentana);
+                                        LoginVentana.setVisible(true);
+                                        dispose();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_BotonRegistrarseActionPerformed
 
     // Método para cuando se hace click en BotonReestablecer

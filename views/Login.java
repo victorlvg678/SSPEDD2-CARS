@@ -23,6 +23,7 @@ import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import models.Ventana;
 import models.Registro;
 
@@ -325,6 +326,11 @@ public class Login extends javax.swing.JFrame
         BotonIniciarSesion.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BotonIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonIniciarSesion.setFocusPainted(false);
+        BotonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIniciarSesionActionPerformed(evt);
+            }
+        });
 
         BotonReestablecer.setBackground(new java.awt.Color(41, 128, 185));
         BotonReestablecer.setForeground(new java.awt.Color(255, 255, 255));
@@ -446,6 +452,7 @@ public class Login extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     // Método privado para Maximizar ventana
     private void BotonMaximizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMaximizarActionPerformed
         // Maximiza o reduce la ventana al dar click en dicho botón
@@ -557,6 +564,7 @@ public class Login extends javax.swing.JFrame
         CrearCuentaVentana.pack();
         CrearCuentaVentana.setLocationRelativeTo(null);
         CrearCuentaVentana.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BotonCrearCuentaActionPerformed
     
     // Método cuandos presiona el mouse en CampoUsuario
@@ -745,6 +753,49 @@ public class Login extends javax.swing.JFrame
             this.CampoContrasena.setText(ContenidoReemplazar);
         }
     }//GEN-LAST:event_CampoContrasenaKeyTyped
+
+    // Método para cuando se quiere iniciar sesión
+    private void BotonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarSesionActionPerformed
+        // Verifica si los campos no están vacíos
+        String Username, Password;
+        int x;
+        Boolean Sesion;
+        Sesion = false;
+        Username = this.CampoUsuario.getText();
+        Password = this.CampoContrasena.getText();
+        if(Username.equals("Nombre de Usuario") || Username.equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+        }
+        else
+        {
+            if(Password.equals("Contraseña") || Password.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+            }
+            else
+            {
+                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                {
+                    if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                    {
+                        if(ContrasenaTemp.equals(RegistrosVentana.getUsuario(x).getContrasena()))
+                        {
+                            Sesion = true;
+                        }
+                    }
+                }
+                if(Sesion)
+                {
+                    System.out.println("Iniciando Sesión como " + Username);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Nombre de Usuario y/o contraseña erróneos");
+                }
+            }
+        }
+    }//GEN-LAST:event_BotonIniciarSesionActionPerformed
 
     // Argumentos a pasar a main de dicha clase
     /**

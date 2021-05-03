@@ -313,6 +313,7 @@ public class JSONParser
                                                         StrTemp = Reader.readLine();
                                                     }
                                                     RegistroUsuarios.add(UsuarioTemp);
+                                                    UsuarioTemp = new Usuario();
                                                     StrTemp = Reader.readLine();
                                                 }
                                             }
@@ -500,6 +501,7 @@ public class JSONParser
                                                         StrTemp = Reader.readLine();
                                                     }
                                                     RegistroClientes.add(ClienteTemp);
+                                                    ClienteTemp = new Cliente();
                                                     StrTemp = Reader.readLine();
                                                 }
                                             }
@@ -707,6 +709,7 @@ public class JSONParser
                                                         StrTemp = Reader.readLine();
                                                     }
                                                     RegistroVehiculos.add(VehiculoTemp);
+                                                    VehiculoTemp = new Vehiculo();
                                                     StrTemp = Reader.readLine();
                                                 }
                                             }
@@ -914,6 +917,7 @@ public class JSONParser
                                                         StrTemp = Reader.readLine();
                                                     }
                                                     RegistroReparaciones.add(ReparacionTemp);
+                                                    ReparacionTemp = new Reparacion();
                                                     StrTemp = Reader.readLine();
                                                 }
                                             }
@@ -1114,6 +1118,7 @@ public class JSONParser
                                                         StrTemp = Reader.readLine();
                                                     }
                                                     RegistroPiezas.add(PiezaTemp);
+                                                    PiezaTemp = new Pieza();
                                                     StrTemp = Reader.readLine();
                                                 }
                                             }
