@@ -20,6 +20,7 @@
 package views;
 
 // Paquetes a user en esta clase
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -41,6 +42,8 @@ public class CrearCuenta extends javax.swing.JDialog {
     // |------------------------Atributos privados-----------------------------|
     private Ventana TamanoVentana;
     private Registro RegistrosVentana;
+    private String ContrasenaTemp;
+    private Boolean MostrandoContrasena;
     
     // |------------------------Métodos privados-------------------------------|
     
@@ -60,6 +63,7 @@ public class CrearCuenta extends javax.swing.JDialog {
         // Pasar argumentos de constructor a atributos
         TamanoVentana = TamanoVentanaAAsignar;
         RegistrosVentana = Registros;
+        MostrandoContrasena = false;
     }
 
     /**
@@ -134,6 +138,19 @@ public class CrearCuenta extends javax.swing.JDialog {
         CampoNombreUsuario.setText("Nombre de Usuario");
         CampoNombreUsuario.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
         CampoNombreUsuario.setBorder(null);
+        CampoNombreUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoNombreUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoNombreUsuarioFocusLost(evt);
+            }
+        });
+        CampoNombreUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoNombreUsuarioMousePressed(evt);
+            }
+        });
         CampoNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoNombreUsuarioActionPerformed(evt);
@@ -152,9 +169,27 @@ public class CrearCuenta extends javax.swing.JDialog {
         CampoContrasena.setText("Contraseña");
         CampoContrasena.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
         CampoContrasena.setBorder(null);
+        CampoContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CampoContrasenaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CampoContrasenaFocusLost(evt);
+            }
+        });
+        CampoContrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CampoContrasenaMousePressed(evt);
+            }
+        });
         CampoContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoContrasenaActionPerformed(evt);
+            }
+        });
+        CampoContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoContrasenaKeyTyped(evt);
             }
         });
 
@@ -455,18 +490,215 @@ public class CrearCuenta extends javax.swing.JDialog {
     private void CampoTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoTelefonoActionPerformed
-
+    
+    // Método para cubrir contraseña
+    private void CampoContrasenaCubrirContrasena()
+    {
+        // Obtiene contenido actual de Contraseña
+        String Contenido = this.CampoContrasena.getText();
+        String ContenidoReemplazar;
+        ContenidoReemplazar = "";      
+        // Contador
+        int x;
+        for(x = 0; x < Contenido.length(); x++)
+        {
+            ContenidoReemplazar += "•";
+        }
+        if(!Contenido.equals("Contraseña"))
+        {
+            this.CampoContrasena.setText(ContenidoReemplazar);
+        }
+    }
+    
+    // Método para cuando se da click en BotonMostrarContrasena
     private void BotonMostrarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMostrarContrasenaActionPerformed
-        // TODO add your handling code here:
+        if(MostrandoContrasena)
+        {
+            CampoContrasenaCubrirContrasena();
+            MostrandoContrasena = false;
+        }
+        else
+        {
+            this.CampoContrasena.setText(ContrasenaTemp);
+            MostrandoContrasena = true;
+        }
     }//GEN-LAST:event_BotonMostrarContrasenaActionPerformed
 
     private void BotonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonRegistrarseActionPerformed
 
+    // Método para cuando se hace click en BotonReestablecer
     private void BotonReestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReestablecerActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BotonReestablecerActionPerformed
+
+    // Método para cuando se está escribiendo en CampoContrasena
+    private void CampoContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoContrasenaKeyTyped
+        // Obtiene contenido actual de Contraseña
+        String Contenido = this.CampoContrasena.getText();
+        String ContenidoReemplazar;
+        ContenidoReemplazar = "";
+        if(Contenido.equals(""))
+        {
+            ContrasenaTemp = "";
+        }
+        if(evt.getKeyChar() >= ' ' && evt.getKeyChar() <= '■')
+        {
+            ContrasenaTemp += evt.getKeyChar();
+        }
+        else
+        {
+            if(evt.getKeyChar() == '\b')
+            {
+                ContrasenaTemp = ContrasenaTemp.substring(0, ContrasenaTemp.length() - 1);
+            }
+        }
+        
+        // Contador
+        int x;
+        for(x = 0; x < Contenido.length(); x++)
+        {
+            ContenidoReemplazar += "•";
+        }
+        if(!Contenido.equals("Contraseña"))
+        {
+            this.CampoContrasena.setText(ContenidoReemplazar);
+        }
+    }//GEN-LAST:event_CampoContrasenaKeyTyped
+
+    // Método para cuando CampoContrasena gana enfoque
+    private void CampoContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoContrasenaFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoContrasena.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoContrasena.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Contraseña") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoContrasena.setText("");
+            this.CampoContrasena.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoContrasena.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoContrasenaFocusGained
+
+    // Método para cuando se desenfoca de CampoContrasena
+    private void CampoContrasenaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoContrasenaFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoContrasena.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoContrasena.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Contraseña"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoContrasena.setText("Contraseña");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoContrasena.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+        CampoContrasenaCubrirContrasena();
+    }//GEN-LAST:event_CampoContrasenaFocusLost
+
+    // Método para cuando se presiona CampoContrasena con el mouse
+    private void CampoContrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoContrasenaMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoContrasena.getText();
+        Color ColorActual = this.CampoContrasena.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Contraseña"))
+        {
+            // Elimina contenido
+            this.CampoContrasena.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoContrasena.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoContrasenaMousePressed
+
+    // Método para cuando se presiona CampoUsuario con el mouse
+    private void CampoNombreUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoNombreUsuarioMousePressed
+        // Obtener contenido
+        String Contenido = this.CampoNombreUsuario.getText();
+        Color ColorActual = this.CampoNombreUsuario.getForeground();
+        Color ColorEscrito = new Color(51, 51, 51);
+        // Verifica si no tiene nada seteado aún
+        if(Contenido.equals("Nombre de Usuario"))
+        {
+            // Elimina contenido
+            this.CampoNombreUsuario.setText("");
+        }
+        if(ColorActual != ColorEscrito)
+        {
+            this.CampoNombreUsuario.setForeground(ColorEscrito);
+        }
+    }//GEN-LAST:event_CampoNombreUsuarioMousePressed
+
+    // Método para cuando se enfoca en CampoNombreUsuario
+    private void CampoNombreUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoNombreUsuarioFocusGained
+        // Obtiene contenido de campo
+        String Contenido = this.CampoNombreUsuario.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoNombreUsuario.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(Contenido.equals("Nombre de Usuario") && 
+                (ColorActual == ColorNoEscrito))
+        {
+            // Limpiamos contenido
+            this.CampoNombreUsuario.setText("");
+            this.CampoNombreUsuario.setForeground(ColorEscribir);
+        }
+        else
+        {
+            this.CampoNombreUsuario.setForeground(ColorEscribir);
+        }
+    }//GEN-LAST:event_CampoNombreUsuarioFocusGained
+
+    // Método para cuando se desenfoca de CampoNombreUsuario
+    private void CampoNombreUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CampoNombreUsuarioFocusLost
+        // Obtiene contenido de campo
+        String Contenido = this.CampoNombreUsuario.getText();
+        // Obtiene color de campo
+        Color ColorActual = this.CampoNombreUsuario.getForeground();
+        // Color cuando no se ha escrito nada
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Color cuando se va a escribir algo
+        Color ColorEscribir = new Color(51, 51, 51);
+        // Verifica contenido y color de campo son los predeterminados
+        if(!Contenido.equals("Nombre de Usuario"))
+        {  
+            if(Contenido.equals(""))
+            {
+                this.CampoNombreUsuario.setText("Nombre de Usuario");
+                if(ColorActual != ColorNoEscrito)
+                {
+                    this.CampoNombreUsuario.setForeground(ColorNoEscrito);
+                }
+            }
+        }
+    }//GEN-LAST:event_CampoNombreUsuarioFocusLost
 
     /**
      * @param args the command line arguments

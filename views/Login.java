@@ -623,7 +623,6 @@ public class Login extends javax.swing.JFrame
                 }
             }
         }
-        // CampoContrasenaCubrirContrasena();
     }//GEN-LAST:event_CampoUsuarioFocusLost
 
     // Método cuando se presiona con el mouse CampoContrasena
@@ -691,6 +690,7 @@ public class Login extends javax.swing.JFrame
         CampoContrasenaCubrirContrasena();
     }//GEN-LAST:event_CampoContrasenaFocusLost
 
+    // Método para cubrir contraseña
     private void CampoContrasenaCubrirContrasena()
     {
         // Obtiene contenido actual de Contraseña

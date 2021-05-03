@@ -20,6 +20,11 @@
 package controllers;
 // Archivos a importar para usar dentro de clase
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import models.Cliente;
 import models.Pieza;
@@ -38,6 +43,7 @@ public class RegistroCRUD
 {
     // Atributos privados
     private String RegistroTemp;
+    private String URLTemp;
     // |------------------------Métodos públicos-------------------------------|
     
     // Constructor de clase
@@ -45,12 +51,14 @@ public class RegistroCRUD
     {
         RegistroTemp = System.getenv("USERPROFILE") + 
                 "\\AppData\\Local\\Temp\\RegistroTemp.json";
+        URLTemp = "https://raw.githubusercontent.com/victorlvg678/SSPEDD2-CARS/master/RegistroTemp.json";
     }
     
     // Constructor copia de clase
     public RegistroCRUD(RegistroCRUD RegistroCRUDOriginal)
     {
         RegistroTemp = RegistroCRUDOriginal.RegistroTemp;
+        URLTemp = RegistroCRUDOriginal.URLTemp;
     }
     
     // |---------------------------Setters-------------------------------------|
@@ -60,11 +68,23 @@ public class RegistroCRUD
         RegistroTemp = RegistroTempAAsignar;
     }
     
+    // Setter para atributo URL
+    public void setURL(String URLAAsignar)
+    {
+        URLTemp = URLAAsignar;
+    }
+    
     // |---------------------------Getters-------------------------------------|
     // Getter para atributo RegistroTemp
     public String getRegistroTemp()
     {
         return RegistroTemp;
+    }
+    
+    // Getter para atributo URL
+    public String getURL()
+    {
+        return URLTemp;
     }
     
     // |--------------------------Añadir---------------------------------------|
@@ -139,6 +159,18 @@ public class RegistroCRUD
         File ArchivoTemporal = new File(RegistroTemp);
         if(!ArchivoTemporal.exists())
         {
+            try {
+                URL URLDescarga = new URL(URLTemp);
+                FileUtils.copyURLToFile(URLDescarga, ArchivoTemporal);
+            } 
+            catch (MalformedURLException ex) 
+            {
+                Logger.getLogger(RegistroCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            catch (IOException ex) 
+            {
+                Logger.getLogger(RegistroCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
         RegistroCargado.InsertarListaUsuarios(jsonparser.getClaveUsuario(RegistroTemp));
