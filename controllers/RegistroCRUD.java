@@ -136,9 +136,9 @@ public class RegistroCRUD
         JSONParser jsonparser = new JSONParser();
         RegistroCargado.InsertarListaUsuarios(jsonparser.getClaveUsuario(RegistroTemp));
         RegistroCargado.InsertarListaClientes(jsonparser.getClaveClientes(RegistroTemp));
-        //RegistroCargado.InsertarListaVehiculos(jsonparser.getClaveVehiculos(RegistroTemp));
-        //RegistroCargado.InsertarListaReparaciones(jsonparser.getClaveReparaciones(RegistroTemp));
-        //RegistroCargado.InsertarListaPiezas(jsonparser.getClavePiezas(RegistroTemp));
+        RegistroCargado.InsertarListaVehiculos(jsonparser.getClaveVehiculos(RegistroTemp));
+        RegistroCargado.InsertarListaReparaciones(jsonparser.getClaveReparaciones(RegistroTemp));
+        RegistroCargado.InsertarListaPiezas(jsonparser.getClavePiezas(RegistroTemp));
         return RegistroCargado;
     }
 }
