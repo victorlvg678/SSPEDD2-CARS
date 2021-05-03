@@ -130,6 +130,6 @@ public class RegistroCRUD
     // |-----------------------Cargar------------------------------------------|
     public void Cargar(Registro RegistroACargar)
     {
-        
+        JSONParser.getClave("Usuarios", RegistroTemp);
     }
 }
