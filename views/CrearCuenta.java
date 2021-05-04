@@ -20,6 +20,7 @@
 package views;
 
 // Paquetes a user en esta clase
+import controllers.Hashing;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -670,7 +671,7 @@ public class CrearCuenta extends javax.swing.JDialog {
                                         UsuarioARegistrar = new Usuario();
                                         UsuarioARegistrar.setID(Integer.toString(Mayor + 1));
                                         UsuarioARegistrar.setUsername(NombreUsuario);
-                                        UsuarioARegistrar.setContrasena(ContrasenaTemp);
+                                        UsuarioARegistrar.setContrasena(Hashing.Hash(ContrasenaTemp));
                                         UsuarioARegistrar.setRol("Usuario");
                                         UsuarioARegistrar.setNombre(Nombre);
                                         UsuarioARegistrar.setApellidoPaterno(AP);

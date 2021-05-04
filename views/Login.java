@@ -772,7 +772,6 @@ public class Login extends javax.swing.JFrame
         Username = this.CampoUsuario.getText();
         Password = this.CampoContrasena.getText();
         HashContrasena = Hashing.Hash(ContrasenaTemp);
-        System.out.println(HashContrasena);
         if(Username.equals("Nombre de Usuario") || Username.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
