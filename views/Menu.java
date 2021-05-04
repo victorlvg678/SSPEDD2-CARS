@@ -39,6 +39,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JSeparator;
 import javax.swing.Timer;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -880,7 +881,7 @@ public class Menu extends javax.swing.JFrame {
         TextoBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel - 20);
         PanelFechaHoraContenido.add(TextoBuscar);
         
-        // Panel central
+        // Panel Central
         double AltoPanelCentral, AnchoPanelCentral;
         
         AltoPanelCentral = PanelCentral.getSize().getHeight();
@@ -897,8 +898,8 @@ public class Menu extends javax.swing.JFrame {
         Icono = new ImageIcon(getClass().getResource(
                 "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
         TextoID.setIcon(Icono);
-        TextoID.setSize(120, 20);
-        TextoID.setLocation((int) AnchoPanelCentral - 380, (int) AltoPanelCentral - 20);
+        TextoID.setSize(40, 20);
+        TextoID.setLocation((int) AnchoPanelCentral - 380, 30);
         PanelCentral.add(TextoID);
         
         // |---------------------Combobox--------------------------------------|
@@ -933,8 +934,22 @@ public class Menu extends javax.swing.JFrame {
         CampoID.setBackground(Color.WHITE);
         CampoID.setForeground(ColorNoEscrito);
         CampoID.setSize(120, 20);
-        CampoID.setLocation((int) AnchoPanel - 300, (int) AltoPanel - 15);
+        CampoID.setLocation((int) AnchoPanelCentral - 320, 30);
         PanelCentral.add(CampoID);
+        
+        // |---------------------Separadores-----------------------------------|
+        // Color para separador
+        Color ColorSeparador = new Color(51, 51, 51);
+        // Separador para CampoBuscar
+        JSeparator SeparadorBuscar = new JSeparator();
+        SeparadorBuscar.setName("SeparadorBuscar");
+        SeparadorBuscar.setBorder(null);
+        SeparadorBuscar.setBackground(Color.WHITE);
+        SeparadorBuscar.setForeground(ColorSeparador);
+        SeparadorBuscar.setSize(120, 15);
+        SeparadorBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel + 20);
+        PanelFechaHoraContenido.add(SeparadorBuscar);
+        
         // |---------------------Funciones de botones--------------------------|
         // Añadir listener para acción en BotonAnadir
         Botones[0].addActionListener(new ActionListener() {
@@ -959,6 +974,7 @@ public class Menu extends javax.swing.JFrame {
         });
         
         // |----------------------Funciones de campos--------------------------| 
+        // |------------------------CampoBuscar--------------------------------|
         // Se añade listener para enfoque de CampoBuscar
         CampoBuscar.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
@@ -1065,7 +1081,113 @@ public class Menu extends javax.swing.JFrame {
             }
 
         });
+        // |------------------------CampoID------------------------------------|
+        // Se añade listener para enfoque de CampoBuscar
+        CampoID.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("ID") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoID.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("ID"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoID.setText("ID");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
         
+        // Listener para mouse en CampoBuscar
+        CampoID.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoID.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("ID"))
+                {
+                    // Elimina contenido
+                    CampoID.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoBuscar");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoBuscar");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoBuscar");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoBuscar");
+            }
+
+        });
         
         // |-------------------------Refrescamos Paneles-----------------------|
         for(JPanel Panel : ListaPaneles)
