@@ -27,6 +27,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -787,6 +791,7 @@ public class Menu extends javax.swing.JFrame {
         Cont = 0;
         // Lista de strings para usar
         String Textos[] = {"Añadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Nombres[] = {"Anadir", "Eliminar", "Editar", "Guardar", "Buscar"};
         String Imagenes[] = {"/content/images/menu/users/Anadir-115480-24x24.png",
         "/content/images/menu/users/Eliminar-115480-24x24.png",
         "/content/images/menu/users/Editar-115480-24x24.png",
@@ -814,6 +819,7 @@ public class Menu extends javax.swing.JFrame {
         BotonEditarUsuarios, BotonGuardarUsuarios, BotonBuscarUsuarios};
         for(JButton Boton : Botones)
         {
+            Boton.setName("Boton" + Nombres[Cont]);
             Boton.setBorderPainted(false);
             Boton.setBackground(Color.white);
             Boton.setContentAreaFilled(false);
@@ -860,49 +866,206 @@ public class Menu extends javax.swing.JFrame {
         PanelFechaHoraContenido.add(Botones[4]);
 
         // |----------------------Texto----------------------------------------|
+        // Para imagenes de campos
+        ImageIcon Icono;
+        // Texto para buscar por
         JLabel TextoBuscar = new JLabel();
         TextoBuscar.setForeground(Color.BLACK);
         TextoBuscar.setBackground(Color.WHITE);
+        TextoBuscar.setName("TextoBuscar");
         TextoBuscar.setBorder(null);
         TextoBuscar.setToolTipText("<html><p><strong>Buscar usuario por</strong></p></html>");
         TextoBuscar.setText("Buscar usuario por");
         TextoBuscar.setSize(120, 20);
-        TextoBuscar.setLocation((int) AnchoPanel - 360, (int) AltoPanel - 20);
+        TextoBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel - 20);
         PanelFechaHoraContenido.add(TextoBuscar);
+        
+        // Panel central
+        double AltoPanelCentral, AnchoPanelCentral;
+        
+        AltoPanelCentral = PanelCentral.getSize().getHeight();
+        AnchoPanelCentral = PanelCentral.getSize().getWidth();
+        
+        // Texto para campo ID
+        JLabel TextoID = new JLabel();
+        TextoID.setForeground(Color.BLACK);
+        TextoID.setBackground(Color.WHITE);
+        TextoID.setName("TextoID");
+        TextoID.setBorder(null);
+        TextoID.setToolTipText("<html><p><strong>ID</strong></p></html>");
+        TextoID.setText("ID");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoID.setIcon(Icono);
+        TextoID.setSize(120, 20);
+        TextoID.setLocation((int) AnchoPanelCentral - 380, (int) AltoPanelCentral - 20);
+        PanelCentral.add(TextoID);
+        
         // |---------------------Combobox--------------------------------------|
         JComboBox ComboBuscar = new JComboBox();
+        ComboBuscar.setName("ComboBuscar");
         ComboBuscar.addItem("ID");
         ComboBuscar.addItem("Nombre de Usuario");
         ComboBuscar.addItem("Nombre");
         ComboBuscar.addItem("Apellido Paterno");
         ComboBuscar.addItem("Apellido Materno");
-        ComboBuscar.setLocation((int) AnchoPanel - 360, (int) AltoPanel);
+        ComboBuscar.setSize(120, 20);
+        ComboBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel);
         PanelFechaHoraContenido.add(ComboBuscar);
         // |-------------------Campos de Texto---------------------------------|
         Color ColorNoEscrito = new Color(102, 102, 102);
+        // Campo para búsqueda
         JTextField CampoBuscar = new JTextField();
+        CampoBuscar.setName("CampoBuscar");
         CampoBuscar.setBorder(null);
         CampoBuscar.setText("Buscar Usuario");
         CampoBuscar.setBackground(Color.WHITE);
         CampoBuscar.setForeground(ColorNoEscrito);
         CampoBuscar.setSize(120, 20);
-        CampoBuscar.setLocation((int) AnchoPanel - 185, (int) AltoPanel);
+        CampoBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel);
         PanelFechaHoraContenido.add(CampoBuscar);
+        
+        // Campo para ID
+        JTextField CampoID = new JTextField();
+        CampoID.setName("CampoID");
+        CampoID.setBorder(null);
+        CampoID.setText("ID");
+        CampoID.setBackground(Color.WHITE);
+        CampoID.setForeground(ColorNoEscrito);
+        CampoID.setSize(120, 20);
+        CampoID.setLocation((int) AnchoPanel - 300, (int) AltoPanel - 15);
+        PanelCentral.add(CampoID);
         // |---------------------Funciones de botones--------------------------|
+        // Añadir listener para acción en BotonAnadir
         Botones[0].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    System.out.println("");
+                    System.out.println(e.getSource());
                 }
             });
         
-        // |----------------------Funciones de campos--------------------------| 
-        /*CampoBuscar.addFocusListener(new FocusListener(){
+        // |----------------------Funciones de ComboBox------------------------|
+        // Añadir listener para cuando se selecciona item de ComboBuscar
+        ComboBuscar.addItemListener(new ItemListener(){
+            // Override para itemStateChanged
             @Override
-            public void focusGained(FocusEvent e){
-                System.out.println("");
+            public void itemStateChanged(ItemEvent e) 
+            {
+                String Seleccionado;
+                Seleccionado = (String) ComboBuscar.getSelectedItem();
+                System.out.println(Seleccionado);
             }
-        });*/
+        });
+        
+        // |----------------------Funciones de campos--------------------------| 
+        // Se añade listener para enfoque de CampoBuscar
+        CampoBuscar.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Buscar Usuario") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoBuscar.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Buscar Usuario"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoBuscar.setText("Buscar Usuario");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoBuscar
+        CampoBuscar.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoBuscar.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Buscar Usuario"))
+                {
+                    // Elimina contenido
+                    CampoBuscar.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoBuscar");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoBuscar");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoBuscar");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoBuscar");
+            }
+
+        });
+        
         
         // |-------------------------Refrescamos Paneles-----------------------|
         for(JPanel Panel : ListaPaneles)

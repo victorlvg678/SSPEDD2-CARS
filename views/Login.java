@@ -189,7 +189,7 @@ public class Login extends javax.swing.JFrame
         CampoUsuario.setText("Nombre de Usuario");
         CampoUsuario.setToolTipText("<html><p><strong>Ingrese nombre de usuario</strong></p></html>");
         CampoUsuario.setBorder(null);
-        CampoUsuario.setNextFocusableComponent(CampoUsuario);
+        CampoUsuario.setNextFocusableComponent(CampoContrasena);
         CampoUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 CampoUsuarioFocusGained(evt);
