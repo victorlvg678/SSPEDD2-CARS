@@ -900,7 +900,24 @@ public class Menu extends javax.swing.JFrame {
         TextoID.setIcon(Icono);
         TextoID.setSize(40, 20);
         TextoID.setLocation((int) AnchoPanelCentral - 380, 30);
+        System.out.println();
         PanelCentral.add(TextoID);
+        
+        // Texto para campo Username
+        JLabel TextoUsername = new JLabel();
+        TextoUsername.setForeground(Color.BLACK);
+        TextoUsername.setBackground(Color.WHITE);
+        TextoUsername.setName("TextoUsername");
+        TextoUsername.setBorder(null);
+        TextoUsername.setToolTipText("<html><p><strong>ID</strong></p></html>");
+        TextoUsername.setText("Username");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoUsername.setIcon(Icono);
+        TextoUsername.setSize(70, 20);
+        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoID.getLocation().getY() + 50);
+        PanelCentral.add(TextoUsername);
         
         // |---------------------Combobox--------------------------------------|
         JComboBox ComboBuscar = new JComboBox();
@@ -934,8 +951,21 @@ public class Menu extends javax.swing.JFrame {
         CampoID.setBackground(Color.WHITE);
         CampoID.setForeground(ColorNoEscrito);
         CampoID.setSize(120, 20);
-        CampoID.setLocation((int) AnchoPanelCentral - 320, 30);
+        CampoID.setLocation((int) TextoID.getLocation().getX() + 
+                (int) (TextoID.getSize().getWidth() + 20), 
+                (int) TextoID.getLocation().getY());
         PanelCentral.add(CampoID);
+        
+        // Campo para Username
+        JTextField CampoUsername = new JTextField();
+        CampoUsername.setName("CampoUsername");
+        CampoUsername.setBorder(null);
+        CampoUsername.setText("Nombre de Usuario");
+        CampoUsername.setBackground(Color.WHITE);
+        CampoUsername.setForeground(ColorNoEscrito);
+        CampoUsername.setSize(120, 20);
+        CampoUsername.setLocation((int) AnchoPanelCentral - 300, 80);
+        PanelCentral.add(CampoUsername);
         
         // |---------------------Separadores-----------------------------------|
         // Color para separador
@@ -949,6 +979,27 @@ public class Menu extends javax.swing.JFrame {
         SeparadorBuscar.setSize(120, 15);
         SeparadorBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel + 20);
         PanelFechaHoraContenido.add(SeparadorBuscar);
+        
+        // Separador para CampoID
+        JSeparator SeparadorID = new JSeparator();
+        SeparadorID.setName("SeparadorBuscar");
+        SeparadorID.setBorder(null);
+        SeparadorID.setBackground(Color.WHITE);
+        SeparadorID.setForeground(ColorSeparador);
+        SeparadorID.setSize(120, 15);
+        SeparadorID.setLocation((int) CampoID.getLocation().getX(),
+                (int) CampoID.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorID);
+        
+        // Separador para CampoUsername
+        JSeparator SeparadorUsername = new JSeparator();
+        SeparadorUsername.setName("SeparadorBuscar");
+        SeparadorUsername.setBorder(null);
+        SeparadorUsername.setBackground(Color.WHITE);
+        SeparadorUsername.setForeground(ColorSeparador);
+        SeparadorUsername.setSize(120, 15);
+        SeparadorUsername.setLocation((int) AnchoPanelCentral - 300, 100);
+        PanelCentral.add(SeparadorUsername);
         
         // |---------------------Funciones de botones--------------------------|
         // Añadir listener para acción en BotonAnadir
