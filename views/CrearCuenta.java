@@ -671,6 +671,7 @@ public class CrearCuenta extends javax.swing.JDialog {
                                         UsuarioARegistrar.setID(Integer.toString(Mayor + 1));
                                         UsuarioARegistrar.setUsername(NombreUsuario);
                                         UsuarioARegistrar.setContrasena(ContrasenaTemp);
+                                        UsuarioARegistrar.setRol("Usuario");
                                         UsuarioARegistrar.setNombre(Nombre);
                                         UsuarioARegistrar.setApellidoPaterno(AP);
                                         UsuarioARegistrar.setApellidoMaterno(AM);

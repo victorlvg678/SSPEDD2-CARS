@@ -101,6 +101,7 @@ public class JSONParser
         ClavesUsuarios.add("IDUsuario");
         ClavesUsuarios.add("Username");
         ClavesUsuarios.add("Contraseña");
+        ClavesUsuarios.add("Rol");
         ClavesUsuarios.add("Nombre");
         ClavesUsuarios.add("Apellido Paterno");
         ClavesUsuarios.add("Apellido Materno");
@@ -278,31 +279,38 @@ public class JSONParser
                                                             {
                                                                 System.out.println("Registrado dato \"" + 
                                                                         Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setNombre(Valor);
+                                                                UsuarioTemp.setRol(Valor);
                                                                 break;
                                                             }
                                                             case 4:
                                                             {
                                                                 System.out.println("Registrado dato \"" + 
                                                                         Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setApellidoPaterno(Valor);
+                                                                UsuarioTemp.setNombre(Valor);
                                                                 break;
                                                             }
                                                             case 5:
                                                             {
                                                                 System.out.println("Registrado dato \"" + 
                                                                         Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setApellidoMaterno(Valor);
+                                                                UsuarioTemp.setApellidoPaterno(Valor);
                                                                 break;
                                                             }
                                                             case 6:
                                                             {
                                                                 System.out.println("Registrado dato \"" + 
                                                                         Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setDireccion(Valor);
+                                                                UsuarioTemp.setApellidoMaterno(Valor);
                                                                 break;
                                                             }
                                                             case 7:
+                                                            {
+                                                                System.out.println("Registrado dato \"" + 
+                                                                        Clave + "\":\"" + Valor + '\"');
+                                                                UsuarioTemp.setDireccion(Valor);
+                                                                break;
+                                                            }
+                                                            case 8:
                                                             {
                                                                 System.out.println("Registrado dato \"" + 
                                                                         Clave + "\":\"" + Valor + '\"');

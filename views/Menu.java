@@ -21,15 +21,19 @@ package views;
 
 // Parámetros que indican autor(es) de programa
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
 import models.Registro;
 import models.Ventana;
 import models.Usuario;
@@ -92,6 +96,10 @@ public class Menu extends javax.swing.JFrame {
         setSize((int) TamanoVentana.getAncho(), (int) TamanoVentana.getAltura());
         // Coloca al centro de la pantalla la ventana
         setLocationRelativeTo(null);
+        if(Sesion.getRol() == "Usuario")
+        {
+            BotonUsuarios.setEnabled(false);
+        }
         // Fecha para el sistema
         Date FechaSistema = new Date();
         SimpleDateFormat Formato =new SimpleDateFormat("dd MMMMM YYYY");
@@ -728,6 +736,7 @@ public class Menu extends javax.swing.JFrame {
         JPanel [] ListaPaneles = {PanelRutaContenido, PanelFechaHoraContenido,
         PanelCentral, PanelDerecho, PanelInferior,
         PanelInferiorDerecho};
+        // Eliminamos todo de forma iterativa
         for(JPanel Panel : ListaPaneles)
         {
             // Obtenemos lista de componentes de dicho panel
@@ -738,11 +747,82 @@ public class Menu extends javax.swing.JFrame {
             {
                 Panel.remove(Componente);
             }
+        }
+        // |------------------Crear botones de forma iterativa-----------------|
+        // Contador
+        int Cont;
+        Cont = 0;
+        // Lista de strings para usar
+        String Textos[] = {"Añadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Imagenes[] = {"/content/images/menu/users/Anadir-115480-24x24.png",
+        "/content/images/menu/users/Eliminar-115480-24x24.png",
+        "/content/images/menu/users/Editar-115480-24x24.png",
+        "/content/images/menu/users/Guardar-115480-24x24.png",
+        "/content/images/menu/users/Buscar-115480-24x24.png"};
+        String ImagenesOver[] = {"/content/images/menu/users/AnadirOver-2980b9-24x24.png",
+        "/content/images/menu/users/EliminarOver-2980b9-24x24.png",
+        "/content/images/menu/users/EditarOver-2980b9-24x24.png",
+        "/content/images/menu/users/GuardarOver-2980b9-24x24.png",
+        "/content/images/menu/users/BuscarOver-2980b9-24x24.png"};
+        String ImagenesPressed[] = {"/content/images/menu/users/AnadirPressed-0b3653-24x24.png",
+        "/content/images/menu/users/EliminarPressed-0b3653-24x24.png",
+        "/content/images/menu/users/EditarPressed-0b3653-24x24.png",
+        "/content/images/menu/users/GuardarPressed-0b3653-24x24.png",
+        "/content/images/menu/users/BuscarPressed-0b3653-24x24.png"};
+        // Creamos color para botones
+        Color ColorBoton = new Color(17, 84, 128);
+        // Creamos botones para funciones de Usuarios
+        JButton BotonAnadirUsuarios = new JButton();
+        JButton BotonEliminarUsuarios = new JButton();
+        JButton BotonEditarUsuarios = new JButton();
+        JButton BotonGuardarUsuarios = new JButton();
+        JButton BotonBuscarUsuarios = new JButton();
+        JButton Botones[] = {BotonAnadirUsuarios, BotonEliminarUsuarios,
+        BotonEditarUsuarios, BotonGuardarUsuarios, BotonBuscarUsuarios};
+        for(JButton Boton : Botones)
+        {
+            Boton.setBorderPainted(false);
+            Boton.setBackground(Color.white);
+            Boton.setContentAreaFilled(false);
+            Boton.setFocusPainted(false);
+            Boton.setForeground(ColorBoton);
+            Boton.setBorder(null);
+            Boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            Boton.setHorizontalTextPosition(SwingConstants.CENTER);
+            Boton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            Boton.setText(Textos[Cont]);
+            Boton.setToolTipText("<html><p><strong>" + Textos[Cont] + "Usuario" +
+                    "</strong></p></html>");
+            ImageIcon Icono = new ImageIcon(getClass().getResource(
+                Imagenes[Cont]));
+            Boton.setIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesPressed[Cont]));
+            Boton.setPressedIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesOver[Cont]));
+            Boton.setRolloverIcon(Icono);
+            Boton.setSelectedIcon(Icono);
+            Boton.setSize(55, 40);
+            Cont++;
+        }
+        // |------------------------Ubicaciones de botones---------------------|
+        double AltoPanel, AnchoPanel, DivisionPanel;
+        AnchoPanel = PanelRutaContenido.getSize().getWidth(); 
+        DivisionPanel = AnchoPanel / 3;
+        DivisionPanel -= 40;
+        AltoPanel = PanelRutaContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        Botones[1].setLocation((int) DivisionPanel, (int) AltoPanel);
+        PanelRutaContenido.add(Botones[1]);
+        
+        // |-------------------------Refrescamos Paneles-----------------------|
+        for(JPanel Panel : ListaPaneles)
+        {
             // Revalidamos y refrescamos paneles
             Panel.revalidate();
             Panel.repaint();
         }
-        
     }//GEN-LAST:event_BotonUsuariosActionPerformed
 
     /**

@@ -30,6 +30,7 @@ public class Usuario
     private String ID;
     private String Username;
     private String Contrasena;
+    private String Rol;
     private String Nombre;
     private String ApellidoPaterno;
     private String ApellidoMaterno;
@@ -49,6 +50,7 @@ public class Usuario
         ID = "0";
         Username = "john.doe";
         Contrasena = "john.doe";
+        Rol = "Usuario";
         Nombre = "John";
         ApellidoPaterno = "Doe";
         ApellidoMaterno = "Doe";
@@ -64,6 +66,7 @@ public class Usuario
         ID = UsuarioACopiar.ID;
         Username = UsuarioACopiar.Username;
         Contrasena = UsuarioACopiar.Contrasena;
+        Rol = UsuarioACopiar.Rol;
         Nombre = UsuarioACopiar.Nombre;
         ApellidoPaterno = UsuarioACopiar.ApellidoPaterno;
         ApellidoMaterno = UsuarioACopiar.ApellidoMaterno;
@@ -89,6 +92,12 @@ public class Usuario
     public String getContrasena()
     {
         return Contrasena;
+    }
+    
+    // Getter para atributo Rol
+    public String getRol()
+    {
+        return Rol;
     }
     
     // Getter para atributo Nombre
@@ -150,6 +159,12 @@ public class Usuario
     public void setContrasena(String ContrasenaAAsignar)
     {
         Contrasena = ContrasenaAAsignar;
+    }
+    
+    // Setter para atributo Rol
+    public void setRol(String RolAAsignar)
+    {
+        Rol = RolAAsignar;
     }
     
     // Setter para atributo Nombre
