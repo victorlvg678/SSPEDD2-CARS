@@ -19,6 +19,7 @@
 // Paquete donde se incluye dicho archivo
 package views;
 // Librerías a importar
+import controllers.Hashing;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.ImageIcon;
@@ -762,7 +763,7 @@ public class Login extends javax.swing.JFrame
     // Método para cuando se quiere iniciar sesión
     private void BotonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarSesionActionPerformed
         // Verifica si los campos no están vacíos
-        String Username, Password;
+        String Username, Password, HashContrasena;
         Usuario SesionActiva;
         int x, Posicion;
         Boolean Sesion;
@@ -770,6 +771,8 @@ public class Login extends javax.swing.JFrame
         Sesion = false;
         Username = this.CampoUsuario.getText();
         Password = this.CampoContrasena.getText();
+        HashContrasena = Hashing.Hash(ContrasenaTemp);
+        System.out.println(HashContrasena);
         if(Username.equals("Nombre de Usuario") || Username.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
@@ -786,7 +789,7 @@ public class Login extends javax.swing.JFrame
                 {
                     if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
                     {
-                        if(ContrasenaTemp.equals(RegistrosVentana.getUsuario(x).getContrasena()))
+                        if(HashContrasena.equals(RegistrosVentana.getUsuario(x).getContrasena()))
                         {
                             Sesion = true;
                             Posicion = x;

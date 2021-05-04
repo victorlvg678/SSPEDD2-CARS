@@ -3,7 +3,7 @@
 		"0":{
 			"IDUsuario":"1",
 			"Username":"victor.valle",
-			"Contrasena":"victor.valle1917",
+			"Contrasena":"fe88c91a1129bc3877b864f6bd5ad0c2e769c3ec89c564aba7f7fae6b29eed43",
 			"Rol":"Admin",
 			"Nombre":"Victor Leonardo",
 			"Apellido Paterno":"Valle",
@@ -14,7 +14,7 @@
 		"1":{
 			"IDUsuario":"2",
 			"Username":"luis.daniel",
-			"Contrasena":"luis.daniel1917",
+			"Contrasena":"8196766da50d2738d0d37538194e171d1c521ddeaf2f372f3b9fb7aabf990caa",
 			"Rol":"Usuario",
 			"Nombre":"Luis Daniel",
 			"Apellido Paterno":"Figueroa",
@@ -25,7 +25,7 @@
 		"2":{
 			"IDUsuario":"3",
 			"Username":"oscar.emmanuel",
-			"Contrasena":"oscar.emmanuel1917",
+			"Contrasena":"f59a4c9b3c054a271972dfaa0449743203aeed3c914c5e4be9b8d2049ccb926c",
 			"Rol":"Usuario",
 			"Nombre":"Oscar Emmanuel",
 			"Apellido Paterno":"López",
