@@ -25,14 +25,19 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
 import javax.swing.Timer;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import models.Registro;
 import models.Ventana;
@@ -93,12 +98,13 @@ public class Menu extends javax.swing.JFrame {
             "/content/images/logo/CARS-Logo-IcosahedronTransparenteSinTexto.png"));
         setIconImage(Icono.getImage());
         // Pasa tamaño de ventana
-        setSize((int) TamanoVentana.getAncho(), (int) TamanoVentana.getAltura());
+        setSize((int) TamanoVentana.getMaxAncho(), (int) TamanoVentana.getMaxAltura());
         // Coloca al centro de la pantalla la ventana
         setLocationRelativeTo(null);
-        if(Sesion.getRol() == "Usuario")
+        if(SesionActiva.getRol().equals("Usuario"))
         {
             BotonUsuarios.setEnabled(false);
+            
         }
         // Fecha para el sistema
         Date FechaSistema = new Date();
@@ -147,7 +153,7 @@ public class Menu extends javax.swing.JFrame {
         BotonReparaciones = new javax.swing.JButton();
         PanelPiezas = new javax.swing.JPanel();
         BotonPiezas = new javax.swing.JButton();
-        PanelCerrarSesión = new javax.swing.JPanel();
+        PanelCerrarSesion = new javax.swing.JPanel();
         BotonCerrarSesion = new javax.swing.JButton();
         PanelCentral = new javax.swing.JPanel();
         TextoCARS = new javax.swing.JLabel();
@@ -201,7 +207,7 @@ public class Menu extends javax.swing.JFrame {
 
         PanelRuta.setBackground(new java.awt.Color(41, 128, 185));
 
-        TextoRuta.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        TextoRuta.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
         TextoRuta.setForeground(new java.awt.Color(238, 238, 238));
         TextoRuta.setText("Menú Principal");
 
@@ -212,14 +218,14 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(PanelRutaLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(TextoRuta)
-                .addContainerGap(555, Short.MAX_VALUE))
+                .addContainerGap(455, Short.MAX_VALUE))
         );
         PanelRutaLayout.setVerticalGroup(
             PanelRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelRutaLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(TextoRuta)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         PanelSuperior.add(PanelRuta);
@@ -348,7 +354,7 @@ public class Menu extends javax.swing.JFrame {
         Panelzquierdo.setMaximumSize(new java.awt.Dimension(384, 432));
         Panelzquierdo.setLayout(new java.awt.GridLayout(3, 2));
 
-        PanelUsuarios.setBackground(new java.awt.Color(59, 143, 255));
+        PanelUsuarios.setBackground(new java.awt.Color(19, 140, 220));
         PanelUsuarios.setMaximumSize(new java.awt.Dimension(192, 128));
         PanelUsuarios.setPreferredSize(new java.awt.Dimension(192, 128));
 
@@ -547,9 +553,9 @@ public class Menu extends javax.swing.JFrame {
 
         Panelzquierdo.add(PanelPiezas);
 
-        PanelCerrarSesión.setBackground(new java.awt.Color(19, 140, 220));
-        PanelCerrarSesión.setMaximumSize(new java.awt.Dimension(192, 128));
-        PanelCerrarSesión.setPreferredSize(new java.awt.Dimension(192, 128));
+        PanelCerrarSesion.setBackground(new java.awt.Color(19, 140, 220));
+        PanelCerrarSesion.setMaximumSize(new java.awt.Dimension(192, 128));
+        PanelCerrarSesion.setPreferredSize(new java.awt.Dimension(192, 128));
 
         BotonCerrarSesion.setBackground(new java.awt.Color(19, 140, 220));
         BotonCerrarSesion.setForeground(new java.awt.Color(238, 238, 238));
@@ -567,28 +573,28 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout PanelCerrarSesiónLayout = new javax.swing.GroupLayout(PanelCerrarSesión);
-        PanelCerrarSesión.setLayout(PanelCerrarSesiónLayout);
-        PanelCerrarSesiónLayout.setHorizontalGroup(
-            PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout PanelCerrarSesionLayout = new javax.swing.GroupLayout(PanelCerrarSesion);
+        PanelCerrarSesion.setLayout(PanelCerrarSesionLayout);
+        PanelCerrarSesionLayout.setHorizontalGroup(
+            PanelCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 367, Short.MAX_VALUE)
-            .addGroup(PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PanelCerrarSesiónLayout.createSequentialGroup()
+            .addGroup(PanelCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelCerrarSesionLayout.createSequentialGroup()
                     .addGap(52, 52, 52)
                     .addComponent(BotonCerrarSesion)
                     .addContainerGap(208, Short.MAX_VALUE)))
         );
-        PanelCerrarSesiónLayout.setVerticalGroup(
-            PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        PanelCerrarSesionLayout.setVerticalGroup(
+            PanelCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 231, Short.MAX_VALUE)
-            .addGroup(PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PanelCerrarSesiónLayout.createSequentialGroup()
+            .addGroup(PanelCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelCerrarSesionLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(BotonCerrarSesion)
                     .addContainerGap(195, Short.MAX_VALUE)))
         );
 
-        Panelzquierdo.add(PanelCerrarSesión);
+        Panelzquierdo.add(PanelCerrarSesion);
 
         getContentPane().add(Panelzquierdo);
 
@@ -724,6 +730,20 @@ public class Menu extends javax.swing.JFrame {
 
     // Método para cuando se hace click en BotonCerrarSesion
     private void BotonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCerrarSesionActionPerformed
+        Color PanelActivo = new Color(59,143,255);
+        Color PanelInactivo  = new Color(19,140,220);
+        JPanel PanelesInactivos[] = {PanelClientes, PanelVehiculos, PanelReparaciones,
+        PanelPiezas, PanelUsuarios};
+        // Ciclo for para setear los paneles a colores inactivos
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.setBackground(PanelInactivo);
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        PanelCerrarSesion.setBackground(PanelActivo);
+        PanelCerrarSesion.revalidate();
+        PanelCerrarSesion.repaint();
         System.out.println("Cerrando Sesión " + SesionActiva.getUsername());
         Login LoginVentana = new Login(TamanoVentana, RegistrosVentana);
         LoginVentana.setVisible(true);
@@ -732,6 +752,19 @@ public class Menu extends javax.swing.JFrame {
 
     // Método para cuando se da click en BotonUsuarios
     private void BotonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonUsuariosActionPerformed
+        // Reasignamos texto de ruta
+        TextoRuta.setText("Usuarios");
+        // Pintamos el panel para indicar opción actual
+        Color PanelActivo = new Color(59,143,255);
+        Color PanelInactivo  = new Color(19,140,220);
+        JPanel PanelesInactivos[] = {PanelClientes, PanelVehiculos, PanelReparaciones,
+        PanelPiezas, PanelCerrarSesion};
+        // Ciclo for para setear los paneles a colores inactivos
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.setBackground(PanelInactivo);
+        }
+        PanelUsuarios.setBackground(PanelActivo);
         // Obtenemos lista de objetos o paneles
         JPanel [] ListaPaneles = {PanelRutaContenido, PanelFechaHoraContenido,
         PanelCentral, PanelDerecho, PanelInferior,
@@ -791,7 +824,7 @@ public class Menu extends javax.swing.JFrame {
             Boton.setHorizontalTextPosition(SwingConstants.CENTER);
             Boton.setVerticalTextPosition(SwingConstants.BOTTOM);
             Boton.setText(Textos[Cont]);
-            Boton.setToolTipText("<html><p><strong>" + Textos[Cont] + "Usuario" +
+            Boton.setToolTipText("<html><p><strong>" + Textos[Cont] + " Usuario" +
                     "</strong></p></html>");
             ImageIcon Icono = new ImageIcon(getClass().getResource(
                 Imagenes[Cont]));
@@ -808,13 +841,68 @@ public class Menu extends javax.swing.JFrame {
         }
         // |------------------------Ubicaciones de botones---------------------|
         double AltoPanel, AnchoPanel, DivisionPanel;
+        int x;
         AnchoPanel = PanelRutaContenido.getSize().getWidth(); 
         DivisionPanel = AnchoPanel / 3;
-        DivisionPanel -= 40;
+        DivisionPanel -= 100;
         AltoPanel = PanelRutaContenido.getSize().getHeight();
         AltoPanel -= 80;
-        Botones[1].setLocation((int) DivisionPanel, (int) AltoPanel);
-        PanelRutaContenido.add(Botones[1]);
+        for(x = 0; x < 4; x++)
+        {
+            Botones[x].setLocation((int) DivisionPanel + (80 * (x + 1)), (int) AltoPanel);
+            PanelRutaContenido.add(Botones[x]);
+        }
+        
+        AnchoPanel = PanelFechaHoraContenido.getSize().getWidth(); 
+        AltoPanel = PanelFechaHoraContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        Botones[4].setLocation((int) AnchoPanel - 80, (int) AltoPanel);
+        PanelFechaHoraContenido.add(Botones[4]);
+
+        // |----------------------Texto----------------------------------------|
+        JLabel TextoBuscar = new JLabel();
+        TextoBuscar.setForeground(Color.BLACK);
+        TextoBuscar.setBackground(Color.WHITE);
+        TextoBuscar.setBorder(null);
+        TextoBuscar.setToolTipText("<html><p><strong>Buscar usuario por</strong></p></html>");
+        TextoBuscar.setText("Buscar usuario por");
+        TextoBuscar.setSize(120, 20);
+        TextoBuscar.setLocation((int) AnchoPanel - 360, (int) AltoPanel - 20);
+        PanelFechaHoraContenido.add(TextoBuscar);
+        // |---------------------Combobox--------------------------------------|
+        JComboBox ComboBuscar = new JComboBox();
+        ComboBuscar.addItem("ID");
+        ComboBuscar.addItem("Nombre de Usuario");
+        ComboBuscar.addItem("Nombre");
+        ComboBuscar.addItem("Apellido Paterno");
+        ComboBuscar.addItem("Apellido Materno");
+        ComboBuscar.setLocation((int) AnchoPanel - 360, (int) AltoPanel);
+        PanelFechaHoraContenido.add(ComboBuscar);
+        // |-------------------Campos de Texto---------------------------------|
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        JTextField CampoBuscar = new JTextField();
+        CampoBuscar.setBorder(null);
+        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setBackground(Color.WHITE);
+        CampoBuscar.setForeground(ColorNoEscrito);
+        CampoBuscar.setSize(120, 20);
+        CampoBuscar.setLocation((int) AnchoPanel - 185, (int) AltoPanel);
+        PanelFechaHoraContenido.add(CampoBuscar);
+        // |---------------------Funciones de botones--------------------------|
+        Botones[0].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    System.out.println("");
+                }
+            });
+        
+        // |----------------------Funciones de campos--------------------------| 
+        /*CampoBuscar.addFocusListener(new FocusListener(){
+            @Override
+            public void focusGained(FocusEvent e){
+                System.out.println("");
+            }
+        });*/
         
         // |-------------------------Refrescamos Paneles-----------------------|
         for(JPanel Panel : ListaPaneles)
@@ -823,6 +911,13 @@ public class Menu extends javax.swing.JFrame {
             Panel.revalidate();
             Panel.repaint();
         }
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        PanelUsuarios.revalidate();
+        PanelUsuarios.repaint();
     }//GEN-LAST:event_BotonUsuariosActionPerformed
 
     /**
@@ -880,7 +975,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel ImagenSitioWeb;
     private javax.swing.JLabel ImagenUsuario;
     private javax.swing.JPanel PanelCentral;
-    private javax.swing.JPanel PanelCerrarSesión;
+    private javax.swing.JPanel PanelCerrarSesion;
     private javax.swing.JPanel PanelClientes;
     private javax.swing.JPanel PanelDerecho;
     private javax.swing.JPanel PanelFechaHora;
