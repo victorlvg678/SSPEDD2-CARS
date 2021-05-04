@@ -87,66 +87,11 @@ public class RegistroCRUD
         return URLTemp;
     }
     
-    // |--------------------------Añadir---------------------------------------|
+    // |--------------------------Guardar---------------------------------------|
     // Método para añadir usuario a archivo temporal
-    public void AnadirUsuario(Usuario UsuarioAAnadir)
+    public void Guardar()
     {
-        
-    }
-    
-    // Método para añadir cliente a archivo temporal
-    public void AnadirCliente(Cliente ClienteAAnadir)
-    {
-        
-    }
-    
-    // Método para añadir vehículo a archivo temporal
-    public void AnadirVehiculo(Vehiculo VehiculoAAnadir)
-    {
-    
-    }
-    
-    // Método para añadir reparación a archivo temporal
-    public void AnadirReparacion(Reparacion ReparacionAAnadir)
-    {
-    
-    }
-    
-    // Método para añadir pieza a archivo temporal
-    public void AnadirPieza(Pieza PiezaAAnadir)
-    {
-    
-    }
- 
-    // |--------------------------Eliminar-------------------------------------|
-    // Método para eliminar usuario de archivo temporal
-    public void EliminarUsuario(Usuario UsuarioAEliminar)
-    {
-    
-    }
-    
-    // Método para eliminar cliente de archivo temoporal
-    public void EliminarCliente(Cliente ClienteAEliminar)
-    {
-        
-    }
-    
-    // Método para eliminar vehículo de archivo temporal
-    public void EliminarVehiculo(Vehiculo VehiculoAEliminar)
-    {
-    
-    }
-    
-    // Método para eliminar reparación de archivo temporal
-    public void EliminarReparacion(Reparacion ReparacionAEliminar)
-    {
-        
-    }
-    
-    // Método para eliminar pieza de archivo temporal
-    public void EliminarPieza(Pieza PiezaAEliminar)
-    {
-    
+        System.out.println("");
     }
     
     // |-----------------------Cargar------------------------------------------|

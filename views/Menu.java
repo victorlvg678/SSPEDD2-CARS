@@ -1289,7 +1289,7 @@ public class Menu extends javax.swing.JFrame {
                 // Override de listener para cuando se hace click
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    System.out.println(e.getSource());
+                    System.out.println("");
                 }
             });
         
