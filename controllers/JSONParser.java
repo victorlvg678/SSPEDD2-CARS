@@ -227,98 +227,102 @@ public class JSONParser
                                                 if(StrTemp.contains(IdentacionClave20) ||
                                                         StrTemp.contains(IdentacionClave09))
                                                 {
-                                                    for(x = 0; x < ClavesUsuarios.size() - 1; x++)
+                                                    for(x = 0; x < ClavesUsuarios.size(); x++)
                                                     {
-                                                        Clave = StrTemp.substring(StrTemp.indexOf('\"') + 1, 
-                                                                StrTemp.indexOf(':'));
-                                                        Clave = Clave.substring(0, Clave.indexOf('\"'));
-                                                        if(StrTemp.indexOf(',') != -1)
-                                                        {
-                                                            Valor = StrTemp.substring(StrTemp.indexOf(":") + 1, 
-                                                            StrTemp.lastIndexOf(','));
+                                                        if(!StrTemp.contains(IdentacionNoRegistro20) || 
+                                                                !StrTemp.contains(IdentacionNoRegistro09))
+                                                        {    
+                                                            Clave = StrTemp.substring(StrTemp.indexOf('\"') + 1, 
+                                                                    StrTemp.indexOf(':'));
+                                                            Clave = Clave.substring(0, Clave.indexOf('\"'));
+                                                            if(StrTemp.indexOf(',') != -1)
+                                                            {
+                                                                Valor = StrTemp.substring(StrTemp.indexOf(":") + 1, 
+                                                                StrTemp.lastIndexOf(','));
+                                                            }
+                                                            else
+                                                            {
+                                                                Valor = StrTemp.substring(StrTemp.indexOf(":") + 1, 
+                                                                StrTemp.lastIndexOf('\"'));
+                                                            }
+                                                            if(Valor.lastIndexOf('\"') > 0)
+                                                            {
+                                                                Valor = Valor.substring(Valor.indexOf('\"') + 1,
+                                                                Valor.lastIndexOf('\"'));
+                                                            }
+                                                            else
+                                                            {
+                                                               Valor = Valor.substring(Valor.indexOf('\"'),
+                                                                Valor.length());
+                                                            }
+                                                            switch(x)
+                                                            {
+                                                                case 0:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setID(Valor);
+                                                                    break;
+                                                                }
+                                                                case 1:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setUsername(Valor);
+                                                                    break;
+                                                                }
+                                                                case 2:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setContrasena(Valor);
+                                                                    break;
+                                                                }
+                                                                case 3:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setRol(Valor);
+                                                                    break;
+                                                                }
+                                                                case 4:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setNombre(Valor);
+                                                                    break;
+                                                                }
+                                                                case 5:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setApellidoPaterno(Valor);
+                                                                    break;
+                                                                }
+                                                                case 6:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setApellidoMaterno(Valor);
+                                                                    break;
+                                                                }
+                                                                case 7:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setDireccion(Valor);
+                                                                    break;
+                                                                }
+                                                                case 8:
+                                                                {
+                                                                    System.out.println("Registrado dato \"" + 
+                                                                            Clave + "\":\"" + Valor + '\"');
+                                                                    UsuarioTemp.setTelefono(Valor);
+                                                                    break;
+                                                                }
+                                                            }
+                                                            StrTemp = Reader.readLine();
                                                         }
-                                                        else
-                                                        {
-                                                            Valor = StrTemp.substring(StrTemp.indexOf(":") + 1, 
-                                                            StrTemp.lastIndexOf('\"'));
-                                                        }
-                                                        if(Valor.lastIndexOf('\"') > 0)
-                                                        {
-                                                            Valor = Valor.substring(Valor.indexOf('\"') + 1,
-                                                            Valor.lastIndexOf('\"'));
-                                                        }
-                                                        else
-                                                        {
-                                                           Valor = Valor.substring(Valor.indexOf('\"'),
-                                                            Valor.length());
-                                                        }
-                                                        switch(x)
-                                                        {
-                                                            case 0:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setID(Valor);
-                                                                break;
-                                                            }
-                                                            case 1:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setUsername(Valor);
-                                                                break;
-                                                            }
-                                                            case 2:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setContrasena(Valor);
-                                                                break;
-                                                            }
-                                                            case 3:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setRol(Valor);
-                                                                break;
-                                                            }
-                                                            case 4:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setNombre(Valor);
-                                                                break;
-                                                            }
-                                                            case 5:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setApellidoPaterno(Valor);
-                                                                break;
-                                                            }
-                                                            case 6:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setApellidoMaterno(Valor);
-                                                                break;
-                                                            }
-                                                            case 7:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setDireccion(Valor);
-                                                                break;
-                                                            }
-                                                            case 8:
-                                                            {
-                                                                System.out.println("Registrado dato \"" + 
-                                                                        Clave + "\":\"" + Valor + '\"');
-                                                                UsuarioTemp.setTelefono(Valor);
-                                                                break;
-                                                            }
-                                                        }
-                                                        StrTemp = Reader.readLine();
                                                     }
                                                     RegistroUsuarios.add(UsuarioTemp);
                                                     UsuarioTemp = new Usuario();
