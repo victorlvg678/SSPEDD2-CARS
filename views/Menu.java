@@ -21,12 +21,14 @@ package views;
 
 // Parámetros que indican autor(es) de programa
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 import models.Registro;
 import models.Ventana;
@@ -81,6 +83,7 @@ public class Menu extends javax.swing.JFrame {
         MostrandoContrasena = false;
         SesionActiva = Sesion;
         this.ImagenUsuario.setText(SesionActiva.getNombreCompleto());
+        this.TextoBienvenidaUsuario.setText(SesionActiva.getUsername() + " a CARS");
         // Colar imagen de icono de programa
         ImageIcon Icono = new ImageIcon(getClass().getResource(
             "/content/images/logo/CARS-Logo-IcosahedronTransparenteSinTexto.png"));
@@ -114,6 +117,8 @@ public class Menu extends javax.swing.JFrame {
         PanelRuta = new javax.swing.JPanel();
         TextoRuta = new javax.swing.JLabel();
         PanelRutaContenido = new javax.swing.JPanel();
+        TextoBienvenida = new javax.swing.JLabel();
+        ImagenLogoIzquierda = new javax.swing.JLabel();
         PanelSuperiorDerecho = new javax.swing.JPanel();
         PanelFechaHora = new javax.swing.JPanel();
         TextoFecha = new javax.swing.JLabel();
@@ -121,6 +126,8 @@ public class Menu extends javax.swing.JFrame {
         TextoHora = new javax.swing.JLabel();
         ImagenHora = new javax.swing.JLabel();
         PanelFechaHoraContenido = new javax.swing.JPanel();
+        TextoBienvenidaUsuario = new javax.swing.JLabel();
+        ImagenLogoDerecha = new javax.swing.JLabel();
         Panelzquierdo = new javax.swing.JPanel();
         PanelUsuarios = new javax.swing.JPanel();
         BotonUsuarios = new javax.swing.JButton();
@@ -135,7 +142,11 @@ public class Menu extends javax.swing.JFrame {
         PanelCerrarSesión = new javax.swing.JPanel();
         BotonCerrarSesion = new javax.swing.JButton();
         PanelCentral = new javax.swing.JPanel();
+        TextoCARS = new javax.swing.JLabel();
+        TextoAprenda = new javax.swing.JLabel();
+        ImagenSitioWeb = new javax.swing.JLabel();
         PanelDerecho = new javax.swing.JPanel();
+        TextoSitioWeb = new javax.swing.JLabel();
         PanelnferiorIzquierdo = new javax.swing.JPanel();
         PanelInferior = new javax.swing.JPanel();
         PanelInferiorDerecho = new javax.swing.JPanel();
@@ -164,7 +175,7 @@ public class Menu extends javax.swing.JFrame {
         PanelSuperiorIzquierdo.setLayout(PanelSuperiorIzquierdoLayout);
         PanelSuperiorIzquierdoLayout.setHorizontalGroup(
             PanelSuperiorIzquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ImagenLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 384, Short.MAX_VALUE)
+            .addComponent(ImagenLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
             .addComponent(ImagenUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PanelSuperiorIzquierdoLayout.setVerticalGroup(
@@ -173,7 +184,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(ImagenLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ImagenUsuario)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(474, Short.MAX_VALUE))
         );
 
         getContentPane().add(PanelSuperiorIzquierdo);
@@ -193,29 +204,51 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(PanelRutaLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(TextoRuta)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(555, Short.MAX_VALUE))
         );
         PanelRutaLayout.setVerticalGroup(
             PanelRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelRutaLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(TextoRuta)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
 
         PanelSuperior.add(PanelRuta);
 
         PanelRutaContenido.setBackground(new java.awt.Color(255, 255, 255));
 
+        TextoBienvenida.setBackground(new java.awt.Color(255, 255, 255));
+        TextoBienvenida.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        TextoBienvenida.setText("Bienvenido");
+
+        ImagenLogoIzquierda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/logo/CARS-Logo-SinTexto.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelRutaContenidoLayout = new javax.swing.GroupLayout(PanelRutaContenido);
         PanelRutaContenido.setLayout(PanelRutaContenidoLayout);
         PanelRutaContenidoLayout.setHorizontalGroup(
             PanelRutaContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelRutaContenidoLayout.createSequentialGroup()
+                .addContainerGap(622, Short.MAX_VALUE)
+                .addComponent(TextoBienvenida)
+                .addContainerGap())
+            .addGroup(PanelRutaContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelRutaContenidoLayout.createSequentialGroup()
+                    .addGap(120, 120, 120)
+                    .addComponent(ImagenLogoIzquierda)
+                    .addContainerGap(511, Short.MAX_VALUE)))
         );
         PanelRutaContenidoLayout.setVerticalGroup(
             PanelRutaContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(PanelRutaContenidoLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(TextoBienvenida)
+                .addContainerGap(263, Short.MAX_VALUE))
+            .addGroup(PanelRutaContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelRutaContenidoLayout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(ImagenLogoIzquierda)
+                    .addContainerGap(217, Short.MAX_VALUE)))
         );
 
         PanelSuperior.add(PanelRutaContenido);
@@ -243,7 +276,7 @@ public class Menu extends javax.swing.JFrame {
         PanelFechaHoraLayout.setHorizontalGroup(
             PanelFechaHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFechaHoraLayout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
+                .addContainerGap(494, Short.MAX_VALUE)
                 .addComponent(ImagenFecha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextoFecha)
@@ -263,22 +296,41 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(TextoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ImagenFecha)
                         .addComponent(TextoHora, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         PanelSuperiorDerecho.add(PanelFechaHora);
 
         PanelFechaHoraContenido.setBackground(new java.awt.Color(255, 255, 255));
 
+        TextoBienvenidaUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        TextoBienvenidaUsuario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        TextoBienvenidaUsuario.setText("Usuario a CARS");
+
+        ImagenLogoDerecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/logo/CARS-Logo-SinTexto.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelFechaHoraContenidoLayout = new javax.swing.GroupLayout(PanelFechaHoraContenido);
         PanelFechaHoraContenido.setLayout(PanelFechaHoraContenidoLayout);
         PanelFechaHoraContenidoLayout.setHorizontalGroup(
             PanelFechaHoraContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGroup(PanelFechaHoraContenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TextoBienvenidaUsuario)
+                .addGap(49, 49, 49)
+                .addComponent(ImagenLogoDerecha)
+                .addContainerGap(432, Short.MAX_VALUE))
         );
         PanelFechaHoraContenidoLayout.setVerticalGroup(
             PanelFechaHoraContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(PanelFechaHoraContenidoLayout.createSequentialGroup()
+                .addGroup(PanelFechaHoraContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelFechaHoraContenidoLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(TextoBienvenidaUsuario))
+                    .addGroup(PanelFechaHoraContenidoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ImagenLogoDerecha)))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         PanelSuperiorDerecho.add(PanelFechaHoraContenido);
@@ -302,6 +354,11 @@ public class Menu extends javax.swing.JFrame {
         BotonUsuarios.setContentAreaFilled(false);
         BotonUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonUsuarios.setFocusPainted(false);
+        BotonUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonUsuariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelUsuariosLayout = new javax.swing.GroupLayout(PanelUsuarios);
         PanelUsuarios.setLayout(PanelUsuariosLayout);
@@ -310,14 +367,14 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(PanelUsuariosLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(BotonUsuarios)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         PanelUsuariosLayout.setVerticalGroup(
             PanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelUsuariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonUsuarios)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         Panelzquierdo.add(PanelUsuarios);
@@ -349,14 +406,14 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(PanelClientesLayout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(BotonClientes)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         PanelClientesLayout.setVerticalGroup(
             PanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelClientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonClientes)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         Panelzquierdo.add(PanelClientes);
@@ -388,14 +445,14 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(PanelVehiculosLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(BotonVehiculos)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         PanelVehiculosLayout.setVerticalGroup(
             PanelVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelVehiculosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonVehiculos)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         Panelzquierdo.add(PanelVehiculos);
@@ -427,14 +484,14 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(PanelReparacionesLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(BotonReparaciones)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         PanelReparacionesLayout.setVerticalGroup(
             PanelReparacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelReparacionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonReparaciones)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         Panelzquierdo.add(PanelReparaciones);
@@ -463,21 +520,21 @@ public class Menu extends javax.swing.JFrame {
         PanelPiezas.setLayout(PanelPiezasLayout);
         PanelPiezasLayout.setHorizontalGroup(
             PanelPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 192, Short.MAX_VALUE)
+            .addGap(0, 367, Short.MAX_VALUE)
             .addGroup(PanelPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelPiezasLayout.createSequentialGroup()
                     .addGap(52, 52, 52)
                     .addComponent(BotonPiezas)
-                    .addContainerGap(74, Short.MAX_VALUE)))
+                    .addContainerGap(249, Short.MAX_VALUE)))
         );
         PanelPiezasLayout.setVerticalGroup(
             PanelPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 166, Short.MAX_VALUE)
+            .addGap(0, 231, Short.MAX_VALUE)
             .addGroup(PanelPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelPiezasLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(BotonPiezas)
-                    .addContainerGap(130, Short.MAX_VALUE)))
+                    .addContainerGap(195, Short.MAX_VALUE)))
         );
 
         Panelzquierdo.add(PanelPiezas);
@@ -506,21 +563,21 @@ public class Menu extends javax.swing.JFrame {
         PanelCerrarSesión.setLayout(PanelCerrarSesiónLayout);
         PanelCerrarSesiónLayout.setHorizontalGroup(
             PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 192, Short.MAX_VALUE)
+            .addGap(0, 367, Short.MAX_VALUE)
             .addGroup(PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelCerrarSesiónLayout.createSequentialGroup()
                     .addGap(52, 52, 52)
                     .addComponent(BotonCerrarSesion)
-                    .addContainerGap(33, Short.MAX_VALUE)))
+                    .addContainerGap(208, Short.MAX_VALUE)))
         );
         PanelCerrarSesiónLayout.setVerticalGroup(
             PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 166, Short.MAX_VALUE)
+            .addGap(0, 231, Short.MAX_VALUE)
             .addGroup(PanelCerrarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelCerrarSesiónLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(BotonCerrarSesion)
-                    .addContainerGap(130, Short.MAX_VALUE)))
+                    .addContainerGap(195, Short.MAX_VALUE)))
         );
 
         Panelzquierdo.add(PanelCerrarSesión);
@@ -529,30 +586,65 @@ public class Menu extends javax.swing.JFrame {
 
         PanelCentral.setBackground(new java.awt.Color(255, 255, 255));
 
+        TextoCARS.setBackground(new java.awt.Color(255, 255, 255));
+        TextoCARS.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        TextoCARS.setText("CARS");
+
+        TextoAprenda.setText("Aprenda más acerca de CARS, comience dando click a alguna opción.");
+
+        ImagenSitioWeb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/menu/Web-115480-100x100.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelCentralLayout = new javax.swing.GroupLayout(PanelCentral);
         PanelCentral.setLayout(PanelCentralLayout);
         PanelCentralLayout.setHorizontalGroup(
             PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGroup(PanelCentralLayout.createSequentialGroup()
+                .addGroup(PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCentralLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(TextoCARS))
+                    .addGroup(PanelCentralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(TextoAprenda))
+                    .addGroup(PanelCentralLayout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(ImagenSitioWeb)))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         PanelCentralLayout.setVerticalGroup(
             PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(PanelCentralLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(TextoCARS)
+                .addGap(18, 18, 18)
+                .addComponent(TextoAprenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ImagenSitioWeb)
+                .addContainerGap(490, Short.MAX_VALUE))
         );
 
         getContentPane().add(PanelCentral);
 
         PanelDerecho.setBackground(new java.awt.Color(255, 255, 255));
 
+        TextoSitioWeb.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        TextoSitioWeb.setText("Visita nuestro sitio web para más información");
+
         javax.swing.GroupLayout PanelDerechoLayout = new javax.swing.GroupLayout(PanelDerecho);
         PanelDerecho.setLayout(PanelDerechoLayout);
         PanelDerechoLayout.setHorizontalGroup(
             PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGroup(PanelDerechoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(TextoSitioWeb)
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         PanelDerechoLayout.setVerticalGroup(
             PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(PanelDerechoLayout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(TextoSitioWeb)
+                .addContainerGap(530, Short.MAX_VALUE))
         );
 
         getContentPane().add(PanelDerecho);
@@ -564,11 +656,11 @@ public class Menu extends javax.swing.JFrame {
         PanelnferiorIzquierdo.setLayout(PanelnferiorIzquierdoLayout);
         PanelnferiorIzquierdoLayout.setHorizontalGroup(
             PanelnferiorIzquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGap(0, 734, Short.MAX_VALUE)
         );
         PanelnferiorIzquierdoLayout.setVerticalGroup(
             PanelnferiorIzquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 693, Short.MAX_VALUE)
         );
 
         getContentPane().add(PanelnferiorIzquierdo);
@@ -579,11 +671,11 @@ public class Menu extends javax.swing.JFrame {
         PanelInferior.setLayout(PanelInferiorLayout);
         PanelInferiorLayout.setHorizontalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGap(0, 734, Short.MAX_VALUE)
         );
         PanelInferiorLayout.setVerticalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 693, Short.MAX_VALUE)
         );
 
         getContentPane().add(PanelInferior);
@@ -594,11 +686,11 @@ public class Menu extends javax.swing.JFrame {
         PanelInferiorDerecho.setLayout(PanelInferiorDerechoLayout);
         PanelInferiorDerechoLayout.setHorizontalGroup(
             PanelInferiorDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGap(0, 734, Short.MAX_VALUE)
         );
         PanelInferiorDerechoLayout.setVerticalGroup(
             PanelInferiorDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 693, Short.MAX_VALUE)
         );
 
         getContentPane().add(PanelInferiorDerecho);
@@ -629,6 +721,29 @@ public class Menu extends javax.swing.JFrame {
         LoginVentana.setVisible(true);
         dispose();
     }//GEN-LAST:event_BotonCerrarSesionActionPerformed
+
+    // Método para cuando se da click en BotonUsuarios
+    private void BotonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonUsuariosActionPerformed
+        // Obtenemos lista de objetos o paneles
+        JPanel [] ListaPaneles = {PanelRutaContenido, PanelFechaHoraContenido,
+        PanelCentral, PanelDerecho, PanelInferior,
+        PanelInferiorDerecho};
+        for(JPanel Panel : ListaPaneles)
+        {
+            // Obtenemos lista de componentes de dicho panel
+            Component [] ListaComponentes = Panel.getComponents();
+            // Iteramos entre todos los elementos del panel para eliminar todos
+            // los componentes que ya no requirimos
+            for(Component Componente : ListaComponentes)
+            {
+                Panel.remove(Componente);
+            }
+            // Revalidamos y refrescamos paneles
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        
+    }//GEN-LAST:event_BotonUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -680,6 +795,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel ImagenFecha;
     private javax.swing.JLabel ImagenHora;
     private javax.swing.JLabel ImagenLogo;
+    private javax.swing.JLabel ImagenLogoDerecha;
+    private javax.swing.JLabel ImagenLogoIzquierda;
+    private javax.swing.JLabel ImagenSitioWeb;
     private javax.swing.JLabel ImagenUsuario;
     private javax.swing.JPanel PanelCentral;
     private javax.swing.JPanel PanelCerrarSesión;
@@ -700,8 +818,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelVehiculos;
     private javax.swing.JPanel PanelnferiorIzquierdo;
     private javax.swing.JPanel Panelzquierdo;
+    private javax.swing.JLabel TextoAprenda;
+    private javax.swing.JLabel TextoBienvenida;
+    private javax.swing.JLabel TextoBienvenidaUsuario;
+    private javax.swing.JLabel TextoCARS;
     private javax.swing.JLabel TextoFecha;
     private javax.swing.JLabel TextoHora;
     private javax.swing.JLabel TextoRuta;
+    private javax.swing.JLabel TextoSitioWeb;
     // End of variables declaration//GEN-END:variables
 }

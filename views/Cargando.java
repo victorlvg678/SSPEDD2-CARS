@@ -5,7 +5,7 @@
  * Proyecto: CARS(Car Automated Repair System)                                 *
  * [Major].[Minor].[Revision].[Build]                                          *
  * Versión : 1.0.0.0 (dev_release20210313_build_0)                             *
- * Nombre de Archivo: Info.java                                                *
+ * Nombre de Archivo: Cargando.java                                            *
  * Fecha: 13/Abr/2021                                                          *
  * Materia: Seminario de solución de Problemas de Estructura de Datos II       *
  * NRC: 138619                                                                 *      
@@ -20,25 +20,38 @@
 package views;
 
 // Paquetes a user en esta clase
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 import models.Ventana;
 import models.Registro;
+import models.Usuario;
 
 // Parámetros que indican autor(es) de programa
 /**
  * @author Valle Guerra, Victor Leonardo 
  */
 // Clase principal de Archivo que se extiende desde JDialog
-public class Info extends javax.swing.JDialog {
+public class Cargando extends javax.swing.JDialog {
 
     /**
      * Parámetros a usar en clase
      * @param TamanoVentanaAAsignar
      * @param Registros
+     * @param SesionActiva
      */
     // |------------------------Atributos privados-----------------------------|
     private Ventana TamanoVentana;
     private Registro RegistrosVentana;
+    private Usuario Sesion;
+    
+    class Cierre implements ActionListener{
+    
+        public void actionPerformed(ActionEvent e){
+           dispose();
+        }
+    }
     
     // |------------------------Métodos privados-------------------------------|
     
@@ -47,19 +60,25 @@ public class Info extends javax.swing.JDialog {
     // |------------------------Métodos públicos-------------------------------|
     
     // Constructor de clase
-    public Info(java.awt.Frame parent, boolean modal, Ventana TamanoVentanaAAsignar,
-            Registro Registros) {
+    public Cargando(java.awt.Frame parent, boolean modal, Ventana TamanoVentanaAAsignar,
+            Registro Registros, Usuario SesionActiva) {
         super(parent, modal);
+        Sesion = SesionActiva;
+        initComponents();
         // Colar imagen de icono de programa
         ImageIcon Icono = new ImageIcon(getClass().getResource(
             "/content/images/logo/CARS-Logo-IcosahedronTransparenteSinTexto.png"));
         setIconImage(Icono.getImage());
-        initComponents();
+        setTitle("Iniciando sesión como " + Sesion.getNombreCompleto());
+        TextoSesion.setText(Sesion.getUsername());
         // Pasar argumentos de constructor a atributos
         TamanoVentana = TamanoVentanaAAsignar;
         RegistrosVentana = Registros;
+        Timer Tiempo = new Timer(2000, new Cargando.Cierre());
+        Tiempo.start();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,97 +89,60 @@ public class Info extends javax.swing.JDialog {
     private void initComponents() {
 
         PanelFondo = new javax.swing.JPanel();
-        BotonCerrar = new javax.swing.JButton();
-        ImagenLogo = new javax.swing.JLabel();
-        TextoVersion = new javax.swing.JLabel();
-        TextoCopyright = new javax.swing.JLabel();
-        TextoCopyright1 = new javax.swing.JLabel();
+        GifCarga = new javax.swing.JLabel();
+        TextoIniciandoSesion = new javax.swing.JLabel();
+        TextoSesion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Información acerca de CARS");
+        setTitle("Iniciando sesión");
+        setMaximumSize(new java.awt.Dimension(598, 343));
+        setMinimumSize(new java.awt.Dimension(598, 343));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 1));
 
         PanelFondo.setBackground(new java.awt.Color(255, 255, 255));
 
-        BotonCerrar.setBackground(new java.awt.Color(255, 255, 255));
-        BotonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/options/BotonCerrarNormal-MistyBlue-24x24.png"))); // NOI18N
-        BotonCerrar.setToolTipText("<html><p><strong>Cerrar ventana</strong></p></html>");
-        BotonCerrar.setBorder(null);
-        BotonCerrar.setBorderPainted(false);
-        BotonCerrar.setContentAreaFilled(false);
-        BotonCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BotonCerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/options/BotonCerrarClicked-MistyBlue-24x24.png"))); // NOI18N
-        BotonCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/options/BotonCerrarOver-MistyBlue-24x24.png"))); // NOI18N
-        BotonCerrar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/options/BotonCerrarOver-MistyBlue-24x24.png"))); // NOI18N
-        BotonCerrar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/options/BotonCerrarOver-MistyBlue-24x24.png"))); // NOI18N
-        BotonCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCerrarActionPerformed(evt);
-            }
-        });
+        GifCarga.setBackground(new java.awt.Color(255, 255, 255));
+        GifCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/login/GifCargando.gif"))); // NOI18N
+        GifCarga.setToolTipText("<html><p><strong>Iniciando sesión</strong></p></html>");
 
-        ImagenLogo.setBackground(new java.awt.Color(255, 255, 255));
-        ImagenLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/content/images/logo/CARS-Logo2.png"))); // NOI18N
-        ImagenLogo.setToolTipText("<html><p><strong>Car Automated Repair System</strong></p></html>");
+        TextoIniciandoSesion.setText("Iniciando sesión como");
 
-        TextoVersion.setText("Versión : 1.0.0.0 (dev_release20210313_build_0)");
-
-        TextoCopyright.setText("Copyright © 2021 CARS, LLC");
-
-        TextoCopyright1.setText("Valle Guerra Victor Leonardo");
+        TextoSesion.setText("john.doe");
 
         javax.swing.GroupLayout PanelFondoLayout = new javax.swing.GroupLayout(PanelFondo);
         PanelFondo.setLayout(PanelFondoLayout);
         PanelFondoLayout.setHorizontalGroup(
             PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelFondoLayout.createSequentialGroup()
+                .addContainerGap(201, Short.MAX_VALUE)
                 .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFondoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelFondoLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(ImagenLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 84, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(TextoVersion)
-                .addGap(62, 62, 62))
-            .addGroup(PanelFondoLayout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextoCopyright1)
-                    .addComponent(TextoCopyright))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(TextoIniciandoSesion)
+                        .addGap(223, 223, 223))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFondoLayout.createSequentialGroup()
+                        .addComponent(GifCarga)
+                        .addGap(199, 199, 199))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFondoLayout.createSequentialGroup()
+                        .addComponent(TextoSesion)
+                        .addGap(250, 250, 250))))
         );
         PanelFondoLayout.setVerticalGroup(
             PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(GifCarga)
                 .addGap(18, 18, 18)
-                .addComponent(ImagenLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextoIniciandoSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextoVersion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextoCopyright)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextoCopyright1)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addComponent(TextoSesion)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         getContentPane().add(PanelFondo);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BotonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCerrarActionPerformed
-        // Cierra ventana cuando es clickeado el botón de cerrar ventana
-        System.out.println("Saliendo de ventana " + getTitle());
-        dispose();
-    }//GEN-LAST:event_BotonCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,13 +161,13 @@ public class Info extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cargando.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cargando.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cargando.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cargando.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -196,7 +178,9 @@ public class Info extends javax.swing.JDialog {
                 TamanoVentana = new Ventana();
                 Registro RegistrosVentana;
                 RegistrosVentana = new Registro();
-                Info dialog = new Info(new javax.swing.JFrame(), true, TamanoVentana, RegistrosVentana);
+                Usuario SesionActiva = new Usuario();
+                Cargando dialog = new Cargando(new javax.swing.JFrame(), true, 
+                        TamanoVentana, RegistrosVentana, SesionActiva);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -209,11 +193,9 @@ public class Info extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonCerrar;
-    private javax.swing.JLabel ImagenLogo;
+    private javax.swing.JLabel GifCarga;
     private javax.swing.JPanel PanelFondo;
-    private javax.swing.JLabel TextoCopyright;
-    private javax.swing.JLabel TextoCopyright1;
-    private javax.swing.JLabel TextoVersion;
+    private javax.swing.JLabel TextoIniciandoSesion;
+    private javax.swing.JLabel TextoSesion;
     // End of variables declaration//GEN-END:variables
 }

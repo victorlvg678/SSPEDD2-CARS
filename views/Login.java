@@ -19,11 +19,15 @@
 // Paquete donde se incluye dicho archivo
 package views;
 // Librerías a importar
-import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Ventana;
 import models.Registro;
 import models.Usuario;
@@ -793,6 +797,11 @@ public class Login extends javax.swing.JFrame
                 {
                     System.out.println("Iniciando Sesión como " + Username);
                     SesionActiva = RegistrosVentana.getUsuario(Posicion);
+                    Cargando CargandoVentana = new Cargando(this, true, 
+                            TamanoVentana, RegistrosVentana, SesionActiva);
+                    CargandoVentana.pack();
+                    CargandoVentana.setLocationRelativeTo(null);
+                    CargandoVentana.setVisible(true);
                     Menu MenuVentana = new Menu(TamanoVentana, RegistrosVentana, SesionActiva);
                     MenuVentana.setVisible(true);
                     dispose();
