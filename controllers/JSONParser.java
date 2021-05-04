@@ -227,7 +227,7 @@ public class JSONParser
                                                 if(StrTemp.contains(IdentacionClave20) ||
                                                         StrTemp.contains(IdentacionClave09))
                                                 {
-                                                    for(x = 0; x < ClavesUsuarios.size(); x++)
+                                                    for(x = 0; x < ClavesUsuarios.size() - 1; x++)
                                                     {
                                                         Clave = StrTemp.substring(StrTemp.indexOf('\"') + 1, 
                                                                 StrTemp.indexOf(':'));
