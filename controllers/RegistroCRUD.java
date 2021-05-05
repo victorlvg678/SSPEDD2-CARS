@@ -376,25 +376,85 @@ public class RegistroCRUD
             else
             {
                 Writer.append("\t\t\"0\":{");
-                    Writer.newLine();
-                    Writer.append("\t\t\t\"IDReparación\":\"\",");
-                    Writer.newLine();
-                    Writer.append("\t\t\t\"Fecha de Entrada\":\"\",");
-                    Writer.newLine();
-                    Writer.append("\t\t\t\"Fecha de Salida\":\"\",");
-                    Writer.newLine();
-                    Writer.append("\t\t\t\"Falla\":\"\",");
-                    Writer.newLine();
-                    Writer.append("\t\t\t\"IDVehículoReparación\":\"\",");
-                    Writer.newLine();
-                    Writer.append("\t\t\t\"IDPiezaReparación\":\"\",");
-                    Writer.newLine();
-                    Writer.append("\t\t\t\"Cantidad de Pieza\":\"\"");
-                    Writer.newLine();
+                Writer.newLine();
+                Writer.append("\t\t\t\"IDReparación\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Fecha de Entrada\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Fecha de Salida\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Falla\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"IDVehículoReparación\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"IDPiezaReparación\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Cantidad de Pieza\":\"\"");
+                Writer.newLine();
                 Writer.append("\t\t}");
                 Writer.newLine();
             }
             Writer.append("\t},");
+            Writer.newLine();
+            Writer.append("\t\"Piezas\":{");
+            Writer.newLine();
+            if(RegistroAGuardar.getTamanoPiezas() > 0)
+            {
+                for(x = 0; x < RegistroAGuardar.getTamanoPiezas(); x++)
+                {
+                    Writer.append("\t\t\"" + String.valueOf(x) + "\":{");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDPieza\":\"" + 
+                            RegistroAGuardar.getPiezas(x).getID() + "\",");
+                    Writer.newLine();
+                    
+                    Writer.append("\t\t\t\"Nombre\":\"" + 
+                            RegistroAGuardar.getPiezas(x).getNombre() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Marca\":\"" + 
+                            RegistroAGuardar.getPiezas(x).getMarca() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Costo\":\"" + 
+                            RegistroAGuardar.getPiezas(x).getCosto() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Descripción\":\"" + 
+                            RegistroAGuardar.getPiezas(x).getDescripcion() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Stock\":\"" + 
+                            RegistroAGuardar.getPiezas(x).getStock() + "\"");
+                    Writer.newLine();
+                    if(x < RegistroAGuardar.getTamanoPiezas() - 1)
+                    {
+                        Writer.append("\t\t},");
+                        Writer.newLine();
+                    }
+                    else
+                    {
+                        Writer.append("\t\t}");
+                        Writer.newLine();
+                    }
+                }
+            }
+            else
+            {
+                Writer.append("\t\t\"\":{");
+                Writer.newLine();
+                Writer.append("\t\t\t\"IDPieza\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Nombre\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Marca\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Costo\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Descripción\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Stock\":\"\"");
+                Writer.newLine();
+                Writer.append("\t\t}");
+                Writer.newLine();
+            }
+            Writer.append("\t}");
             // Cerrar todo
             Writer.close();
             OSW.close();
