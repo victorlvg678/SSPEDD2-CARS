@@ -1439,6 +1439,20 @@ public class Menu extends javax.swing.JFrame {
                                                         CampoID.setForeground(ColorNoEscrito);
                                                         CampoUsername.setText("Nombre de Usuario");
                                                         CampoUsername.setForeground(ColorNoEscrito);
+                                                        CampoContrasena.setText("Contraseña");
+                                                        CampoContrasena.setForeground(ColorNoEscrito);
+                                                        CampoRol.setText("Rol");
+                                                        CampoRol.setForeground(ColorNoEscrito);
+                                                        CampoNombre.setText("Nombre(s)");
+                                                        CampoNombre.setForeground(ColorNoEscrito);
+                                                        CampoApellidoPaterno.setText("Apellido Paterno");
+                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                                                        CampoApellidoMaterno.setText("Apellido Materno");
+                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                                                        CampoDireccion.setText("Dirección");
+                                                        CampoDireccion.setForeground(ColorNoEscrito);
+                                                        CampoTelefono.setText("Teléfono");
+                                                        CampoTelefono.setForeground(ColorNoEscrito);
                                                         JOptionPane.showMessageDialog(null, "Se ha registrado " +
                                                                 Username + " con éxito");
                                                     }
