@@ -21,6 +21,7 @@ package views;
 
 // Parámetros que indican autor(es) de programa
 
+import controllers.Hashing;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -43,6 +44,8 @@ import javax.swing.JSeparator;
 import javax.swing.Timer;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import models.Registro;
 import models.Ventana;
@@ -759,6 +762,7 @@ public class Menu extends javax.swing.JFrame {
     private void BotonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonUsuariosActionPerformed
         // Reasignamos texto de ruta
         TextoRuta.setText("Usuarios");
+        ContrasenaTemp = "";
         // Pintamos el panel para indicar opción actual
         Color PanelActivo = new Color(59,143,255);
         Color PanelInactivo  = new Color(19,140,220);
@@ -1081,7 +1085,7 @@ public class Menu extends javax.swing.JFrame {
         PanelCentral.add(CampoUsername);
         
         // Campo para contraseña
-        JTextField CampoContrasena = new JTextField();
+        JPasswordField CampoContrasena = new JPasswordField();
         CampoContrasena.setName("CampoContrasena");
         CampoContrasena.setBorder(null);
         CampoContrasena.setText("Contraseña");
@@ -1289,8 +1293,165 @@ public class Menu extends javax.swing.JFrame {
                 // Override de listener para cuando se hace click
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    System.out.println("");
-                }
+                    Usuario UsuarioTemp;
+                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
+                            Direccion, Telefono;
+                    Boolean Registrable;
+                    IDAAsignar = "-1";
+                    Registrable = true;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                    Contrasena = String.valueOf(CampoContrasena.getPassword());
+                    Rol = CampoRol.getText();
+                    Nombre = CampoNombre.getText();
+                    AP = CampoApellidoPaterno.getText();
+                    AM = CampoApellidoMaterno.getText();
+                    Direccion = CampoDireccion.getText();
+                    Telefono = CampoTelefono.getText();
+                   
+                    if(Username.equals("Nombre de Usuario") ||
+                            Username.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Contrasena.equals("Contraseña") ||
+                                Contrasena.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Rol.equals("Rol") || Rol.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Nombre.equals("Nombre(s)") ||
+                                        Nombre.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, 
+                                            "Faltan campos por llenar");
+                                }
+                                else
+                                {
+                                    if(AP.equals("Apellido Paterno") ||
+                                            AP.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, 
+                                                "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(AM.equals("Apellido Materno") ||
+                                                AM.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, 
+                                                    "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            if(Direccion.equals("Dirección") ||
+                                                    Direccion.equals(""))
+                                            {
+                                                JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                            }
+                                            else
+                                            {
+                                                if(Telefono.equals("Teléfono") ||
+                                                        Telefono.equals(""))
+                                                {
+                                                    JOptionPane.showMessageDialog(null,
+                                                            "Faltan campo por llenar");
+                                                }
+                                                else
+                                                {
+                                                    if(ID.equals("ID") ||
+                                                                    ID.equals(""))
+                                                    {
+                                                        int x, Mayor;
+                                                        Mayor = 0;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
+                                                            }
+                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                            {
+                                                                Registrable = false;
+                                                            }
+                                                        }
+                                                        IDAAsignar = String.valueOf(Mayor + 1);
+                                                    }
+                                                    else
+                                                    {
+                                                        int x;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                JOptionPane.showMessageDialog(null, 
+                                                                        "El ID " + ID +" ya está registrado");
+                                                                Registrable = false;
+                                                            }
+                                                            else
+                                                            {
+                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                                {
+                                                                   JOptionPane.showMessageDialog(null, 
+                                                                            "El nombre de usuario " +
+                                                                            Username + " ya está registrado");
+                                                                    Registrable = false;
+                                                                }
+                                                            }
+                                                        }
+                                                        if(Registrable)
+                                                        {
+                                                            IDAAsignar = ID;
+                                                        }
+                                                    }
+                                                    if(Registrable)
+                                                    {
+                                                        UsuarioTemp.setID(IDAAsignar);
+                                                        UsuarioTemp.setUsername(Username);
+                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
+                                                        if(Rol.equals("Admin"))
+                                                        {
+                                                            UsuarioTemp.setRol("Admin");
+                                                        }
+                                                        else
+                                                        {
+                                                            UsuarioTemp.setRol("Usuario");
+                                                        }
+                                                        UsuarioTemp.setNombre(Nombre);
+                                                        UsuarioTemp.setApellidoPaterno(AP);
+                                                        UsuarioTemp.setApellidoMaterno(AM);
+                                                        UsuarioTemp.setDireccion(Direccion);
+                                                        UsuarioTemp.setTelefono(Telefono);
+                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
+                                                        CampoID.setText("ID");
+                                                        CampoID.setForeground(ColorNoEscrito);
+                                                        CampoUsername.setText("Nombre de Usuario");
+                                                        CampoUsername.setForeground(ColorNoEscrito);
+                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
+                                                                Username + " con éxito");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                };
             });
         
         // |----------------------Funciones de ComboBox------------------------|
@@ -1638,7 +1799,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoContrasena.getText();
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -1664,7 +1825,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoContrasena.getText();
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -1693,7 +1854,7 @@ public class Menu extends javax.swing.JFrame {
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoContrasena.getText();
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
@@ -1734,6 +1895,114 @@ public class Menu extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e) 
             {
                 System.out.println("Se ha hecho click en CampoContrasena");
+            }
+
+        });
+        
+        // |------------------------CampoRol-----------------------------------|
+        // Se añade listener para enfoque de CampoRol
+        CampoRol.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Rol") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoRol.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Rol"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoRol.setText("Rol");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoRol
+        CampoRol.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoRol.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Rol"))
+                {
+                    // Elimina contenido
+                    CampoRol.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoRol");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoRol");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoRol");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoRol");
             }
 
         });
