@@ -234,7 +234,7 @@ public class RegistroCRUD
                     Writer.append("\t\t\t\"Apellido Paterno\":\"" + 
                             RegistroAGuardar.getCliente(x).getApellidoPaterno() + "\",");
                     Writer.newLine();
-                    Writer.append("\t\t\t\"Apellido Materno\":\"" + 
+                    Writer.append("\t\t\t\"Apellido Materno\":" + 
                             RegistroAGuardar.getCliente(x).getApellidoMaterno() + "\"");
                     Writer.newLine();
                     if(x < RegistroAGuardar.getTamanoClientes() - 1)
@@ -293,7 +293,7 @@ public class RegistroCRUD
                     Writer.append("\t\t\t\"IDClienteVehículo\":\"" + 
                             RegistroAGuardar.getVehiculo(x).getIDClienteVehiculo() + "\",");
                     Writer.newLine();
-                    Writer.append("\t\t\t\"Fecha\":\"" + 
+                    Writer.append("\t\t\t\"Fecha\":" + 
                             RegistroAGuardar.getVehiculo(x).getFecha() + "\"");
                     Writer.newLine();
                     if(x < RegistroAGuardar.getTamanoVehiculos() - 1)
@@ -358,7 +358,7 @@ public class RegistroCRUD
                     Writer.append("\t\t\t\"IDPiezaReparación\":\"" + 
                             RegistroAGuardar.getReparacion(x).getIDPiezaReparacion() + "\",");
                     Writer.newLine();
-                    Writer.append("\t\t\t\"Cantidad de Pieza\":\"" + 
+                    Writer.append("\t\t\t\"Cantidad de Pieza\":" + 
                             RegistroAGuardar.getReparacion(x).getCantidadPiezas() + "\"");
                     Writer.newLine();
                     if(x < RegistroAGuardar.getTamanoReparaciones() - 1)
@@ -420,7 +420,7 @@ public class RegistroCRUD
                     Writer.append("\t\t\t\"Descripción\":\"" + 
                             RegistroAGuardar.getPiezas(x).getDescripcion() + "\",");
                     Writer.newLine();
-                    Writer.append("\t\t\t\"Stock\":\"" + 
+                    Writer.append("\t\t\t\"Stock\":" + 
                             RegistroAGuardar.getPiezas(x).getStock() + "\"");
                     Writer.newLine();
                     if(x < RegistroAGuardar.getTamanoPiezas() - 1)

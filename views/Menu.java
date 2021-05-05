@@ -871,6 +871,24 @@ public class Menu extends javax.swing.JFrame {
         Botones[4].setLocation((int) AnchoPanel - 80, (int) AltoPanel);
         PanelFechaHoraContenido.add(Botones[4]);
 
+        // |-----------------------BotonReestablecer---------------------------|
+        Color ColorReestablecer = new Color(41,128,185);
+        JButton BotonReestablecer = new JButton();
+        BotonReestablecer.setBorderPainted(true);
+        BotonReestablecer.setBackground(ColorReestablecer);
+        BotonReestablecer.setContentAreaFilled(true);
+        BotonReestablecer.setFocusPainted(false);
+        BotonReestablecer.setForeground(Color.WHITE);
+        BotonReestablecer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        BotonReestablecer.setHorizontalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setVerticalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setText("Reestablecer");
+        BotonReestablecer.setToolTipText("<html><p><strong>Reestablecer campos" +
+                "</strong></p></html>");
+        BotonReestablecer.setSize(120, 25);
+        BotonReestablecer.setLocation((int) AnchoPanel - 380, 
+                (int) AltoPanel + 30);
+        PanelFechaHoraContenido.add(BotonReestablecer);
         // |----------------------Texto----------------------------------------|
         // Para imagenes de campos
         ImageIcon Icono;
@@ -1289,6 +1307,16 @@ public class Menu extends javax.swing.JFrame {
         PanelDerecho.add(SeparadorTelefono);
         
         // |---------------------Funciones de botones--------------------------|
+        // Boton para Reestablecer campos
+        BotonReestablecer.addActionListener(new ActionListener(){
+            // Override de listener para cuando se hace click
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                
+            }
+        });
+        
         // Añadir listener para acción en BotonAnadir
         Botones[0].addActionListener(new ActionListener() {
                 // Override de listener para cuando se hace click
