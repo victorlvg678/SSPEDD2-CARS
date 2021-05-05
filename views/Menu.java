@@ -22,6 +22,7 @@ package views;
 // Parámetros que indican autor(es) de programa
 
 import controllers.Hashing;
+import controllers.RegistroCRUD;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -1292,7 +1293,8 @@ public class Menu extends javax.swing.JFrame {
         Botones[0].addActionListener(new ActionListener() {
                 // Override de listener para cuando se hace click
                 @Override
-                public void actionPerformed(ActionEvent e){
+                public void actionPerformed(ActionEvent e)
+                {
                     Usuario UsuarioTemp;
                     String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
                             Direccion, Telefono;
@@ -1467,6 +1469,241 @@ public class Menu extends javax.swing.JFrame {
                     
                 };
             });
+        
+        // Añadir listener para acción en eliminar
+        Botones[1].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    Usuario UsuarioTemp;
+                    String ID, Username;
+                    Boolean Eliminable;
+                    int Eliminar;
+                    Eliminar = -1;
+                    Eliminable = false;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                   
+                    
+                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
+                            (ID.equals("ID") || ID.equals("")))
+                    {
+                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                    }
+                    else
+                    {
+                        int x;
+                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        {
+                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
+                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            {
+                                Eliminable = true;
+                                Eliminar = x;
+                            }
+                        }
+                        if(Eliminable)
+                        {
+                            CampoID.setText("ID");
+                            CampoID.setForeground(ColorNoEscrito);
+                            CampoUsername.setText("Nombre de Usuario");
+                            CampoUsername.setForeground(ColorNoEscrito);
+                            CampoContrasena.setText("Contraseña");
+                            CampoContrasena.setForeground(ColorNoEscrito);
+                            CampoRol.setText("Rol");
+                            CampoRol.setForeground(ColorNoEscrito);
+                            CampoNombre.setText("Nombre(s)");
+                            CampoNombre.setForeground(ColorNoEscrito);
+                            CampoApellidoPaterno.setText("Apellido Paterno");
+                            CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                            CampoApellidoMaterno.setText("Apellido Materno");
+                            CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                            CampoDireccion.setText("Dirección");
+                            CampoDireccion.setForeground(ColorNoEscrito);
+                            CampoTelefono.setText("Teléfono");
+                            CampoTelefono.setForeground(ColorNoEscrito);
+                            if(Eliminar != -1)
+                            {
+                                int Respuesta;
+                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                Respuesta = JOptionPane.showConfirmDialog(null, 
+                                        "¿Seguro que desea eliminar al usuario " +
+                                        UsuarioTemp.getUsername());
+                                if(Respuesta == 0)
+                                {
+                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
+                                    JOptionPane.showMessageDialog(null, "Se ha eliminado " +
+                                        UsuarioTemp.getUsername() + " con éxito");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if(!Username.equals("Nombre de Usuario") &&
+                                    !Username.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
+                                        Username);
+                            }
+                            else
+                            {
+                                if(!ID.equals("ID") &&
+                                    !ID.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
+                                            ID);
+                                }
+                            }
+                        }
+                    }
+                }
+        });
+        
+        // Añadir listener para acción en editar
+        Botones[2].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    System.out.println("");
+                }
+        });
+        
+        // Añadir listener para acción en guardar
+        Botones[3].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    RegistroCRUD RegistroGuardar = new RegistroCRUD();
+                    RegistroGuardar.Guardar(RegistrosVentana);
+                    JOptionPane.showMessageDialog(null, "Se han guardado los registros con éxito");
+                }
+        });
+        
+        // Añadir listener para acción en buscar
+        Botones[4].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    String Buscar;
+                    Usuario UsuarioTemp;
+                    UsuarioTemp = new Usuario();
+                    Boolean Encontrado;
+                    Color ColorEscribir = new Color(51, 51, 51);
+                    Encontrado = false;
+                    int BuscarPor, x, Indice;
+                    Indice = -1;
+                    Buscar = CampoBuscar.getText();
+                    //if()
+                    BuscarPor = ComboBuscar.getSelectedIndex();
+                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
+                    }
+                    else
+                    {
+                        switch(BuscarPor)
+                        {
+                            case 0 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 1 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 2 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 3 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 4 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        if(Encontrado && Indice > -1)
+                        {
+                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
+                            CampoID.setText(UsuarioTemp.getID());
+                            CampoID.setForeground(ColorEscribir);
+                            CampoUsername.setText(UsuarioTemp.getUsername());
+                            CampoUsername.setForeground(ColorEscribir);
+                            CampoContrasena.setText(UsuarioTemp.getContrasena());
+                            CampoContrasena.setForeground(ColorEscribir);
+                            CampoRol.setText(UsuarioTemp.getRol());
+                            CampoRol.setForeground(ColorEscribir);
+                            CampoNombre.setText(UsuarioTemp.getNombre());
+                            CampoNombre.setForeground(ColorEscribir);
+                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
+                            CampoApellidoPaterno.setForeground(ColorEscribir);
+                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
+                            CampoApellidoMaterno.setForeground(ColorEscribir);
+                            CampoDireccion.setText(UsuarioTemp.getDireccion());
+                            CampoDireccion.setForeground(ColorEscribir);
+                            CampoTelefono.setText(UsuarioTemp.getTelefono());
+                            CampoTelefono.setForeground(ColorEscribir);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                                    Buscar);
+                        }
+                    }
+                }
+        });
         
         // |----------------------Funciones de ComboBox------------------------|
         // Añadir listener para cuando se selecciona item de ComboBuscar
