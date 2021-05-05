@@ -215,6 +215,186 @@ public class RegistroCRUD
                 Writer.newLine();
             }
             Writer.append("\t},");
+            Writer.newLine();
+            Writer.append("\t\"Clientes\":{");
+            Writer.newLine();
+            if(RegistroAGuardar.getTamanoClientes() > 0)
+            {
+                for(x = 0; x < RegistroAGuardar.getTamanoClientes(); x++)
+                {
+                    Writer.append("\t\t\"" + String.valueOf(x) + "\":{");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDCliente\":\"" + 
+                            RegistroAGuardar.getCliente(x).getID() + "\",");
+                    Writer.newLine();
+                    
+                    Writer.append("\t\t\t\"Nombre\":\"" + 
+                            RegistroAGuardar.getCliente(x).getNombre() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Apellido Paterno\":\"" + 
+                            RegistroAGuardar.getCliente(x).getApellidoPaterno() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Apellido Materno\":\"" + 
+                            RegistroAGuardar.getCliente(x).getApellidoMaterno() + "\"");
+                    Writer.newLine();
+                    if(x < RegistroAGuardar.getTamanoClientes() - 1)
+                    {
+                        Writer.append("\t\t},");
+                        Writer.newLine();
+                    }
+                    else
+                    {
+                        Writer.append("\t\t}");
+                        Writer.newLine();
+                    }
+                }
+            }
+            else
+            {
+                Writer.append("\t\t\"0\":{");
+                Writer.newLine();
+                Writer.append("\t\t\t\"IDCliente\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Nombre\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Apellido Paterno\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Apellido Materno\":\"\"");
+                Writer.newLine();
+                Writer.append("\t\t}");
+                Writer.newLine();
+            }
+            Writer.append("\t},");
+            Writer.newLine();
+            Writer.append("\t\"Vehículos\":{");
+            Writer.newLine();
+            if(RegistroAGuardar.getTamanoVehiculos() > 0)
+            {
+                for(x = 0; x < RegistroAGuardar.getTamanoVehiculos(); x++)
+                {
+                    Writer.append("\t\t\"" + String.valueOf(x) + "\":{");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDVehículo\":\"" + 
+                            RegistroAGuardar.getVehiculo(x).getID() + "\",");
+                    Writer.newLine();
+                    
+                    Writer.append("\t\t\t\"Matrícula\":\"" + 
+                            RegistroAGuardar.getVehiculo(x).getMatricula() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Marca\":\"" + 
+                            RegistroAGuardar.getVehiculo(x).getMarca() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Modelo\":\"" + 
+                            RegistroAGuardar.getVehiculo(x).getModelo() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Año\":\"" + 
+                            RegistroAGuardar.getVehiculo(x).getAnio() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDClienteVehículo\":\"" + 
+                            RegistroAGuardar.getVehiculo(x).getIDClienteVehiculo() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Fecha\":\"" + 
+                            RegistroAGuardar.getVehiculo(x).getFecha() + "\"");
+                    Writer.newLine();
+                    if(x < RegistroAGuardar.getTamanoVehiculos() - 1)
+                    {
+                        Writer.append("\t\t},");
+                        Writer.newLine();
+                    }
+                    else
+                    {
+                        Writer.append("\t\t}");
+                        Writer.newLine();
+                    }
+                }
+            }
+            else
+            {
+                Writer.append("\t\t\"0\":{");
+                Writer.newLine();
+                Writer.append("\t\t\t\"IDVehículo\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Matrícula\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Marca\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Modelo\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Año\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"IDClienteVehículo\":\"\",");
+                Writer.newLine();
+                Writer.append("\t\t\t\"Fecha\":\"\"");
+                Writer.newLine();
+                Writer.append("\t\t}");
+                Writer.newLine();
+            }
+            Writer.append("\t},");
+            Writer.newLine();
+            Writer.append("\t\"Reparación\":{");
+            Writer.newLine();
+            if(RegistroAGuardar.getTamanoReparaciones() > 0)
+            {
+                for(x = 0; x < RegistroAGuardar.getTamanoReparaciones(); x++)
+                {
+                    Writer.append("\t\t\"" + String.valueOf(x) + "\":{");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDReparación\":\"" + 
+                            RegistroAGuardar.getReparacion(x).getID() + "\",");
+                    Writer.newLine();
+                    
+                    Writer.append("\t\t\t\"Fecha de Entrada\":\"" + 
+                            RegistroAGuardar.getReparacion(x).getFechaEntrada() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Fecha de Salida\":\"" + 
+                            RegistroAGuardar.getReparacion(x).getFechaSalida() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Falla\":\"" + 
+                            RegistroAGuardar.getReparacion(x).getFalla() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDVehículoReparación\":\"" + 
+                            RegistroAGuardar.getReparacion(x).getIDVehiculoReparacion() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDPiezaReparación\":\"" + 
+                            RegistroAGuardar.getReparacion(x).getIDPiezaReparacion() + "\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Cantidad de Pieza\":\"" + 
+                            RegistroAGuardar.getReparacion(x).getCantidadPiezas() + "\"");
+                    Writer.newLine();
+                    if(x < RegistroAGuardar.getTamanoReparaciones() - 1)
+                    {
+                        Writer.append("\t\t},");
+                        Writer.newLine();
+                    }
+                    else
+                    {
+                        Writer.append("\t\t}");
+                        Writer.newLine();
+                    }
+                }
+            }
+            else
+            {
+                Writer.append("\t\t\"0\":{");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDReparación\":\"\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Fecha de Entrada\":\"\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Fecha de Salida\":\"\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Falla\":\"\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDVehículoReparación\":\"\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"IDPiezaReparación\":\"\",");
+                    Writer.newLine();
+                    Writer.append("\t\t\t\"Cantidad de Pieza\":\"\"");
+                    Writer.newLine();
+                Writer.append("\t\t}");
+                Writer.newLine();
+            }
+            Writer.append("\t},");
             // Cerrar todo
             Writer.close();
             OSW.close();

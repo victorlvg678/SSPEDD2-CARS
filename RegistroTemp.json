@@ -74,7 +74,7 @@
 			"Fecha de Entrada":"13/04/2021",
 			"Fecha de Salida":"22/04/2021",
 			"Falla":"Balatas",
-			"IDVehiculoReparación":"1",
+			"IDVehículoReparación":"1",
 			"IDPiezaReparación":"1",
 			"Cantidad de Piezas":"2"
 		},
@@ -83,7 +83,7 @@
 			"Fecha de Entrada":"13/04/2021",
 			"Fecha de Salida":"22/04/2021",
 			"Falla":"Balatas",
-			"IDVehiculoReparación":"2",
+			"IDVehículoReparación":"2",
 			"IDPiezaReparación":"1",
 			"Cantidad de Piezas":"1"
 		}
