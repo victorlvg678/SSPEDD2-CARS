@@ -8188,7 +8188,127 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    System.out.println("");
+                    String ID, Username, Contrasena, Rol, Nombre, AP, AM, Direccion,
+                            Telefono;
+                    int x, Editar;
+                    Boolean Editable;
+                    Usuario UsuarioTemp;
+                    UsuarioTemp = new Usuario();
+                    Editable = false;
+                    Editar = -1;
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                    Contrasena = String.valueOf(CampoContrasena.getPassword());
+                    Rol = CampoRol.getText();
+                    Nombre = CampoNombre.getText();
+                    AP = CampoApellidoPaterno.getText();
+                    AM = CampoApellidoMaterno.getText();
+                    Direccion = CampoDireccion.getText();
+                    Telefono = CampoTelefono.getText();
+                    
+                    // Verificamos si están llenos los campos
+                    if(ID.equals("ID") || ID.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Username.equals("Nombre de Usuario") ||
+                                Username.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Contrasena.equals("Contraseña") || 
+                                    Contrasena.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Rol.equals("Rol") || Rol.equals(""))
+                                {
+                                    
+                                }
+                                if(Nombre.equals("Nombre(s)") ||
+                                        Nombre.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(AP.equals("Apellido Paterno") ||
+                                                AP.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, 
+                                                    "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            if(AM.equals("Apellido Materno") ||
+                                                    AM.equals(""))
+                                            {
+                                                JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                            }
+                                            else
+                                            {
+                                                if(Direccion.equals("Dirección") ||
+                                                        Direccion.equals(""))
+                                                {
+                                                    JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                                }
+                                                else
+                                                {
+                                                    if(Telefono.equals("Teléfono") ||
+                                                            Telefono.equals(""))
+                                                    {
+                                                        JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                                    }
+                                                    else
+                                                    {
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                Editable = true;
+                                                                Editar = x;
+                                                            }
+                                                        }
+                                                        if(Editable && Editar >= 0)
+                                                        {
+                                                            int Respuesta;
+                                                            UsuarioTemp = RegistrosVentana.getUsuario(Editar);
+                                                            Respuesta = JOptionPane.showConfirmDialog(null, 
+                                                                    "¿Seguro que desea editar al usuario " +
+                                                                    UsuarioTemp.getUsername());
+                                                            if(Respuesta == 0)
+                                                            {
+                                                                UsuarioTemp.setID(ID);
+                                                                UsuarioTemp.setUsername(Username);
+                                                                UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
+                                                                UsuarioTemp.setRol(Rol);
+                                                                UsuarioTemp.setNombre(Nombre);
+                                                                UsuarioTemp.setApellidoPaterno(AP);
+                                                                UsuarioTemp.setApellidoMaterno(AM);
+                                                                UsuarioTemp.setDireccion(Direccion);
+                                                                UsuarioTemp.setTelefono(Telefono);
+                                                                RegistrosVentana.setUsuario(Editar, UsuarioTemp);
+                                                                JOptionPane.showMessageDialog(null, "Se ha editado " +
+                                                                    UsuarioTemp.getUsername() + " con éxito");
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                    }
                 }
         });
         
