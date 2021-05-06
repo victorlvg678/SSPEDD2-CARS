@@ -51,6 +51,10 @@ import javax.swing.SwingConstants;
 import models.Registro;
 import models.Ventana;
 import models.Usuario;
+import models.Cliente;
+import models.Vehiculo;
+import models.Reparacion;
+import models.Pieza;
 
 /**
  * @author Valle Guerra, Victor Leonardo 
@@ -1216,178 +1220,130 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
-                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
-                            Direccion, Telefono;
+                    Reparacion ReparacionTemp;
+                    String ID, IDAAsignar, FechaEntrada, FechaSalida, Falla,
+                            IDVehiculo, IDPieza, Cantidad;
                     Boolean Registrable;
                     IDAAsignar = "-1";
                     Registrable = true;
-                    UsuarioTemp = new Usuario();
+                    ReparacionTemp = new Reparacion();
                     // Obtenemos valores de campos
-                    /*ID = CampoID.getText();
-                    Username = CampoUsername.getText();
-                    Contrasena = String.valueOf(CampoContrasena.getPassword());
-                    Rol = CampoRol.getText();
-                    Nombre = CampoNombre.getText();
-                    AP = CampoApellidoPaterno.getText();
-                    AM = CampoApellidoMaterno.getText();
-                    Direccion = CampoDireccion.getText();
-                    Telefono = CampoTelefono.getText();
+                    ID = CampoID.getText();
+                    FechaEntrada = CampoFechaEntrada.getText();
+                    FechaSalida = CampoFechaSalida.getText();
+                    Falla = CampoFalla.getText();
+                    IDVehiculo = CampoIDVehiculo.getText();
+                    IDPieza = CampoIDPieza.getText();
+                    Cantidad = CampoCantidadPiezas.getText();
                    
-                    if(Username.equals("Nombre de Usuario") ||
-                            Username.equals(""))
+                    if(FechaEntrada.equals("DD/MM/YYYY") ||
+                            FechaEntrada.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                     }
                     else
                     {
-                        if(Contrasena.equals("Contraseña") ||
-                                Contrasena.equals(""))
+                        if(FechaSalida.equals("DD/MM/YYYY") ||
+                                FechaSalida.equals(""))
                         {
                             JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                         }
                         else
                         {
-                            if(Rol.equals("Rol") || Rol.equals(""))
+                            if(Falla.equals("Falla") || Falla.equals(""))
                             {
                                 JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                             }
                             else
                             {
-                                if(Nombre.equals("Nombre(s)") ||
-                                        Nombre.equals(""))
+                                if(IDVehiculo.equals("ID de Vehículo") ||
+                                        IDVehiculo.equals(""))
                                 {
                                     JOptionPane.showMessageDialog(null, 
                                             "Faltan campos por llenar");
                                 }
                                 else
                                 {
-                                    if(AP.equals("Apellido Paterno") ||
-                                            AP.equals(""))
+                                    if(IDPieza.equals("ID de Pieza") ||
+                                            IDPieza.equals(""))
                                     {
                                         JOptionPane.showMessageDialog(null, 
                                                 "Faltan campos por llenar");
                                     }
                                     else
                                     {
-                                        if(AM.equals("Apellido Materno") ||
-                                                AM.equals(""))
+                                        if(Cantidad.equals("Cantidad de Piezas") ||
+                                                Cantidad.equals(""))
                                         {
                                             JOptionPane.showMessageDialog(null, 
                                                     "Faltan campos por llenar");
                                         }
                                         else
-                                        {
-                                            if(Direccion.equals("Dirección") ||
-                                                    Direccion.equals(""))
+                                        {   
+                                            if(ID.equals("ID") ||
+                                                            ID.equals(""))
                                             {
-                                                JOptionPane.showMessageDialog(null, 
-                                                        "Faltan campos por llenar");
+                                                int x, Mayor;
+                                                Mayor = 0;
+                                                for(x = 0; x < RegistrosVentana.getTamanoReparaciones(); x++)
+                                                {
+                                                    if(Mayor < Integer.parseInt(RegistrosVentana.getReparacion(x).getID()))
+                                                    {
+                                                        Mayor = Integer.parseInt(RegistrosVentana.getReparacion(x).getID());
+                                                    }
+                                                }
+                                                IDAAsignar = String.valueOf(Mayor + 1);
                                             }
                                             else
                                             {
-                                                if(Telefono.equals("Teléfono") ||
-                                                        Telefono.equals(""))
+                                                int x;
+                                                for(x = 0; x < RegistrosVentana.getTamanoReparaciones(); x++)
                                                 {
-                                                    JOptionPane.showMessageDialog(null,
-                                                            "Faltan campo por llenar");
-                                                }
-                                                else
-                                                {
-                                                    if(ID.equals("ID") ||
-                                                                    ID.equals(""))
+                                                    if(ID.equals(RegistrosVentana.getReparacion(x).getID()))
                                                     {
-                                                        int x, Mayor;
-                                                        Mayor = 0;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                                        {
-                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
-                                                            }
-                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                            {
-                                                                Registrable = false;
-                                                            }
-                                                        }
-                                                        IDAAsignar = String.valueOf(Mayor + 1);
-                                                    }
-                                                    else
-                                                    {
-                                                        int x;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                                        {
-                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                JOptionPane.showMessageDialog(null, 
-                                                                        "El ID " + ID +" ya está registrado");
-                                                                Registrable = false;
-                                                            }
-                                                            else
-                                                            {
-                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                                {
-                                                                   JOptionPane.showMessageDialog(null, 
-                                                                            "El nombre de usuario " +
-                                                                            Username + " ya está registrado");
-                                                                    Registrable = false;
-                                                                }
-                                                            }
-                                                        }
-                                                        if(Registrable)
-                                                        {
-                                                            IDAAsignar = ID;
-                                                        }
-                                                    }
-                                                    if(Registrable)
-                                                    {
-                                                        UsuarioTemp.setID(IDAAsignar);
-                                                        UsuarioTemp.setUsername(Username);
-                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
-                                                        if(Rol.equals("Admin"))
-                                                        {
-                                                            UsuarioTemp.setRol("Admin");
-                                                        }
-                                                        else
-                                                        {
-                                                            UsuarioTemp.setRol("Usuario");
-                                                        }
-                                                        UsuarioTemp.setNombre(Nombre);
-                                                        UsuarioTemp.setApellidoPaterno(AP);
-                                                        UsuarioTemp.setApellidoMaterno(AM);
-                                                        UsuarioTemp.setDireccion(Direccion);
-                                                        UsuarioTemp.setTelefono(Telefono);
-                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
-                                                        CampoID.setText("ID");
-                                                        CampoID.setForeground(ColorNoEscrito);
-                                                        CampoUsername.setText("Nombre de Usuario");
-                                                        CampoUsername.setForeground(ColorNoEscrito);
-                                                        CampoContrasena.setText("Contraseña");
-                                                        CampoContrasena.setForeground(ColorNoEscrito);
-                                                        CampoRol.setText("Rol");
-                                                        CampoRol.setForeground(ColorNoEscrito);
-                                                        CampoNombre.setText("Nombre(s)");
-                                                        CampoNombre.setForeground(ColorNoEscrito);
-                                                        CampoApellidoPaterno.setText("Apellido Paterno");
-                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                                                        CampoApellidoMaterno.setText("Apellido Materno");
-                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                                                        CampoDireccion.setText("Dirección");
-                                                        CampoDireccion.setForeground(ColorNoEscrito);
-                                                        CampoTelefono.setText("Teléfono");
-                                                        CampoTelefono.setForeground(ColorNoEscrito);
-                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
-                                                                Username + " con éxito");
+                                                        JOptionPane.showMessageDialog(null, 
+                                                                "El ID " + ID +" ya está registrado");
+                                                        Registrable = false;
                                                     }
                                                 }
+                                                if(Registrable)
+                                                {
+                                                    IDAAsignar = ID;
+                                                }
+                                            }
+                                            if(Registrable)
+                                            {
+                                                ReparacionTemp.setID(IDAAsignar);
+                                                ReparacionTemp.setFechaEntrada(FechaEntrada);
+                                                ReparacionTemp.setFechaSalida(FechaSalida);
+                                                ReparacionTemp.setFalla(Falla);
+                                                ReparacionTemp.setIDVehiculoReparacion(IDVehiculo);
+                                                ReparacionTemp.setIDPiezaReparacion(IDPieza);
+                                                ReparacionTemp.setCantidadPiezas(Cantidad);
+                                                RegistrosVentana.InsertarReparaciones(ReparacionTemp);
+                                                CampoID.setText("ID");
+                                                CampoID.setForeground(ColorNoEscrito);
+                                                CampoFechaEntrada.setText("DD/MM/YYYY");
+                                                CampoFechaEntrada.setForeground(ColorNoEscrito);
+                                                CampoFechaSalida.setText("DD/MM/YYYY");
+                                                CampoFechaSalida.setForeground(ColorNoEscrito);
+                                                CampoFalla.setText("Falla");
+                                                CampoFalla.setForeground(ColorNoEscrito);
+                                                CampoIDVehiculo.setText("ID de Vehículo");
+                                                CampoIDVehiculo.setForeground(ColorNoEscrito);
+                                                CampoIDPieza.setText("ID de Pieza");
+                                                CampoIDPieza.setForeground(ColorNoEscrito);
+                                                CampoCantidadPiezas.setText("Cantidad de Piezas");
+                                                CampoCantidadPiezas.setForeground(ColorNoEscrito);
+                                                JOptionPane.showMessageDialog(null, "Se ha registrado " +
+                                                        ID + " con éxito");
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                    }*/
-                    
+                    }
                 };
             });
         
@@ -1397,30 +1353,27 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
-                    String ID, Username;
+                    Reparacion ReparacionTemp;
+                    String ID;
                     Boolean Eliminable;
                     int Eliminar;
                     Eliminar = -1;
                     Eliminable = false;
-                    UsuarioTemp = new Usuario();
+                    ReparacionTemp = new Reparacion();
                     // Obtenemos valores de campos
-                    /* = CampoID.getText();
-                    Username = CampoUsername.getText();
+                    ID = CampoID.getText();
                    
                     
-                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
-                            (ID.equals("ID") || ID.equals("")))
+                    if(ID.equals("ID") || ID.equals(""))
                     {
-                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                        JOptionPane.showMessageDialog(null, "Indique el ID");
                     }
                     else
                     {
                         int x;
-                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        for(x = 0; x < RegistrosVentana.getTamanoReparaciones(); x++)
                         {
-                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
-                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            if(ID.equals(RegistrosVentana.getReparacion(x).getID()))
                             {
                                 Eliminable = true;
                                 Eliminar = x;
@@ -1430,56 +1383,42 @@ public class Menu extends javax.swing.JFrame {
                         {
                             CampoID.setText("ID");
                             CampoID.setForeground(ColorNoEscrito);
-                            CampoUsername.setText("Nombre de Usuario");
-                            CampoUsername.setForeground(ColorNoEscrito);
-                            CampoContrasena.setText("Contraseña");
-                            CampoContrasena.setForeground(ColorNoEscrito);
-                            CampoRol.setText("Rol");
-                            CampoRol.setForeground(ColorNoEscrito);
-                            CampoNombre.setText("Nombre(s)");
-                            CampoNombre.setForeground(ColorNoEscrito);
-                            CampoApellidoPaterno.setText("Apellido Paterno");
-                            CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                            CampoApellidoMaterno.setText("Apellido Materno");
-                            CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                            CampoDireccion.setText("Dirección");
-                            CampoDireccion.setForeground(ColorNoEscrito);
-                            CampoTelefono.setText("Teléfono");
-                            CampoTelefono.setForeground(ColorNoEscrito);
+                            CampoFechaEntrada.setText("DD/MM/YYYY");
+                            CampoFechaEntrada.setForeground(ColorNoEscrito);
+                            CampoFechaSalida.setText("DD/MM/YYYY");
+                            CampoFechaSalida.setForeground(ColorNoEscrito);
+                            CampoFalla.setText("Falla");
+                            CampoFalla.setForeground(ColorNoEscrito);
+                            CampoIDVehiculo.setText("ID de Vehículo");
+                            CampoIDVehiculo.setForeground(ColorNoEscrito);
+                            CampoIDPieza.setText("ID de Pieza");
+                            CampoIDPieza.setForeground(ColorNoEscrito);
+                            CampoCantidadPiezas.setText("Cantidad de Piezas");
+                            CampoCantidadPiezas.setForeground(ColorNoEscrito);
                             if(Eliminar != -1)
                             {
                                 int Respuesta;
-                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                ReparacionTemp = RegistrosVentana.getReparacion(Eliminar);
                                 Respuesta = JOptionPane.showConfirmDialog(null, 
-                                        "¿Seguro que desea eliminar al usuario " +
-                                        UsuarioTemp.getUsername());
+                                        "¿Seguro que desea eliminar la reparación " +
+                                        ReparacionTemp.getID());
                                 if(Respuesta == 0)
                                 {
-                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
+                                    RegistrosVentana.EliminarReparaciones(ReparacionTemp);
                                     JOptionPane.showMessageDialog(null, "Se ha eliminado " +
-                                        UsuarioTemp.getUsername() + " con éxito");
+                                        ReparacionTemp.getID() + " con éxito");
                                 }
                             }
                         }
                         else
                         {
-                            if(!Username.equals("Nombre de Usuario") &&
-                                    !Username.equals(""))
+                            if(!ID.equals("ID") && !ID.equals(""))
                             {
-                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
-                                        Username);
-                            }
-                            else
-                            {
-                                if(!ID.equals("ID") &&
-                                    !ID.equals(""))
-                                {
-                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
-                                            ID);
-                                }
-                            }
+                                JOptionPane.showMessageDialog(null, "No se encontró la reparación con ID " +
+                                        ID);
+                            }   
                         }
-                    }*/
+                    }
                 }
         });
         
@@ -1489,7 +1428,105 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    System.out.println("");
+                    String ID, FechaEntrada, FechaSalida, Falla, IDVehiculo, 
+                            IDPieza, Cantidad;
+                    int x, Editar;
+                    Boolean Editable;
+                    Reparacion ReparacionTemp;
+                    ReparacionTemp = new Reparacion();
+                    Editable = false;
+                    Editar = -1;
+                    ID = CampoID.getText();
+                    FechaEntrada = CampoFechaEntrada.getText();
+                    FechaSalida = CampoFechaSalida.getText();
+                    Falla = CampoFalla.getText();
+                    IDVehiculo = CampoIDVehiculo.getText();
+                    IDPieza = CampoIDPieza.getText();
+                    Cantidad = CampoCantidadPiezas.getText();
+                    
+                    // Verificamos si están llenos los campos
+                    if(ID.equals("ID") || ID.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(FechaEntrada.equals("DD/MM/YYYY") ||
+                                FechaEntrada.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(FechaSalida.equals("DD/MM/YYYY") || 
+                                    FechaSalida.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Falla.equals("Falla") || Falla.equals("Falla"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                }
+                                if(IDVehiculo.equals("ID de Vehículo") ||
+                                        IDVehiculo.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(IDPieza.equals("ID de Pieza") ||
+                                                IDPieza.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, 
+                                                    "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            if(Cantidad.equals("Cantidad de Piezas") ||
+                                                    Cantidad.equals(""))
+                                            {
+                                                JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                            }
+                                            else
+                                            {
+                                                for(x = 0; x < RegistrosVentana.getTamanoReparaciones(); x++)
+                                                {
+                                                    if(ID.equals(RegistrosVentana.getReparacion(x).getID()))
+                                                    {
+                                                        Editable = true;
+                                                        Editar = x;
+                                                    }
+                                                }
+                                                if(Editable && Editar >= 0)
+                                                {
+                                                    int Respuesta;
+                                                    ReparacionTemp = RegistrosVentana.getReparacion(Editar);
+                                                    Respuesta = JOptionPane.showConfirmDialog(null, 
+                                                            "¿Seguro que desea editar la reparación " +
+                                                            ReparacionTemp.getID());
+                                                    if(Respuesta == 0)
+                                                    {
+                                                        ReparacionTemp.setID(ID);
+                                                        ReparacionTemp.setFechaEntrada(FechaEntrada);
+                                                        ReparacionTemp.setFechaSalida(FechaSalida);
+                                                        ReparacionTemp.setFalla(Falla);
+                                                        ReparacionTemp.setIDVehiculoReparacion(IDVehiculo);
+                                                        ReparacionTemp.setIDPiezaReparacion(IDPieza);
+                                                        ReparacionTemp.setCantidadPiezas(Cantidad);
+                                                        RegistrosVentana.setReparacion(Editar, ReparacionTemp);
+                                                        JOptionPane.showMessageDialog(null, "Se ha editado " +
+                                                            ReparacionTemp.getID() + " con éxito");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                    }
                 }
         });
         
@@ -1512,8 +1549,8 @@ public class Menu extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e)
                 {
                     String Buscar;
-                    Usuario UsuarioTemp;
-                    UsuarioTemp = new Usuario();
+                    Reparacion ReparacionTemp;
+                    ReparacionTemp = new Reparacion();
                     Boolean Encontrado;
                     Color ColorEscribir = new Color(51, 51, 51);
                     Encontrado = false;
@@ -1522,7 +1559,7 @@ public class Menu extends javax.swing.JFrame {
                     Buscar = CampoBuscar.getText();
                     //if()
                     BuscarPor = ComboBuscar.getSelectedIndex();
-                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    if(Buscar.equals("Buscar Reparación") || Buscar.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
                     }
@@ -1532,9 +1569,9 @@ public class Menu extends javax.swing.JFrame {
                         {
                             case 0 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoReparaciones(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
+                                    if(Buscar.equals(RegistrosVentana.getReparacion(x).getID()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -1545,48 +1582,9 @@ public class Menu extends javax.swing.JFrame {
                             
                             case 1 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoReparaciones(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 2 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 3 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 4 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
+                                    if(Buscar.equals(RegistrosVentana.getReparacion(x).getIDVehiculoReparacion()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -1597,29 +1595,25 @@ public class Menu extends javax.swing.JFrame {
                         }
                         if(Encontrado && Indice > -1)
                         {
-                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
-                            CampoID.setText(UsuarioTemp.getID());
+                            ReparacionTemp = RegistrosVentana.getReparacion(Indice);
+                            CampoID.setText(ReparacionTemp.getID());
                             CampoID.setForeground(ColorEscribir);
-                            /*CampoUsername.setText(UsuarioTemp.getUsername());
-                            CampoUsername.setForeground(ColorEscribir);
-                            CampoContrasena.setText(UsuarioTemp.getContrasena());
-                            CampoContrasena.setForeground(ColorEscribir);
-                            CampoRol.setText(UsuarioTemp.getRol());
-                            CampoRol.setForeground(ColorEscribir);
-                            CampoNombre.setText(UsuarioTemp.getNombre());
-                            CampoNombre.setForeground(ColorEscribir);
-                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
-                            CampoApellidoPaterno.setForeground(ColorEscribir);
-                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
-                            CampoApellidoMaterno.setForeground(ColorEscribir);
-                            CampoDireccion.setText(UsuarioTemp.getDireccion());
-                            CampoDireccion.setForeground(ColorEscribir);
-                            CampoTelefono.setText(UsuarioTemp.getTelefono());
-                            CampoTelefono.setForeground(ColorEscribir);*/
+                            CampoFechaEntrada.setText(ReparacionTemp.getFechaEntrada());
+                            CampoFechaEntrada.setForeground(ColorEscribir);
+                            CampoFechaSalida.setText(ReparacionTemp.getFechaSalida());
+                            CampoFechaSalida.setForeground(ColorEscribir);
+                            CampoFalla.setText(ReparacionTemp.getFalla());
+                            CampoFalla.setForeground(ColorEscribir);
+                            CampoIDVehiculo.setText(ReparacionTemp.getIDVehiculoReparacion());
+                            CampoIDVehiculo.setForeground(ColorEscribir);
+                            CampoIDPieza.setText(ReparacionTemp.getIDPiezaReparacion());
+                            CampoIDPieza.setForeground(ColorEscribir);
+                            CampoCantidadPiezas.setText(ReparacionTemp.getCantidadPiezas());
+                            CampoCantidadPiezas.setForeground(ColorEscribir);
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                            JOptionPane.showMessageDialog(null, "No se encontró ninguna reparación con el valor " +
                                     Buscar);
                         }
                     }
@@ -3014,177 +3008,143 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
-                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
-                            Direccion, Telefono;
+                    Vehiculo VehiculoTemp;
+                    String ID, IDAAsignar, Matricula, Marca, Modelo, Anio,
+                            IDCliente, Fecha;
                     Boolean Registrable;
                     IDAAsignar = "-1";
                     Registrable = true;
-                    UsuarioTemp = new Usuario();
+                    VehiculoTemp = new Vehiculo();
                     // Obtenemos valores de campos
-                    /*ID = CampoID.getText();
-                    Username = CampoUsername.getText();
-                    Contrasena = String.valueOf(CampoContrasena.getPassword());
-                    Rol = CampoRol.getText();
-                    Nombre = CampoNombre.getText();
-                    AP = CampoApellidoPaterno.getText();
-                    AM = CampoApellidoMaterno.getText();
-                    Direccion = CampoDireccion.getText();
-                    Telefono = CampoTelefono.getText();
+                    ID = CampoID.getText();
+                    Matricula = CampoMatricula.getText();
+                    Marca = CampoMarca.getText();
+                    Modelo = CampoModelo.getText();
+                    Anio = CampoAnio.getText();
+                    IDCliente = CampoIDCliente.getText();
+                    Fecha = CampoFecha.getText();
                    
-                    if(Username.equals("Nombre de Usuario") ||
-                            Username.equals(""))
+                    if(Matricula.equals("XXX-XXX-XXX") ||
+                            Matricula.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                     }
                     else
                     {
-                        if(Contrasena.equals("Contraseña") ||
-                                Contrasena.equals(""))
+                        if(Marca.equals("Marca") ||
+                                Marca.equals(""))
                         {
                             JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                         }
                         else
                         {
-                            if(Rol.equals("Rol") || Rol.equals(""))
+                            if(Modelo.equals("Modelo") || Modelo.equals(""))
                             {
                                 JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                             }
                             else
                             {
-                                if(Nombre.equals("Nombre(s)") ||
-                                        Nombre.equals(""))
+                                if(Anio.equals("YYYY") ||
+                                        Anio.equals(""))
                                 {
                                     JOptionPane.showMessageDialog(null, 
                                             "Faltan campos por llenar");
                                 }
                                 else
                                 {
-                                    if(AP.equals("Apellido Paterno") ||
-                                            AP.equals(""))
+                                    if(IDCliente.equals("ID del Cliente") ||
+                                            IDCliente.equals(""))
                                     {
                                         JOptionPane.showMessageDialog(null, 
                                                 "Faltan campos por llenar");
                                     }
                                     else
                                     {
-                                        if(AM.equals("Apellido Materno") ||
-                                                AM.equals(""))
+                                        if(Fecha.equals("DD/MM/YYYY") ||
+                                                Fecha.equals(""))
                                         {
                                             JOptionPane.showMessageDialog(null, 
                                                     "Faltan campos por llenar");
                                         }
                                         else
                                         {
-                                            if(Direccion.equals("Dirección") ||
-                                                    Direccion.equals(""))
+                                            if(ID.equals("ID") || ID.equals(""))
                                             {
-                                                JOptionPane.showMessageDialog(null, 
-                                                        "Faltan campos por llenar");
+                                                int x, Mayor;
+                                                Mayor = 0;
+                                                for(x = 0; x < RegistrosVentana.getTamanoVehiculos(); x++)
+                                                {
+                                                    if(Mayor < Integer.parseInt(RegistrosVentana.getVehiculo(x).getID()))
+                                                    {
+                                                        Mayor = Integer.parseInt(RegistrosVentana.getVehiculo(x).getID());
+                                                    }
+                                                    if(Matricula.equals(RegistrosVentana.getVehiculo(x).getMatricula()))
+                                                    {
+                                                        Registrable = false;
+                                                    }
+                                                }
+                                                IDAAsignar = String.valueOf(Mayor + 1);
                                             }
                                             else
                                             {
-                                                if(Telefono.equals("Teléfono") ||
-                                                        Telefono.equals(""))
+                                                int x;
+                                                for(x = 0; x < RegistrosVentana.getTamanoVehiculos(); x++)
                                                 {
-                                                    JOptionPane.showMessageDialog(null,
-                                                            "Faltan campo por llenar");
-                                                }
-                                                else
-                                                {
-                                                    if(ID.equals("ID") ||
-                                                                    ID.equals(""))
+                                                    if(ID.equals(RegistrosVentana.getVehiculo(x).getID()))
                                                     {
-                                                        int x, Mayor;
-                                                        Mayor = 0;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                                        {
-                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
-                                                            }
-                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                            {
-                                                                Registrable = false;
-                                                            }
-                                                        }
-                                                        IDAAsignar = String.valueOf(Mayor + 1);
+                                                        JOptionPane.showMessageDialog(null, 
+                                                                "El ID " + ID +" ya está registrado");
+                                                        Registrable = false;
                                                     }
                                                     else
                                                     {
-                                                        int x;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        if(Matricula.equals(RegistrosVentana.getVehiculo(x).getMatricula()))
                                                         {
-                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                JOptionPane.showMessageDialog(null, 
-                                                                        "El ID " + ID +" ya está registrado");
-                                                                Registrable = false;
-                                                            }
-                                                            else
-                                                            {
-                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                                {
-                                                                   JOptionPane.showMessageDialog(null, 
-                                                                            "El nombre de usuario " +
-                                                                            Username + " ya está registrado");
-                                                                    Registrable = false;
-                                                                }
-                                                            }
+                                                           JOptionPane.showMessageDialog(null, 
+                                                                    "La matrícula " +
+                                                                    Matricula + " ya está registrada");
+                                                            Registrable = false;
                                                         }
-                                                        if(Registrable)
-                                                        {
-                                                            IDAAsignar = ID;
-                                                        }
-                                                    }
-                                                    if(Registrable)
-                                                    {
-                                                        UsuarioTemp.setID(IDAAsignar);
-                                                        UsuarioTemp.setUsername(Username);
-                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
-                                                        if(Rol.equals("Admin"))
-                                                        {
-                                                            UsuarioTemp.setRol("Admin");
-                                                        }
-                                                        else
-                                                        {
-                                                            UsuarioTemp.setRol("Usuario");
-                                                        }
-                                                        UsuarioTemp.setNombre(Nombre);
-                                                        UsuarioTemp.setApellidoPaterno(AP);
-                                                        UsuarioTemp.setApellidoMaterno(AM);
-                                                        UsuarioTemp.setDireccion(Direccion);
-                                                        UsuarioTemp.setTelefono(Telefono);
-                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
-                                                        CampoID.setText("ID");
-                                                        CampoID.setForeground(ColorNoEscrito);
-                                                        CampoUsername.setText("Nombre de Usuario");
-                                                        CampoUsername.setForeground(ColorNoEscrito);
-                                                        CampoContrasena.setText("Contraseña");
-                                                        CampoContrasena.setForeground(ColorNoEscrito);
-                                                        CampoRol.setText("Rol");
-                                                        CampoRol.setForeground(ColorNoEscrito);
-                                                        CampoNombre.setText("Nombre(s)");
-                                                        CampoNombre.setForeground(ColorNoEscrito);
-                                                        CampoApellidoPaterno.setText("Apellido Paterno");
-                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                                                        CampoApellidoMaterno.setText("Apellido Materno");
-                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                                                        CampoDireccion.setText("Dirección");
-                                                        CampoDireccion.setForeground(ColorNoEscrito);
-                                                        CampoTelefono.setText("Teléfono");
-                                                        CampoTelefono.setForeground(ColorNoEscrito);
-                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
-                                                                Username + " con éxito");
                                                     }
                                                 }
+                                                if(Registrable)
+                                                {
+                                                    IDAAsignar = ID;
+                                                }
+                                            }
+                                            if(Registrable)
+                                            {
+                                                VehiculoTemp.setID(IDAAsignar);
+                                                VehiculoTemp.setMatricula(Matricula);
+                                                VehiculoTemp.setMarca(Marca);
+                                                VehiculoTemp.setModelo(Modelo);
+                                                VehiculoTemp.setAnio(Anio);
+                                                VehiculoTemp.setIDClienteVehiculo(IDCliente);
+                                                VehiculoTemp.setFecha(Fecha);
+                                                RegistrosVentana.InsertarVehiculos(VehiculoTemp);
+                                                CampoID.setText("ID");
+                                                CampoID.setForeground(ColorNoEscrito);
+                                                CampoMatricula.setText("XXX-XXX-XXX");
+                                                CampoMatricula.setForeground(ColorNoEscrito);
+                                                CampoMarca.setText("Marca");
+                                                CampoMarca.setForeground(ColorNoEscrito);
+                                                CampoModelo.setText("Modelo");
+                                                CampoModelo.setForeground(ColorNoEscrito);
+                                                CampoAnio.setText("YYYY)");
+                                                CampoAnio.setForeground(ColorNoEscrito);
+                                                CampoIDCliente.setText("ID de Cliente");
+                                                CampoIDCliente.setForeground(ColorNoEscrito);
+                                                CampoFecha.setText("DD/MM/YYYY");
+                                                CampoFecha.setForeground(ColorNoEscrito);
+                                                JOptionPane.showMessageDialog(null, "Se ha registrado vehículo " +
+                                                        ID + " con matrícula" + Matricula + " con éxito");
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                    }*/
+                    }
                     
                 };
             });
@@ -3195,30 +3155,30 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
-                    String ID, Username;
+                    Vehiculo VehiculoTemp;
+                    String ID, Matricula;
                     Boolean Eliminable;
                     int Eliminar;
                     Eliminar = -1;
                     Eliminable = false;
-                    UsuarioTemp = new Usuario();
+                    VehiculoTemp = new Vehiculo();
                     // Obtenemos valores de campos
-                    /*ID = CampoID.getText();
-                    Username = CampoUsername.getText();
+                    ID = CampoID.getText();
+                    Matricula = CampoMatricula.getText();
                    
                     
-                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
+                    if((Matricula.equals("XXX-XXX-XXX") || Matricula.equals("")) &&
                             (ID.equals("ID") || ID.equals("")))
                     {
-                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                        JOptionPane.showMessageDialog(null, "Indique el ID o matrícula");
                     }
                     else
                     {
                         int x;
-                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        for(x = 0; x < RegistrosVentana.getTamanoVehiculos(); x++)
                         {
-                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
-                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            if(ID.equals(RegistrosVentana.getVehiculo(x).getID()) ||
+                                    Matricula.equals(RegistrosVentana.getVehiculo(x).getMatricula()))
                             {
                                 Eliminable = true;
                                 Eliminar = x;
@@ -3228,56 +3188,52 @@ public class Menu extends javax.swing.JFrame {
                         {
                             CampoID.setText("ID");
                             CampoID.setForeground(ColorNoEscrito);
-                            CampoUsername.setText("Nombre de Usuario");
-                            CampoUsername.setForeground(ColorNoEscrito);
-                            CampoContrasena.setText("Contraseña");
-                            CampoContrasena.setForeground(ColorNoEscrito);
-                            CampoRol.setText("Rol");
-                            CampoRol.setForeground(ColorNoEscrito);
-                            CampoNombre.setText("Nombre(s)");
-                            CampoNombre.setForeground(ColorNoEscrito);
-                            CampoApellidoPaterno.setText("Apellido Paterno");
-                            CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                            CampoApellidoMaterno.setText("Apellido Materno");
-                            CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                            CampoDireccion.setText("Dirección");
-                            CampoDireccion.setForeground(ColorNoEscrito);
-                            CampoTelefono.setText("Teléfono");
-                            CampoTelefono.setForeground(ColorNoEscrito);
+                            CampoMatricula.setText("XXX-XXX-XXX");
+                            CampoMatricula.setForeground(ColorNoEscrito);
+                            CampoMarca.setText("Marca");
+                            CampoMarca.setForeground(ColorNoEscrito);
+                            CampoModelo.setText("Modelo");
+                            CampoModelo.setForeground(ColorNoEscrito);
+                            CampoAnio.setText("YYYY)");
+                            CampoAnio.setForeground(ColorNoEscrito);
+                            CampoIDCliente.setText("ID de Cliente");
+                            CampoIDCliente.setForeground(ColorNoEscrito);
+                            CampoFecha.setText("DD/MM/YYYY");
+                            CampoFecha.setForeground(ColorNoEscrito);
                             if(Eliminar != -1)
                             {
                                 int Respuesta;
-                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                VehiculoTemp = RegistrosVentana.getVehiculo(Eliminar);
                                 Respuesta = JOptionPane.showConfirmDialog(null, 
-                                        "¿Seguro que desea eliminar al usuario " +
-                                        UsuarioTemp.getUsername());
+                                        "¿Seguro que desea eliminar al vehículo con matrícula " +
+                                        VehiculoTemp.getMatricula());
                                 if(Respuesta == 0)
                                 {
-                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
-                                    JOptionPane.showMessageDialog(null, "Se ha eliminado " +
-                                        UsuarioTemp.getUsername() + " con éxito");
+                                    RegistrosVentana.EliminarVehiculos(VehiculoTemp);
+                                    JOptionPane.showMessageDialog(null, "Se ha eliminado el vehículo con matrícula" +
+                                        VehiculoTemp.getMatricula() + " con éxito");
                                 }
                             }
                         }
                         else
                         {
-                            if(!Username.equals("Nombre de Usuario") &&
-                                    !Username.equals(""))
+                            if(!Matricula.equals("XXX-XXX-XXX") &&
+                                    !Matricula.equals(""))
                             {
-                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
-                                        Username);
+                                JOptionPane.showMessageDialog(null, "No se encontró el vehículo con matrícula " +
+                                        Matricula);
                             }
                             else
                             {
                                 if(!ID.equals("ID") &&
                                     !ID.equals(""))
                                 {
-                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
+                                    JOptionPane.showMessageDialog(null, "No se encontró el vehículo con ID " +
                                             ID);
                                 }
                             }
                         }
-                    }*/
+                    }
                 }
         });
         
@@ -3287,7 +3243,104 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    System.out.println("");
+                    String ID, Matricula, Marca, Modelo, Anio, IDCliente, Fecha;
+                    int x, Editar;
+                    Boolean Editable;
+                    Vehiculo VehiculoTemp;
+                    VehiculoTemp = new Vehiculo();
+                    Editable = false;
+                    Editar = -1;
+                    ID = CampoID.getText();
+                    Matricula = CampoMatricula.getText();
+                    Marca = CampoMarca.getText();
+                    Modelo = CampoModelo.getText();
+                    Anio = CampoAnio.getText();
+                    IDCliente = CampoIDCliente.getText();
+                    Fecha = CampoFecha.getText();
+                    
+                    // Verificamos si están llenos los campos
+                    if(ID.equals("ID") || ID.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Matricula.equals("XXX-XXX-XXX") ||
+                                Matricula.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Marca.equals("Marca") || 
+                                    Marca.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Modelo.equals("Modelo") || Modelo.equals(""))
+                                {
+                                    
+                                }
+                                if(Anio.equals("YYYY") || Anio.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(IDCliente.equals("ID de Cliente") ||
+                                                IDCliente.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, 
+                                                    "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            if(Fecha.equals("DD/MM/YYYY") ||
+                                                    Fecha.equals(""))
+                                            {
+                                                JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                            }
+                                            else
+                                            {
+                                                for(x = 0; x < RegistrosVentana.getTamanoVehiculos(); x++)
+                                                {
+                                                    if(ID.equals(RegistrosVentana.getVehiculo(x).getID()))
+                                                    {
+                                                        Editable = true;
+                                                        Editar = x;
+                                                    }
+                                                }
+                                                if(Editable && Editar >= 0)
+                                                {
+                                                    int Respuesta;
+                                                    VehiculoTemp = RegistrosVentana.getVehiculo(Editar);
+                                                    Respuesta = JOptionPane.showConfirmDialog(null, 
+                                                            "¿Seguro que desea editar al vehículo con matrícula" +
+                                                            VehiculoTemp.getMatricula());
+                                                    if(Respuesta == 0)
+                                                    {
+                                                        VehiculoTemp.setID(ID);
+                                                        VehiculoTemp.setMatricula(Matricula);
+                                                        VehiculoTemp.setMarca(Marca);
+                                                        VehiculoTemp.setModelo(Modelo);
+                                                        VehiculoTemp.setAnio(Anio);
+                                                        VehiculoTemp.setIDClienteVehiculo(IDCliente);
+                                                        VehiculoTemp.setFecha(Fecha);
+                                                        RegistrosVentana.setVehiculo(Editar, VehiculoTemp);
+                                                        JOptionPane.showMessageDialog(null, "Se ha editado el vehículo " +
+                                                                ID + " con matrícula" +
+                                                            VehiculoTemp.getMatricula() + " con éxito");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                    }
                 }
         });
         
@@ -3310,17 +3363,17 @@ public class Menu extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e)
                 {
                     String Buscar;
-                    Usuario UsuarioTemp;
-                    UsuarioTemp = new Usuario();
-                    /*Boolean Encontrado;
+                    Vehiculo VehiculoTemp;
+                    VehiculoTemp = new Vehiculo();
+                    Boolean Encontrado;
                     Color ColorEscribir = new Color(51, 51, 51);
                     Encontrado = false;
                     int BuscarPor, x, Indice;
                     Indice = -1;
                     Buscar = CampoBuscar.getText();
-                    //if()
+                    
                     BuscarPor = ComboBuscar.getSelectedIndex();
-                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    if(Buscar.equals("Buscar Vehículo") || Buscar.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
                     }
@@ -3330,9 +3383,9 @@ public class Menu extends javax.swing.JFrame {
                         {
                             case 0 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoVehiculos(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
+                                    if(Buscar.equals(RegistrosVentana.getVehiculo(x).getID()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -3343,9 +3396,9 @@ public class Menu extends javax.swing.JFrame {
                             
                             case 1 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoVehiculos(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                    if(Buscar.equals(RegistrosVentana.getVehiculo(x).getMatricula()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -3356,35 +3409,9 @@ public class Menu extends javax.swing.JFrame {
                             
                             case 2 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoVehiculos(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 3 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 4 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
+                                    if(Buscar.equals(RegistrosVentana.getVehiculo(x).getIDClienteVehiculo()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -3395,32 +3422,28 @@ public class Menu extends javax.swing.JFrame {
                         }
                         if(Encontrado && Indice > -1)
                         {
-                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
-                            CampoID.setText(UsuarioTemp.getID());
+                            VehiculoTemp = RegistrosVentana.getVehiculo(Indice);
+                            CampoID.setText(VehiculoTemp.getID());
                             CampoID.setForeground(ColorEscribir);
-                            CampoUsername.setText(UsuarioTemp.getUsername());
-                            CampoUsername.setForeground(ColorEscribir);
-                            CampoContrasena.setText(UsuarioTemp.getContrasena());
-                            CampoContrasena.setForeground(ColorEscribir);
-                            CampoRol.setText(UsuarioTemp.getRol());
-                            CampoRol.setForeground(ColorEscribir);
-                            CampoNombre.setText(UsuarioTemp.getNombre());
-                            CampoNombre.setForeground(ColorEscribir);
-                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
-                            CampoApellidoPaterno.setForeground(ColorEscribir);
-                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
-                            CampoApellidoMaterno.setForeground(ColorEscribir);
-                            CampoDireccion.setText(UsuarioTemp.getDireccion());
-                            CampoDireccion.setForeground(ColorEscribir);
-                            CampoTelefono.setText(UsuarioTemp.getTelefono());
-                            CampoTelefono.setForeground(ColorEscribir);
+                            CampoMatricula.setText(VehiculoTemp.getMatricula());
+                            CampoMatricula.setForeground(ColorEscribir);
+                            CampoMarca.setText(VehiculoTemp.getMarca());
+                            CampoMarca.setForeground(ColorEscribir);
+                            CampoModelo.setText(VehiculoTemp.getModelo());
+                            CampoModelo.setForeground(ColorEscribir);
+                            CampoAnio.setText(VehiculoTemp.getAnio());
+                            CampoAnio.setForeground(ColorEscribir);
+                            CampoIDCliente.setText(VehiculoTemp.getIDClienteVehiculo());
+                            CampoIDCliente.setForeground(ColorEscribir);
+                            CampoFecha.setText(VehiculoTemp.getFecha());
+                            CampoFecha.setForeground(ColorEscribir);
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                            JOptionPane.showMessageDialog(null, "No se encontró ningún vehículo con el valor " +
                                     Buscar);
                         }
-                    }*/
+                    }
                 }
         });
         
@@ -4688,177 +4711,87 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
-                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
-                            Direccion, Telefono;
+                    Cliente ClienteTemp;
+                    String ID, IDAAsignar, Nombre, AP, AM;
                     Boolean Registrable;
                     IDAAsignar = "-1";
                     Registrable = true;
-                    UsuarioTemp = new Usuario();
+                    ClienteTemp = new Cliente();
                     // Obtenemos valores de campos
-                    /*ID = CampoID.getText();
-                    Username = CampoUsername.getText();
-                    Contrasena = String.valueOf(CampoContrasena.getPassword());
-                    Rol = CampoRol.getText();
+                    ID = CampoID.getText();
                     Nombre = CampoNombre.getText();
                     AP = CampoApellidoPaterno.getText();
                     AM = CampoApellidoMaterno.getText();
-                    Direccion = CampoDireccion.getText();
-                    Telefono = CampoTelefono.getText();
                    
-                    if(Username.equals("Nombre de Usuario") ||
-                            Username.equals(""))
+                    if(Nombre.equals("Nombre(s)") || Nombre.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                     }
                     else
                     {
-                        if(Contrasena.equals("Contraseña") ||
-                                Contrasena.equals(""))
+                        if(AP.equals("Apellido Paterno") || AP.equals(""))
                         {
                             JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                         }
                         else
                         {
-                            if(Rol.equals("Rol") || Rol.equals(""))
+                            if(AM.equals("Apellido Materno") ||AM.equals(""))
                             {
                                 JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                             }
                             else
                             {
-                                if(Nombre.equals("Nombre(s)") ||
-                                        Nombre.equals(""))
+                                if(ID.equals("ID") || ID.equals(""))
                                 {
-                                    JOptionPane.showMessageDialog(null, 
-                                            "Faltan campos por llenar");
+                                    int x, Mayor;
+                                    Mayor = 0;
+                                    for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
+                                    {
+                                        if(Mayor < Integer.parseInt(RegistrosVentana.getCliente(x).getID()))
+                                        {
+                                            Mayor = Integer.parseInt(RegistrosVentana.getCliente(x).getID());
+                                        }
+                                    }
+                                    IDAAsignar = String.valueOf(Mayor + 1);
                                 }
                                 else
                                 {
-                                    if(AP.equals("Apellido Paterno") ||
-                                            AP.equals(""))
+                                    int x;
+                                    for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
                                     {
-                                        JOptionPane.showMessageDialog(null, 
-                                                "Faltan campos por llenar");
-                                    }
-                                    else
-                                    {
-                                        if(AM.equals("Apellido Materno") ||
-                                                AM.equals(""))
+                                        if(ID.equals(RegistrosVentana.getCliente(x).getID()))
                                         {
                                             JOptionPane.showMessageDialog(null, 
-                                                    "Faltan campos por llenar");
-                                        }
-                                        else
-                                        {
-                                            if(Direccion.equals("Dirección") ||
-                                                    Direccion.equals(""))
-                                            {
-                                                JOptionPane.showMessageDialog(null, 
-                                                        "Faltan campos por llenar");
-                                            }
-                                            else
-                                            {
-                                                if(Telefono.equals("Teléfono") ||
-                                                        Telefono.equals(""))
-                                                {
-                                                    JOptionPane.showMessageDialog(null,
-                                                            "Faltan campo por llenar");
-                                                }
-                                                else
-                                                {
-                                                    if(ID.equals("ID") ||
-                                                                    ID.equals(""))
-                                                    {
-                                                        int x, Mayor;
-                                                        Mayor = 0;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                                        {
-                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
-                                                            }
-                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                            {
-                                                                Registrable = false;
-                                                            }
-                                                        }
-                                                        IDAAsignar = String.valueOf(Mayor + 1);
-                                                    }
-                                                    else
-                                                    {
-                                                        int x;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                                        {
-                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                JOptionPane.showMessageDialog(null, 
-                                                                        "El ID " + ID +" ya está registrado");
-                                                                Registrable = false;
-                                                            }
-                                                            else
-                                                            {
-                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                                {
-                                                                   JOptionPane.showMessageDialog(null, 
-                                                                            "El nombre de usuario " +
-                                                                            Username + " ya está registrado");
-                                                                    Registrable = false;
-                                                                }
-                                                            }
-                                                        }
-                                                        if(Registrable)
-                                                        {
-                                                            IDAAsignar = ID;
-                                                        }
-                                                    }
-                                                    if(Registrable)
-                                                    {
-                                                        UsuarioTemp.setID(IDAAsignar);
-                                                        UsuarioTemp.setUsername(Username);
-                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
-                                                        if(Rol.equals("Admin"))
-                                                        {
-                                                            UsuarioTemp.setRol("Admin");
-                                                        }
-                                                        else
-                                                        {
-                                                            UsuarioTemp.setRol("Usuario");
-                                                        }
-                                                        UsuarioTemp.setNombre(Nombre);
-                                                        UsuarioTemp.setApellidoPaterno(AP);
-                                                        UsuarioTemp.setApellidoMaterno(AM);
-                                                        UsuarioTemp.setDireccion(Direccion);
-                                                        UsuarioTemp.setTelefono(Telefono);
-                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
-                                                        CampoID.setText("ID");
-                                                        CampoID.setForeground(ColorNoEscrito);
-                                                        CampoUsername.setText("Nombre de Usuario");
-                                                        CampoUsername.setForeground(ColorNoEscrito);
-                                                        CampoContrasena.setText("Contraseña");
-                                                        CampoContrasena.setForeground(ColorNoEscrito);
-                                                        CampoRol.setText("Rol");
-                                                        CampoRol.setForeground(ColorNoEscrito);
-                                                        CampoNombre.setText("Nombre(s)");
-                                                        CampoNombre.setForeground(ColorNoEscrito);
-                                                        CampoApellidoPaterno.setText("Apellido Paterno");
-                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                                                        CampoApellidoMaterno.setText("Apellido Materno");
-                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                                                        CampoDireccion.setText("Dirección");
-                                                        CampoDireccion.setForeground(ColorNoEscrito);
-                                                        CampoTelefono.setText("Teléfono");
-                                                        CampoTelefono.setForeground(ColorNoEscrito);
-                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
-                                                                Username + " con éxito");
-                                                    }
-                                                }
-                                            }
+                                                    "El ID " + ID +" ya está registrado");
+                                            Registrable = false;
                                         }
                                     }
+                                    if(Registrable)
+                                    {
+                                        IDAAsignar = ID;
+                                    }
+                                }
+                                if(Registrable)
+                                {
+                                    ClienteTemp.setID(IDAAsignar);
+                                    ClienteTemp.setNombre(Nombre);
+                                    ClienteTemp.setApellidoPaterno(AP);
+                                    ClienteTemp.setApellidoMaterno(AM);
+                                    RegistrosVentana.InsertarClientes(ClienteTemp);
+                                    CampoID.setText("ID");
+                                    CampoID.setForeground(ColorNoEscrito);
+                                    CampoNombre.setText("Nombre(s)");
+                                    CampoNombre.setForeground(ColorNoEscrito);
+                                    CampoApellidoPaterno.setText("Apellido Paterno");
+                                    CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                                    CampoApellidoMaterno.setText("Apellido Materno");
+                                    CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                                    JOptionPane.showMessageDialog(null, "Se ha registrado " +
+                                            ID + " con éxito");
                                 }
                             }
                         }
-                    }*/
+                    }
                     
                 };
             });
@@ -4869,30 +4802,27 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
-                    String ID, Username;
+                    Cliente ClienteTemp;
+                    String ID;
                     Boolean Eliminable;
                     int Eliminar;
                     Eliminar = -1;
                     Eliminable = false;
-                    UsuarioTemp = new Usuario();
+                    ClienteTemp = new Cliente();
                     // Obtenemos valores de campos
-                    /*ID = CampoID.getText();
-                    Username = CampoUsername.getText();
+                    ID = CampoID.getText();
                    
                     
-                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
-                            (ID.equals("ID") || ID.equals("")))
+                    if(ID.equals("ID") || ID.equals(""))
                     {
-                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                        JOptionPane.showMessageDialog(null, "Indique el ID");
                     }
                     else
                     {
                         int x;
-                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
                         {
-                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
-                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            if(ID.equals(RegistrosVentana.getCliente(x).getID()))
                             {
                                 Eliminable = true;
                                 Eliminar = x;
@@ -4902,56 +4832,36 @@ public class Menu extends javax.swing.JFrame {
                         {
                             CampoID.setText("ID");
                             CampoID.setForeground(ColorNoEscrito);
-                            CampoUsername.setText("Nombre de Usuario");
-                            CampoUsername.setForeground(ColorNoEscrito);
-                            CampoContrasena.setText("Contraseña");
-                            CampoContrasena.setForeground(ColorNoEscrito);
-                            CampoRol.setText("Rol");
-                            CampoRol.setForeground(ColorNoEscrito);
                             CampoNombre.setText("Nombre(s)");
                             CampoNombre.setForeground(ColorNoEscrito);
                             CampoApellidoPaterno.setText("Apellido Paterno");
                             CampoApellidoPaterno.setForeground(ColorNoEscrito);
                             CampoApellidoMaterno.setText("Apellido Materno");
                             CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                            CampoDireccion.setText("Dirección");
-                            CampoDireccion.setForeground(ColorNoEscrito);
-                            CampoTelefono.setText("Teléfono");
-                            CampoTelefono.setForeground(ColorNoEscrito);
                             if(Eliminar != -1)
                             {
                                 int Respuesta;
-                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                ClienteTemp = RegistrosVentana.getCliente(Eliminar);
                                 Respuesta = JOptionPane.showConfirmDialog(null, 
-                                        "¿Seguro que desea eliminar al usuario " +
-                                        UsuarioTemp.getUsername());
+                                        "¿Seguro que desea eliminar al cliente " +
+                                        ClienteTemp.getID());
                                 if(Respuesta == 0)
                                 {
-                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
+                                    RegistrosVentana.EliminarClientes(ClienteTemp);
                                     JOptionPane.showMessageDialog(null, "Se ha eliminado " +
-                                        UsuarioTemp.getUsername() + " con éxito");
+                                        ClienteTemp.getID() + " con éxito");
                                 }
                             }
                         }
                         else
                         {
-                            if(!Username.equals("Nombre de Usuario") &&
-                                    !Username.equals(""))
+                            if(!ID.equals("ID") && !ID.equals(""))
                             {
-                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
-                                        Username);
-                            }
-                            else
-                            {
-                                if(!ID.equals("ID") &&
-                                    !ID.equals(""))
-                                {
-                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
-                                            ID);
-                                }
+                                JOptionPane.showMessageDialog(null, "No se encontró el cliente con ID " +
+                                        ID);
                             }
                         }
-                    }*/
+                    }
                 }
         });
         
@@ -4961,8 +4871,75 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    System.out.println("");
+                    String ID, Nombre, AP, AM;
+                    int x, Editar;
+                    Boolean Editable;
+                    Cliente ClienteTemp;
+                    ClienteTemp = new Cliente();
+                    Editable = false;
+                    Editar = -1;
+                    ID = CampoID.getText();
+                    Nombre = CampoNombre.getText();
+                    AP = CampoApellidoPaterno.getText();
+                    AM = CampoApellidoMaterno.getText();
+                    
+                    // Verificamos si están llenos los campos
+                    if(ID.equals("ID") || ID.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Nombre.equals("Nombre(s)") || Nombre.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(AP.equals("Apellido Paterno") || AP.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(AM.equals("Apellido Materno") || AM.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                }
+                                else
+                                {
+                                    for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
+                                    {
+                                        if(ID.equals(RegistrosVentana.getCliente(x).getID()))
+                                        {
+                                            Editable = true;
+                                            Editar = x;
+                                        }
+                                    }
+                                    if(Editable && Editar >= 0)
+                                    {
+                                        int Respuesta;
+                                        ClienteTemp = RegistrosVentana.getCliente(Editar);
+                                        Respuesta = JOptionPane.showConfirmDialog(null, 
+                                                "¿Seguro que desea editar al cliente " +
+                                                ClienteTemp.getID());
+                                        if(Respuesta == 0)
+                                        {
+                                            ClienteTemp.setID(ID);
+                                            ClienteTemp.setNombre(Nombre);
+                                            ClienteTemp.setApellidoPaterno(AP);
+                                            ClienteTemp.setApellidoMaterno(AM);
+                                            RegistrosVentana.setCliente(Editar, ClienteTemp);
+                                            JOptionPane.showMessageDialog(null, "Se ha editado " +
+                                                ClienteTemp.getID() + " con éxito");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+                
         });
         
         // Añadir listener para acción en guardar
@@ -4984,17 +4961,17 @@ public class Menu extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e)
                 {
                     String Buscar;
-                    Usuario UsuarioTemp;
-                    UsuarioTemp = new Usuario();
-                    /*Boolean Encontrado;
+                    Cliente ClienteTemp;
+                    ClienteTemp = new Cliente();
+                    Boolean Encontrado;
                     Color ColorEscribir = new Color(51, 51, 51);
                     Encontrado = false;
                     int BuscarPor, x, Indice;
                     Indice = -1;
                     Buscar = CampoBuscar.getText();
-                    //if()
+                    
                     BuscarPor = ComboBuscar.getSelectedIndex();
-                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    if(Buscar.equals("Buscar Cliente") || Buscar.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
                     }
@@ -5004,9 +4981,9 @@ public class Menu extends javax.swing.JFrame {
                         {
                             case 0 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
+                                    if(Buscar.equals(RegistrosVentana.getCliente(x).getID()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -5017,9 +4994,9 @@ public class Menu extends javax.swing.JFrame {
                             
                             case 1 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                    if(Buscar.equals(RegistrosVentana.getCliente(x).getNombre()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -5030,9 +5007,9 @@ public class Menu extends javax.swing.JFrame {
                             
                             case 2 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
+                                    if(Buscar.equals(RegistrosVentana.getCliente(x).getApellidoPaterno()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -5043,9 +5020,9 @@ public class Menu extends javax.swing.JFrame {
                             
                             case 3 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoClientes(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
+                                    if(Buscar.equals(RegistrosVentana.getCliente(x).getApellidoMaterno()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -5054,47 +5031,25 @@ public class Menu extends javax.swing.JFrame {
                                 break;
                             }
                             
-                            case 4 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
                         }
                         if(Encontrado && Indice > -1)
                         {
-                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
-                            CampoID.setText(UsuarioTemp.getID());
+                            ClienteTemp = RegistrosVentana.getCliente(Indice);
+                            CampoID.setText(ClienteTemp.getID());
                             CampoID.setForeground(ColorEscribir);
-                            CampoUsername.setText(UsuarioTemp.getUsername());
-                            CampoUsername.setForeground(ColorEscribir);
-                            CampoContrasena.setText(UsuarioTemp.getContrasena());
-                            CampoContrasena.setForeground(ColorEscribir);
-                            CampoRol.setText(UsuarioTemp.getRol());
-                            CampoRol.setForeground(ColorEscribir);
-                            CampoNombre.setText(UsuarioTemp.getNombre());
+                            CampoNombre.setText(ClienteTemp.getNombre());
                             CampoNombre.setForeground(ColorEscribir);
-                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
+                            CampoApellidoPaterno.setText(ClienteTemp.getApellidoPaterno());
                             CampoApellidoPaterno.setForeground(ColorEscribir);
-                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
+                            CampoApellidoMaterno.setText(ClienteTemp.getApellidoMaterno());
                             CampoApellidoMaterno.setForeground(ColorEscribir);
-                            CampoDireccion.setText(UsuarioTemp.getDireccion());
-                            CampoDireccion.setForeground(ColorEscribir);
-                            CampoTelefono.setText(UsuarioTemp.getTelefono());
-                            CampoTelefono.setForeground(ColorEscribir);
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                            JOptionPane.showMessageDialog(null, "No se encontró ningún cliente con el valor " +
                                     Buscar);
                         }
-                    }*/
+                    }
                 }
         });
         
@@ -6117,177 +6072,109 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
-                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
-                            Direccion, Telefono;
+                    Pieza PiezaTemp;
+                    String ID, IDAAsignar, Nombre, Marca, Costo, Descripcion, Stock;
                     Boolean Registrable;
                     IDAAsignar = "-1";
                     Registrable = true;
-                    UsuarioTemp = new Usuario();
+                    PiezaTemp = new Pieza();
                     // Obtenemos valores de campos
-                    /*ID = CampoID.getText();
-                    Username = CampoUsername.getText();
-                    Contrasena = String.valueOf(CampoContrasena.getPassword());
-                    Rol = CampoRol.getText();
+                    ID = CampoID.getText();
                     Nombre = CampoNombre.getText();
-                    AP = CampoApellidoPaterno.getText();
-                    AM = CampoApellidoMaterno.getText();
-                    Direccion = CampoDireccion.getText();
-                    Telefono = CampoTelefono.getText();
+                    Marca = CampoMarca.getText();
+                    Costo = CampoCosto.getText();
+                    Descripcion = CampoDescripcion.getText();
+                    Stock = CampoStock.getText();
                    
-                    if(Username.equals("Nombre de Usuario") ||
-                            Username.equals(""))
+                    if(Nombre.equals("Nombre") || Nombre.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                     }
                     else
                     {
-                        if(Contrasena.equals("Contraseña") ||
-                                Contrasena.equals(""))
+                        if(Marca.equals("Marca") || Marca.equals(""))
                         {
                             JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                         }
                         else
                         {
-                            if(Rol.equals("Rol") || Rol.equals(""))
+                            if(Costo.equals("MXN") || Costo.equals(""))
                             {
                                 JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                             }
                             else
                             {
-                                if(Nombre.equals("Nombre(s)") ||
-                                        Nombre.equals(""))
+                                if(Descripcion.equals("Descripción") || Descripcion.equals(""))
                                 {
-                                    JOptionPane.showMessageDialog(null, 
-                                            "Faltan campos por llenar");
+                                    JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
                                 }
                                 else
                                 {
-                                    if(AP.equals("Apellido Paterno") ||
-                                            AP.equals(""))
+                                    if(Stock.equals("Stock") || Stock.equals(""))
                                     {
-                                        JOptionPane.showMessageDialog(null, 
-                                                "Faltan campos por llenar");
+                                        JOptionPane.showMessageDialog(null, "Faltan campo por llenar");
                                     }
                                     else
                                     {
-                                        if(AM.equals("Apellido Materno") ||
-                                                AM.equals(""))
+                                        if(ID.equals("ID") || ID.equals(""))
                                         {
-                                            JOptionPane.showMessageDialog(null, 
-                                                    "Faltan campos por llenar");
+                                            int x, Mayor;
+                                            Mayor = 0;
+                                            for(x = 0; x < RegistrosVentana.getTamanoPiezas(); x++)
+                                            {
+                                                if(Mayor < Integer.parseInt(RegistrosVentana.getPiezas(x).getID()))
+                                                {
+                                                    Mayor = Integer.parseInt(RegistrosVentana.getPiezas(x).getID());
+                                                }
+                                            }
+                                            IDAAsignar = String.valueOf(Mayor + 1);
                                         }
                                         else
                                         {
-                                            if(Direccion.equals("Dirección") ||
-                                                    Direccion.equals(""))
+                                            int x;
+                                            for(x = 0; x < RegistrosVentana.getTamanoPiezas(); x++)
                                             {
-                                                JOptionPane.showMessageDialog(null, 
-                                                        "Faltan campos por llenar");
-                                            }
-                                            else
-                                            {
-                                                if(Telefono.equals("Teléfono") ||
-                                                        Telefono.equals(""))
+                                                if(ID.equals(RegistrosVentana.getPiezas(x).getID()))
                                                 {
-                                                    JOptionPane.showMessageDialog(null,
-                                                            "Faltan campo por llenar");
-                                                }
-                                                else
-                                                {
-                                                    if(ID.equals("ID") ||
-                                                                    ID.equals(""))
-                                                    {
-                                                        int x, Mayor;
-                                                        Mayor = 0;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                                        {
-                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
-                                                            }
-                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                            {
-                                                                Registrable = false;
-                                                            }
-                                                        }
-                                                        IDAAsignar = String.valueOf(Mayor + 1);
-                                                    }
-                                                    else
-                                                    {
-                                                        int x;
-                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                                        {
-                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
-                                                            {
-                                                                JOptionPane.showMessageDialog(null, 
-                                                                        "El ID " + ID +" ya está registrado");
-                                                                Registrable = false;
-                                                            }
-                                                            else
-                                                            {
-                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                                                {
-                                                                   JOptionPane.showMessageDialog(null, 
-                                                                            "El nombre de usuario " +
-                                                                            Username + " ya está registrado");
-                                                                    Registrable = false;
-                                                                }
-                                                            }
-                                                        }
-                                                        if(Registrable)
-                                                        {
-                                                            IDAAsignar = ID;
-                                                        }
-                                                    }
-                                                    if(Registrable)
-                                                    {
-                                                        UsuarioTemp.setID(IDAAsignar);
-                                                        UsuarioTemp.setUsername(Username);
-                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
-                                                        if(Rol.equals("Admin"))
-                                                        {
-                                                            UsuarioTemp.setRol("Admin");
-                                                        }
-                                                        else
-                                                        {
-                                                            UsuarioTemp.setRol("Usuario");
-                                                        }
-                                                        UsuarioTemp.setNombre(Nombre);
-                                                        UsuarioTemp.setApellidoPaterno(AP);
-                                                        UsuarioTemp.setApellidoMaterno(AM);
-                                                        UsuarioTemp.setDireccion(Direccion);
-                                                        UsuarioTemp.setTelefono(Telefono);
-                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
-                                                        CampoID.setText("ID");
-                                                        CampoID.setForeground(ColorNoEscrito);
-                                                        CampoUsername.setText("Nombre de Usuario");
-                                                        CampoUsername.setForeground(ColorNoEscrito);
-                                                        CampoContrasena.setText("Contraseña");
-                                                        CampoContrasena.setForeground(ColorNoEscrito);
-                                                        CampoRol.setText("Rol");
-                                                        CampoRol.setForeground(ColorNoEscrito);
-                                                        CampoNombre.setText("Nombre(s)");
-                                                        CampoNombre.setForeground(ColorNoEscrito);
-                                                        CampoApellidoPaterno.setText("Apellido Paterno");
-                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                                                        CampoApellidoMaterno.setText("Apellido Materno");
-                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                                                        CampoDireccion.setText("Dirección");
-                                                        CampoDireccion.setForeground(ColorNoEscrito);
-                                                        CampoTelefono.setText("Teléfono");
-                                                        CampoTelefono.setForeground(ColorNoEscrito);
-                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
-                                                                Username + " con éxito");
-                                                    }
+                                                    JOptionPane.showMessageDialog(null, 
+                                                            "El ID " + ID +" ya está registrado");
+                                                    Registrable = false;
                                                 }
                                             }
+                                            if(Registrable)
+                                            {
+                                                IDAAsignar = ID;
+                                            }
+                                        }
+                                        if(Registrable)
+                                        {
+                                            PiezaTemp.setID(IDAAsignar);
+                                            PiezaTemp.setNombre(Nombre);
+                                            PiezaTemp.setMarca(Marca);
+                                            PiezaTemp.setCosto(Costo);
+                                            PiezaTemp.setDescripcion(Descripcion);
+                                            PiezaTemp.setStock(Stock);
+                                            RegistrosVentana.InsertarPiezas(PiezaTemp);
+                                            CampoID.setText("ID");
+                                            CampoID.setForeground(ColorNoEscrito);
+                                            CampoNombre.setText("Nombre");
+                                            CampoNombre.setForeground(ColorNoEscrito);
+                                            CampoMarca.setText("Marca");
+                                            CampoMarca.setForeground(ColorNoEscrito);
+                                            CampoCosto.setText("MXN");
+                                            CampoCosto.setForeground(ColorNoEscrito);
+                                            CampoDescripcion.setText("Descripción");
+                                            CampoDescripcion.setForeground(ColorNoEscrito);
+                                            CampoStock.setText("Stock");
+                                            CampoStock.setForeground(ColorNoEscrito);
+                                            JOptionPane.showMessageDialog(null, "Se ha registrado " +
+                                                    ID + " con éxito");
                                         }
                                     }
                                 }
                             }
                         }
-                    }*/
+                    }
                     
                 };
             });
@@ -6298,30 +6185,26 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    Usuario UsuarioTemp;
+                    Pieza PiezaTemp;
                     String ID, Username;
                     Boolean Eliminable;
                     int Eliminar;
                     Eliminar = -1;
                     Eliminable = false;
-                    UsuarioTemp = new Usuario();
+                    PiezaTemp = new Pieza();
                     // Obtenemos valores de campos
-                    /*ID = CampoID.getText();
-                    Username = CampoUsername.getText();
+                    ID = CampoID.getText();
                    
-                    
-                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
-                            (ID.equals("ID") || ID.equals("")))
+                    if(ID.equals("ID") || ID.equals(""))
                     {
-                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                        JOptionPane.showMessageDialog(null, "Indique el ID");
                     }
                     else
                     {
                         int x;
-                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        for(x = 0; x < RegistrosVentana.getTamanoPiezas(); x++)
                         {
-                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
-                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            if(ID.equals(RegistrosVentana.getPiezas(x).getID()))
                             {
                                 Eliminable = true;
                                 Eliminar = x;
@@ -6331,56 +6214,41 @@ public class Menu extends javax.swing.JFrame {
                         {
                             CampoID.setText("ID");
                             CampoID.setForeground(ColorNoEscrito);
-                            CampoUsername.setText("Nombre de Usuario");
-                            CampoUsername.setForeground(ColorNoEscrito);
-                            CampoContrasena.setText("Contraseña");
-                            CampoContrasena.setForeground(ColorNoEscrito);
-                            CampoRol.setText("Rol");
-                            CampoRol.setForeground(ColorNoEscrito);
-                            CampoNombre.setText("Nombre(s)");
+                            CampoNombre.setText("Nombre");
                             CampoNombre.setForeground(ColorNoEscrito);
-                            CampoApellidoPaterno.setText("Apellido Paterno");
-                            CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                            CampoApellidoMaterno.setText("Apellido Materno");
-                            CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                            CampoDireccion.setText("Dirección");
-                            CampoDireccion.setForeground(ColorNoEscrito);
-                            CampoTelefono.setText("Teléfono");
-                            CampoTelefono.setForeground(ColorNoEscrito);
+                            CampoMarca.setText("Marca");
+                            CampoMarca.setForeground(ColorNoEscrito);
+                            CampoCosto.setText("MXN");
+                            CampoCosto.setForeground(ColorNoEscrito);
+                            CampoDescripcion.setText("Descripción");
+                            CampoDescripcion.setForeground(ColorNoEscrito);
+                            CampoStock.setText("Stock");
+                            CampoStock.setForeground(ColorNoEscrito);
                             if(Eliminar != -1)
                             {
                                 int Respuesta;
-                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                PiezaTemp = RegistrosVentana.getPiezas(Eliminar);
                                 Respuesta = JOptionPane.showConfirmDialog(null, 
-                                        "¿Seguro que desea eliminar al usuario " +
-                                        UsuarioTemp.getUsername());
+                                        "¿Seguro que desea eliminar la pieza " +
+                                        PiezaTemp.getID());
                                 if(Respuesta == 0)
                                 {
-                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
+                                    RegistrosVentana.EliminarPiezas(PiezaTemp);
                                     JOptionPane.showMessageDialog(null, "Se ha eliminado " +
-                                        UsuarioTemp.getUsername() + " con éxito");
+                                        PiezaTemp.getID() + " con éxito");
                                 }
                             }
                         }
                         else
                         {
-                            if(!Username.equals("Nombre de Usuario") &&
-                                    !Username.equals(""))
+                            if(!ID.equals("ID") && !ID.equals(""))
                             {
-                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
-                                        Username);
+                                JOptionPane.showMessageDialog(null, "No se encontró la pieza con ID " +
+                                        ID);
                             }
-                            else
-                            {
-                                if(!ID.equals("ID") &&
-                                    !ID.equals(""))
-                                {
-                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
-                                            ID);
-                                }
-                            }
+                            
                         }
-                    }*/
+                    }
                 }
         });
         
@@ -6390,7 +6258,89 @@ public class Menu extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    System.out.println("");
+                    String ID, Nombre, Marca, Costo, Descripcion, Stock;
+                    int x, Editar;
+                    Boolean Editable;
+                    Pieza PiezaTemp;
+                    PiezaTemp = new Pieza();
+                    Editable = false;
+                    Editar = -1;
+                    ID = CampoID.getText();
+                    Nombre = CampoNombre.getText();
+                    Marca = CampoMarca.getText();
+                    Costo = CampoCosto.getText();
+                    Descripcion = CampoDescripcion.getText();
+                    Stock = CampoStock.getText();
+                    
+                    // Verificamos si están llenos los campos
+                    if(ID.equals("ID") || ID.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Nombre.equals("Nombre") || Nombre.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Marca.equals("Marca") || Marca.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Costo.equals("MXN") || Costo.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                }
+                                if(Descripcion.equals("Descripción") ||
+                                        Descripcion.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(Stock.equals("Stock") || Stock.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            for(x = 0; x < RegistrosVentana.getTamanoPiezas(); x++)
+                                            {
+                                                if(ID.equals(RegistrosVentana.getPiezas(x).getID()))
+                                                {
+                                                    Editable = true;
+                                                    Editar = x;
+                                                }
+                                            }
+                                            if(Editable && Editar >= 0)
+                                            {
+                                                int Respuesta;
+                                                PiezaTemp = RegistrosVentana.getPiezas(Editar);
+                                                Respuesta = JOptionPane.showConfirmDialog(null, 
+                                                        "¿Seguro que desea editar la pieza " +
+                                                        PiezaTemp.getID());
+                                                if(Respuesta == 0)
+                                                {
+                                                    PiezaTemp.setID(ID);
+                                                    PiezaTemp.setNombre(Nombre);
+                                                    PiezaTemp.setMarca(Marca);
+                                                    PiezaTemp.setCosto(Costo);
+                                                    PiezaTemp.setDescripcion(Descripcion);
+                                                    PiezaTemp.setStock(Stock);
+                                                    RegistrosVentana.setPieza(Editar, PiezaTemp);
+                                                    JOptionPane.showMessageDialog(null, "Se ha editado " +
+                                                        PiezaTemp.getID() + " con éxito");
+                                                }
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                    }
                 }
         });
         
@@ -6413,17 +6363,17 @@ public class Menu extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e)
                 {
                     String Buscar;
-                    Usuario UsuarioTemp;
-                    UsuarioTemp = new Usuario();
-                    /*Boolean Encontrado;
+                    Pieza PiezaTemp;
+                    PiezaTemp = new Pieza();
+                    Boolean Encontrado;
                     Color ColorEscribir = new Color(51, 51, 51);
                     Encontrado = false;
                     int BuscarPor, x, Indice;
                     Indice = -1;
                     Buscar = CampoBuscar.getText();
-                    //if()
+                    
                     BuscarPor = ComboBuscar.getSelectedIndex();
-                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    if(Buscar.equals("Buscar Pieza") || Buscar.equals(""))
                     {
                         JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
                     }
@@ -6433,61 +6383,9 @@ public class Menu extends javax.swing.JFrame {
                         {
                             case 0 :
                             {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                for(x = 0; x < RegistrosVentana.getTamanoPiezas(); x++)
                                 {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 1 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 2 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 3 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
-                                    {
-                                        Encontrado = true;
-                                        Indice = x;
-                                    }
-                                }
-                                break;
-                            }
-                            
-                            case 4 :
-                            {
-                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
-                                {
-                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
+                                    if(Buscar.equals(RegistrosVentana.getPiezas(x).getID()))
                                     {
                                         Encontrado = true;
                                         Indice = x;
@@ -6498,32 +6396,26 @@ public class Menu extends javax.swing.JFrame {
                         }
                         if(Encontrado && Indice > -1)
                         {
-                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
-                            CampoID.setText(UsuarioTemp.getID());
+                            PiezaTemp = RegistrosVentana.getPiezas(Indice);
+                            CampoID.setText(PiezaTemp.getID());
                             CampoID.setForeground(ColorEscribir);
-                            CampoUsername.setText(UsuarioTemp.getUsername());
-                            CampoUsername.setForeground(ColorEscribir);
-                            CampoContrasena.setText(UsuarioTemp.getContrasena());
-                            CampoContrasena.setForeground(ColorEscribir);
-                            CampoRol.setText(UsuarioTemp.getRol());
-                            CampoRol.setForeground(ColorEscribir);
-                            CampoNombre.setText(UsuarioTemp.getNombre());
+                            CampoNombre.setText(PiezaTemp.getNombre());
                             CampoNombre.setForeground(ColorEscribir);
-                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
-                            CampoApellidoPaterno.setForeground(ColorEscribir);
-                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
-                            CampoApellidoMaterno.setForeground(ColorEscribir);
-                            CampoDireccion.setText(UsuarioTemp.getDireccion());
-                            CampoDireccion.setForeground(ColorEscribir);
-                            CampoTelefono.setText(UsuarioTemp.getTelefono());
-                            CampoTelefono.setForeground(ColorEscribir);
+                            CampoMarca.setText(PiezaTemp.getMarca());
+                            CampoMarca.setForeground(ColorEscribir);
+                            CampoCosto.setText(PiezaTemp.getCosto());
+                            CampoCosto.setForeground(ColorEscribir);
+                            CampoDescripcion.setText(PiezaTemp.getDescripcion());
+                            CampoDescripcion.setForeground(ColorEscribir);
+                            CampoStock.setText(PiezaTemp.getStock());
+                            CampoStock.setForeground(ColorEscribir);
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                            JOptionPane.showMessageDialog(null, "No se encontró ninguna pieza con el valor " +
                                     Buscar);
                         }
-                    }*/
+                    }
                 }
         });
         
