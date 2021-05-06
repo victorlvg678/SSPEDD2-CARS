@@ -721,14 +721,4205 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Método privado para cuando se hace click en BotonReparaciones
     private void BotonReparacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReparacionesActionPerformed
-        // TODO add your handling code here:
+        // Reasignamos texto de ruta
+        TextoRuta.setText("Reparaciones");
+        // Pintamos el panel para indicar opción actual
+        Color PanelActivo = new Color(59,143,255);
+        Color PanelInactivo  = new Color(19,140,220);
+        JPanel PanelesInactivos[] = {PanelUsuarios, PanelVehiculos, PanelClientes,
+        PanelPiezas, PanelCerrarSesion};
+        // Ciclo for para setear los paneles a colores inactivos
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.setBackground(PanelInactivo);
+        }
+        PanelReparaciones.setBackground(PanelActivo);
+        // Obtenemos lista de objetos o paneles
+        JPanel [] ListaPaneles = {PanelRutaContenido, PanelFechaHoraContenido,
+        PanelCentral, PanelDerecho, PanelInferior,
+        PanelInferiorDerecho};
+        // Eliminamos todo de forma iterativa
+        for(JPanel Panel : ListaPaneles)
+        {
+            // Obtenemos lista de componentes de dicho panel
+            Component [] ListaComponentes = Panel.getComponents();
+            // Iteramos entre todos los elementos del panel para eliminar todos
+            // los componentes que ya no requirimos
+            for(Component Componente : ListaComponentes)
+            {
+                Panel.remove(Componente);
+            }
+        }
+        // |------------------Crear botones de forma iterativa-----------------|
+        // Contador
+        int Cont;
+        Cont = 0;
+        // Lista de strings para usar
+        String Textos[] = {"Añadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Nombres[] = {"Anadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Imagenes[] = {"/content/images/menu/fixes/Anadir-115480-24x24.png",
+        "/content/images/menu/fixes/Eliminar-115480-24x24.png",
+        "/content/images/menu/fixes/Editar-115480-24x24.png",
+        "/content/images/menu/fixes/Guardar-115480-24x24.png",
+        "/content/images/menu/fixes/Buscar-115480-24x24.png"};
+        String ImagenesOver[] = {"/content/images/menu/fixes/AnadirOver-2980b9-24x24.png",
+        "/content/images/menu/fixes/EliminarOver-2980b9-24x24.png",
+        "/content/images/menu/fixes/EditarOver-2980b9-24x24.png",
+        "/content/images/menu/fixes/GuardarOver-2980b9-24x24.png",
+        "/content/images/menu/fixes/BuscarOver-2980b9-24x24.png"};
+        String ImagenesPressed[] = {"/content/images/menu/fixes/AnadirPressed-0b3653-24x24.png",
+        "/content/images/menu/fixes/EliminarPressed-0b3653-24x24.png",
+        "/content/images/menu/fixes/EditarPressed-0b3653-24x24.png",
+        "/content/images/menu/fixes/GuardarPressed-0b3653-24x24.png",
+        "/content/images/menu/fixes/BuscarPressed-0b3653-24x24.png"};
+        // Creamos color para botones
+        Color ColorBoton = new Color(17, 84, 128);
+        // Creamos botones para funciones de Reparaciones
+        JButton BotonAnadirReparaciones = new JButton();
+        JButton BotonEliminarReparaciones = new JButton();
+        JButton BotonEditarReparaciones = new JButton();
+        JButton BotonGuardarReparaciones = new JButton();
+        JButton BotonBuscarReparaciones = new JButton();
+        JButton Botones[] = {BotonAnadirReparaciones, BotonEliminarReparaciones,
+        BotonEditarReparaciones, BotonGuardarReparaciones, BotonBuscarReparaciones};
+        for(JButton Boton : Botones)
+        {
+            Boton.setName("Boton" + Nombres[Cont]);
+            Boton.setBorderPainted(false);
+            Boton.setBackground(Color.white);
+            Boton.setContentAreaFilled(false);
+            Boton.setFocusPainted(false);
+            Boton.setForeground(ColorBoton);
+            Boton.setBorder(null);
+            Boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            Boton.setHorizontalTextPosition(SwingConstants.CENTER);
+            Boton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            Boton.setText(Textos[Cont]);
+            Boton.setToolTipText("<html><p><strong>" + Textos[Cont] + " Reparación" +
+                    "</strong></p></html>");
+            ImageIcon Icono = new ImageIcon(getClass().getResource(
+                Imagenes[Cont]));
+            Boton.setIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesPressed[Cont]));
+            Boton.setPressedIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesOver[Cont]));
+            Boton.setRolloverIcon(Icono);
+            Boton.setSelectedIcon(Icono);
+            Boton.setSize(55, 40);
+            Cont++;
+        }
+        // |------------------------Ubicaciones de botones---------------------|
+        double AltoPanel, AnchoPanel, DivisionPanel;
+        int x;
+        AnchoPanel = PanelRutaContenido.getSize().getWidth(); 
+        DivisionPanel = AnchoPanel / 3;
+        DivisionPanel -= 100;
+        AltoPanel = PanelRutaContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        for(x = 0; x < 4; x++)
+        {
+            Botones[x].setLocation((int) DivisionPanel + (80 * (x + 1)), (int) AltoPanel);
+            PanelRutaContenido.add(Botones[x]);
+        }
+        
+        AnchoPanel = PanelFechaHoraContenido.getSize().getWidth(); 
+        AltoPanel = PanelFechaHoraContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        Botones[4].setLocation((int) AnchoPanel - 80, (int) AltoPanel);
+        PanelFechaHoraContenido.add(Botones[4]);
+
+        // |-----------------------BotonReestablecer---------------------------|
+        Color ColorReestablecer = new Color(41,128,185);
+        JButton BotonReestablecer = new JButton();
+        BotonReestablecer.setBorderPainted(true);
+        BotonReestablecer.setBackground(ColorReestablecer);
+        BotonReestablecer.setContentAreaFilled(true);
+        BotonReestablecer.setFocusPainted(false);
+        BotonReestablecer.setForeground(Color.WHITE);
+        BotonReestablecer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        BotonReestablecer.setHorizontalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setVerticalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setText("Reestablecer");
+        BotonReestablecer.setToolTipText("<html><p><strong>Reestablecer campos" +
+                "</strong></p></html>");
+        BotonReestablecer.setSize(120, 25);
+        BotonReestablecer.setLocation((int) AnchoPanel - 380, 
+                (int) AltoPanel + 30);
+        PanelFechaHoraContenido.add(BotonReestablecer);
+        // |----------------------Texto----------------------------------------|
+        // Para imagenes de campos
+        ImageIcon Icono;
+        // Texto para buscar por
+        JLabel TextoBuscar = new JLabel();
+        TextoBuscar.setForeground(Color.BLACK);
+        TextoBuscar.setBackground(Color.WHITE);
+        TextoBuscar.setName("TextoBuscar");
+        TextoBuscar.setBorder(null);
+        TextoBuscar.setToolTipText("<html><p><strong>Buscar reparación por</strong></p></html>");
+        TextoBuscar.setText("Buscar reparación por");
+        TextoBuscar.setSize(120, 20);
+        TextoBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel - 20);
+        PanelFechaHoraContenido.add(TextoBuscar);
+        
+        // Panel Central
+        double AltoPanelCentral, AnchoPanelCentral;
+        
+        AltoPanelCentral = PanelCentral.getSize().getHeight();
+        AnchoPanelCentral = PanelCentral.getSize().getWidth();
+        
+        // Texto para campo ID
+        JLabel TextoID = new JLabel();
+        TextoID.setForeground(Color.BLACK);
+        TextoID.setBackground(Color.WHITE);
+        TextoID.setName("TextoID");
+        TextoID.setBorder(null);
+        TextoID.setToolTipText("<html><p><strong>ID</strong></p></html>");
+        TextoID.setText("ID:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoID.setIcon(Icono);
+        TextoID.setSize(100, 24);
+        TextoID.setLocation((int) AnchoPanelCentral - 380, 30);
+        System.out.println();
+        PanelCentral.add(TextoID);
+        
+        // Texto para campo Username
+        JLabel TextoUsername = new JLabel();
+        TextoUsername.setForeground(Color.BLACK);
+        TextoUsername.setBackground(Color.WHITE);
+        TextoUsername.setName("TextoUsername");
+        TextoUsername.setBorder(null);
+        TextoUsername.setToolTipText("<html><p><strong>Nombre de Usuario</strong></p></html>");
+        TextoUsername.setText("Username:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoUsername.setIcon(Icono);
+        TextoUsername.setSize(100, 24);
+        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoID.getLocation().getY() + 40);
+        PanelCentral.add(TextoUsername);
+        
+        // Texto para campo Contraseña
+        JLabel TextoContrasena = new JLabel();
+        TextoContrasena.setForeground(Color.BLACK);
+        TextoContrasena.setBackground(Color.WHITE);
+        TextoContrasena.setName("TextoContrasena");
+        TextoContrasena.setBorder(null);
+        TextoContrasena.setToolTipText("<html><p><strong>Contraseña</strong></p></html>");
+        TextoContrasena.setText("Contraseña:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Contrasena-24x24.png"));
+        TextoContrasena.setIcon(Icono);
+        TextoContrasena.setSize(100, 24);
+        TextoContrasena.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoUsername.getLocation().getY() + 40);
+        PanelCentral.add(TextoContrasena);
+        
+        // Texto para campo Rol
+        JLabel TextoRol = new JLabel();
+        TextoRol.setForeground(Color.BLACK);
+        TextoRol.setBackground(Color.WHITE);
+        TextoRol.setName("TextoRol");
+        TextoRol.setBorder(null);
+        TextoRol.setToolTipText("<html><p><strong>Rol</strong></p></html>");
+        TextoRol.setText("Rol:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoRol.setIcon(Icono);
+        TextoRol.setSize(100, 24);
+        TextoRol.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoContrasena.getLocation().getY() + 40);
+        PanelCentral.add(TextoRol);
+        
+        // Texto para campo Nombre
+        JLabel TextoNombre = new JLabel();
+        TextoNombre.setForeground(Color.BLACK);
+        TextoNombre.setBackground(Color.WHITE);
+        TextoNombre.setName("TextoNombre");
+        TextoNombre.setBorder(null);
+        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoNombre.setText("Nombre(s):");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoNombre.setIcon(Icono);
+        TextoNombre.setSize(135, 24);
+        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 30);
+        PanelDerecho.add(TextoNombre);
+        
+        // Texto para campo Apellido Paterno
+        JLabel TextoApellidoPaterno = new JLabel();
+        TextoApellidoPaterno.setForeground(Color.BLACK);
+        TextoApellidoPaterno.setBackground(Color.WHITE);
+        TextoApellidoPaterno.setName("TextoApellidoPaterno");
+        TextoApellidoPaterno.setBorder(null);
+        TextoApellidoPaterno.setToolTipText("<html><p><strong>Apellido Paterno</strong></p></html>");
+        TextoApellidoPaterno.setText("Apellido Paterno:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoApellidoPaterno.setIcon(Icono);
+        TextoApellidoPaterno.setSize(135, 24);
+        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoNombre.getLocation().getY() + 40);
+        PanelDerecho.add(TextoApellidoPaterno);
+        
+        // Texto para campo Apellido Materno
+        JLabel TextoApellidoMaterno = new JLabel();
+        TextoApellidoMaterno.setForeground(Color.BLACK);
+        TextoApellidoMaterno.setBackground(Color.WHITE);
+        TextoApellidoMaterno.setName("TextoApellidoMaterno");
+        TextoApellidoMaterno.setBorder(null);
+        TextoApellidoMaterno.setToolTipText("<html><p><strong>Apellido Materno</strong></p></html>");
+        TextoApellidoMaterno.setText("Apellido Materno:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoApellidoMaterno.setIcon(Icono);
+        TextoApellidoMaterno.setSize(135, 24);
+        TextoApellidoMaterno.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoApellidoPaterno.getLocation().getY() + 40);
+        PanelDerecho.add(TextoApellidoMaterno);
+        
+        // Texto para campo Dirección
+        JLabel TextoDireccion = new JLabel();
+        TextoDireccion.setForeground(Color.BLACK);
+        TextoDireccion.setBackground(Color.WHITE);
+        TextoDireccion.setName("TextoDireccion");
+        TextoDireccion.setBorder(null);
+        TextoDireccion.setToolTipText("<html><p><strong>Dirección</strong></p></html>");
+        TextoDireccion.setText("Dirección:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Direccion-BelizeHope-24x24.png"));
+        TextoDireccion.setIcon(Icono);
+        TextoDireccion.setSize(135, 24);
+        TextoDireccion.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoApellidoMaterno.getLocation().getY() + 40);
+        PanelDerecho.add(TextoDireccion);
+        
+        // Texto para campo Teléfono
+        JLabel TextoTelefono = new JLabel();
+        TextoTelefono.setForeground(Color.BLACK);
+        TextoTelefono.setBackground(Color.WHITE);
+        TextoTelefono.setName("TextoTelefono");
+        TextoTelefono.setBorder(null);
+        TextoTelefono.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoTelefono.setText("Teléfono:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Telefono-BelizeHope-24x24.png"));
+        TextoTelefono.setIcon(Icono);
+        TextoTelefono.setSize(135, 24);
+        TextoTelefono.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoDireccion.getLocation().getY() + 40);
+        PanelDerecho.add(TextoTelefono);
+        
+        // |---------------------Combobox--------------------------------------|
+        JComboBox ComboBuscar = new JComboBox();
+        ComboBuscar.setName("ComboBuscar");
+        ComboBuscar.addItem("ID");
+        ComboBuscar.addItem("Nombre de Usuario");
+        ComboBuscar.addItem("Nombre");
+        ComboBuscar.addItem("Apellido Paterno");
+        ComboBuscar.addItem("Apellido Materno");
+        ComboBuscar.setSize(120, 20);
+        ComboBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel);
+        PanelFechaHoraContenido.add(ComboBuscar);
+        // |-------------------Campos de Texto---------------------------------|
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Campo para búsqueda
+        JTextField CampoBuscar = new JTextField();
+        CampoBuscar.setName("CampoBuscar");
+        CampoBuscar.setBorder(null);
+        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setBackground(Color.WHITE);
+        CampoBuscar.setForeground(ColorNoEscrito);
+        CampoBuscar.setSize(120, 20);
+        CampoBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel);
+        PanelFechaHoraContenido.add(CampoBuscar);
+        
+        // Campo para ID
+        JTextField CampoID = new JTextField();
+        CampoID.setName("CampoID");
+        CampoID.setBorder(null);
+        CampoID.setText("ID");
+        CampoID.setBackground(Color.WHITE);
+        CampoID.setForeground(ColorNoEscrito);
+        CampoID.setSize(120, 20);
+        CampoID.setLocation((int) TextoID.getLocation().getX() + 
+                (int) (TextoID.getSize().getWidth() + 10), 
+                (int) TextoID.getLocation().getY());
+        PanelCentral.add(CampoID);
+        
+        // Campo para Username
+        JTextField CampoUsername = new JTextField();
+        CampoUsername.setName("CampoUsername");
+        CampoUsername.setBorder(null);
+        CampoUsername.setText("Nombre de Usuario");
+        CampoUsername.setBackground(Color.WHITE);
+        CampoUsername.setForeground(ColorNoEscrito);
+        CampoUsername.setSize(120, 20);
+        CampoUsername.setLocation((int) TextoUsername.getLocation().getX() +
+                (int) (TextoUsername.getSize().getWidth() + 10), 
+                (int) TextoUsername.getLocation().getY());
+        PanelCentral.add(CampoUsername);
+        
+        // Campo para contraseña
+        JPasswordField CampoContrasena = new JPasswordField();
+        CampoContrasena.setName("CampoContrasena");
+        CampoContrasena.setBorder(null);
+        CampoContrasena.setText("Contraseña");
+        CampoContrasena.setBackground(Color.WHITE);
+        CampoContrasena.setForeground(ColorNoEscrito);
+        CampoContrasena.setSize(120, 20);
+        CampoContrasena.setLocation((int) TextoContrasena.getLocation().getX() +
+                (int) (TextoContrasena.getSize().getWidth() + 10), 
+                (int) TextoContrasena.getLocation().getY());
+        PanelCentral.add(CampoContrasena);
+        
+        // Campo para Rol
+        JTextField CampoRol = new JTextField();
+        CampoRol.setName("CampoRol");
+        CampoRol.setBorder(null);
+        CampoRol.setText("Rol");
+        CampoRol.setBackground(Color.WHITE);
+        CampoRol.setForeground(ColorNoEscrito);
+        CampoRol.setSize(120, 20);
+        CampoRol.setLocation((int) TextoRol.getLocation().getX() +
+                (int) (TextoRol.getSize().getWidth() + 10), 
+                (int) TextoRol.getLocation().getY());
+        PanelCentral.add(CampoRol);
+        
+        // Campo para Nombre
+        JTextField CampoNombre = new JTextField();
+        CampoNombre.setName("CampoNombre");
+        CampoNombre.setBorder(null);
+        CampoNombre.setText("Nombre(s)");
+        CampoNombre.setBackground(Color.WHITE);
+        CampoNombre.setForeground(ColorNoEscrito);
+        CampoNombre.setSize(120, 20);
+        CampoNombre.setLocation((int) TextoNombre.getLocation().getX() +
+                (int) (TextoNombre.getSize().getWidth() + 10), 
+                (int) TextoNombre.getLocation().getY());
+        PanelDerecho.add(CampoNombre);
+        
+        // Campo para Apellido Paterno
+        JTextField CampoApellidoPaterno = new JTextField();
+        CampoApellidoPaterno.setName("CampoApellidoPaterno");
+        CampoApellidoPaterno.setBorder(null);
+        CampoApellidoPaterno.setText("Apellido Paterno");
+        CampoApellidoPaterno.setBackground(Color.WHITE);
+        CampoApellidoPaterno.setForeground(ColorNoEscrito);
+        CampoApellidoPaterno.setSize(120, 20);
+        CampoApellidoPaterno.setLocation((int) TextoApellidoPaterno.getLocation().getX() +
+                (int) (TextoApellidoPaterno.getSize().getWidth() + 10), 
+                (int) TextoApellidoPaterno.getLocation().getY());
+        PanelDerecho.add(CampoApellidoPaterno);
+        
+        // Campo para Apellido Materno
+        JTextField CampoApellidoMaterno = new JTextField();
+        CampoApellidoMaterno.setName("CampoApellidoMaterno");
+        CampoApellidoMaterno.setBorder(null);
+        CampoApellidoMaterno.setText("Apellido Materno");
+        CampoApellidoMaterno.setBackground(Color.WHITE);
+        CampoApellidoMaterno.setForeground(ColorNoEscrito);
+        CampoApellidoMaterno.setSize(120, 20);
+        CampoApellidoMaterno.setLocation((int) TextoApellidoMaterno.getLocation().getX() +
+                (int) (TextoApellidoMaterno.getSize().getWidth() + 10), 
+                (int) TextoApellidoMaterno.getLocation().getY());
+        PanelDerecho.add(CampoApellidoMaterno);
+        
+        // Campo para Dirección
+        JTextField CampoDireccion = new JTextField();
+        CampoDireccion.setName("CampoDireccion");
+        CampoDireccion.setBorder(null);
+        CampoDireccion.setText("Dirección");
+        CampoDireccion.setBackground(Color.WHITE);
+        CampoDireccion.setForeground(ColorNoEscrito);
+        CampoDireccion.setSize(120, 20);
+        CampoDireccion.setLocation((int) TextoDireccion.getLocation().getX() +
+                (int) (TextoDireccion.getSize().getWidth() + 10), 
+                (int) TextoDireccion.getLocation().getY());
+        PanelDerecho.add(CampoDireccion);
+        
+        // Campo para Teléfono
+        JTextField CampoTelefono = new JTextField();
+        CampoTelefono.setName("CampoTelefono");
+        CampoTelefono.setBorder(null);
+        CampoTelefono.setText("Teléfono");
+        CampoTelefono.setBackground(Color.WHITE);
+        CampoTelefono.setForeground(ColorNoEscrito);
+        CampoTelefono.setSize(120, 20);
+        CampoTelefono.setLocation((int) TextoTelefono.getLocation().getX() +
+                (int) (TextoTelefono.getSize().getWidth() + 10), 
+                (int) TextoTelefono.getLocation().getY());
+        PanelDerecho.add(CampoTelefono);
+        
+        // |---------------------Separadores-----------------------------------|
+        // Color para separador
+        Color ColorSeparador = new Color(51, 51, 51);
+        // Separador para CampoBuscar
+        JSeparator SeparadorBuscar = new JSeparator();
+        SeparadorBuscar.setName("SeparadorBuscar");
+        SeparadorBuscar.setBorder(null);
+        SeparadorBuscar.setBackground(Color.WHITE);
+        SeparadorBuscar.setForeground(ColorSeparador);
+        SeparadorBuscar.setSize(120, 15);
+        SeparadorBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel + 20);
+        PanelFechaHoraContenido.add(SeparadorBuscar);
+        
+        // Separador para CampoID
+        JSeparator SeparadorID = new JSeparator();
+        SeparadorID.setName("SeparadorBuscar");
+        SeparadorID.setBorder(null);
+        SeparadorID.setBackground(Color.WHITE);
+        SeparadorID.setForeground(ColorSeparador);
+        SeparadorID.setSize(120, 15);
+        SeparadorID.setLocation((int) CampoID.getLocation().getX(),
+                (int) CampoID.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorID);
+        
+        // Separador para CampoUsername
+        JSeparator SeparadorUsername = new JSeparator();
+        SeparadorUsername.setName("SeparadorUsername");
+        SeparadorUsername.setBorder(null);
+        SeparadorUsername.setBackground(Color.WHITE);
+        SeparadorUsername.setForeground(ColorSeparador);
+        SeparadorUsername.setSize(120, 15);
+        SeparadorUsername.setLocation((int) CampoUsername.getLocation().getX(), 
+                (int) CampoUsername.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorUsername);
+        
+        // Separador para CampoContrasena
+        JSeparator SeparadorContrasena = new JSeparator();
+        SeparadorContrasena.setName("SeparadorContrasena");
+        SeparadorContrasena.setBorder(null);
+        SeparadorContrasena.setBackground(Color.WHITE);
+        SeparadorContrasena.setForeground(ColorSeparador);
+        SeparadorContrasena.setSize(120, 15);
+        SeparadorContrasena.setLocation((int) CampoContrasena.getLocation().getX(), 
+                (int) CampoContrasena.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorContrasena);
+        
+        // Separador para CampoRol
+        JSeparator SeparadorRol = new JSeparator();
+        SeparadorRol.setName("SeparadorRol");
+        SeparadorRol.setBorder(null);
+        SeparadorRol.setBackground(Color.WHITE);
+        SeparadorRol.setForeground(ColorSeparador);
+        SeparadorRol.setSize(120, 15);
+        SeparadorRol.setLocation((int) CampoRol.getLocation().getX(), 
+                (int) CampoRol.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorRol);
+        
+        // Separador para CampoNombre
+        JSeparator SeparadorNombre = new JSeparator();
+        SeparadorNombre.setName("SeparadorNombre");
+        SeparadorNombre.setBorder(null);
+        SeparadorNombre.setBackground(Color.WHITE);
+        SeparadorNombre.setForeground(ColorSeparador);
+        SeparadorNombre.setSize(120, 15);
+        SeparadorNombre.setLocation((int) CampoNombre.getLocation().getX(), 
+                (int) CampoNombre.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorNombre);
+        
+        // Separador para CampoApellidoPaterno
+        JSeparator SeparadorApellidoPaterno = new JSeparator();
+        SeparadorApellidoPaterno.setName("SeparadorApellidoPaterno");
+        SeparadorApellidoPaterno.setBorder(null);
+        SeparadorApellidoPaterno.setBackground(Color.WHITE);
+        SeparadorApellidoPaterno.setForeground(ColorSeparador);
+        SeparadorApellidoPaterno.setSize(120, 15);
+        SeparadorApellidoPaterno.setLocation((int) CampoApellidoPaterno.getLocation().getX(), 
+                (int) CampoApellidoPaterno.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorApellidoPaterno);
+        
+        // Separador para CampoApellidoMaterno
+        JSeparator SeparadorApellidoMaterno = new JSeparator();
+        SeparadorApellidoMaterno.setName("SeparadorApellidoMaterno");
+        SeparadorApellidoMaterno.setBorder(null);
+        SeparadorApellidoMaterno.setBackground(Color.WHITE);
+        SeparadorApellidoMaterno.setForeground(ColorSeparador);
+        SeparadorApellidoMaterno.setSize(120, 15);
+        SeparadorApellidoMaterno.setLocation((int) CampoApellidoMaterno.getLocation().getX(), 
+                (int) CampoApellidoMaterno.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorApellidoMaterno);
+        
+        // Separador para CampoDireccion
+        JSeparator SeparadorDireccion = new JSeparator();
+        SeparadorDireccion.setName("SeparadorDireccion");
+        SeparadorDireccion.setBorder(null);
+        SeparadorDireccion.setBackground(Color.WHITE);
+        SeparadorDireccion.setForeground(ColorSeparador);
+        SeparadorDireccion.setSize(120, 15);
+        SeparadorDireccion.setLocation((int) CampoDireccion.getLocation().getX(), 
+                (int) CampoDireccion.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorDireccion);
+        
+        // Separador para CampoTelefono
+        JSeparator SeparadorTelefono = new JSeparator();
+        SeparadorTelefono.setName("SeparadorTelefono");
+        SeparadorTelefono.setBorder(null);
+        SeparadorTelefono.setBackground(Color.WHITE);
+        SeparadorTelefono.setForeground(ColorSeparador);
+        SeparadorTelefono.setSize(120, 15);
+        SeparadorTelefono.setLocation((int) CampoTelefono.getLocation().getX(), 
+                (int) CampoTelefono.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorTelefono);
+        
+        // |---------------------Funciones de botones--------------------------|
+        // Boton para Reestablecer campos
+        BotonReestablecer.addActionListener(new ActionListener(){
+            // Override de listener para cuando se hace click
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                CampoID.setText("ID");
+                CampoID.setForeground(ColorNoEscrito);
+                CampoUsername.setText("Nombre de Usuario");
+                CampoUsername.setForeground(ColorNoEscrito);
+                CampoContrasena.setText("Contraseña");
+                CampoContrasena.setForeground(ColorNoEscrito);
+                CampoRol.setText("Rol");
+                CampoRol.setForeground(ColorNoEscrito);
+                CampoNombre.setText("Nombre(s)");
+                CampoNombre.setForeground(ColorNoEscrito);
+                CampoApellidoPaterno.setText("Apellido Paterno");
+                CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                CampoApellidoMaterno.setText("Apellido Materno");
+                CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                CampoDireccion.setText("Dirección");
+                CampoDireccion.setForeground(ColorNoEscrito);
+                CampoTelefono.setText("Teléfono");
+                CampoTelefono.setForeground(ColorNoEscrito);
+            }
+        });
+        
+        // Añadir listener para acción en BotonAnadir
+        Botones[0].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    Usuario UsuarioTemp;
+                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
+                            Direccion, Telefono;
+                    Boolean Registrable;
+                    IDAAsignar = "-1";
+                    Registrable = true;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                    Contrasena = String.valueOf(CampoContrasena.getPassword());
+                    Rol = CampoRol.getText();
+                    Nombre = CampoNombre.getText();
+                    AP = CampoApellidoPaterno.getText();
+                    AM = CampoApellidoMaterno.getText();
+                    Direccion = CampoDireccion.getText();
+                    Telefono = CampoTelefono.getText();
+                   
+                    if(Username.equals("Nombre de Usuario") ||
+                            Username.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Contrasena.equals("Contraseña") ||
+                                Contrasena.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Rol.equals("Rol") || Rol.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Nombre.equals("Nombre(s)") ||
+                                        Nombre.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, 
+                                            "Faltan campos por llenar");
+                                }
+                                else
+                                {
+                                    if(AP.equals("Apellido Paterno") ||
+                                            AP.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, 
+                                                "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(AM.equals("Apellido Materno") ||
+                                                AM.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, 
+                                                    "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            if(Direccion.equals("Dirección") ||
+                                                    Direccion.equals(""))
+                                            {
+                                                JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                            }
+                                            else
+                                            {
+                                                if(Telefono.equals("Teléfono") ||
+                                                        Telefono.equals(""))
+                                                {
+                                                    JOptionPane.showMessageDialog(null,
+                                                            "Faltan campo por llenar");
+                                                }
+                                                else
+                                                {
+                                                    if(ID.equals("ID") ||
+                                                                    ID.equals(""))
+                                                    {
+                                                        int x, Mayor;
+                                                        Mayor = 0;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
+                                                            }
+                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                            {
+                                                                Registrable = false;
+                                                            }
+                                                        }
+                                                        IDAAsignar = String.valueOf(Mayor + 1);
+                                                    }
+                                                    else
+                                                    {
+                                                        int x;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                JOptionPane.showMessageDialog(null, 
+                                                                        "El ID " + ID +" ya está registrado");
+                                                                Registrable = false;
+                                                            }
+                                                            else
+                                                            {
+                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                                {
+                                                                   JOptionPane.showMessageDialog(null, 
+                                                                            "El nombre de usuario " +
+                                                                            Username + " ya está registrado");
+                                                                    Registrable = false;
+                                                                }
+                                                            }
+                                                        }
+                                                        if(Registrable)
+                                                        {
+                                                            IDAAsignar = ID;
+                                                        }
+                                                    }
+                                                    if(Registrable)
+                                                    {
+                                                        UsuarioTemp.setID(IDAAsignar);
+                                                        UsuarioTemp.setUsername(Username);
+                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
+                                                        if(Rol.equals("Admin"))
+                                                        {
+                                                            UsuarioTemp.setRol("Admin");
+                                                        }
+                                                        else
+                                                        {
+                                                            UsuarioTemp.setRol("Usuario");
+                                                        }
+                                                        UsuarioTemp.setNombre(Nombre);
+                                                        UsuarioTemp.setApellidoPaterno(AP);
+                                                        UsuarioTemp.setApellidoMaterno(AM);
+                                                        UsuarioTemp.setDireccion(Direccion);
+                                                        UsuarioTemp.setTelefono(Telefono);
+                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
+                                                        CampoID.setText("ID");
+                                                        CampoID.setForeground(ColorNoEscrito);
+                                                        CampoUsername.setText("Nombre de Usuario");
+                                                        CampoUsername.setForeground(ColorNoEscrito);
+                                                        CampoContrasena.setText("Contraseña");
+                                                        CampoContrasena.setForeground(ColorNoEscrito);
+                                                        CampoRol.setText("Rol");
+                                                        CampoRol.setForeground(ColorNoEscrito);
+                                                        CampoNombre.setText("Nombre(s)");
+                                                        CampoNombre.setForeground(ColorNoEscrito);
+                                                        CampoApellidoPaterno.setText("Apellido Paterno");
+                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                                                        CampoApellidoMaterno.setText("Apellido Materno");
+                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                                                        CampoDireccion.setText("Dirección");
+                                                        CampoDireccion.setForeground(ColorNoEscrito);
+                                                        CampoTelefono.setText("Teléfono");
+                                                        CampoTelefono.setForeground(ColorNoEscrito);
+                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
+                                                                Username + " con éxito");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                };
+            });
+        
+        // Añadir listener para acción en eliminar
+        Botones[1].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    Usuario UsuarioTemp;
+                    String ID, Username;
+                    Boolean Eliminable;
+                    int Eliminar;
+                    Eliminar = -1;
+                    Eliminable = false;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                   
+                    
+                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
+                            (ID.equals("ID") || ID.equals("")))
+                    {
+                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                    }
+                    else
+                    {
+                        int x;
+                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        {
+                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
+                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            {
+                                Eliminable = true;
+                                Eliminar = x;
+                            }
+                        }
+                        if(Eliminable)
+                        {
+                            CampoID.setText("ID");
+                            CampoID.setForeground(ColorNoEscrito);
+                            CampoUsername.setText("Nombre de Usuario");
+                            CampoUsername.setForeground(ColorNoEscrito);
+                            CampoContrasena.setText("Contraseña");
+                            CampoContrasena.setForeground(ColorNoEscrito);
+                            CampoRol.setText("Rol");
+                            CampoRol.setForeground(ColorNoEscrito);
+                            CampoNombre.setText("Nombre(s)");
+                            CampoNombre.setForeground(ColorNoEscrito);
+                            CampoApellidoPaterno.setText("Apellido Paterno");
+                            CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                            CampoApellidoMaterno.setText("Apellido Materno");
+                            CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                            CampoDireccion.setText("Dirección");
+                            CampoDireccion.setForeground(ColorNoEscrito);
+                            CampoTelefono.setText("Teléfono");
+                            CampoTelefono.setForeground(ColorNoEscrito);
+                            if(Eliminar != -1)
+                            {
+                                int Respuesta;
+                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                Respuesta = JOptionPane.showConfirmDialog(null, 
+                                        "¿Seguro que desea eliminar al usuario " +
+                                        UsuarioTemp.getUsername());
+                                if(Respuesta == 0)
+                                {
+                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
+                                    JOptionPane.showMessageDialog(null, "Se ha eliminado " +
+                                        UsuarioTemp.getUsername() + " con éxito");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if(!Username.equals("Nombre de Usuario") &&
+                                    !Username.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
+                                        Username);
+                            }
+                            else
+                            {
+                                if(!ID.equals("ID") &&
+                                    !ID.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
+                                            ID);
+                                }
+                            }
+                        }
+                    }
+                }
+        });
+        
+        // Añadir listener para acción en editar
+        Botones[2].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    System.out.println("");
+                }
+        });
+        
+        // Añadir listener para acción en guardar
+        Botones[3].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    RegistroCRUD RegistroGuardar = new RegistroCRUD();
+                    RegistroGuardar.Guardar(RegistrosVentana);
+                    JOptionPane.showMessageDialog(null, "Se han guardado los registros con éxito");
+                }
+        });
+        
+        // Añadir listener para acción en buscar
+        Botones[4].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    String Buscar;
+                    Usuario UsuarioTemp;
+                    UsuarioTemp = new Usuario();
+                    Boolean Encontrado;
+                    Color ColorEscribir = new Color(51, 51, 51);
+                    Encontrado = false;
+                    int BuscarPor, x, Indice;
+                    Indice = -1;
+                    Buscar = CampoBuscar.getText();
+                    //if()
+                    BuscarPor = ComboBuscar.getSelectedIndex();
+                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
+                    }
+                    else
+                    {
+                        switch(BuscarPor)
+                        {
+                            case 0 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 1 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 2 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 3 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 4 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        if(Encontrado && Indice > -1)
+                        {
+                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
+                            CampoID.setText(UsuarioTemp.getID());
+                            CampoID.setForeground(ColorEscribir);
+                            CampoUsername.setText(UsuarioTemp.getUsername());
+                            CampoUsername.setForeground(ColorEscribir);
+                            CampoContrasena.setText(UsuarioTemp.getContrasena());
+                            CampoContrasena.setForeground(ColorEscribir);
+                            CampoRol.setText(UsuarioTemp.getRol());
+                            CampoRol.setForeground(ColorEscribir);
+                            CampoNombre.setText(UsuarioTemp.getNombre());
+                            CampoNombre.setForeground(ColorEscribir);
+                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
+                            CampoApellidoPaterno.setForeground(ColorEscribir);
+                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
+                            CampoApellidoMaterno.setForeground(ColorEscribir);
+                            CampoDireccion.setText(UsuarioTemp.getDireccion());
+                            CampoDireccion.setForeground(ColorEscribir);
+                            CampoTelefono.setText(UsuarioTemp.getTelefono());
+                            CampoTelefono.setForeground(ColorEscribir);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                                    Buscar);
+                        }
+                    }
+                }
+        });
+        
+        // |----------------------Funciones de ComboBox------------------------|
+        // Añadir listener para cuando se selecciona item de ComboBuscar
+        ComboBuscar.addItemListener(new ItemListener(){
+            // Override para itemStateChanged
+            @Override
+            public void itemStateChanged(ItemEvent e) 
+            {
+                String Seleccionado;
+                Seleccionado = (String) ComboBuscar.getSelectedItem();
+                System.out.println(Seleccionado);
+            }
+        });
+        
+        // |----------------------Funciones de campos--------------------------| 
+        // |------------------------CampoBuscar--------------------------------|
+        // Se añade listener para enfoque de CampoBuscar
+        CampoBuscar.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Buscar Usuario") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoBuscar.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Buscar Usuario"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoBuscar.setText("Buscar Usuario");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoBuscar
+        CampoBuscar.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoBuscar.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Buscar Usuario"))
+                {
+                    // Elimina contenido
+                    CampoBuscar.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoBuscar");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoBuscar");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoBuscar");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoBuscar");
+            }
+
+        });
+        // |------------------------CampoID------------------------------------|
+        // Se añade listener para enfoque de CampoBuscar
+        CampoID.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("ID") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoID.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("ID"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoID.setText("ID");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoBuscar
+        CampoID.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoID.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("ID"))
+                {
+                    // Elimina contenido
+                    CampoID.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoID");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoID");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoID");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoID");
+            }
+
+        });
+        
+        // |------------------------CampoUsername------------------------------|
+        // Se añade listener para enfoque de CampoUsername
+        CampoUsername.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoUsername.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Nombre de Usuario") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoUsername.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoUsername.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Nombre de Usuario"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoUsername.setText("Nombre de Usuario");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoUsername
+        CampoUsername.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoUsername.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Nombre de Usuario"))
+                {
+                    // Elimina contenido
+                    CampoUsername.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoUsername");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoUsername");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoUsername");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoUsername");
+            }
+
+        });
+        
+        // |------------------------CampoContrasena----------------------------|
+        // Se añade listener para enfoque de CampoContrasena
+        CampoContrasena.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Contraseña") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoContrasena.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Contraseña"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoContrasena.setText("Contraseña");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoContrasena
+        CampoContrasena.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Contraseña"))
+                {
+                    // Elimina contenido
+                    CampoContrasena.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoContrasena");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoContrasena");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoContrasena");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoContrasena");
+            }
+
+        });
+        
+        // |------------------------CampoRol-----------------------------------|
+        // Se añade listener para enfoque de CampoRol
+        CampoRol.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Rol") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoRol.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Rol"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoRol.setText("Rol");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoRol
+        CampoRol.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoRol.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Rol"))
+                {
+                    // Elimina contenido
+                    CampoRol.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoRol");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoRol");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoRol");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoRol");
+            }
+
+        });
+        
+        // |------------------------CampoNombre--------------------------------|
+        // Se añade listener para enfoque de CampoNombre
+        CampoNombre.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoNombre.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Nombre(s)") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoNombre.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoNombre.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Nombre(s)"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoNombre.setText("Nombre(s)");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoNombre
+        CampoNombre.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoNombre.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Nombre(s)"))
+                {
+                    // Elimina contenido
+                    CampoNombre.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoNombre");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoNombre");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoNombre");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoNombre");
+            }
+
+        });
+        
+        // |------------------CampoApellidoPaterno-----------------------------|
+        // Se añade listener para enfoque de CampoApellidoPaterno
+        CampoApellidoPaterno.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoPaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Apellido Paterno") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoApellidoPaterno.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoPaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Apellido Paterno"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoApellidoPaterno.setText("Apellido Paterno");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoApellidoPaterno
+        CampoApellidoPaterno.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoApellidoPaterno.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Apellido Paterno"))
+                {
+                    // Elimina contenido
+                    CampoApellidoPaterno.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoApellidoPaterno");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoApellidoPaterno");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoApellidoPaterno");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoApellidoPaterno");
+            }
+
+        });
+        
+        // |------------------CampoApellidoMaterno-----------------------------|
+        // Se añade listener para enfoque de CampoApellidoMaterno
+        CampoApellidoMaterno.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoMaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Apellido Materno") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoApellidoMaterno.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoMaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Apellido Materno"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoApellidoMaterno.setText("Apellido Materno");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoApellidoMaterno
+        CampoApellidoMaterno.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoApellidoMaterno.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Apellido Materno"))
+                {
+                    // Elimina contenido
+                    CampoApellidoMaterno.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoApellidoMaterno");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoApellidoMaterno");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoApellidoMaterno");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoApellidoMaterno");
+            }
+
+        });
+        
+        // |------------------------CampoDireccion-----------------------------|
+        // Se añade listener para enfoque de CampoDireccion
+        CampoDireccion.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoDireccion.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Dirección") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoDireccion.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoDireccion.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Dirección"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoDireccion.setText("Dirección");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoDireccion
+        CampoDireccion.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoDireccion.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Dirección"))
+                {
+                    // Elimina contenido
+                    CampoDireccion.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoDireccion");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoDireccion");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoDireccion");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoDireccion");
+            }
+
+        });
+        
+        // |------------------------CampoTelefono------------------------------|
+        // Se añade listener para enfoque de CampoTelefono
+        CampoTelefono.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoTelefono.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Teléfono") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoTelefono.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoTelefono.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Teléfono"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoTelefono.setText("Teléfono");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoTelefono
+        CampoTelefono.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoTelefono.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Teléfono"))
+                {
+                    // Elimina contenido
+                    CampoTelefono.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoTelefono");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoTelefono");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoTelefono");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoTelefono");
+            }
+
+        });
+        
+        // |-------------------------Refrescamos Paneles-----------------------|
+        for(JPanel Panel : ListaPaneles)
+        {
+            // Revalidamos y refrescamos paneles
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        PanelReparaciones.revalidate();
+        PanelReparaciones.repaint();
     }//GEN-LAST:event_BotonReparacionesActionPerformed
 
+    // Método privado para cuando se hace click en BotonVehiculos
     private void BotonVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVehiculosActionPerformed
-        // TODO add your handling code here:
+        // Reasignamos texto de ruta
+        TextoRuta.setText("Vehículos");
+        // Pintamos el panel para indicar opción actual
+        Color PanelActivo = new Color(59,143,255);
+        Color PanelInactivo  = new Color(19,140,220);
+        JPanel PanelesInactivos[] = {PanelUsuarios, PanelClientes, PanelReparaciones,
+        PanelPiezas, PanelCerrarSesion};
+        // Ciclo for para setear los paneles a colores inactivos
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.setBackground(PanelInactivo);
+        }
+        PanelVehiculos.setBackground(PanelActivo);
+        // Obtenemos lista de objetos o paneles
+        JPanel [] ListaPaneles = {PanelRutaContenido, PanelFechaHoraContenido,
+        PanelCentral, PanelDerecho, PanelInferior,
+        PanelInferiorDerecho};
+        // Eliminamos todo de forma iterativa
+        for(JPanel Panel : ListaPaneles)
+        {
+            // Obtenemos lista de componentes de dicho panel
+            Component [] ListaComponentes = Panel.getComponents();
+            // Iteramos entre todos los elementos del panel para eliminar todos
+            // los componentes que ya no requirimos
+            for(Component Componente : ListaComponentes)
+            {
+                Panel.remove(Componente);
+            }
+        }
+        // |------------------Crear botones de forma iterativa-----------------|
+        // Contador
+        int Cont;
+        Cont = 0;
+        // Lista de strings para usar
+        String Textos[] = {"Añadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Nombres[] = {"Anadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Imagenes[] = {"/content/images/menu/vehicles/Anadir-115480-24x24.png",
+        "/content/images/menu/vehicles/Eliminar-115480-24x24.png",
+        "/content/images/menu/vehicles/Editar-115480-24x24.png",
+        "/content/images/menu/vehicles/Guardar-115480-24x24.png",
+        "/content/images/menu/vehicles/Buscar-115480-24x24.png"};
+        String ImagenesOver[] = {"/content/images/menu/vehicles/AnadirOver-2980b9-24x24.png",
+        "/content/images/menu/vehicles/EliminarOver-2980b9-24x24.png",
+        "/content/images/menu/vehicles/EditarOver-2980b9-24x24.png",
+        "/content/images/menu/vehicles/GuardarOver-2980b9-24x24.png",
+        "/content/images/menu/vehicles/BuscarOver-2980b9-24x24.png"};
+        String ImagenesPressed[] = {"/content/images/menu/vehicles/AnadirPressed-0b3653-24x24.png",
+        "/content/images/menu/vehicles/EliminarPressed-0b3653-24x24.png",
+        "/content/images/menu/vehicles/EditarPressed-0b3653-24x24.png",
+        "/content/images/menu/vehicles/GuardarPressed-0b3653-24x24.png",
+        "/content/images/menu/vehicles/BuscarPressed-0b3653-24x24.png"};
+        // Creamos color para botones
+        Color ColorBoton = new Color(17, 84, 128);
+        // Creamos botones para funciones de Vehiculos
+        JButton BotonAnadirVehiculos = new JButton();
+        JButton BotonEliminarVehiculos = new JButton();
+        JButton BotonEditarVehiculos = new JButton();
+        JButton BotonGuardarVehiculos = new JButton();
+        JButton BotonBuscarVehiculos = new JButton();
+        JButton Botones[] = {BotonAnadirVehiculos, BotonEliminarVehiculos,
+        BotonEditarVehiculos, BotonGuardarVehiculos, BotonBuscarVehiculos};
+        for(JButton Boton : Botones)
+        {
+            Boton.setName("Boton" + Nombres[Cont]);
+            Boton.setBorderPainted(false);
+            Boton.setBackground(Color.white);
+            Boton.setContentAreaFilled(false);
+            Boton.setFocusPainted(false);
+            Boton.setForeground(ColorBoton);
+            Boton.setBorder(null);
+            Boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            Boton.setHorizontalTextPosition(SwingConstants.CENTER);
+            Boton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            Boton.setText(Textos[Cont]);
+            Boton.setToolTipText("<html><p><strong>" + Textos[Cont] + " Vehículo" +
+                    "</strong></p></html>");
+            ImageIcon Icono = new ImageIcon(getClass().getResource(
+                Imagenes[Cont]));
+            Boton.setIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesPressed[Cont]));
+            Boton.setPressedIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesOver[Cont]));
+            Boton.setRolloverIcon(Icono);
+            Boton.setSelectedIcon(Icono);
+            Boton.setSize(55, 40);
+            Cont++;
+        }
+        // |------------------------Ubicaciones de botones---------------------|
+        double AltoPanel, AnchoPanel, DivisionPanel;
+        int x;
+        AnchoPanel = PanelRutaContenido.getSize().getWidth(); 
+        DivisionPanel = AnchoPanel / 3;
+        DivisionPanel -= 100;
+        AltoPanel = PanelRutaContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        for(x = 0; x < 4; x++)
+        {
+            Botones[x].setLocation((int) DivisionPanel + (80 * (x + 1)), (int) AltoPanel);
+            PanelRutaContenido.add(Botones[x]);
+        }
+        
+        AnchoPanel = PanelFechaHoraContenido.getSize().getWidth(); 
+        AltoPanel = PanelFechaHoraContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        Botones[4].setLocation((int) AnchoPanel - 80, (int) AltoPanel);
+        PanelFechaHoraContenido.add(Botones[4]);
+
+        // |-----------------------BotonReestablecer---------------------------|
+        Color ColorReestablecer = new Color(41,128,185);
+        JButton BotonReestablecer = new JButton();
+        BotonReestablecer.setBorderPainted(true);
+        BotonReestablecer.setBackground(ColorReestablecer);
+        BotonReestablecer.setContentAreaFilled(true);
+        BotonReestablecer.setFocusPainted(false);
+        BotonReestablecer.setForeground(Color.WHITE);
+        BotonReestablecer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        BotonReestablecer.setHorizontalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setVerticalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setText("Reestablecer");
+        BotonReestablecer.setToolTipText("<html><p><strong>Reestablecer campos" +
+                "</strong></p></html>");
+        BotonReestablecer.setSize(120, 25);
+        BotonReestablecer.setLocation((int) AnchoPanel - 380, 
+                (int) AltoPanel + 30);
+        PanelFechaHoraContenido.add(BotonReestablecer);
+        // |----------------------Texto----------------------------------------|
+        // Para imagenes de campos
+        ImageIcon Icono;
+        // Texto para buscar por
+        JLabel TextoBuscar = new JLabel();
+        TextoBuscar.setForeground(Color.BLACK);
+        TextoBuscar.setBackground(Color.WHITE);
+        TextoBuscar.setName("TextoBuscar");
+        TextoBuscar.setBorder(null);
+        TextoBuscar.setToolTipText("<html><p><strong>Buscar vehículo por</strong></p></html>");
+        TextoBuscar.setText("Buscar vehículo por");
+        TextoBuscar.setSize(120, 20);
+        TextoBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel - 20);
+        PanelFechaHoraContenido.add(TextoBuscar);
+        
+        // Panel Central
+        double AltoPanelCentral, AnchoPanelCentral;
+        
+        AltoPanelCentral = PanelCentral.getSize().getHeight();
+        AnchoPanelCentral = PanelCentral.getSize().getWidth();
+        
+        // Texto para campo ID
+        JLabel TextoID = new JLabel();
+        TextoID.setForeground(Color.BLACK);
+        TextoID.setBackground(Color.WHITE);
+        TextoID.setName("TextoID");
+        TextoID.setBorder(null);
+        TextoID.setToolTipText("<html><p><strong>ID</strong></p></html>");
+        TextoID.setText("ID:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoID.setIcon(Icono);
+        TextoID.setSize(100, 24);
+        TextoID.setLocation((int) AnchoPanelCentral - 380, 30);
+        System.out.println();
+        PanelCentral.add(TextoID);
+        
+        // Texto para campo Username
+        JLabel TextoUsername = new JLabel();
+        TextoUsername.setForeground(Color.BLACK);
+        TextoUsername.setBackground(Color.WHITE);
+        TextoUsername.setName("TextoUsername");
+        TextoUsername.setBorder(null);
+        TextoUsername.setToolTipText("<html><p><strong>Nombre de Usuario</strong></p></html>");
+        TextoUsername.setText("Username:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoUsername.setIcon(Icono);
+        TextoUsername.setSize(100, 24);
+        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoID.getLocation().getY() + 40);
+        PanelCentral.add(TextoUsername);
+        
+        // Texto para campo Contraseña
+        JLabel TextoContrasena = new JLabel();
+        TextoContrasena.setForeground(Color.BLACK);
+        TextoContrasena.setBackground(Color.WHITE);
+        TextoContrasena.setName("TextoContrasena");
+        TextoContrasena.setBorder(null);
+        TextoContrasena.setToolTipText("<html><p><strong>Contraseña</strong></p></html>");
+        TextoContrasena.setText("Contraseña:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Contrasena-24x24.png"));
+        TextoContrasena.setIcon(Icono);
+        TextoContrasena.setSize(100, 24);
+        TextoContrasena.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoUsername.getLocation().getY() + 40);
+        PanelCentral.add(TextoContrasena);
+        
+        // Texto para campo Rol
+        JLabel TextoRol = new JLabel();
+        TextoRol.setForeground(Color.BLACK);
+        TextoRol.setBackground(Color.WHITE);
+        TextoRol.setName("TextoRol");
+        TextoRol.setBorder(null);
+        TextoRol.setToolTipText("<html><p><strong>Rol</strong></p></html>");
+        TextoRol.setText("Rol:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoRol.setIcon(Icono);
+        TextoRol.setSize(100, 24);
+        TextoRol.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoContrasena.getLocation().getY() + 40);
+        PanelCentral.add(TextoRol);
+        
+        // Texto para campo Nombre
+        JLabel TextoNombre = new JLabel();
+        TextoNombre.setForeground(Color.BLACK);
+        TextoNombre.setBackground(Color.WHITE);
+        TextoNombre.setName("TextoNombre");
+        TextoNombre.setBorder(null);
+        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoNombre.setText("Nombre(s):");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoNombre.setIcon(Icono);
+        TextoNombre.setSize(135, 24);
+        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 30);
+        PanelDerecho.add(TextoNombre);
+        
+        // Texto para campo Apellido Paterno
+        JLabel TextoApellidoPaterno = new JLabel();
+        TextoApellidoPaterno.setForeground(Color.BLACK);
+        TextoApellidoPaterno.setBackground(Color.WHITE);
+        TextoApellidoPaterno.setName("TextoApellidoPaterno");
+        TextoApellidoPaterno.setBorder(null);
+        TextoApellidoPaterno.setToolTipText("<html><p><strong>Apellido Paterno</strong></p></html>");
+        TextoApellidoPaterno.setText("Apellido Paterno:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoApellidoPaterno.setIcon(Icono);
+        TextoApellidoPaterno.setSize(135, 24);
+        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoNombre.getLocation().getY() + 40);
+        PanelDerecho.add(TextoApellidoPaterno);
+        
+        // Texto para campo Apellido Materno
+        JLabel TextoApellidoMaterno = new JLabel();
+        TextoApellidoMaterno.setForeground(Color.BLACK);
+        TextoApellidoMaterno.setBackground(Color.WHITE);
+        TextoApellidoMaterno.setName("TextoApellidoMaterno");
+        TextoApellidoMaterno.setBorder(null);
+        TextoApellidoMaterno.setToolTipText("<html><p><strong>Apellido Materno</strong></p></html>");
+        TextoApellidoMaterno.setText("Apellido Materno:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoApellidoMaterno.setIcon(Icono);
+        TextoApellidoMaterno.setSize(135, 24);
+        TextoApellidoMaterno.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoApellidoPaterno.getLocation().getY() + 40);
+        PanelDerecho.add(TextoApellidoMaterno);
+        
+        // Texto para campo Dirección
+        JLabel TextoDireccion = new JLabel();
+        TextoDireccion.setForeground(Color.BLACK);
+        TextoDireccion.setBackground(Color.WHITE);
+        TextoDireccion.setName("TextoDireccion");
+        TextoDireccion.setBorder(null);
+        TextoDireccion.setToolTipText("<html><p><strong>Dirección</strong></p></html>");
+        TextoDireccion.setText("Dirección:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Direccion-BelizeHope-24x24.png"));
+        TextoDireccion.setIcon(Icono);
+        TextoDireccion.setSize(135, 24);
+        TextoDireccion.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoApellidoMaterno.getLocation().getY() + 40);
+        PanelDerecho.add(TextoDireccion);
+        
+        // Texto para campo Teléfono
+        JLabel TextoTelefono = new JLabel();
+        TextoTelefono.setForeground(Color.BLACK);
+        TextoTelefono.setBackground(Color.WHITE);
+        TextoTelefono.setName("TextoTelefono");
+        TextoTelefono.setBorder(null);
+        TextoTelefono.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoTelefono.setText("Teléfono:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Telefono-BelizeHope-24x24.png"));
+        TextoTelefono.setIcon(Icono);
+        TextoTelefono.setSize(135, 24);
+        TextoTelefono.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoDireccion.getLocation().getY() + 40);
+        PanelDerecho.add(TextoTelefono);
+        
+        // |---------------------Combobox--------------------------------------|
+        JComboBox ComboBuscar = new JComboBox();
+        ComboBuscar.setName("ComboBuscar");
+        ComboBuscar.addItem("ID");
+        ComboBuscar.addItem("Nombre de Usuario");
+        ComboBuscar.addItem("Nombre");
+        ComboBuscar.addItem("Apellido Paterno");
+        ComboBuscar.addItem("Apellido Materno");
+        ComboBuscar.setSize(120, 20);
+        ComboBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel);
+        PanelFechaHoraContenido.add(ComboBuscar);
+        // |-------------------Campos de Texto---------------------------------|
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Campo para búsqueda
+        JTextField CampoBuscar = new JTextField();
+        CampoBuscar.setName("CampoBuscar");
+        CampoBuscar.setBorder(null);
+        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setBackground(Color.WHITE);
+        CampoBuscar.setForeground(ColorNoEscrito);
+        CampoBuscar.setSize(120, 20);
+        CampoBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel);
+        PanelFechaHoraContenido.add(CampoBuscar);
+        
+        // Campo para ID
+        JTextField CampoID = new JTextField();
+        CampoID.setName("CampoID");
+        CampoID.setBorder(null);
+        CampoID.setText("ID");
+        CampoID.setBackground(Color.WHITE);
+        CampoID.setForeground(ColorNoEscrito);
+        CampoID.setSize(120, 20);
+        CampoID.setLocation((int) TextoID.getLocation().getX() + 
+                (int) (TextoID.getSize().getWidth() + 10), 
+                (int) TextoID.getLocation().getY());
+        PanelCentral.add(CampoID);
+        
+        // Campo para Username
+        JTextField CampoUsername = new JTextField();
+        CampoUsername.setName("CampoUsername");
+        CampoUsername.setBorder(null);
+        CampoUsername.setText("Nombre de Usuario");
+        CampoUsername.setBackground(Color.WHITE);
+        CampoUsername.setForeground(ColorNoEscrito);
+        CampoUsername.setSize(120, 20);
+        CampoUsername.setLocation((int) TextoUsername.getLocation().getX() +
+                (int) (TextoUsername.getSize().getWidth() + 10), 
+                (int) TextoUsername.getLocation().getY());
+        PanelCentral.add(CampoUsername);
+        
+        // Campo para contraseña
+        JPasswordField CampoContrasena = new JPasswordField();
+        CampoContrasena.setName("CampoContrasena");
+        CampoContrasena.setBorder(null);
+        CampoContrasena.setText("Contraseña");
+        CampoContrasena.setBackground(Color.WHITE);
+        CampoContrasena.setForeground(ColorNoEscrito);
+        CampoContrasena.setSize(120, 20);
+        CampoContrasena.setLocation((int) TextoContrasena.getLocation().getX() +
+                (int) (TextoContrasena.getSize().getWidth() + 10), 
+                (int) TextoContrasena.getLocation().getY());
+        PanelCentral.add(CampoContrasena);
+        
+        // Campo para Rol
+        JTextField CampoRol = new JTextField();
+        CampoRol.setName("CampoRol");
+        CampoRol.setBorder(null);
+        CampoRol.setText("Rol");
+        CampoRol.setBackground(Color.WHITE);
+        CampoRol.setForeground(ColorNoEscrito);
+        CampoRol.setSize(120, 20);
+        CampoRol.setLocation((int) TextoRol.getLocation().getX() +
+                (int) (TextoRol.getSize().getWidth() + 10), 
+                (int) TextoRol.getLocation().getY());
+        PanelCentral.add(CampoRol);
+        
+        // Campo para Nombre
+        JTextField CampoNombre = new JTextField();
+        CampoNombre.setName("CampoNombre");
+        CampoNombre.setBorder(null);
+        CampoNombre.setText("Nombre(s)");
+        CampoNombre.setBackground(Color.WHITE);
+        CampoNombre.setForeground(ColorNoEscrito);
+        CampoNombre.setSize(120, 20);
+        CampoNombre.setLocation((int) TextoNombre.getLocation().getX() +
+                (int) (TextoNombre.getSize().getWidth() + 10), 
+                (int) TextoNombre.getLocation().getY());
+        PanelDerecho.add(CampoNombre);
+        
+        // Campo para Apellido Paterno
+        JTextField CampoApellidoPaterno = new JTextField();
+        CampoApellidoPaterno.setName("CampoApellidoPaterno");
+        CampoApellidoPaterno.setBorder(null);
+        CampoApellidoPaterno.setText("Apellido Paterno");
+        CampoApellidoPaterno.setBackground(Color.WHITE);
+        CampoApellidoPaterno.setForeground(ColorNoEscrito);
+        CampoApellidoPaterno.setSize(120, 20);
+        CampoApellidoPaterno.setLocation((int) TextoApellidoPaterno.getLocation().getX() +
+                (int) (TextoApellidoPaterno.getSize().getWidth() + 10), 
+                (int) TextoApellidoPaterno.getLocation().getY());
+        PanelDerecho.add(CampoApellidoPaterno);
+        
+        // Campo para Apellido Materno
+        JTextField CampoApellidoMaterno = new JTextField();
+        CampoApellidoMaterno.setName("CampoApellidoMaterno");
+        CampoApellidoMaterno.setBorder(null);
+        CampoApellidoMaterno.setText("Apellido Materno");
+        CampoApellidoMaterno.setBackground(Color.WHITE);
+        CampoApellidoMaterno.setForeground(ColorNoEscrito);
+        CampoApellidoMaterno.setSize(120, 20);
+        CampoApellidoMaterno.setLocation((int) TextoApellidoMaterno.getLocation().getX() +
+                (int) (TextoApellidoMaterno.getSize().getWidth() + 10), 
+                (int) TextoApellidoMaterno.getLocation().getY());
+        PanelDerecho.add(CampoApellidoMaterno);
+        
+        // Campo para Dirección
+        JTextField CampoDireccion = new JTextField();
+        CampoDireccion.setName("CampoDireccion");
+        CampoDireccion.setBorder(null);
+        CampoDireccion.setText("Dirección");
+        CampoDireccion.setBackground(Color.WHITE);
+        CampoDireccion.setForeground(ColorNoEscrito);
+        CampoDireccion.setSize(120, 20);
+        CampoDireccion.setLocation((int) TextoDireccion.getLocation().getX() +
+                (int) (TextoDireccion.getSize().getWidth() + 10), 
+                (int) TextoDireccion.getLocation().getY());
+        PanelDerecho.add(CampoDireccion);
+        
+        // Campo para Teléfono
+        JTextField CampoTelefono = new JTextField();
+        CampoTelefono.setName("CampoTelefono");
+        CampoTelefono.setBorder(null);
+        CampoTelefono.setText("Teléfono");
+        CampoTelefono.setBackground(Color.WHITE);
+        CampoTelefono.setForeground(ColorNoEscrito);
+        CampoTelefono.setSize(120, 20);
+        CampoTelefono.setLocation((int) TextoTelefono.getLocation().getX() +
+                (int) (TextoTelefono.getSize().getWidth() + 10), 
+                (int) TextoTelefono.getLocation().getY());
+        PanelDerecho.add(CampoTelefono);
+        
+        // |---------------------Separadores-----------------------------------|
+        // Color para separador
+        Color ColorSeparador = new Color(51, 51, 51);
+        // Separador para CampoBuscar
+        JSeparator SeparadorBuscar = new JSeparator();
+        SeparadorBuscar.setName("SeparadorBuscar");
+        SeparadorBuscar.setBorder(null);
+        SeparadorBuscar.setBackground(Color.WHITE);
+        SeparadorBuscar.setForeground(ColorSeparador);
+        SeparadorBuscar.setSize(120, 15);
+        SeparadorBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel + 20);
+        PanelFechaHoraContenido.add(SeparadorBuscar);
+        
+        // Separador para CampoID
+        JSeparator SeparadorID = new JSeparator();
+        SeparadorID.setName("SeparadorBuscar");
+        SeparadorID.setBorder(null);
+        SeparadorID.setBackground(Color.WHITE);
+        SeparadorID.setForeground(ColorSeparador);
+        SeparadorID.setSize(120, 15);
+        SeparadorID.setLocation((int) CampoID.getLocation().getX(),
+                (int) CampoID.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorID);
+        
+        // Separador para CampoUsername
+        JSeparator SeparadorUsername = new JSeparator();
+        SeparadorUsername.setName("SeparadorUsername");
+        SeparadorUsername.setBorder(null);
+        SeparadorUsername.setBackground(Color.WHITE);
+        SeparadorUsername.setForeground(ColorSeparador);
+        SeparadorUsername.setSize(120, 15);
+        SeparadorUsername.setLocation((int) CampoUsername.getLocation().getX(), 
+                (int) CampoUsername.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorUsername);
+        
+        // Separador para CampoContrasena
+        JSeparator SeparadorContrasena = new JSeparator();
+        SeparadorContrasena.setName("SeparadorContrasena");
+        SeparadorContrasena.setBorder(null);
+        SeparadorContrasena.setBackground(Color.WHITE);
+        SeparadorContrasena.setForeground(ColorSeparador);
+        SeparadorContrasena.setSize(120, 15);
+        SeparadorContrasena.setLocation((int) CampoContrasena.getLocation().getX(), 
+                (int) CampoContrasena.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorContrasena);
+        
+        // Separador para CampoRol
+        JSeparator SeparadorRol = new JSeparator();
+        SeparadorRol.setName("SeparadorRol");
+        SeparadorRol.setBorder(null);
+        SeparadorRol.setBackground(Color.WHITE);
+        SeparadorRol.setForeground(ColorSeparador);
+        SeparadorRol.setSize(120, 15);
+        SeparadorRol.setLocation((int) CampoRol.getLocation().getX(), 
+                (int) CampoRol.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorRol);
+        
+        // Separador para CampoNombre
+        JSeparator SeparadorNombre = new JSeparator();
+        SeparadorNombre.setName("SeparadorNombre");
+        SeparadorNombre.setBorder(null);
+        SeparadorNombre.setBackground(Color.WHITE);
+        SeparadorNombre.setForeground(ColorSeparador);
+        SeparadorNombre.setSize(120, 15);
+        SeparadorNombre.setLocation((int) CampoNombre.getLocation().getX(), 
+                (int) CampoNombre.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorNombre);
+        
+        // Separador para CampoApellidoPaterno
+        JSeparator SeparadorApellidoPaterno = new JSeparator();
+        SeparadorApellidoPaterno.setName("SeparadorApellidoPaterno");
+        SeparadorApellidoPaterno.setBorder(null);
+        SeparadorApellidoPaterno.setBackground(Color.WHITE);
+        SeparadorApellidoPaterno.setForeground(ColorSeparador);
+        SeparadorApellidoPaterno.setSize(120, 15);
+        SeparadorApellidoPaterno.setLocation((int) CampoApellidoPaterno.getLocation().getX(), 
+                (int) CampoApellidoPaterno.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorApellidoPaterno);
+        
+        // Separador para CampoApellidoMaterno
+        JSeparator SeparadorApellidoMaterno = new JSeparator();
+        SeparadorApellidoMaterno.setName("SeparadorApellidoMaterno");
+        SeparadorApellidoMaterno.setBorder(null);
+        SeparadorApellidoMaterno.setBackground(Color.WHITE);
+        SeparadorApellidoMaterno.setForeground(ColorSeparador);
+        SeparadorApellidoMaterno.setSize(120, 15);
+        SeparadorApellidoMaterno.setLocation((int) CampoApellidoMaterno.getLocation().getX(), 
+                (int) CampoApellidoMaterno.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorApellidoMaterno);
+        
+        // Separador para CampoDireccion
+        JSeparator SeparadorDireccion = new JSeparator();
+        SeparadorDireccion.setName("SeparadorDireccion");
+        SeparadorDireccion.setBorder(null);
+        SeparadorDireccion.setBackground(Color.WHITE);
+        SeparadorDireccion.setForeground(ColorSeparador);
+        SeparadorDireccion.setSize(120, 15);
+        SeparadorDireccion.setLocation((int) CampoDireccion.getLocation().getX(), 
+                (int) CampoDireccion.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorDireccion);
+        
+        // Separador para CampoTelefono
+        JSeparator SeparadorTelefono = new JSeparator();
+        SeparadorTelefono.setName("SeparadorTelefono");
+        SeparadorTelefono.setBorder(null);
+        SeparadorTelefono.setBackground(Color.WHITE);
+        SeparadorTelefono.setForeground(ColorSeparador);
+        SeparadorTelefono.setSize(120, 15);
+        SeparadorTelefono.setLocation((int) CampoTelefono.getLocation().getX(), 
+                (int) CampoTelefono.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorTelefono);
+        
+        // |---------------------Funciones de botones--------------------------|
+        // Boton para Reestablecer campos
+        BotonReestablecer.addActionListener(new ActionListener(){
+            // Override de listener para cuando se hace click
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                CampoID.setText("ID");
+                CampoID.setForeground(ColorNoEscrito);
+                CampoUsername.setText("Nombre de Usuario");
+                CampoUsername.setForeground(ColorNoEscrito);
+                CampoContrasena.setText("Contraseña");
+                CampoContrasena.setForeground(ColorNoEscrito);
+                CampoRol.setText("Rol");
+                CampoRol.setForeground(ColorNoEscrito);
+                CampoNombre.setText("Nombre(s)");
+                CampoNombre.setForeground(ColorNoEscrito);
+                CampoApellidoPaterno.setText("Apellido Paterno");
+                CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                CampoApellidoMaterno.setText("Apellido Materno");
+                CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                CampoDireccion.setText("Dirección");
+                CampoDireccion.setForeground(ColorNoEscrito);
+                CampoTelefono.setText("Teléfono");
+                CampoTelefono.setForeground(ColorNoEscrito);
+            }
+        });
+        
+        // Añadir listener para acción en BotonAnadir
+        Botones[0].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    Usuario UsuarioTemp;
+                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
+                            Direccion, Telefono;
+                    Boolean Registrable;
+                    IDAAsignar = "-1";
+                    Registrable = true;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                    Contrasena = String.valueOf(CampoContrasena.getPassword());
+                    Rol = CampoRol.getText();
+                    Nombre = CampoNombre.getText();
+                    AP = CampoApellidoPaterno.getText();
+                    AM = CampoApellidoMaterno.getText();
+                    Direccion = CampoDireccion.getText();
+                    Telefono = CampoTelefono.getText();
+                   
+                    if(Username.equals("Nombre de Usuario") ||
+                            Username.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Contrasena.equals("Contraseña") ||
+                                Contrasena.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Rol.equals("Rol") || Rol.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Nombre.equals("Nombre(s)") ||
+                                        Nombre.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, 
+                                            "Faltan campos por llenar");
+                                }
+                                else
+                                {
+                                    if(AP.equals("Apellido Paterno") ||
+                                            AP.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, 
+                                                "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(AM.equals("Apellido Materno") ||
+                                                AM.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, 
+                                                    "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            if(Direccion.equals("Dirección") ||
+                                                    Direccion.equals(""))
+                                            {
+                                                JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                            }
+                                            else
+                                            {
+                                                if(Telefono.equals("Teléfono") ||
+                                                        Telefono.equals(""))
+                                                {
+                                                    JOptionPane.showMessageDialog(null,
+                                                            "Faltan campo por llenar");
+                                                }
+                                                else
+                                                {
+                                                    if(ID.equals("ID") ||
+                                                                    ID.equals(""))
+                                                    {
+                                                        int x, Mayor;
+                                                        Mayor = 0;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
+                                                            }
+                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                            {
+                                                                Registrable = false;
+                                                            }
+                                                        }
+                                                        IDAAsignar = String.valueOf(Mayor + 1);
+                                                    }
+                                                    else
+                                                    {
+                                                        int x;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                JOptionPane.showMessageDialog(null, 
+                                                                        "El ID " + ID +" ya está registrado");
+                                                                Registrable = false;
+                                                            }
+                                                            else
+                                                            {
+                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                                {
+                                                                   JOptionPane.showMessageDialog(null, 
+                                                                            "El nombre de usuario " +
+                                                                            Username + " ya está registrado");
+                                                                    Registrable = false;
+                                                                }
+                                                            }
+                                                        }
+                                                        if(Registrable)
+                                                        {
+                                                            IDAAsignar = ID;
+                                                        }
+                                                    }
+                                                    if(Registrable)
+                                                    {
+                                                        UsuarioTemp.setID(IDAAsignar);
+                                                        UsuarioTemp.setUsername(Username);
+                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
+                                                        if(Rol.equals("Admin"))
+                                                        {
+                                                            UsuarioTemp.setRol("Admin");
+                                                        }
+                                                        else
+                                                        {
+                                                            UsuarioTemp.setRol("Usuario");
+                                                        }
+                                                        UsuarioTemp.setNombre(Nombre);
+                                                        UsuarioTemp.setApellidoPaterno(AP);
+                                                        UsuarioTemp.setApellidoMaterno(AM);
+                                                        UsuarioTemp.setDireccion(Direccion);
+                                                        UsuarioTemp.setTelefono(Telefono);
+                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
+                                                        CampoID.setText("ID");
+                                                        CampoID.setForeground(ColorNoEscrito);
+                                                        CampoUsername.setText("Nombre de Usuario");
+                                                        CampoUsername.setForeground(ColorNoEscrito);
+                                                        CampoContrasena.setText("Contraseña");
+                                                        CampoContrasena.setForeground(ColorNoEscrito);
+                                                        CampoRol.setText("Rol");
+                                                        CampoRol.setForeground(ColorNoEscrito);
+                                                        CampoNombre.setText("Nombre(s)");
+                                                        CampoNombre.setForeground(ColorNoEscrito);
+                                                        CampoApellidoPaterno.setText("Apellido Paterno");
+                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                                                        CampoApellidoMaterno.setText("Apellido Materno");
+                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                                                        CampoDireccion.setText("Dirección");
+                                                        CampoDireccion.setForeground(ColorNoEscrito);
+                                                        CampoTelefono.setText("Teléfono");
+                                                        CampoTelefono.setForeground(ColorNoEscrito);
+                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
+                                                                Username + " con éxito");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                };
+            });
+        
+        // Añadir listener para acción en eliminar
+        Botones[1].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    Usuario UsuarioTemp;
+                    String ID, Username;
+                    Boolean Eliminable;
+                    int Eliminar;
+                    Eliminar = -1;
+                    Eliminable = false;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                   
+                    
+                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
+                            (ID.equals("ID") || ID.equals("")))
+                    {
+                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                    }
+                    else
+                    {
+                        int x;
+                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        {
+                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
+                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            {
+                                Eliminable = true;
+                                Eliminar = x;
+                            }
+                        }
+                        if(Eliminable)
+                        {
+                            CampoID.setText("ID");
+                            CampoID.setForeground(ColorNoEscrito);
+                            CampoUsername.setText("Nombre de Usuario");
+                            CampoUsername.setForeground(ColorNoEscrito);
+                            CampoContrasena.setText("Contraseña");
+                            CampoContrasena.setForeground(ColorNoEscrito);
+                            CampoRol.setText("Rol");
+                            CampoRol.setForeground(ColorNoEscrito);
+                            CampoNombre.setText("Nombre(s)");
+                            CampoNombre.setForeground(ColorNoEscrito);
+                            CampoApellidoPaterno.setText("Apellido Paterno");
+                            CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                            CampoApellidoMaterno.setText("Apellido Materno");
+                            CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                            CampoDireccion.setText("Dirección");
+                            CampoDireccion.setForeground(ColorNoEscrito);
+                            CampoTelefono.setText("Teléfono");
+                            CampoTelefono.setForeground(ColorNoEscrito);
+                            if(Eliminar != -1)
+                            {
+                                int Respuesta;
+                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                Respuesta = JOptionPane.showConfirmDialog(null, 
+                                        "¿Seguro que desea eliminar al usuario " +
+                                        UsuarioTemp.getUsername());
+                                if(Respuesta == 0)
+                                {
+                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
+                                    JOptionPane.showMessageDialog(null, "Se ha eliminado " +
+                                        UsuarioTemp.getUsername() + " con éxito");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if(!Username.equals("Nombre de Usuario") &&
+                                    !Username.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
+                                        Username);
+                            }
+                            else
+                            {
+                                if(!ID.equals("ID") &&
+                                    !ID.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
+                                            ID);
+                                }
+                            }
+                        }
+                    }
+                }
+        });
+        
+        // Añadir listener para acción en editar
+        Botones[2].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    System.out.println("");
+                }
+        });
+        
+        // Añadir listener para acción en guardar
+        Botones[3].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    RegistroCRUD RegistroGuardar = new RegistroCRUD();
+                    RegistroGuardar.Guardar(RegistrosVentana);
+                    JOptionPane.showMessageDialog(null, "Se han guardado los registros con éxito");
+                }
+        });
+        
+        // Añadir listener para acción en buscar
+        Botones[4].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    String Buscar;
+                    Usuario UsuarioTemp;
+                    UsuarioTemp = new Usuario();
+                    Boolean Encontrado;
+                    Color ColorEscribir = new Color(51, 51, 51);
+                    Encontrado = false;
+                    int BuscarPor, x, Indice;
+                    Indice = -1;
+                    Buscar = CampoBuscar.getText();
+                    //if()
+                    BuscarPor = ComboBuscar.getSelectedIndex();
+                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
+                    }
+                    else
+                    {
+                        switch(BuscarPor)
+                        {
+                            case 0 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 1 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 2 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 3 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 4 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        if(Encontrado && Indice > -1)
+                        {
+                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
+                            CampoID.setText(UsuarioTemp.getID());
+                            CampoID.setForeground(ColorEscribir);
+                            CampoUsername.setText(UsuarioTemp.getUsername());
+                            CampoUsername.setForeground(ColorEscribir);
+                            CampoContrasena.setText(UsuarioTemp.getContrasena());
+                            CampoContrasena.setForeground(ColorEscribir);
+                            CampoRol.setText(UsuarioTemp.getRol());
+                            CampoRol.setForeground(ColorEscribir);
+                            CampoNombre.setText(UsuarioTemp.getNombre());
+                            CampoNombre.setForeground(ColorEscribir);
+                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
+                            CampoApellidoPaterno.setForeground(ColorEscribir);
+                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
+                            CampoApellidoMaterno.setForeground(ColorEscribir);
+                            CampoDireccion.setText(UsuarioTemp.getDireccion());
+                            CampoDireccion.setForeground(ColorEscribir);
+                            CampoTelefono.setText(UsuarioTemp.getTelefono());
+                            CampoTelefono.setForeground(ColorEscribir);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                                    Buscar);
+                        }
+                    }
+                }
+        });
+        
+        // |----------------------Funciones de ComboBox------------------------|
+        // Añadir listener para cuando se selecciona item de ComboBuscar
+        ComboBuscar.addItemListener(new ItemListener(){
+            // Override para itemStateChanged
+            @Override
+            public void itemStateChanged(ItemEvent e) 
+            {
+                String Seleccionado;
+                Seleccionado = (String) ComboBuscar.getSelectedItem();
+                System.out.println(Seleccionado);
+            }
+        });
+        
+        // |----------------------Funciones de campos--------------------------| 
+        // |------------------------CampoBuscar--------------------------------|
+        // Se añade listener para enfoque de CampoBuscar
+        CampoBuscar.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Buscar Usuario") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoBuscar.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Buscar Usuario"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoBuscar.setText("Buscar Usuario");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoBuscar
+        CampoBuscar.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoBuscar.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Buscar Usuario"))
+                {
+                    // Elimina contenido
+                    CampoBuscar.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoBuscar");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoBuscar");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoBuscar");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoBuscar");
+            }
+
+        });
+        // |------------------------CampoID------------------------------------|
+        // Se añade listener para enfoque de CampoBuscar
+        CampoID.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("ID") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoID.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("ID"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoID.setText("ID");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoBuscar
+        CampoID.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoID.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("ID"))
+                {
+                    // Elimina contenido
+                    CampoID.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoID");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoID");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoID");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoID");
+            }
+
+        });
+        
+        // |------------------------CampoUsername------------------------------|
+        // Se añade listener para enfoque de CampoUsername
+        CampoUsername.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoUsername.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Nombre de Usuario") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoUsername.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoUsername.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Nombre de Usuario"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoUsername.setText("Nombre de Usuario");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoUsername
+        CampoUsername.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoUsername.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Nombre de Usuario"))
+                {
+                    // Elimina contenido
+                    CampoUsername.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoUsername");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoUsername");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoUsername");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoUsername");
+            }
+
+        });
+        
+        // |------------------------CampoContrasena----------------------------|
+        // Se añade listener para enfoque de CampoContrasena
+        CampoContrasena.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Contraseña") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoContrasena.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Contraseña"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoContrasena.setText("Contraseña");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoContrasena
+        CampoContrasena.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Contraseña"))
+                {
+                    // Elimina contenido
+                    CampoContrasena.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoContrasena");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoContrasena");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoContrasena");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoContrasena");
+            }
+
+        });
+        
+        // |------------------------CampoRol-----------------------------------|
+        // Se añade listener para enfoque de CampoRol
+        CampoRol.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Rol") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoRol.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Rol"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoRol.setText("Rol");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoRol
+        CampoRol.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoRol.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Rol"))
+                {
+                    // Elimina contenido
+                    CampoRol.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoRol");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoRol");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoRol");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoRol");
+            }
+
+        });
+        
+        // |------------------------CampoNombre--------------------------------|
+        // Se añade listener para enfoque de CampoNombre
+        CampoNombre.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoNombre.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Nombre(s)") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoNombre.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoNombre.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Nombre(s)"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoNombre.setText("Nombre(s)");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoNombre
+        CampoNombre.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoNombre.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Nombre(s)"))
+                {
+                    // Elimina contenido
+                    CampoNombre.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoNombre");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoNombre");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoNombre");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoNombre");
+            }
+
+        });
+        
+        // |------------------CampoApellidoPaterno-----------------------------|
+        // Se añade listener para enfoque de CampoApellidoPaterno
+        CampoApellidoPaterno.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoPaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Apellido Paterno") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoApellidoPaterno.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoPaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Apellido Paterno"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoApellidoPaterno.setText("Apellido Paterno");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoApellidoPaterno
+        CampoApellidoPaterno.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoApellidoPaterno.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Apellido Paterno"))
+                {
+                    // Elimina contenido
+                    CampoApellidoPaterno.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoApellidoPaterno");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoApellidoPaterno");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoApellidoPaterno");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoApellidoPaterno");
+            }
+
+        });
+        
+        // |------------------CampoApellidoMaterno-----------------------------|
+        // Se añade listener para enfoque de CampoApellidoMaterno
+        CampoApellidoMaterno.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoMaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Apellido Materno") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoApellidoMaterno.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoMaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Apellido Materno"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoApellidoMaterno.setText("Apellido Materno");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoApellidoMaterno
+        CampoApellidoMaterno.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoApellidoMaterno.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Apellido Materno"))
+                {
+                    // Elimina contenido
+                    CampoApellidoMaterno.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoApellidoMaterno");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoApellidoMaterno");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoApellidoMaterno");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoApellidoMaterno");
+            }
+
+        });
+        
+        // |------------------------CampoDireccion-----------------------------|
+        // Se añade listener para enfoque de CampoDireccion
+        CampoDireccion.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoDireccion.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Dirección") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoDireccion.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoDireccion.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Dirección"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoDireccion.setText("Dirección");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoDireccion
+        CampoDireccion.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoDireccion.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Dirección"))
+                {
+                    // Elimina contenido
+                    CampoDireccion.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoDireccion");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoDireccion");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoDireccion");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoDireccion");
+            }
+
+        });
+        
+        // |------------------------CampoTelefono------------------------------|
+        // Se añade listener para enfoque de CampoTelefono
+        CampoTelefono.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoTelefono.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Teléfono") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoTelefono.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoTelefono.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Teléfono"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoTelefono.setText("Teléfono");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoTelefono
+        CampoTelefono.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoTelefono.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Teléfono"))
+                {
+                    // Elimina contenido
+                    CampoTelefono.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoTelefono");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoTelefono");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoTelefono");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoTelefono");
+            }
+
+        });
+        
+        // |-------------------------Refrescamos Paneles-----------------------|
+        for(JPanel Panel : ListaPaneles)
+        {
+            // Revalidamos y refrescamos paneles
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        PanelVehiculos.revalidate();
+        PanelVehiculos.repaint();
     }//GEN-LAST:event_BotonVehiculosActionPerformed
 
+    // Método privado para cuando se hace click en BotonClientes
     private void BotonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonClientesActionPerformed
         // Reasignamos texto de ruta
         TextoRuta.setText("Clientes");
@@ -783,7 +4974,7 @@ public class Menu extends javax.swing.JFrame {
         "/content/images/menu/clients/BuscarPressed-0b3653-24x24.png"};
         // Creamos color para botones
         Color ColorBoton = new Color(17, 84, 128);
-        // Creamos botones para funciones de Usuarios
+        // Creamos botones para funciones de Clientes
         JButton BotonAnadirClientes = new JButton();
         JButton BotonEliminarClientes = new JButton();
         JButton BotonEditarClientes = new JButton();
@@ -2823,12 +7014,2107 @@ public class Menu extends javax.swing.JFrame {
             Panel.revalidate();
             Panel.repaint();
         }
-        PanelUsuarios.revalidate();
-        PanelUsuarios.repaint();
+        PanelClientes.revalidate();
+        PanelClientes.repaint();
     }//GEN-LAST:event_BotonClientesActionPerformed
 
+    // Método para cuando se hace click en BotonPiezas
     private void BotonPiezasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPiezasActionPerformed
-        // TODO add your handling code here:
+        // Reasignamos texto de ruta
+        TextoRuta.setText("Piezas");
+        // Pintamos el panel para indicar opción actual
+        Color PanelActivo = new Color(59,143,255);
+        Color PanelInactivo  = new Color(19,140,220);
+        JPanel PanelesInactivos[] = {PanelUsuarios, PanelVehiculos, PanelReparaciones,
+        PanelClientes, PanelCerrarSesion};
+        // Ciclo for para setear los paneles a colores inactivos
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.setBackground(PanelInactivo);
+        }
+        PanelPiezas.setBackground(PanelActivo);
+        // Obtenemos lista de objetos o paneles
+        JPanel [] ListaPaneles = {PanelRutaContenido, PanelFechaHoraContenido,
+        PanelCentral, PanelDerecho, PanelInferior,
+        PanelInferiorDerecho};
+        // Eliminamos todo de forma iterativa
+        for(JPanel Panel : ListaPaneles)
+        {
+            // Obtenemos lista de componentes de dicho panel
+            Component [] ListaComponentes = Panel.getComponents();
+            // Iteramos entre todos los elementos del panel para eliminar todos
+            // los componentes que ya no requirimos
+            for(Component Componente : ListaComponentes)
+            {
+                Panel.remove(Componente);
+            }
+        }
+        // |------------------Crear botones de forma iterativa-----------------|
+        // Contador
+        int Cont;
+        Cont = 0;
+        // Lista de strings para usar
+        String Textos[] = {"Añadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Nombres[] = {"Anadir", "Eliminar", "Editar", "Guardar", "Buscar"};
+        String Imagenes[] = {"/content/images/menu/parts/Anadir-115480-24x24.png",
+        "/content/images/menu/parts/Eliminar-115480-24x24.png",
+        "/content/images/menu/parts/Editar-115480-24x24.png",
+        "/content/images/menu/parts/Guardar-115480-24x24.png",
+        "/content/images/menu/parts/Buscar-115480-24x24.png"};
+        String ImagenesOver[] = {"/content/images/menu/parts/AnadirOver-2980b9-24x24.png",
+        "/content/images/menu/parts/EliminarOver-2980b9-24x24.png",
+        "/content/images/menu/parts/EditarOver-2980b9-24x24.png",
+        "/content/images/menu/parts/GuardarOver-2980b9-24x24.png",
+        "/content/images/menu/parts/BuscarOver-2980b9-24x24.png"};
+        String ImagenesPressed[] = {"/content/images/menu/parts/AnadirPressed-0b3653-24x24.png",
+        "/content/images/menu/parts/EliminarPressed-0b3653-24x24.png",
+        "/content/images/menu/parts/EditarPressed-0b3653-24x24.png",
+        "/content/images/menu/parts/GuardarPressed-0b3653-24x24.png",
+        "/content/images/menu/parts/BuscarPressed-0b3653-24x24.png"};
+        // Creamos color para botones
+        Color ColorBoton = new Color(17, 84, 128);
+        // Creamos botones para funciones de Piezas
+        JButton BotonAnadirPiezas = new JButton();
+        JButton BotonEliminarPiezas = new JButton();
+        JButton BotonEditarPiezas = new JButton();
+        JButton BotonGuardarPiezas = new JButton();
+        JButton BotonBuscarPiezas = new JButton();
+        JButton Botones[] = {BotonAnadirPiezas, BotonEliminarPiezas,
+        BotonEditarPiezas, BotonGuardarPiezas, BotonBuscarPiezas};
+        for(JButton Boton : Botones)
+        {
+            Boton.setName("Boton" + Nombres[Cont]);
+            Boton.setBorderPainted(false);
+            Boton.setBackground(Color.white);
+            Boton.setContentAreaFilled(false);
+            Boton.setFocusPainted(false);
+            Boton.setForeground(ColorBoton);
+            Boton.setBorder(null);
+            Boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            Boton.setHorizontalTextPosition(SwingConstants.CENTER);
+            Boton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            Boton.setText(Textos[Cont]);
+            Boton.setToolTipText("<html><p><strong>" + Textos[Cont] + " Pieza" +
+                    "</strong></p></html>");
+            ImageIcon Icono = new ImageIcon(getClass().getResource(
+                Imagenes[Cont]));
+            Boton.setIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesPressed[Cont]));
+            Boton.setPressedIcon(Icono);
+            Icono = new ImageIcon(getClass().getResource(
+                ImagenesOver[Cont]));
+            Boton.setRolloverIcon(Icono);
+            Boton.setSelectedIcon(Icono);
+            Boton.setSize(55, 40);
+            Cont++;
+        }
+        // |------------------------Ubicaciones de botones---------------------|
+        double AltoPanel, AnchoPanel, DivisionPanel;
+        int x;
+        AnchoPanel = PanelRutaContenido.getSize().getWidth(); 
+        DivisionPanel = AnchoPanel / 3;
+        DivisionPanel -= 100;
+        AltoPanel = PanelRutaContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        for(x = 0; x < 4; x++)
+        {
+            Botones[x].setLocation((int) DivisionPanel + (80 * (x + 1)), (int) AltoPanel);
+            PanelRutaContenido.add(Botones[x]);
+        }
+        
+        AnchoPanel = PanelFechaHoraContenido.getSize().getWidth(); 
+        AltoPanel = PanelFechaHoraContenido.getSize().getHeight();
+        AltoPanel -= 80;
+        Botones[4].setLocation((int) AnchoPanel - 80, (int) AltoPanel);
+        PanelFechaHoraContenido.add(Botones[4]);
+
+        // |-----------------------BotonReestablecer---------------------------|
+        Color ColorReestablecer = new Color(41,128,185);
+        JButton BotonReestablecer = new JButton();
+        BotonReestablecer.setBorderPainted(true);
+        BotonReestablecer.setBackground(ColorReestablecer);
+        BotonReestablecer.setContentAreaFilled(true);
+        BotonReestablecer.setFocusPainted(false);
+        BotonReestablecer.setForeground(Color.WHITE);
+        BotonReestablecer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        BotonReestablecer.setHorizontalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setVerticalTextPosition(SwingConstants.CENTER);
+        BotonReestablecer.setText("Reestablecer");
+        BotonReestablecer.setToolTipText("<html><p><strong>Reestablecer campos" +
+                "</strong></p></html>");
+        BotonReestablecer.setSize(120, 25);
+        BotonReestablecer.setLocation((int) AnchoPanel - 380, 
+                (int) AltoPanel + 30);
+        PanelFechaHoraContenido.add(BotonReestablecer);
+        // |----------------------Texto----------------------------------------|
+        // Para imagenes de campos
+        ImageIcon Icono;
+        // Texto para buscar por
+        JLabel TextoBuscar = new JLabel();
+        TextoBuscar.setForeground(Color.BLACK);
+        TextoBuscar.setBackground(Color.WHITE);
+        TextoBuscar.setName("TextoBuscar");
+        TextoBuscar.setBorder(null);
+        TextoBuscar.setToolTipText("<html><p><strong>Buscar pieza por</strong></p></html>");
+        TextoBuscar.setText("Buscar pieza por");
+        TextoBuscar.setSize(120, 20);
+        TextoBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel - 20);
+        PanelFechaHoraContenido.add(TextoBuscar);
+        
+        // Panel Central
+        double AltoPanelCentral, AnchoPanelCentral;
+        
+        AltoPanelCentral = PanelCentral.getSize().getHeight();
+        AnchoPanelCentral = PanelCentral.getSize().getWidth();
+        
+        // Texto para campo ID
+        JLabel TextoID = new JLabel();
+        TextoID.setForeground(Color.BLACK);
+        TextoID.setBackground(Color.WHITE);
+        TextoID.setName("TextoID");
+        TextoID.setBorder(null);
+        TextoID.setToolTipText("<html><p><strong>ID</strong></p></html>");
+        TextoID.setText("ID:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoID.setIcon(Icono);
+        TextoID.setSize(100, 24);
+        TextoID.setLocation((int) AnchoPanelCentral - 380, 30);
+        System.out.println();
+        PanelCentral.add(TextoID);
+        
+        // Texto para campo Username
+        JLabel TextoUsername = new JLabel();
+        TextoUsername.setForeground(Color.BLACK);
+        TextoUsername.setBackground(Color.WHITE);
+        TextoUsername.setName("TextoUsername");
+        TextoUsername.setBorder(null);
+        TextoUsername.setToolTipText("<html><p><strong>Nombre de Usuario</strong></p></html>");
+        TextoUsername.setText("Username:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoUsername.setIcon(Icono);
+        TextoUsername.setSize(100, 24);
+        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoID.getLocation().getY() + 40);
+        PanelCentral.add(TextoUsername);
+        
+        // Texto para campo Contraseña
+        JLabel TextoContrasena = new JLabel();
+        TextoContrasena.setForeground(Color.BLACK);
+        TextoContrasena.setBackground(Color.WHITE);
+        TextoContrasena.setName("TextoContrasena");
+        TextoContrasena.setBorder(null);
+        TextoContrasena.setToolTipText("<html><p><strong>Contraseña</strong></p></html>");
+        TextoContrasena.setText("Contraseña:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Contrasena-24x24.png"));
+        TextoContrasena.setIcon(Icono);
+        TextoContrasena.setSize(100, 24);
+        TextoContrasena.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoUsername.getLocation().getY() + 40);
+        PanelCentral.add(TextoContrasena);
+        
+        // Texto para campo Rol
+        JLabel TextoRol = new JLabel();
+        TextoRol.setForeground(Color.BLACK);
+        TextoRol.setBackground(Color.WHITE);
+        TextoRol.setName("TextoRol");
+        TextoRol.setBorder(null);
+        TextoRol.setToolTipText("<html><p><strong>Rol</strong></p></html>");
+        TextoRol.setText("Rol:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+        TextoRol.setIcon(Icono);
+        TextoRol.setSize(100, 24);
+        TextoRol.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoContrasena.getLocation().getY() + 40);
+        PanelCentral.add(TextoRol);
+        
+        // Texto para campo Nombre
+        JLabel TextoNombre = new JLabel();
+        TextoNombre.setForeground(Color.BLACK);
+        TextoNombre.setBackground(Color.WHITE);
+        TextoNombre.setName("TextoNombre");
+        TextoNombre.setBorder(null);
+        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoNombre.setText("Nombre(s):");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoNombre.setIcon(Icono);
+        TextoNombre.setSize(135, 24);
+        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 30);
+        PanelDerecho.add(TextoNombre);
+        
+        // Texto para campo Apellido Paterno
+        JLabel TextoApellidoPaterno = new JLabel();
+        TextoApellidoPaterno.setForeground(Color.BLACK);
+        TextoApellidoPaterno.setBackground(Color.WHITE);
+        TextoApellidoPaterno.setName("TextoApellidoPaterno");
+        TextoApellidoPaterno.setBorder(null);
+        TextoApellidoPaterno.setToolTipText("<html><p><strong>Apellido Paterno</strong></p></html>");
+        TextoApellidoPaterno.setText("Apellido Paterno:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoApellidoPaterno.setIcon(Icono);
+        TextoApellidoPaterno.setSize(135, 24);
+        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoNombre.getLocation().getY() + 40);
+        PanelDerecho.add(TextoApellidoPaterno);
+        
+        // Texto para campo Apellido Materno
+        JLabel TextoApellidoMaterno = new JLabel();
+        TextoApellidoMaterno.setForeground(Color.BLACK);
+        TextoApellidoMaterno.setBackground(Color.WHITE);
+        TextoApellidoMaterno.setName("TextoApellidoMaterno");
+        TextoApellidoMaterno.setBorder(null);
+        TextoApellidoMaterno.setToolTipText("<html><p><strong>Apellido Materno</strong></p></html>");
+        TextoApellidoMaterno.setText("Apellido Materno:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+        TextoApellidoMaterno.setIcon(Icono);
+        TextoApellidoMaterno.setSize(135, 24);
+        TextoApellidoMaterno.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoApellidoPaterno.getLocation().getY() + 40);
+        PanelDerecho.add(TextoApellidoMaterno);
+        
+        // Texto para campo Dirección
+        JLabel TextoDireccion = new JLabel();
+        TextoDireccion.setForeground(Color.BLACK);
+        TextoDireccion.setBackground(Color.WHITE);
+        TextoDireccion.setName("TextoDireccion");
+        TextoDireccion.setBorder(null);
+        TextoDireccion.setToolTipText("<html><p><strong>Dirección</strong></p></html>");
+        TextoDireccion.setText("Dirección:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Direccion-BelizeHope-24x24.png"));
+        TextoDireccion.setIcon(Icono);
+        TextoDireccion.setSize(135, 24);
+        TextoDireccion.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoApellidoMaterno.getLocation().getY() + 40);
+        PanelDerecho.add(TextoDireccion);
+        
+        // Texto para campo Teléfono
+        JLabel TextoTelefono = new JLabel();
+        TextoTelefono.setForeground(Color.BLACK);
+        TextoTelefono.setBackground(Color.WHITE);
+        TextoTelefono.setName("TextoTelefono");
+        TextoTelefono.setBorder(null);
+        TextoTelefono.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoTelefono.setText("Teléfono:");
+        Icono = new ImageIcon(getClass().getResource(
+                "/content/images/signup/Telefono-BelizeHope-24x24.png"));
+        TextoTelefono.setIcon(Icono);
+        TextoTelefono.setSize(135, 24);
+        TextoTelefono.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoDireccion.getLocation().getY() + 40);
+        PanelDerecho.add(TextoTelefono);
+        
+        // |---------------------Combobox--------------------------------------|
+        JComboBox ComboBuscar = new JComboBox();
+        ComboBuscar.setName("ComboBuscar");
+        ComboBuscar.addItem("ID");
+        ComboBuscar.addItem("Nombre de Usuario");
+        ComboBuscar.addItem("Nombre");
+        ComboBuscar.addItem("Apellido Paterno");
+        ComboBuscar.addItem("Apellido Materno");
+        ComboBuscar.setSize(120, 20);
+        ComboBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel);
+        PanelFechaHoraContenido.add(ComboBuscar);
+        // |-------------------Campos de Texto---------------------------------|
+        Color ColorNoEscrito = new Color(102, 102, 102);
+        // Campo para búsqueda
+        JTextField CampoBuscar = new JTextField();
+        CampoBuscar.setName("CampoBuscar");
+        CampoBuscar.setBorder(null);
+        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setBackground(Color.WHITE);
+        CampoBuscar.setForeground(ColorNoEscrito);
+        CampoBuscar.setSize(120, 20);
+        CampoBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel);
+        PanelFechaHoraContenido.add(CampoBuscar);
+        
+        // Campo para ID
+        JTextField CampoID = new JTextField();
+        CampoID.setName("CampoID");
+        CampoID.setBorder(null);
+        CampoID.setText("ID");
+        CampoID.setBackground(Color.WHITE);
+        CampoID.setForeground(ColorNoEscrito);
+        CampoID.setSize(120, 20);
+        CampoID.setLocation((int) TextoID.getLocation().getX() + 
+                (int) (TextoID.getSize().getWidth() + 10), 
+                (int) TextoID.getLocation().getY());
+        PanelCentral.add(CampoID);
+        
+        // Campo para Username
+        JTextField CampoUsername = new JTextField();
+        CampoUsername.setName("CampoUsername");
+        CampoUsername.setBorder(null);
+        CampoUsername.setText("Nombre de Usuario");
+        CampoUsername.setBackground(Color.WHITE);
+        CampoUsername.setForeground(ColorNoEscrito);
+        CampoUsername.setSize(120, 20);
+        CampoUsername.setLocation((int) TextoUsername.getLocation().getX() +
+                (int) (TextoUsername.getSize().getWidth() + 10), 
+                (int) TextoUsername.getLocation().getY());
+        PanelCentral.add(CampoUsername);
+        
+        // Campo para contraseña
+        JPasswordField CampoContrasena = new JPasswordField();
+        CampoContrasena.setName("CampoContrasena");
+        CampoContrasena.setBorder(null);
+        CampoContrasena.setText("Contraseña");
+        CampoContrasena.setBackground(Color.WHITE);
+        CampoContrasena.setForeground(ColorNoEscrito);
+        CampoContrasena.setSize(120, 20);
+        CampoContrasena.setLocation((int) TextoContrasena.getLocation().getX() +
+                (int) (TextoContrasena.getSize().getWidth() + 10), 
+                (int) TextoContrasena.getLocation().getY());
+        PanelCentral.add(CampoContrasena);
+        
+        // Campo para Rol
+        JTextField CampoRol = new JTextField();
+        CampoRol.setName("CampoRol");
+        CampoRol.setBorder(null);
+        CampoRol.setText("Rol");
+        CampoRol.setBackground(Color.WHITE);
+        CampoRol.setForeground(ColorNoEscrito);
+        CampoRol.setSize(120, 20);
+        CampoRol.setLocation((int) TextoRol.getLocation().getX() +
+                (int) (TextoRol.getSize().getWidth() + 10), 
+                (int) TextoRol.getLocation().getY());
+        PanelCentral.add(CampoRol);
+        
+        // Campo para Nombre
+        JTextField CampoNombre = new JTextField();
+        CampoNombre.setName("CampoNombre");
+        CampoNombre.setBorder(null);
+        CampoNombre.setText("Nombre(s)");
+        CampoNombre.setBackground(Color.WHITE);
+        CampoNombre.setForeground(ColorNoEscrito);
+        CampoNombre.setSize(120, 20);
+        CampoNombre.setLocation((int) TextoNombre.getLocation().getX() +
+                (int) (TextoNombre.getSize().getWidth() + 10), 
+                (int) TextoNombre.getLocation().getY());
+        PanelDerecho.add(CampoNombre);
+        
+        // Campo para Apellido Paterno
+        JTextField CampoApellidoPaterno = new JTextField();
+        CampoApellidoPaterno.setName("CampoApellidoPaterno");
+        CampoApellidoPaterno.setBorder(null);
+        CampoApellidoPaterno.setText("Apellido Paterno");
+        CampoApellidoPaterno.setBackground(Color.WHITE);
+        CampoApellidoPaterno.setForeground(ColorNoEscrito);
+        CampoApellidoPaterno.setSize(120, 20);
+        CampoApellidoPaterno.setLocation((int) TextoApellidoPaterno.getLocation().getX() +
+                (int) (TextoApellidoPaterno.getSize().getWidth() + 10), 
+                (int) TextoApellidoPaterno.getLocation().getY());
+        PanelDerecho.add(CampoApellidoPaterno);
+        
+        // Campo para Apellido Materno
+        JTextField CampoApellidoMaterno = new JTextField();
+        CampoApellidoMaterno.setName("CampoApellidoMaterno");
+        CampoApellidoMaterno.setBorder(null);
+        CampoApellidoMaterno.setText("Apellido Materno");
+        CampoApellidoMaterno.setBackground(Color.WHITE);
+        CampoApellidoMaterno.setForeground(ColorNoEscrito);
+        CampoApellidoMaterno.setSize(120, 20);
+        CampoApellidoMaterno.setLocation((int) TextoApellidoMaterno.getLocation().getX() +
+                (int) (TextoApellidoMaterno.getSize().getWidth() + 10), 
+                (int) TextoApellidoMaterno.getLocation().getY());
+        PanelDerecho.add(CampoApellidoMaterno);
+        
+        // Campo para Dirección
+        JTextField CampoDireccion = new JTextField();
+        CampoDireccion.setName("CampoDireccion");
+        CampoDireccion.setBorder(null);
+        CampoDireccion.setText("Dirección");
+        CampoDireccion.setBackground(Color.WHITE);
+        CampoDireccion.setForeground(ColorNoEscrito);
+        CampoDireccion.setSize(120, 20);
+        CampoDireccion.setLocation((int) TextoDireccion.getLocation().getX() +
+                (int) (TextoDireccion.getSize().getWidth() + 10), 
+                (int) TextoDireccion.getLocation().getY());
+        PanelDerecho.add(CampoDireccion);
+        
+        // Campo para Teléfono
+        JTextField CampoTelefono = new JTextField();
+        CampoTelefono.setName("CampoTelefono");
+        CampoTelefono.setBorder(null);
+        CampoTelefono.setText("Teléfono");
+        CampoTelefono.setBackground(Color.WHITE);
+        CampoTelefono.setForeground(ColorNoEscrito);
+        CampoTelefono.setSize(120, 20);
+        CampoTelefono.setLocation((int) TextoTelefono.getLocation().getX() +
+                (int) (TextoTelefono.getSize().getWidth() + 10), 
+                (int) TextoTelefono.getLocation().getY());
+        PanelDerecho.add(CampoTelefono);
+        
+        // |---------------------Separadores-----------------------------------|
+        // Color para separador
+        Color ColorSeparador = new Color(51, 51, 51);
+        // Separador para CampoBuscar
+        JSeparator SeparadorBuscar = new JSeparator();
+        SeparadorBuscar.setName("SeparadorBuscar");
+        SeparadorBuscar.setBorder(null);
+        SeparadorBuscar.setBackground(Color.WHITE);
+        SeparadorBuscar.setForeground(ColorSeparador);
+        SeparadorBuscar.setSize(120, 15);
+        SeparadorBuscar.setLocation((int) AnchoPanel - 200, (int) AltoPanel + 20);
+        PanelFechaHoraContenido.add(SeparadorBuscar);
+        
+        // Separador para CampoID
+        JSeparator SeparadorID = new JSeparator();
+        SeparadorID.setName("SeparadorBuscar");
+        SeparadorID.setBorder(null);
+        SeparadorID.setBackground(Color.WHITE);
+        SeparadorID.setForeground(ColorSeparador);
+        SeparadorID.setSize(120, 15);
+        SeparadorID.setLocation((int) CampoID.getLocation().getX(),
+                (int) CampoID.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorID);
+        
+        // Separador para CampoUsername
+        JSeparator SeparadorUsername = new JSeparator();
+        SeparadorUsername.setName("SeparadorUsername");
+        SeparadorUsername.setBorder(null);
+        SeparadorUsername.setBackground(Color.WHITE);
+        SeparadorUsername.setForeground(ColorSeparador);
+        SeparadorUsername.setSize(120, 15);
+        SeparadorUsername.setLocation((int) CampoUsername.getLocation().getX(), 
+                (int) CampoUsername.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorUsername);
+        
+        // Separador para CampoContrasena
+        JSeparator SeparadorContrasena = new JSeparator();
+        SeparadorContrasena.setName("SeparadorContrasena");
+        SeparadorContrasena.setBorder(null);
+        SeparadorContrasena.setBackground(Color.WHITE);
+        SeparadorContrasena.setForeground(ColorSeparador);
+        SeparadorContrasena.setSize(120, 15);
+        SeparadorContrasena.setLocation((int) CampoContrasena.getLocation().getX(), 
+                (int) CampoContrasena.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorContrasena);
+        
+        // Separador para CampoRol
+        JSeparator SeparadorRol = new JSeparator();
+        SeparadorRol.setName("SeparadorRol");
+        SeparadorRol.setBorder(null);
+        SeparadorRol.setBackground(Color.WHITE);
+        SeparadorRol.setForeground(ColorSeparador);
+        SeparadorRol.setSize(120, 15);
+        SeparadorRol.setLocation((int) CampoRol.getLocation().getX(), 
+                (int) CampoRol.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorRol);
+        
+        // Separador para CampoNombre
+        JSeparator SeparadorNombre = new JSeparator();
+        SeparadorNombre.setName("SeparadorNombre");
+        SeparadorNombre.setBorder(null);
+        SeparadorNombre.setBackground(Color.WHITE);
+        SeparadorNombre.setForeground(ColorSeparador);
+        SeparadorNombre.setSize(120, 15);
+        SeparadorNombre.setLocation((int) CampoNombre.getLocation().getX(), 
+                (int) CampoNombre.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorNombre);
+        
+        // Separador para CampoApellidoPaterno
+        JSeparator SeparadorApellidoPaterno = new JSeparator();
+        SeparadorApellidoPaterno.setName("SeparadorApellidoPaterno");
+        SeparadorApellidoPaterno.setBorder(null);
+        SeparadorApellidoPaterno.setBackground(Color.WHITE);
+        SeparadorApellidoPaterno.setForeground(ColorSeparador);
+        SeparadorApellidoPaterno.setSize(120, 15);
+        SeparadorApellidoPaterno.setLocation((int) CampoApellidoPaterno.getLocation().getX(), 
+                (int) CampoApellidoPaterno.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorApellidoPaterno);
+        
+        // Separador para CampoApellidoMaterno
+        JSeparator SeparadorApellidoMaterno = new JSeparator();
+        SeparadorApellidoMaterno.setName("SeparadorApellidoMaterno");
+        SeparadorApellidoMaterno.setBorder(null);
+        SeparadorApellidoMaterno.setBackground(Color.WHITE);
+        SeparadorApellidoMaterno.setForeground(ColorSeparador);
+        SeparadorApellidoMaterno.setSize(120, 15);
+        SeparadorApellidoMaterno.setLocation((int) CampoApellidoMaterno.getLocation().getX(), 
+                (int) CampoApellidoMaterno.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorApellidoMaterno);
+        
+        // Separador para CampoDireccion
+        JSeparator SeparadorDireccion = new JSeparator();
+        SeparadorDireccion.setName("SeparadorDireccion");
+        SeparadorDireccion.setBorder(null);
+        SeparadorDireccion.setBackground(Color.WHITE);
+        SeparadorDireccion.setForeground(ColorSeparador);
+        SeparadorDireccion.setSize(120, 15);
+        SeparadorDireccion.setLocation((int) CampoDireccion.getLocation().getX(), 
+                (int) CampoDireccion.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorDireccion);
+        
+        // Separador para CampoTelefono
+        JSeparator SeparadorTelefono = new JSeparator();
+        SeparadorTelefono.setName("SeparadorTelefono");
+        SeparadorTelefono.setBorder(null);
+        SeparadorTelefono.setBackground(Color.WHITE);
+        SeparadorTelefono.setForeground(ColorSeparador);
+        SeparadorTelefono.setSize(120, 15);
+        SeparadorTelefono.setLocation((int) CampoTelefono.getLocation().getX(), 
+                (int) CampoTelefono.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorTelefono);
+        
+        // |---------------------Funciones de botones--------------------------|
+        // Boton para Reestablecer campos
+        BotonReestablecer.addActionListener(new ActionListener(){
+            // Override de listener para cuando se hace click
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                CampoID.setText("ID");
+                CampoID.setForeground(ColorNoEscrito);
+                CampoUsername.setText("Nombre de Usuario");
+                CampoUsername.setForeground(ColorNoEscrito);
+                CampoContrasena.setText("Contraseña");
+                CampoContrasena.setForeground(ColorNoEscrito);
+                CampoRol.setText("Rol");
+                CampoRol.setForeground(ColorNoEscrito);
+                CampoNombre.setText("Nombre(s)");
+                CampoNombre.setForeground(ColorNoEscrito);
+                CampoApellidoPaterno.setText("Apellido Paterno");
+                CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                CampoApellidoMaterno.setText("Apellido Materno");
+                CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                CampoDireccion.setText("Dirección");
+                CampoDireccion.setForeground(ColorNoEscrito);
+                CampoTelefono.setText("Teléfono");
+                CampoTelefono.setForeground(ColorNoEscrito);
+            }
+        });
+        
+        // Añadir listener para acción en BotonAnadir
+        Botones[0].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    Usuario UsuarioTemp;
+                    String ID, IDAAsignar, Username, Contrasena, Rol, Nombre, AP, AM,
+                            Direccion, Telefono;
+                    Boolean Registrable;
+                    IDAAsignar = "-1";
+                    Registrable = true;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                    Contrasena = String.valueOf(CampoContrasena.getPassword());
+                    Rol = CampoRol.getText();
+                    Nombre = CampoNombre.getText();
+                    AP = CampoApellidoPaterno.getText();
+                    AM = CampoApellidoMaterno.getText();
+                    Direccion = CampoDireccion.getText();
+                    Telefono = CampoTelefono.getText();
+                   
+                    if(Username.equals("Nombre de Usuario") ||
+                            Username.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                    }
+                    else
+                    {
+                        if(Contrasena.equals("Contraseña") ||
+                                Contrasena.equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                        }
+                        else
+                        {
+                            if(Rol.equals("Rol") || Rol.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Faltan campos por llenar");
+                            }
+                            else
+                            {
+                                if(Nombre.equals("Nombre(s)") ||
+                                        Nombre.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, 
+                                            "Faltan campos por llenar");
+                                }
+                                else
+                                {
+                                    if(AP.equals("Apellido Paterno") ||
+                                            AP.equals(""))
+                                    {
+                                        JOptionPane.showMessageDialog(null, 
+                                                "Faltan campos por llenar");
+                                    }
+                                    else
+                                    {
+                                        if(AM.equals("Apellido Materno") ||
+                                                AM.equals(""))
+                                        {
+                                            JOptionPane.showMessageDialog(null, 
+                                                    "Faltan campos por llenar");
+                                        }
+                                        else
+                                        {
+                                            if(Direccion.equals("Dirección") ||
+                                                    Direccion.equals(""))
+                                            {
+                                                JOptionPane.showMessageDialog(null, 
+                                                        "Faltan campos por llenar");
+                                            }
+                                            else
+                                            {
+                                                if(Telefono.equals("Teléfono") ||
+                                                        Telefono.equals(""))
+                                                {
+                                                    JOptionPane.showMessageDialog(null,
+                                                            "Faltan campo por llenar");
+                                                }
+                                                else
+                                                {
+                                                    if(ID.equals("ID") ||
+                                                                    ID.equals(""))
+                                                    {
+                                                        int x, Mayor;
+                                                        Mayor = 0;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(Mayor < Integer.parseInt(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                Mayor = Integer.parseInt(RegistrosVentana.getUsuario(x).getID());
+                                                            }
+                                                            if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                            {
+                                                                Registrable = false;
+                                                            }
+                                                        }
+                                                        IDAAsignar = String.valueOf(Mayor + 1);
+                                                    }
+                                                    else
+                                                    {
+                                                        int x;
+                                                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                                        {
+                                                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()))
+                                                            {
+                                                                JOptionPane.showMessageDialog(null, 
+                                                                        "El ID " + ID +" ya está registrado");
+                                                                Registrable = false;
+                                                            }
+                                                            else
+                                                            {
+                                                                if(Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                                                {
+                                                                   JOptionPane.showMessageDialog(null, 
+                                                                            "El nombre de usuario " +
+                                                                            Username + " ya está registrado");
+                                                                    Registrable = false;
+                                                                }
+                                                            }
+                                                        }
+                                                        if(Registrable)
+                                                        {
+                                                            IDAAsignar = ID;
+                                                        }
+                                                    }
+                                                    if(Registrable)
+                                                    {
+                                                        UsuarioTemp.setID(IDAAsignar);
+                                                        UsuarioTemp.setUsername(Username);
+                                                        UsuarioTemp.setContrasena(Hashing.Hash(Contrasena));
+                                                        if(Rol.equals("Admin"))
+                                                        {
+                                                            UsuarioTemp.setRol("Admin");
+                                                        }
+                                                        else
+                                                        {
+                                                            UsuarioTemp.setRol("Usuario");
+                                                        }
+                                                        UsuarioTemp.setNombre(Nombre);
+                                                        UsuarioTemp.setApellidoPaterno(AP);
+                                                        UsuarioTemp.setApellidoMaterno(AM);
+                                                        UsuarioTemp.setDireccion(Direccion);
+                                                        UsuarioTemp.setTelefono(Telefono);
+                                                        RegistrosVentana.InsertarUsuarios(UsuarioTemp);
+                                                        CampoID.setText("ID");
+                                                        CampoID.setForeground(ColorNoEscrito);
+                                                        CampoUsername.setText("Nombre de Usuario");
+                                                        CampoUsername.setForeground(ColorNoEscrito);
+                                                        CampoContrasena.setText("Contraseña");
+                                                        CampoContrasena.setForeground(ColorNoEscrito);
+                                                        CampoRol.setText("Rol");
+                                                        CampoRol.setForeground(ColorNoEscrito);
+                                                        CampoNombre.setText("Nombre(s)");
+                                                        CampoNombre.setForeground(ColorNoEscrito);
+                                                        CampoApellidoPaterno.setText("Apellido Paterno");
+                                                        CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                                                        CampoApellidoMaterno.setText("Apellido Materno");
+                                                        CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                                                        CampoDireccion.setText("Dirección");
+                                                        CampoDireccion.setForeground(ColorNoEscrito);
+                                                        CampoTelefono.setText("Teléfono");
+                                                        CampoTelefono.setForeground(ColorNoEscrito);
+                                                        JOptionPane.showMessageDialog(null, "Se ha registrado " +
+                                                                Username + " con éxito");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                };
+            });
+        
+        // Añadir listener para acción en eliminar
+        Botones[1].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    Usuario UsuarioTemp;
+                    String ID, Username;
+                    Boolean Eliminable;
+                    int Eliminar;
+                    Eliminar = -1;
+                    Eliminable = false;
+                    UsuarioTemp = new Usuario();
+                    // Obtenemos valores de campos
+                    ID = CampoID.getText();
+                    Username = CampoUsername.getText();
+                   
+                    
+                    if((Username.equals("Nombre de Usuario") || Username.equals("")) &&
+                            (ID.equals("ID") || ID.equals("")))
+                    {
+                        JOptionPane.showMessageDialog(null, "Indique el ID o nombre de usuario");
+                    }
+                    else
+                    {
+                        int x;
+                        for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                        {
+                            if(ID.equals(RegistrosVentana.getUsuario(x).getID()) ||
+                                    Username.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                            {
+                                Eliminable = true;
+                                Eliminar = x;
+                            }
+                        }
+                        if(Eliminable)
+                        {
+                            CampoID.setText("ID");
+                            CampoID.setForeground(ColorNoEscrito);
+                            CampoUsername.setText("Nombre de Usuario");
+                            CampoUsername.setForeground(ColorNoEscrito);
+                            CampoContrasena.setText("Contraseña");
+                            CampoContrasena.setForeground(ColorNoEscrito);
+                            CampoRol.setText("Rol");
+                            CampoRol.setForeground(ColorNoEscrito);
+                            CampoNombre.setText("Nombre(s)");
+                            CampoNombre.setForeground(ColorNoEscrito);
+                            CampoApellidoPaterno.setText("Apellido Paterno");
+                            CampoApellidoPaterno.setForeground(ColorNoEscrito);
+                            CampoApellidoMaterno.setText("Apellido Materno");
+                            CampoApellidoMaterno.setForeground(ColorNoEscrito);
+                            CampoDireccion.setText("Dirección");
+                            CampoDireccion.setForeground(ColorNoEscrito);
+                            CampoTelefono.setText("Teléfono");
+                            CampoTelefono.setForeground(ColorNoEscrito);
+                            if(Eliminar != -1)
+                            {
+                                int Respuesta;
+                                UsuarioTemp = RegistrosVentana.getUsuario(Eliminar);
+                                Respuesta = JOptionPane.showConfirmDialog(null, 
+                                        "¿Seguro que desea eliminar al usuario " +
+                                        UsuarioTemp.getUsername());
+                                if(Respuesta == 0)
+                                {
+                                    RegistrosVentana.EliminarUsuarios(UsuarioTemp);
+                                    JOptionPane.showMessageDialog(null, "Se ha eliminado " +
+                                        UsuarioTemp.getUsername() + " con éxito");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if(!Username.equals("Nombre de Usuario") &&
+                                    !Username.equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "No se encontró el usuario " +
+                                        Username);
+                            }
+                            else
+                            {
+                                if(!ID.equals("ID") &&
+                                    !ID.equals(""))
+                                {
+                                    JOptionPane.showMessageDialog(null, "No se encontró el usuario con ID " +
+                                            ID);
+                                }
+                            }
+                        }
+                    }
+                }
+        });
+        
+        // Añadir listener para acción en editar
+        Botones[2].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    System.out.println("");
+                }
+        });
+        
+        // Añadir listener para acción en guardar
+        Botones[3].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    RegistroCRUD RegistroGuardar = new RegistroCRUD();
+                    RegistroGuardar.Guardar(RegistrosVentana);
+                    JOptionPane.showMessageDialog(null, "Se han guardado los registros con éxito");
+                }
+        });
+        
+        // Añadir listener para acción en buscar
+        Botones[4].addActionListener(new ActionListener() {
+                // Override de listener para cuando se hace click
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    String Buscar;
+                    Usuario UsuarioTemp;
+                    UsuarioTemp = new Usuario();
+                    Boolean Encontrado;
+                    Color ColorEscribir = new Color(51, 51, 51);
+                    Encontrado = false;
+                    int BuscarPor, x, Indice;
+                    Indice = -1;
+                    Buscar = CampoBuscar.getText();
+                    //if()
+                    BuscarPor = ComboBuscar.getSelectedIndex();
+                    if(Buscar.equals("Buscar Usuario") || Buscar.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "No se ha indicado que valor buscar");
+                    }
+                    else
+                    {
+                        switch(BuscarPor)
+                        {
+                            case 0 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getID()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 1 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getUsername()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 2 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getNombre()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 3 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoPaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                            
+                            case 4 :
+                            {
+                                for(x = 0; x < RegistrosVentana.getTamanoUsuarios(); x++)
+                                {
+                                    if(Buscar.equals(RegistrosVentana.getUsuario(x).getApellidoMaterno()))
+                                    {
+                                        Encontrado = true;
+                                        Indice = x;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        if(Encontrado && Indice > -1)
+                        {
+                            UsuarioTemp = RegistrosVentana.getUsuario(Indice);
+                            CampoID.setText(UsuarioTemp.getID());
+                            CampoID.setForeground(ColorEscribir);
+                            CampoUsername.setText(UsuarioTemp.getUsername());
+                            CampoUsername.setForeground(ColorEscribir);
+                            CampoContrasena.setText(UsuarioTemp.getContrasena());
+                            CampoContrasena.setForeground(ColorEscribir);
+                            CampoRol.setText(UsuarioTemp.getRol());
+                            CampoRol.setForeground(ColorEscribir);
+                            CampoNombre.setText(UsuarioTemp.getNombre());
+                            CampoNombre.setForeground(ColorEscribir);
+                            CampoApellidoPaterno.setText(UsuarioTemp.getApellidoPaterno());
+                            CampoApellidoPaterno.setForeground(ColorEscribir);
+                            CampoApellidoMaterno.setText(UsuarioTemp.getApellidoMaterno());
+                            CampoApellidoMaterno.setForeground(ColorEscribir);
+                            CampoDireccion.setText(UsuarioTemp.getDireccion());
+                            CampoDireccion.setForeground(ColorEscribir);
+                            CampoTelefono.setText(UsuarioTemp.getTelefono());
+                            CampoTelefono.setForeground(ColorEscribir);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
+                                    Buscar);
+                        }
+                    }
+                }
+        });
+        
+        // |----------------------Funciones de ComboBox------------------------|
+        // Añadir listener para cuando se selecciona item de ComboBuscar
+        ComboBuscar.addItemListener(new ItemListener(){
+            // Override para itemStateChanged
+            @Override
+            public void itemStateChanged(ItemEvent e) 
+            {
+                String Seleccionado;
+                Seleccionado = (String) ComboBuscar.getSelectedItem();
+                System.out.println(Seleccionado);
+            }
+        });
+        
+        // |----------------------Funciones de campos--------------------------| 
+        // |------------------------CampoBuscar--------------------------------|
+        // Se añade listener para enfoque de CampoBuscar
+        CampoBuscar.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Buscar Usuario") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoBuscar.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoBuscar.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Buscar Usuario"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoBuscar.setText("Buscar Usuario");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoBuscar
+        CampoBuscar.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoBuscar.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Buscar Usuario"))
+                {
+                    // Elimina contenido
+                    CampoBuscar.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoBuscar");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoBuscar");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoBuscar");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoBuscar");
+            }
+
+        });
+        // |------------------------CampoID------------------------------------|
+        // Se añade listener para enfoque de CampoBuscar
+        CampoID.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("ID") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoID.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoID.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("ID"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoID.setText("ID");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoBuscar
+        CampoID.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoID.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("ID"))
+                {
+                    // Elimina contenido
+                    CampoID.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoID");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoID");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoID");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoID");
+            }
+
+        });
+        
+        // |------------------------CampoUsername------------------------------|
+        // Se añade listener para enfoque de CampoUsername
+        CampoUsername.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoUsername.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Nombre de Usuario") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoUsername.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoUsername.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Nombre de Usuario"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoUsername.setText("Nombre de Usuario");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoUsername
+        CampoUsername.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoUsername.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Nombre de Usuario"))
+                {
+                    // Elimina contenido
+                    CampoUsername.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoUsername");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoUsername");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoUsername");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoUsername");
+            }
+
+        });
+        
+        // |------------------------CampoContrasena----------------------------|
+        // Se añade listener para enfoque de CampoContrasena
+        CampoContrasena.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Contraseña") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoContrasena.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Contraseña"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoContrasena.setText("Contraseña");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoContrasena
+        CampoContrasena.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Contraseña"))
+                {
+                    // Elimina contenido
+                    CampoContrasena.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoContrasena");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoContrasena");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoContrasena");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoContrasena");
+            }
+
+        });
+        
+        // |------------------------CampoRol-----------------------------------|
+        // Se añade listener para enfoque de CampoRol
+        CampoRol.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Rol") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoRol.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoRol.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Rol"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoRol.setText("Rol");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoRol
+        CampoRol.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoRol.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Rol"))
+                {
+                    // Elimina contenido
+                    CampoRol.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoRol");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoRol");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoRol");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoRol");
+            }
+
+        });
+        
+        // |------------------------CampoNombre--------------------------------|
+        // Se añade listener para enfoque de CampoNombre
+        CampoNombre.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoNombre.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Nombre(s)") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoNombre.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoNombre.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Nombre(s)"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoNombre.setText("Nombre(s)");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoNombre
+        CampoNombre.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoNombre.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Nombre(s)"))
+                {
+                    // Elimina contenido
+                    CampoNombre.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoNombre");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoNombre");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoNombre");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoNombre");
+            }
+
+        });
+        
+        // |------------------CampoApellidoPaterno-----------------------------|
+        // Se añade listener para enfoque de CampoApellidoPaterno
+        CampoApellidoPaterno.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoPaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Apellido Paterno") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoApellidoPaterno.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoPaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Apellido Paterno"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoApellidoPaterno.setText("Apellido Paterno");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoApellidoPaterno
+        CampoApellidoPaterno.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoApellidoPaterno.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Apellido Paterno"))
+                {
+                    // Elimina contenido
+                    CampoApellidoPaterno.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoApellidoPaterno");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoApellidoPaterno");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoApellidoPaterno");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoApellidoPaterno");
+            }
+
+        });
+        
+        // |------------------CampoApellidoMaterno-----------------------------|
+        // Se añade listener para enfoque de CampoApellidoMaterno
+        CampoApellidoMaterno.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoMaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Apellido Materno") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoApellidoMaterno.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoApellidoMaterno.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Apellido Materno"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoApellidoMaterno.setText("Apellido Materno");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoApellidoMaterno
+        CampoApellidoMaterno.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoApellidoMaterno.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Apellido Materno"))
+                {
+                    // Elimina contenido
+                    CampoApellidoMaterno.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoApellidoMaterno");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoApellidoMaterno");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoApellidoMaterno");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoApellidoMaterno");
+            }
+
+        });
+        
+        // |------------------------CampoDireccion-----------------------------|
+        // Se añade listener para enfoque de CampoDireccion
+        CampoDireccion.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoDireccion.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Dirección") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoDireccion.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoDireccion.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Dirección"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoDireccion.setText("Dirección");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoDireccion
+        CampoDireccion.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoDireccion.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Dirección"))
+                {
+                    // Elimina contenido
+                    CampoDireccion.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoDireccion");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoDireccion");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoDireccion");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoDireccion");
+            }
+
+        });
+        
+        // |------------------------CampoTelefono------------------------------|
+        // Se añade listener para enfoque de CampoTelefono
+        CampoTelefono.addFocusListener(new FocusListener(){
+            // Override para cuando se enfoca
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoTelefono.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(Contenido.equals("Teléfono") && 
+                        (ColorActual == ColorNoEscrito))
+                {
+                    // Limpiamos contenido
+                    CampoTelefono.setText("");
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+                else
+                {
+                    e.getComponent().setForeground(ColorEscribir);
+                }
+            }
+            
+            // Override para cuando se desenfoca
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // Obtiene contenido de campo
+                String Contenido = CampoTelefono.getText();
+                // Obtiene color de campo
+                Color ColorActual = e.getComponent().getForeground();
+                // Color cuando no se ha escrito nada
+                Color ColorNoEscrito = new Color(102, 102, 102);
+                // Color cuando se va a escribir algo
+                Color ColorEscribir = new Color(51, 51, 51);
+                // Verifica contenido y color de campo son los predeterminados
+                if(!Contenido.equals("Teléfono"))
+                {  
+                    if(Contenido.equals(""))
+                    {
+                        CampoTelefono.setText("Teléfono");
+                        if(ColorActual != ColorNoEscrito)
+                        {
+                            e.getComponent().setForeground(ColorNoEscrito);
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Listener para mouse en CampoTelefono
+        CampoTelefono.addMouseListener(new MouseListener(){
+            // Override para cuando se presiona
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
+                // Obtener contenido
+                String Contenido = CampoTelefono.getText();
+                Color ColorActual = e.getComponent().getForeground();
+                Color ColorEscrito = new Color(51, 51, 51);
+                // Verifica si no tiene nada seteado aún
+                if(Contenido.equals("Teléfono"))
+                {
+                    // Elimina contenido
+                    CampoTelefono.setText("");
+                }
+                if(ColorActual != ColorEscrito)
+                {
+                    e.getComponent().setForeground(ColorEscrito);
+                }
+            }
+
+            // Override para cuando se libera
+            @Override
+            public void mouseReleased(MouseEvent e) 
+            {
+                System.out.println("Mouse liberado de CampoTelefono");
+            }
+
+            // Override para cuando se coloca sobre
+            @Override
+            public void mouseEntered(MouseEvent e) 
+            {
+                System.out.println("Mouse ha ingresado en CampoTelefono");
+            }
+
+            // Override para cuando el mouse deja de estar sobre
+            @Override
+            public void mouseExited(MouseEvent e) 
+            {
+                System.out.println("Mouse ha salido de CampoTelefono");
+            }
+
+            // Override para cuando se hace click
+            @Override
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("Se ha hecho click en CampoTelefono");
+            }
+
+        });
+        
+        // |-------------------------Refrescamos Paneles-----------------------|
+        for(JPanel Panel : ListaPaneles)
+        {
+            // Revalidamos y refrescamos paneles
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        for(JPanel Panel : PanelesInactivos)
+        {
+            Panel.revalidate();
+            Panel.repaint();
+        }
+        PanelPiezas.revalidate();
+        PanelPiezas.repaint();
     }//GEN-LAST:event_BotonPiezasActionPerformed
 
     // Método para cuando se hace click en BotonCerrarSesion
