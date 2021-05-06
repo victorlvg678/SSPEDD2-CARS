@@ -809,7 +809,7 @@ public class Menu extends javax.swing.JFrame {
                 ImagenesOver[Cont]));
             Boton.setRolloverIcon(Icono);
             Boton.setSelectedIcon(Icono);
-            Boton.setSize(55, 40);
+            Boton.setSize(55, 45);
             Cont++;
         }
         // |------------------------Ubicaciones de botones---------------------|
@@ -846,7 +846,7 @@ public class Menu extends javax.swing.JFrame {
         BotonReestablecer.setText("Reestablecer");
         BotonReestablecer.setToolTipText("<html><p><strong>Reestablecer campos" +
                 "</strong></p></html>");
-        BotonReestablecer.setSize(120, 25);
+        BotonReestablecer.setSize(145, 25);
         BotonReestablecer.setLocation((int) AnchoPanel - 380, 
                 (int) AltoPanel + 30);
         PanelFechaHoraContenido.add(BotonReestablecer);
@@ -861,7 +861,7 @@ public class Menu extends javax.swing.JFrame {
         TextoBuscar.setBorder(null);
         TextoBuscar.setToolTipText("<html><p><strong>Buscar reparación por</strong></p></html>");
         TextoBuscar.setText("Buscar reparación por");
-        TextoBuscar.setSize(120, 20);
+        TextoBuscar.setSize(145, 20);
         TextoBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel - 20);
         PanelFechaHoraContenido.add(TextoBuscar);
         
@@ -880,149 +880,115 @@ public class Menu extends javax.swing.JFrame {
         TextoID.setToolTipText("<html><p><strong>ID</strong></p></html>");
         TextoID.setText("ID:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+                "/content/images/menu/Reparación-BelizeHope-24x24.png"));
         TextoID.setIcon(Icono);
-        TextoID.setSize(100, 24);
+        TextoID.setSize(160, 24);
         TextoID.setLocation((int) AnchoPanelCentral - 380, 30);
         System.out.println();
         PanelCentral.add(TextoID);
         
-        // Texto para campo Username
-        JLabel TextoUsername = new JLabel();
-        TextoUsername.setForeground(Color.BLACK);
-        TextoUsername.setBackground(Color.WHITE);
-        TextoUsername.setName("TextoUsername");
-        TextoUsername.setBorder(null);
-        TextoUsername.setToolTipText("<html><p><strong>Nombre de Usuario</strong></p></html>");
-        TextoUsername.setText("Username:");
+        // Texto para campo FechaEntrada
+        JLabel TextoFechaEntrada = new JLabel();
+        TextoFechaEntrada.setForeground(Color.BLACK);
+        TextoFechaEntrada.setBackground(Color.WHITE);
+        TextoFechaEntrada.setName("TextoFechaEntrada");
+        TextoFechaEntrada.setBorder(null);
+        TextoFechaEntrada.setToolTipText("<html><p><strong>Fecha de Entrada</strong></p></html>");
+        TextoFechaEntrada.setText("Fecha de Entrada:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoUsername.setIcon(Icono);
-        TextoUsername.setSize(100, 24);
-        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
+                "/content/images/menu/Fecha-BelizeHope-24x24.png"));
+        TextoFechaEntrada.setIcon(Icono);
+        TextoFechaEntrada.setSize(160, 24);
+        TextoFechaEntrada.setLocation((int) AnchoPanelCentral - 380, 
                 (int) TextoID.getLocation().getY() + 40);
-        PanelCentral.add(TextoUsername);
+        PanelCentral.add(TextoFechaEntrada);
         
-        // Texto para campo Contraseña
-        JLabel TextoContrasena = new JLabel();
-        TextoContrasena.setForeground(Color.BLACK);
-        TextoContrasena.setBackground(Color.WHITE);
-        TextoContrasena.setName("TextoContrasena");
-        TextoContrasena.setBorder(null);
-        TextoContrasena.setToolTipText("<html><p><strong>Contraseña</strong></p></html>");
-        TextoContrasena.setText("Contraseña:");
+        // Texto para campo FechaSalida
+        JLabel TextoFechaSalida = new JLabel();
+        TextoFechaSalida.setForeground(Color.BLACK);
+        TextoFechaSalida.setBackground(Color.WHITE);
+        TextoFechaSalida.setName("TextoFechaSalida");
+        TextoFechaSalida.setBorder(null);
+        TextoFechaSalida.setToolTipText("<html><p><strong>Fecha de Salida</strong></p></html>");
+        TextoFechaSalida.setText("Fecha de Salida:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Contrasena-24x24.png"));
-        TextoContrasena.setIcon(Icono);
-        TextoContrasena.setSize(100, 24);
-        TextoContrasena.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoUsername.getLocation().getY() + 40);
-        PanelCentral.add(TextoContrasena);
+                "/content/images/menu/Fecha-BelizeHope-24x24.png"));
+        TextoFechaSalida.setIcon(Icono);
+        TextoFechaSalida.setSize(160, 24);
+        TextoFechaSalida.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoFechaEntrada.getLocation().getY() + 40);
+        PanelCentral.add(TextoFechaSalida);
         
-        // Texto para campo Rol
-        JLabel TextoRol = new JLabel();
-        TextoRol.setForeground(Color.BLACK);
-        TextoRol.setBackground(Color.WHITE);
-        TextoRol.setName("TextoRol");
-        TextoRol.setBorder(null);
-        TextoRol.setToolTipText("<html><p><strong>Rol</strong></p></html>");
-        TextoRol.setText("Rol:");
+        // Texto para campo Falla
+        JLabel TextoFalla = new JLabel();
+        TextoFalla.setForeground(Color.BLACK);
+        TextoFalla.setBackground(Color.WHITE);
+        TextoFalla.setName("TextoFalla");
+        TextoFalla.setBorder(null);
+        TextoFalla.setToolTipText("<html><p><strong>Falla</strong></p></html>");
+        TextoFalla.setText("Falla:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoRol.setIcon(Icono);
-        TextoRol.setSize(100, 24);
-        TextoRol.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoContrasena.getLocation().getY() + 40);
-        PanelCentral.add(TextoRol);
+                "/content/images/menu/Reparación-BelizeHope-24x24.png"));
+        TextoFalla.setIcon(Icono);
+        TextoFalla.setSize(160, 24);
+        TextoFalla.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoFechaSalida.getLocation().getY() + 40);
+        PanelCentral.add(TextoFalla);
         
-        // Texto para campo Nombre
-        JLabel TextoNombre = new JLabel();
-        TextoNombre.setForeground(Color.BLACK);
-        TextoNombre.setBackground(Color.WHITE);
-        TextoNombre.setName("TextoNombre");
-        TextoNombre.setBorder(null);
-        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
-        TextoNombre.setText("Nombre(s):");
+        // Texto para campo IDVehiculo
+        JLabel TextoIDVehiculo = new JLabel();
+        TextoIDVehiculo.setForeground(Color.BLACK);
+        TextoIDVehiculo.setBackground(Color.WHITE);
+        TextoIDVehiculo.setName("TextoIDVehiculo");
+        TextoIDVehiculo.setBorder(null);
+        TextoIDVehiculo.setToolTipText("<html><p><strong>ID Vehículo</strong></p></html>");
+        TextoIDVehiculo.setText("ID Vehículo:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoNombre.setIcon(Icono);
-        TextoNombre.setSize(135, 24);
-        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 30);
-        PanelDerecho.add(TextoNombre);
+                "/content/images/menu/Vehículo-BelizeHope-24x24.png"));
+        TextoIDVehiculo.setIcon(Icono);
+        TextoIDVehiculo.setSize(160, 24);
+        TextoIDVehiculo.setLocation((int) AnchoPanelCentral - 380, 30);
+        PanelDerecho.add(TextoIDVehiculo);
         
-        // Texto para campo Apellido Paterno
-        JLabel TextoApellidoPaterno = new JLabel();
-        TextoApellidoPaterno.setForeground(Color.BLACK);
-        TextoApellidoPaterno.setBackground(Color.WHITE);
-        TextoApellidoPaterno.setName("TextoApellidoPaterno");
-        TextoApellidoPaterno.setBorder(null);
-        TextoApellidoPaterno.setToolTipText("<html><p><strong>Apellido Paterno</strong></p></html>");
-        TextoApellidoPaterno.setText("Apellido Paterno:");
+        // Texto para campo IDPieza
+        JLabel TextoIDPieza = new JLabel();
+        TextoIDPieza.setForeground(Color.BLACK);
+        TextoIDPieza.setBackground(Color.WHITE);
+        TextoIDPieza.setName("TextoIDPieza");
+        TextoIDPieza.setBorder(null);
+        TextoIDPieza.setToolTipText("<html><p><strong>ID Pieza</strong></p></html>");
+        TextoIDPieza.setText("ID Pieza:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoApellidoPaterno.setIcon(Icono);
-        TextoApellidoPaterno.setSize(135, 24);
-        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoNombre.getLocation().getY() + 40);
-        PanelDerecho.add(TextoApellidoPaterno);
+                "/content/images/menu/Pieza-BelizeHope-24x24.png"));
+        TextoIDPieza.setIcon(Icono);
+        TextoIDPieza.setSize(160, 24);
+        TextoIDPieza.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoIDVehiculo.getLocation().getY() + 40);
+        PanelDerecho.add(TextoIDPieza);
         
-        // Texto para campo Apellido Materno
-        JLabel TextoApellidoMaterno = new JLabel();
-        TextoApellidoMaterno.setForeground(Color.BLACK);
-        TextoApellidoMaterno.setBackground(Color.WHITE);
-        TextoApellidoMaterno.setName("TextoApellidoMaterno");
-        TextoApellidoMaterno.setBorder(null);
-        TextoApellidoMaterno.setToolTipText("<html><p><strong>Apellido Materno</strong></p></html>");
-        TextoApellidoMaterno.setText("Apellido Materno:");
+        // Texto para campo CantidadPiezas
+        JLabel TextoCantidadPiezas = new JLabel();
+        TextoCantidadPiezas.setForeground(Color.BLACK);
+        TextoCantidadPiezas.setBackground(Color.WHITE);
+        TextoCantidadPiezas.setName("TextoCantidadPiezas");
+        TextoCantidadPiezas.setBorder(null);
+        TextoCantidadPiezas.setToolTipText("<html><p><strong>Cantidad de Piezas</strong></p></html>");
+        TextoCantidadPiezas.setText("Cantidad de Piezas:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoApellidoMaterno.setIcon(Icono);
-        TextoApellidoMaterno.setSize(135, 24);
-        TextoApellidoMaterno.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoApellidoPaterno.getLocation().getY() + 40);
-        PanelDerecho.add(TextoApellidoMaterno);
+                "/content/images/menu/Pieza-BelizeHope-24x24.png"));
+        TextoCantidadPiezas.setIcon(Icono);
+        TextoCantidadPiezas.setSize(160, 24);
+        TextoCantidadPiezas.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoIDPieza.getLocation().getY() + 40);
+        PanelDerecho.add(TextoCantidadPiezas);
         
-        // Texto para campo Dirección
-        JLabel TextoDireccion = new JLabel();
-        TextoDireccion.setForeground(Color.BLACK);
-        TextoDireccion.setBackground(Color.WHITE);
-        TextoDireccion.setName("TextoDireccion");
-        TextoDireccion.setBorder(null);
-        TextoDireccion.setToolTipText("<html><p><strong>Dirección</strong></p></html>");
-        TextoDireccion.setText("Dirección:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Direccion-BelizeHope-24x24.png"));
-        TextoDireccion.setIcon(Icono);
-        TextoDireccion.setSize(135, 24);
-        TextoDireccion.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoApellidoMaterno.getLocation().getY() + 40);
-        PanelDerecho.add(TextoDireccion);
-        
-        // Texto para campo Teléfono
-        JLabel TextoTelefono = new JLabel();
-        TextoTelefono.setForeground(Color.BLACK);
-        TextoTelefono.setBackground(Color.WHITE);
-        TextoTelefono.setName("TextoTelefono");
-        TextoTelefono.setBorder(null);
-        TextoTelefono.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
-        TextoTelefono.setText("Teléfono:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Telefono-BelizeHope-24x24.png"));
-        TextoTelefono.setIcon(Icono);
-        TextoTelefono.setSize(135, 24);
-        TextoTelefono.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoDireccion.getLocation().getY() + 40);
-        PanelDerecho.add(TextoTelefono);
         
         // |---------------------Combobox--------------------------------------|
         JComboBox ComboBuscar = new JComboBox();
         ComboBuscar.setName("ComboBuscar");
         ComboBuscar.addItem("ID");
-        ComboBuscar.addItem("Nombre de Usuario");
-        ComboBuscar.addItem("Nombre");
-        ComboBuscar.addItem("Apellido Paterno");
-        ComboBuscar.addItem("Apellido Materno");
-        ComboBuscar.setSize(120, 20);
+        ComboBuscar.addItem("ID Vehículo");
+        ComboBuscar.setSize(145, 20);
         ComboBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel);
         PanelFechaHoraContenido.add(ComboBuscar);
         // |-------------------Campos de Texto---------------------------------|
@@ -1031,7 +997,7 @@ public class Menu extends javax.swing.JFrame {
         JTextField CampoBuscar = new JTextField();
         CampoBuscar.setName("CampoBuscar");
         CampoBuscar.setBorder(null);
-        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setText("Buscar Reparación");
         CampoBuscar.setBackground(Color.WHITE);
         CampoBuscar.setForeground(ColorNoEscrito);
         CampoBuscar.setSize(120, 20);
@@ -1051,109 +1017,84 @@ public class Menu extends javax.swing.JFrame {
                 (int) TextoID.getLocation().getY());
         PanelCentral.add(CampoID);
         
-        // Campo para Username
-        JTextField CampoUsername = new JTextField();
-        CampoUsername.setName("CampoUsername");
-        CampoUsername.setBorder(null);
-        CampoUsername.setText("Nombre de Usuario");
-        CampoUsername.setBackground(Color.WHITE);
-        CampoUsername.setForeground(ColorNoEscrito);
-        CampoUsername.setSize(120, 20);
-        CampoUsername.setLocation((int) TextoUsername.getLocation().getX() +
-                (int) (TextoUsername.getSize().getWidth() + 10), 
-                (int) TextoUsername.getLocation().getY());
-        PanelCentral.add(CampoUsername);
+        // Campo para Fecha de Entrada
+        JTextField CampoFechaEntrada = new JTextField();
+        CampoFechaEntrada.setName("CampoFechaEntrada");
+        CampoFechaEntrada.setBorder(null);
+        CampoFechaEntrada.setText("DD/MM/YYYY");
+        CampoFechaEntrada.setBackground(Color.WHITE);
+        CampoFechaEntrada.setForeground(ColorNoEscrito);
+        CampoFechaEntrada.setSize(120, 20);
+        CampoFechaEntrada.setLocation((int) TextoFechaEntrada.getLocation().getX() +
+                (int) (TextoFechaEntrada.getSize().getWidth() + 10), 
+                (int) TextoFechaEntrada.getLocation().getY());
+        PanelCentral.add(CampoFechaEntrada);
         
-        // Campo para contraseña
-        JPasswordField CampoContrasena = new JPasswordField();
-        CampoContrasena.setName("CampoContrasena");
-        CampoContrasena.setBorder(null);
-        CampoContrasena.setText("Contraseña");
-        CampoContrasena.setBackground(Color.WHITE);
-        CampoContrasena.setForeground(ColorNoEscrito);
-        CampoContrasena.setSize(120, 20);
-        CampoContrasena.setLocation((int) TextoContrasena.getLocation().getX() +
-                (int) (TextoContrasena.getSize().getWidth() + 10), 
-                (int) TextoContrasena.getLocation().getY());
-        PanelCentral.add(CampoContrasena);
+        // Campo para Fecha de Salida
+        JTextField CampoFechaSalida = new JTextField();
+        CampoFechaSalida.setName("CampoFechaSalida");
+        CampoFechaSalida.setBorder(null);
+        CampoFechaSalida.setText("DD/MM/YYYY");
+        CampoFechaSalida.setBackground(Color.WHITE);
+        CampoFechaSalida.setForeground(ColorNoEscrito);
+        CampoFechaSalida.setSize(120, 20);
+        CampoFechaSalida.setLocation((int) TextoFechaSalida.getLocation().getX() +
+                (int) (TextoFechaSalida.getSize().getWidth() + 10), 
+                (int) TextoFechaSalida.getLocation().getY());
+        PanelCentral.add(CampoFechaSalida);
         
-        // Campo para Rol
-        JTextField CampoRol = new JTextField();
-        CampoRol.setName("CampoRol");
-        CampoRol.setBorder(null);
-        CampoRol.setText("Rol");
-        CampoRol.setBackground(Color.WHITE);
-        CampoRol.setForeground(ColorNoEscrito);
-        CampoRol.setSize(120, 20);
-        CampoRol.setLocation((int) TextoRol.getLocation().getX() +
-                (int) (TextoRol.getSize().getWidth() + 10), 
-                (int) TextoRol.getLocation().getY());
-        PanelCentral.add(CampoRol);
+        // Campo para Falla
+        JTextField CampoFalla = new JTextField();
+        CampoFalla.setName("CampoFalla");
+        CampoFalla.setBorder(null);
+        CampoFalla.setText("Falla");
+        CampoFalla.setBackground(Color.WHITE);
+        CampoFalla.setForeground(ColorNoEscrito);
+        CampoFalla.setSize(120, 20);
+        CampoFalla.setLocation((int) TextoFalla.getLocation().getX() +
+                (int) (TextoFalla.getSize().getWidth() + 10), 
+                (int) TextoFalla.getLocation().getY());
+        PanelCentral.add(CampoFalla);
         
-        // Campo para Nombre
-        JTextField CampoNombre = new JTextField();
-        CampoNombre.setName("CampoNombre");
-        CampoNombre.setBorder(null);
-        CampoNombre.setText("Nombre(s)");
-        CampoNombre.setBackground(Color.WHITE);
-        CampoNombre.setForeground(ColorNoEscrito);
-        CampoNombre.setSize(120, 20);
-        CampoNombre.setLocation((int) TextoNombre.getLocation().getX() +
-                (int) (TextoNombre.getSize().getWidth() + 10), 
-                (int) TextoNombre.getLocation().getY());
-        PanelDerecho.add(CampoNombre);
+        // Campo para ID de Vehiculo
+        JTextField CampoIDVehiculo = new JTextField();
+        CampoIDVehiculo.setName("CampoIDVehiculo");
+        CampoIDVehiculo.setBorder(null);
+        CampoIDVehiculo.setText("ID de Vehículo");
+        CampoIDVehiculo.setBackground(Color.WHITE);
+        CampoIDVehiculo.setForeground(ColorNoEscrito);
+        CampoIDVehiculo.setSize(120, 20);
+        CampoIDVehiculo.setLocation((int) TextoIDVehiculo.getLocation().getX() +
+                (int) (TextoIDVehiculo.getSize().getWidth() + 10), 
+                (int) TextoIDVehiculo.getLocation().getY());
+        PanelDerecho.add(CampoIDVehiculo);
         
-        // Campo para Apellido Paterno
-        JTextField CampoApellidoPaterno = new JTextField();
-        CampoApellidoPaterno.setName("CampoApellidoPaterno");
-        CampoApellidoPaterno.setBorder(null);
-        CampoApellidoPaterno.setText("Apellido Paterno");
-        CampoApellidoPaterno.setBackground(Color.WHITE);
-        CampoApellidoPaterno.setForeground(ColorNoEscrito);
-        CampoApellidoPaterno.setSize(120, 20);
-        CampoApellidoPaterno.setLocation((int) TextoApellidoPaterno.getLocation().getX() +
-                (int) (TextoApellidoPaterno.getSize().getWidth() + 10), 
-                (int) TextoApellidoPaterno.getLocation().getY());
-        PanelDerecho.add(CampoApellidoPaterno);
+        // Campo para IDPieza de Pieza
+        JTextField CampoIDPieza = new JTextField();
+        CampoIDPieza.setName("CampoIDPieza");
+        CampoIDPieza.setBorder(null);
+        CampoIDPieza.setText("ID de Pieza");
+        CampoIDPieza.setBackground(Color.WHITE);
+        CampoIDPieza.setForeground(ColorNoEscrito);
+        CampoIDPieza.setSize(120, 20);
+        CampoIDPieza.setLocation((int) TextoIDPieza.getLocation().getX() +
+                (int) (TextoIDPieza.getSize().getWidth() + 10), 
+                (int) TextoIDPieza.getLocation().getY());
+        PanelDerecho.add(CampoIDPieza);
         
-        // Campo para Apellido Materno
-        JTextField CampoApellidoMaterno = new JTextField();
-        CampoApellidoMaterno.setName("CampoApellidoMaterno");
-        CampoApellidoMaterno.setBorder(null);
-        CampoApellidoMaterno.setText("Apellido Materno");
-        CampoApellidoMaterno.setBackground(Color.WHITE);
-        CampoApellidoMaterno.setForeground(ColorNoEscrito);
-        CampoApellidoMaterno.setSize(120, 20);
-        CampoApellidoMaterno.setLocation((int) TextoApellidoMaterno.getLocation().getX() +
-                (int) (TextoApellidoMaterno.getSize().getWidth() + 10), 
-                (int) TextoApellidoMaterno.getLocation().getY());
-        PanelDerecho.add(CampoApellidoMaterno);
+        // Campo para Cantidad de Piezas
+        JTextField CampoCantidadPiezas = new JTextField();
+        CampoCantidadPiezas.setName("CampoCantidadPiezas");
+        CampoCantidadPiezas.setBorder(null);
+        CampoCantidadPiezas.setText("Cantidad de Piezas");
+        CampoCantidadPiezas.setBackground(Color.WHITE);
+        CampoCantidadPiezas.setForeground(ColorNoEscrito);
+        CampoCantidadPiezas.setSize(120, 20);
+        CampoCantidadPiezas.setLocation((int) TextoCantidadPiezas.getLocation().getX() +
+                (int) (TextoCantidadPiezas.getSize().getWidth() + 10), 
+                (int) TextoCantidadPiezas.getLocation().getY());
+        PanelDerecho.add(CampoCantidadPiezas);
         
-        // Campo para Dirección
-        JTextField CampoDireccion = new JTextField();
-        CampoDireccion.setName("CampoDireccion");
-        CampoDireccion.setBorder(null);
-        CampoDireccion.setText("Dirección");
-        CampoDireccion.setBackground(Color.WHITE);
-        CampoDireccion.setForeground(ColorNoEscrito);
-        CampoDireccion.setSize(120, 20);
-        CampoDireccion.setLocation((int) TextoDireccion.getLocation().getX() +
-                (int) (TextoDireccion.getSize().getWidth() + 10), 
-                (int) TextoDireccion.getLocation().getY());
-        PanelDerecho.add(CampoDireccion);
-        
-        // Campo para Teléfono
-        JTextField CampoTelefono = new JTextField();
-        CampoTelefono.setName("CampoTelefono");
-        CampoTelefono.setBorder(null);
-        CampoTelefono.setText("Teléfono");
-        CampoTelefono.setBackground(Color.WHITE);
-        CampoTelefono.setForeground(ColorNoEscrito);
-        CampoTelefono.setSize(120, 20);
-        CampoTelefono.setLocation((int) TextoTelefono.getLocation().getX() +
-                (int) (TextoTelefono.getSize().getWidth() + 10), 
-                (int) TextoTelefono.getLocation().getY());
-        PanelDerecho.add(CampoTelefono);
         
         // |---------------------Separadores-----------------------------------|
         // Color para separador
@@ -1179,93 +1120,71 @@ public class Menu extends javax.swing.JFrame {
                 (int) CampoID.getLocation().getY() + 20);
         PanelCentral.add(SeparadorID);
         
-        // Separador para CampoUsername
-        JSeparator SeparadorUsername = new JSeparator();
-        SeparadorUsername.setName("SeparadorUsername");
-        SeparadorUsername.setBorder(null);
-        SeparadorUsername.setBackground(Color.WHITE);
-        SeparadorUsername.setForeground(ColorSeparador);
-        SeparadorUsername.setSize(120, 15);
-        SeparadorUsername.setLocation((int) CampoUsername.getLocation().getX(), 
-                (int) CampoUsername.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorUsername);
+        // Separador para CampoFechaEntrada
+        JSeparator SeparadorFechaEntrada = new JSeparator();
+        SeparadorFechaEntrada.setName("SeparadorFechaEntrada");
+        SeparadorFechaEntrada.setBorder(null);
+        SeparadorFechaEntrada.setBackground(Color.WHITE);
+        SeparadorFechaEntrada.setForeground(ColorSeparador);
+        SeparadorFechaEntrada.setSize(120, 15);
+        SeparadorFechaEntrada.setLocation((int) CampoFechaEntrada.getLocation().getX(), 
+                (int) CampoFechaEntrada.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorFechaEntrada);
         
-        // Separador para CampoContrasena
-        JSeparator SeparadorContrasena = new JSeparator();
-        SeparadorContrasena.setName("SeparadorContrasena");
-        SeparadorContrasena.setBorder(null);
-        SeparadorContrasena.setBackground(Color.WHITE);
-        SeparadorContrasena.setForeground(ColorSeparador);
-        SeparadorContrasena.setSize(120, 15);
-        SeparadorContrasena.setLocation((int) CampoContrasena.getLocation().getX(), 
-                (int) CampoContrasena.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorContrasena);
+        // Separador para CampoFechaSalida
+        JSeparator SeparadorFechaSalida = new JSeparator();
+        SeparadorFechaSalida.setName("SeparadorFechaSalida");
+        SeparadorFechaSalida.setBorder(null);
+        SeparadorFechaSalida.setBackground(Color.WHITE);
+        SeparadorFechaSalida.setForeground(ColorSeparador);
+        SeparadorFechaSalida.setSize(120, 15);
+        SeparadorFechaSalida.setLocation((int) CampoFechaSalida.getLocation().getX(), 
+                (int) CampoFechaSalida.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorFechaSalida);
         
-        // Separador para CampoRol
-        JSeparator SeparadorRol = new JSeparator();
-        SeparadorRol.setName("SeparadorRol");
-        SeparadorRol.setBorder(null);
-        SeparadorRol.setBackground(Color.WHITE);
-        SeparadorRol.setForeground(ColorSeparador);
-        SeparadorRol.setSize(120, 15);
-        SeparadorRol.setLocation((int) CampoRol.getLocation().getX(), 
-                (int) CampoRol.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorRol);
+        // Separador para CampoFalla
+        JSeparator SeparadorFalla = new JSeparator();
+        SeparadorFalla.setName("SeparadorFalla");
+        SeparadorFalla.setBorder(null);
+        SeparadorFalla.setBackground(Color.WHITE);
+        SeparadorFalla.setForeground(ColorSeparador);
+        SeparadorFalla.setSize(120, 15);
+        SeparadorFalla.setLocation((int) CampoFalla.getLocation().getX(), 
+                (int) CampoFalla.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorFalla);
         
-        // Separador para CampoNombre
-        JSeparator SeparadorNombre = new JSeparator();
-        SeparadorNombre.setName("SeparadorNombre");
-        SeparadorNombre.setBorder(null);
-        SeparadorNombre.setBackground(Color.WHITE);
-        SeparadorNombre.setForeground(ColorSeparador);
-        SeparadorNombre.setSize(120, 15);
-        SeparadorNombre.setLocation((int) CampoNombre.getLocation().getX(), 
-                (int) CampoNombre.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorNombre);
+        // Separador para CampoIDVehiculo
+        JSeparator SeparadorIDVehiculo = new JSeparator();
+        SeparadorIDVehiculo.setName("SeparadorIDVehiculo");
+        SeparadorIDVehiculo.setBorder(null);
+        SeparadorIDVehiculo.setBackground(Color.WHITE);
+        SeparadorIDVehiculo.setForeground(ColorSeparador);
+        SeparadorIDVehiculo.setSize(120, 15);
+        SeparadorIDVehiculo.setLocation((int) CampoIDVehiculo.getLocation().getX(), 
+                (int) CampoIDVehiculo.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorIDVehiculo);
         
-        // Separador para CampoApellidoPaterno
-        JSeparator SeparadorApellidoPaterno = new JSeparator();
-        SeparadorApellidoPaterno.setName("SeparadorApellidoPaterno");
-        SeparadorApellidoPaterno.setBorder(null);
-        SeparadorApellidoPaterno.setBackground(Color.WHITE);
-        SeparadorApellidoPaterno.setForeground(ColorSeparador);
-        SeparadorApellidoPaterno.setSize(120, 15);
-        SeparadorApellidoPaterno.setLocation((int) CampoApellidoPaterno.getLocation().getX(), 
-                (int) CampoApellidoPaterno.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorApellidoPaterno);
+        // Separador para CampoIDPieza
+        JSeparator SeparadorIDPieza = new JSeparator();
+        SeparadorIDPieza.setName("SeparadorIDPieza");
+        SeparadorIDPieza.setBorder(null);
+        SeparadorIDPieza.setBackground(Color.WHITE);
+        SeparadorIDPieza.setForeground(ColorSeparador);
+        SeparadorIDPieza.setSize(120, 15);
+        SeparadorIDPieza.setLocation((int) CampoIDPieza.getLocation().getX(), 
+                (int) CampoIDPieza.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorIDPieza);
         
-        // Separador para CampoApellidoMaterno
-        JSeparator SeparadorApellidoMaterno = new JSeparator();
-        SeparadorApellidoMaterno.setName("SeparadorApellidoMaterno");
-        SeparadorApellidoMaterno.setBorder(null);
-        SeparadorApellidoMaterno.setBackground(Color.WHITE);
-        SeparadorApellidoMaterno.setForeground(ColorSeparador);
-        SeparadorApellidoMaterno.setSize(120, 15);
-        SeparadorApellidoMaterno.setLocation((int) CampoApellidoMaterno.getLocation().getX(), 
-                (int) CampoApellidoMaterno.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorApellidoMaterno);
-        
-        // Separador para CampoDireccion
-        JSeparator SeparadorDireccion = new JSeparator();
-        SeparadorDireccion.setName("SeparadorDireccion");
-        SeparadorDireccion.setBorder(null);
-        SeparadorDireccion.setBackground(Color.WHITE);
-        SeparadorDireccion.setForeground(ColorSeparador);
-        SeparadorDireccion.setSize(120, 15);
-        SeparadorDireccion.setLocation((int) CampoDireccion.getLocation().getX(), 
-                (int) CampoDireccion.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorDireccion);
-        
-        // Separador para CampoTelefono
-        JSeparator SeparadorTelefono = new JSeparator();
-        SeparadorTelefono.setName("SeparadorTelefono");
-        SeparadorTelefono.setBorder(null);
-        SeparadorTelefono.setBackground(Color.WHITE);
-        SeparadorTelefono.setForeground(ColorSeparador);
-        SeparadorTelefono.setSize(120, 15);
-        SeparadorTelefono.setLocation((int) CampoTelefono.getLocation().getX(), 
-                (int) CampoTelefono.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorTelefono);
+        // Separador para CampoCantidadPiezas
+        JSeparator SeparadorCantidadPiezas = new JSeparator();
+        SeparadorCantidadPiezas.setName("SeparadorCantidadPiezas");
+        SeparadorCantidadPiezas.setBorder(null);
+        SeparadorCantidadPiezas.setBackground(Color.WHITE);
+        SeparadorCantidadPiezas.setForeground(ColorSeparador);
+        SeparadorCantidadPiezas.setSize(120, 15);
+        SeparadorCantidadPiezas.setLocation((int) CampoCantidadPiezas.getLocation().getX(), 
+                (int) CampoCantidadPiezas.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorCantidadPiezas);
         
         // |---------------------Funciones de botones--------------------------|
         // Boton para Reestablecer campos
@@ -1276,22 +1195,18 @@ public class Menu extends javax.swing.JFrame {
             {
                 CampoID.setText("ID");
                 CampoID.setForeground(ColorNoEscrito);
-                CampoUsername.setText("Nombre de Usuario");
-                CampoUsername.setForeground(ColorNoEscrito);
-                CampoContrasena.setText("Contraseña");
-                CampoContrasena.setForeground(ColorNoEscrito);
-                CampoRol.setText("Rol");
-                CampoRol.setForeground(ColorNoEscrito);
-                CampoNombre.setText("Nombre(s)");
-                CampoNombre.setForeground(ColorNoEscrito);
-                CampoApellidoPaterno.setText("Apellido Paterno");
-                CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                CampoApellidoMaterno.setText("Apellido Materno");
-                CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                CampoDireccion.setText("Dirección");
-                CampoDireccion.setForeground(ColorNoEscrito);
-                CampoTelefono.setText("Teléfono");
-                CampoTelefono.setForeground(ColorNoEscrito);
+                CampoFechaEntrada.setText("DD/MM/YYYY");
+                CampoFechaEntrada.setForeground(ColorNoEscrito);
+                CampoFechaSalida.setText("DD/MM/YYYY");
+                CampoFechaSalida.setForeground(ColorNoEscrito);
+                CampoFalla.setText("Falla");
+                CampoFalla.setForeground(ColorNoEscrito);
+                CampoIDVehiculo.setText("ID de Vehículo");
+                CampoIDVehiculo.setForeground(ColorNoEscrito);
+                CampoIDPieza.setText("ID de Pieza");
+                CampoIDPieza.setForeground(ColorNoEscrito);
+                CampoCantidadPiezas.setText("Cantidad de Piezas");
+                CampoCantidadPiezas.setForeground(ColorNoEscrito);
             }
         });
         
@@ -1309,7 +1224,7 @@ public class Menu extends javax.swing.JFrame {
                     Registrable = true;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /*ID = CampoID.getText();
                     Username = CampoUsername.getText();
                     Contrasena = String.valueOf(CampoContrasena.getPassword());
                     Rol = CampoRol.getText();
@@ -1471,7 +1386,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                     
                 };
             });
@@ -1490,7 +1405,7 @@ public class Menu extends javax.swing.JFrame {
                     Eliminable = false;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /* = CampoID.getText();
                     Username = CampoUsername.getText();
                    
                     
@@ -1564,7 +1479,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
         });
         
@@ -1685,7 +1600,7 @@ public class Menu extends javax.swing.JFrame {
                             UsuarioTemp = RegistrosVentana.getUsuario(Indice);
                             CampoID.setText(UsuarioTemp.getID());
                             CampoID.setForeground(ColorEscribir);
-                            CampoUsername.setText(UsuarioTemp.getUsername());
+                            /*CampoUsername.setText(UsuarioTemp.getUsername());
                             CampoUsername.setForeground(ColorEscribir);
                             CampoContrasena.setText(UsuarioTemp.getContrasena());
                             CampoContrasena.setForeground(ColorEscribir);
@@ -1700,7 +1615,7 @@ public class Menu extends javax.swing.JFrame {
                             CampoDireccion.setText(UsuarioTemp.getDireccion());
                             CampoDireccion.setForeground(ColorEscribir);
                             CampoTelefono.setText(UsuarioTemp.getTelefono());
-                            CampoTelefono.setForeground(ColorEscribir);
+                            CampoTelefono.setForeground(ColorEscribir);*/
                         }
                         else
                         {
@@ -1741,7 +1656,7 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Buscar Usuario") && 
+                if(Contenido.equals("Buscar Reparación") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
@@ -1767,11 +1682,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Buscar Usuario"))
+                if(!Contenido.equals("Buscar Reparación"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoBuscar.setText("Buscar Usuario");
+                        CampoBuscar.setText("Buscar Reparación");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -1792,7 +1707,7 @@ public class Menu extends javax.swing.JFrame {
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Buscar Usuario"))
+                if(Contenido.equals("Buscar Reparación"))
                 {
                     // Elimina contenido
                     CampoBuscar.setText("");
@@ -1940,15 +1855,15 @@ public class Menu extends javax.swing.JFrame {
 
         });
         
-        // |------------------------CampoUsername------------------------------|
-        // Se añade listener para enfoque de CampoUsername
-        CampoUsername.addFocusListener(new FocusListener(){
+        // |------------------------CampoFechaEntrada------------------------------|
+        // Se añade listener para enfoque de CampoFechaEntrada
+        CampoFechaEntrada.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
+                String Contenido = CampoFechaEntrada.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -1956,11 +1871,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Nombre de Usuario") && 
+                if(Contenido.equals("DD/MM/YYYY") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoUsername.setText("");
+                    CampoFechaEntrada.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -1974,7 +1889,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
+                String Contenido = CampoFechaEntrada.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -1982,11 +1897,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Nombre de Usuario"))
+                if(!Contenido.equals("DD/MM/YYYY"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoUsername.setText("Nombre de Usuario");
+                        CampoFechaEntrada.setText("DD/MM/YYYY");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -1996,21 +1911,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoUsername
-        CampoUsername.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoFechaEntrada
+        CampoFechaEntrada.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoUsername.getText();
+                String Contenido = CampoFechaEntrada.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Nombre de Usuario"))
+                if(Contenido.equals("DD/MM/YYYY"))
                 {
                     // Elimina contenido
-                    CampoUsername.setText("");
+                    CampoFechaEntrada.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -2022,41 +1937,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoUsername");
+                System.out.println("Mouse liberado de CampoFechaEntrada");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoUsername");
+                System.out.println("Mouse ha ingresado en CampoFechaEntrada");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoUsername");
+                System.out.println("Mouse ha salido de CampoFechaEntrada");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoUsername");
+                System.out.println("Se ha hecho click en CampoFechaEntrada");
             }
 
         });
         
-        // |------------------------CampoContrasena----------------------------|
-        // Se añade listener para enfoque de CampoContrasena
-        CampoContrasena.addFocusListener(new FocusListener(){
+        // |------------------------CampoFechaSalida----------------------------|
+        // Se añade listener para enfoque de CampoFechaSalida
+        CampoFechaSalida.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                String Contenido = CampoFechaSalida.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2064,11 +1979,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Contraseña") && 
+                if(Contenido.equals("DD/MM/YYYY") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoContrasena.setText("");
+                    CampoFechaSalida.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -2082,7 +1997,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                String Contenido = CampoFechaSalida.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2090,11 +2005,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Contraseña"))
+                if(!Contenido.equals("DD/MM/YYYY"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoContrasena.setText("Contraseña");
+                        CampoFechaSalida.setText("DD/MM/YYYY");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -2104,21 +2019,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoContrasena
-        CampoContrasena.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoFechaSalida
+        CampoFechaSalida.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                String Contenido = CampoFechaSalida.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Contraseña"))
+                if(Contenido.equals("DD/MM/YYYY"))
                 {
                     // Elimina contenido
-                    CampoContrasena.setText("");
+                    CampoFechaSalida.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -2130,41 +2045,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoContrasena");
+                System.out.println("Mouse liberado de CampoFechaSalida");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoContrasena");
+                System.out.println("Mouse ha ingresado en CampoFechaSalida");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoContrasena");
+                System.out.println("Mouse ha salido de CampoFechaSalida");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoContrasena");
+                System.out.println("Se ha hecho click en CampoFechaSalida");
             }
 
         });
         
-        // |------------------------CampoRol-----------------------------------|
-        // Se añade listener para enfoque de CampoRol
-        CampoRol.addFocusListener(new FocusListener(){
+        // |------------------------CampoFalla-----------------------------------|
+        // Se añade listener para enfoque de CampoFalla
+        CampoFalla.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
+                String Contenido = CampoFalla.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2172,11 +2087,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Rol") && 
+                if(Contenido.equals("Falla") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoRol.setText("");
+                    CampoFalla.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -2190,7 +2105,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
+                String Contenido = CampoFalla.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2198,11 +2113,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Rol"))
+                if(!Contenido.equals("Falla"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoRol.setText("Rol");
+                        CampoFalla.setText("Falla");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -2213,20 +2128,20 @@ public class Menu extends javax.swing.JFrame {
         });
         
         // Listener para mouse en CampoRol
-        CampoRol.addMouseListener(new MouseListener(){
+        CampoFalla.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoRol.getText();
+                String Contenido = CampoFalla.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Rol"))
+                if(Contenido.equals("Falla"))
                 {
                     // Elimina contenido
-                    CampoRol.setText("");
+                    CampoFalla.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -2238,41 +2153,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoRol");
+                System.out.println("Mouse liberado de CampoFalla");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoRol");
+                System.out.println("Mouse ha ingresado en CampoFalla");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoRol");
+                System.out.println("Mouse ha salido de CampoFalla");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoRol");
+                System.out.println("Se ha hecho click en CampoFalla");
             }
 
         });
         
-        // |------------------------CampoNombre--------------------------------|
-        // Se añade listener para enfoque de CampoNombre
-        CampoNombre.addFocusListener(new FocusListener(){
+        // |------------------------CampoIDVehiculo----------------------------|
+        // Se añade listener para enfoque de CampoIDVehiculo
+        CampoIDVehiculo.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoNombre.getText();
+                String Contenido = CampoIDVehiculo.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2280,11 +2195,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Nombre(s)") && 
+                if(Contenido.equals("ID de Vehículo") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoNombre.setText("");
+                    CampoIDVehiculo.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -2298,7 +2213,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoNombre.getText();
+                String Contenido = CampoIDVehiculo.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2306,11 +2221,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Nombre(s)"))
+                if(!Contenido.equals("ID de Vehículo)"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoNombre.setText("Nombre(s)");
+                        CampoIDVehiculo.setText("ID de Vehículo");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -2320,21 +2235,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoNombre
-        CampoNombre.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoIDVehiculo
+        CampoIDVehiculo.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoNombre.getText();
+                String Contenido = CampoIDVehiculo.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Nombre(s)"))
+                if(Contenido.equals("ID de Vehículo"))
                 {
                     // Elimina contenido
-                    CampoNombre.setText("");
+                    CampoIDVehiculo.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -2346,41 +2261,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoNombre");
+                System.out.println("Mouse liberado de CampoIDVehiculo");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoNombre");
+                System.out.println("Mouse ha ingresado en CampoIDVehiculo");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoNombre");
+                System.out.println("Mouse ha salido de CampoIDVehiculo");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoNombre");
+                System.out.println("Se ha hecho click en CampoIDVehiculo");
             }
 
         });
         
-        // |------------------CampoApellidoPaterno-----------------------------|
-        // Se añade listener para enfoque de CampoApellidoPaterno
-        CampoApellidoPaterno.addFocusListener(new FocusListener(){
+        // |------------------CampoIDPieza-------------------------------------|
+        // Se añade listener para enfoque de CampoIDPieza
+        CampoIDPieza.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoIDPieza.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2388,11 +2303,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Apellido Paterno") && 
+                if(Contenido.equals("ID de Pieza") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoApellidoPaterno.setText("");
+                    CampoIDPieza.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -2406,7 +2321,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoIDPieza.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2414,11 +2329,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Apellido Paterno"))
+                if(!Contenido.equals("ID de Pieza"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoApellidoPaterno.setText("Apellido Paterno");
+                        CampoIDPieza.setText("ID de Pieza");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -2428,21 +2343,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoApellidoPaterno
-        CampoApellidoPaterno.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoIDPieza
+        CampoIDPieza.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoIDPieza.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Apellido Paterno"))
+                if(Contenido.equals("ID de Pieza"))
                 {
                     // Elimina contenido
-                    CampoApellidoPaterno.setText("");
+                    CampoIDPieza.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -2454,41 +2369,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoApellidoPaterno");
+                System.out.println("Mouse liberado de CampoIDPieza");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoApellidoPaterno");
+                System.out.println("Mouse ha ingresado en CampoIDPieza");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoApellidoPaterno");
+                System.out.println("Mouse ha salido de CampoIDPieza");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoApellidoPaterno");
+                System.out.println("Se ha hecho click en CampoIDPieza");
             }
 
         });
         
-        // |------------------CampoApellidoMaterno-----------------------------|
-        // Se añade listener para enfoque de CampoApellidoMaterno
-        CampoApellidoMaterno.addFocusListener(new FocusListener(){
+        // |------------------CampoCantidadPiezas------------------------------|
+        // Se añade listener para enfoque de CampoCantidadPiezas
+        CampoCantidadPiezas.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoCantidadPiezas.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2496,11 +2411,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Apellido Materno") && 
+                if(Contenido.equals("Cantidad de Piezas") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoApellidoMaterno.setText("");
+                    CampoCantidadPiezas.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -2514,7 +2429,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoCantidadPiezas.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -2522,11 +2437,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Apellido Materno"))
+                if(!Contenido.equals("Cantidad de Piezas"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoApellidoMaterno.setText("Apellido Materno");
+                        CampoCantidadPiezas.setText("Cantidad de Piezas");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -2536,21 +2451,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoApellidoMaterno
-        CampoApellidoMaterno.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoCantidadPiezas
+        CampoCantidadPiezas.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoCantidadPiezas.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Apellido Materno"))
+                if(Contenido.equals("Cantidad de Piezas"))
                 {
                     // Elimina contenido
-                    CampoApellidoMaterno.setText("");
+                    CampoCantidadPiezas.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -2562,244 +2477,28 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoApellidoMaterno");
+                System.out.println("Mouse liberado de CampoCantidadPiezas");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoApellidoMaterno");
+                System.out.println("Mouse ha ingresado en CampoCantidadPiezas");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoApellidoMaterno");
+                System.out.println("Mouse ha salido de CampoCantidadPiezas");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoApellidoMaterno");
-            }
-
-        });
-        
-        // |------------------------CampoDireccion-----------------------------|
-        // Se añade listener para enfoque de CampoDireccion
-        CampoDireccion.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Dirección") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoDireccion.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Dirección"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoDireccion.setText("Dirección");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoDireccion
-        CampoDireccion.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoDireccion.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Dirección"))
-                {
-                    // Elimina contenido
-                    CampoDireccion.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoDireccion");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoDireccion");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoDireccion");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoDireccion");
-            }
-
-        });
-        
-        // |------------------------CampoTelefono------------------------------|
-        // Se añade listener para enfoque de CampoTelefono
-        CampoTelefono.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Teléfono") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoTelefono.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Teléfono"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoTelefono.setText("Teléfono");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoTelefono
-        CampoTelefono.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoTelefono.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Teléfono"))
-                {
-                    // Elimina contenido
-                    CampoTelefono.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoTelefono");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoTelefono");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoTelefono");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoTelefono");
+                System.out.println("Se ha hecho click en CampoCantidadPiezas");
             }
 
         });
@@ -2979,148 +2678,114 @@ public class Menu extends javax.swing.JFrame {
         TextoID.setToolTipText("<html><p><strong>ID</strong></p></html>");
         TextoID.setText("ID:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
+                "/content/images/menu/Vehículo-BelizeHope-24x24.png"));
         TextoID.setIcon(Icono);
         TextoID.setSize(100, 24);
         TextoID.setLocation((int) AnchoPanelCentral - 380, 30);
         System.out.println();
         PanelCentral.add(TextoID);
         
-        // Texto para campo Username
-        JLabel TextoUsername = new JLabel();
-        TextoUsername.setForeground(Color.BLACK);
-        TextoUsername.setBackground(Color.WHITE);
-        TextoUsername.setName("TextoUsername");
-        TextoUsername.setBorder(null);
-        TextoUsername.setToolTipText("<html><p><strong>Nombre de Usuario</strong></p></html>");
-        TextoUsername.setText("Username:");
+        // Texto para campo Matrícula
+        JLabel TextoMatricula = new JLabel();
+        TextoMatricula.setForeground(Color.BLACK);
+        TextoMatricula.setBackground(Color.WHITE);
+        TextoMatricula.setName("TextoMatricula");
+        TextoMatricula.setBorder(null);
+        TextoMatricula.setToolTipText("<html><p><strong>Número de Matrícula</strong></p></html>");
+        TextoMatricula.setText("Matrícula:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoUsername.setIcon(Icono);
-        TextoUsername.setSize(100, 24);
-        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
+                "/content/images/menu/Matrícula-BelizeHope-24x24.png"));
+        TextoMatricula.setIcon(Icono);
+        TextoMatricula.setSize(100, 24);
+        TextoMatricula.setLocation((int) AnchoPanelCentral - 380, 
                 (int) TextoID.getLocation().getY() + 40);
-        PanelCentral.add(TextoUsername);
+        PanelCentral.add(TextoMatricula);
         
-        // Texto para campo Contraseña
-        JLabel TextoContrasena = new JLabel();
-        TextoContrasena.setForeground(Color.BLACK);
-        TextoContrasena.setBackground(Color.WHITE);
-        TextoContrasena.setName("TextoContrasena");
-        TextoContrasena.setBorder(null);
-        TextoContrasena.setToolTipText("<html><p><strong>Contraseña</strong></p></html>");
-        TextoContrasena.setText("Contraseña:");
+        // Texto para campo Marca
+        JLabel TextoMarca = new JLabel();
+        TextoMarca.setForeground(Color.BLACK);
+        TextoMarca.setBackground(Color.WHITE);
+        TextoMarca.setName("TextoMarca");
+        TextoMarca.setBorder(null);
+        TextoMarca.setToolTipText("<html><p><strong>Marca</strong></p></html>");
+        TextoMarca.setText("Marca:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Contrasena-24x24.png"));
-        TextoContrasena.setIcon(Icono);
-        TextoContrasena.setSize(100, 24);
-        TextoContrasena.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoUsername.getLocation().getY() + 40);
-        PanelCentral.add(TextoContrasena);
+                "/content/images/menu/Vehículo-BelizeHope-24x24.png"));
+        TextoMarca.setIcon(Icono);
+        TextoMarca.setSize(100, 24);
+        TextoMarca.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoMatricula.getLocation().getY() + 40);
+        PanelCentral.add(TextoMarca);
         
-        // Texto para campo Rol
-        JLabel TextoRol = new JLabel();
-        TextoRol.setForeground(Color.BLACK);
-        TextoRol.setBackground(Color.WHITE);
-        TextoRol.setName("TextoRol");
-        TextoRol.setBorder(null);
-        TextoRol.setToolTipText("<html><p><strong>Rol</strong></p></html>");
-        TextoRol.setText("Rol:");
+        // Texto para campo Modelo
+        JLabel TextoModelo = new JLabel();
+        TextoModelo.setForeground(Color.BLACK);
+        TextoModelo.setBackground(Color.WHITE);
+        TextoModelo.setName("TextoModelo");
+        TextoModelo.setBorder(null);
+        TextoModelo.setToolTipText("<html><p><strong>Modelo</strong></p></html>");
+        TextoModelo.setText("Modelo:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoRol.setIcon(Icono);
-        TextoRol.setSize(100, 24);
-        TextoRol.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoContrasena.getLocation().getY() + 40);
-        PanelCentral.add(TextoRol);
+                "/content/images/menu/Vehículo-BelizeHope-24x24.png"));
+        TextoModelo.setIcon(Icono);
+        TextoModelo.setSize(100, 24);
+        TextoModelo.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoMarca.getLocation().getY() + 40);
+        PanelCentral.add(TextoModelo);
         
-        // Texto para campo Nombre
-        JLabel TextoNombre = new JLabel();
-        TextoNombre.setForeground(Color.BLACK);
-        TextoNombre.setBackground(Color.WHITE);
-        TextoNombre.setName("TextoNombre");
-        TextoNombre.setBorder(null);
-        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
-        TextoNombre.setText("Nombre(s):");
+        // Texto para campo Año
+        JLabel TextoAnio = new JLabel();
+        TextoAnio.setForeground(Color.BLACK);
+        TextoAnio.setBackground(Color.WHITE);
+        TextoAnio.setName("TextoAnio");
+        TextoAnio.setBorder(null);
+        TextoAnio.setToolTipText("<html><p><strong>Año</strong></p></html>");
+        TextoAnio.setText("Año:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoNombre.setIcon(Icono);
-        TextoNombre.setSize(135, 24);
-        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 30);
-        PanelDerecho.add(TextoNombre);
+                "/content/images/menu/Vehículo-BelizeHope-24x24.png"));
+        TextoAnio.setIcon(Icono);
+        TextoAnio.setSize(135, 24);
+        TextoAnio.setLocation((int) AnchoPanelCentral - 380, 30);
+        PanelDerecho.add(TextoAnio);
         
-        // Texto para campo Apellido Paterno
-        JLabel TextoApellidoPaterno = new JLabel();
-        TextoApellidoPaterno.setForeground(Color.BLACK);
-        TextoApellidoPaterno.setBackground(Color.WHITE);
-        TextoApellidoPaterno.setName("TextoApellidoPaterno");
-        TextoApellidoPaterno.setBorder(null);
-        TextoApellidoPaterno.setToolTipText("<html><p><strong>Apellido Paterno</strong></p></html>");
-        TextoApellidoPaterno.setText("Apellido Paterno:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoApellidoPaterno.setIcon(Icono);
-        TextoApellidoPaterno.setSize(135, 24);
-        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoNombre.getLocation().getY() + 40);
-        PanelDerecho.add(TextoApellidoPaterno);
-        
-        // Texto para campo Apellido Materno
-        JLabel TextoApellidoMaterno = new JLabel();
-        TextoApellidoMaterno.setForeground(Color.BLACK);
-        TextoApellidoMaterno.setBackground(Color.WHITE);
-        TextoApellidoMaterno.setName("TextoApellidoMaterno");
-        TextoApellidoMaterno.setBorder(null);
-        TextoApellidoMaterno.setToolTipText("<html><p><strong>Apellido Materno</strong></p></html>");
-        TextoApellidoMaterno.setText("Apellido Materno:");
+        // Texto para campo ID de Cliente
+        JLabel TextoIDCliente = new JLabel();
+        TextoIDCliente.setForeground(Color.BLACK);
+        TextoIDCliente.setBackground(Color.WHITE);
+        TextoIDCliente.setName("TextoIDCliente");
+        TextoIDCliente.setBorder(null);
+        TextoIDCliente.setToolTipText("<html><p><strong>ID de Cliente</strong></p></html>");
+        TextoIDCliente.setText("ID de Cliente:");
         Icono = new ImageIcon(getClass().getResource(
                 "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoApellidoMaterno.setIcon(Icono);
-        TextoApellidoMaterno.setSize(135, 24);
-        TextoApellidoMaterno.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoApellidoPaterno.getLocation().getY() + 40);
-        PanelDerecho.add(TextoApellidoMaterno);
+        TextoIDCliente.setIcon(Icono);
+        TextoIDCliente.setSize(135, 24);
+        TextoIDCliente.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoAnio.getLocation().getY() + 40);
+        PanelDerecho.add(TextoIDCliente);
         
-        // Texto para campo Dirección
-        JLabel TextoDireccion = new JLabel();
-        TextoDireccion.setForeground(Color.BLACK);
-        TextoDireccion.setBackground(Color.WHITE);
-        TextoDireccion.setName("TextoDireccion");
-        TextoDireccion.setBorder(null);
-        TextoDireccion.setToolTipText("<html><p><strong>Dirección</strong></p></html>");
-        TextoDireccion.setText("Dirección:");
+        // Texto para campo Fecha
+        JLabel TextoFecha = new JLabel();
+        TextoFecha.setForeground(Color.BLACK);
+        TextoFecha.setBackground(Color.WHITE);
+        TextoFecha.setName("TextoFecha");
+        TextoFecha.setBorder(null);
+        TextoFecha.setToolTipText("<html><p><strong>Fecha</strong></p></html>");
+        TextoFecha.setText("Fecha:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Direccion-BelizeHope-24x24.png"));
-        TextoDireccion.setIcon(Icono);
-        TextoDireccion.setSize(135, 24);
-        TextoDireccion.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoApellidoMaterno.getLocation().getY() + 40);
-        PanelDerecho.add(TextoDireccion);
-        
-        // Texto para campo Teléfono
-        JLabel TextoTelefono = new JLabel();
-        TextoTelefono.setForeground(Color.BLACK);
-        TextoTelefono.setBackground(Color.WHITE);
-        TextoTelefono.setName("TextoTelefono");
-        TextoTelefono.setBorder(null);
-        TextoTelefono.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
-        TextoTelefono.setText("Teléfono:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Telefono-BelizeHope-24x24.png"));
-        TextoTelefono.setIcon(Icono);
-        TextoTelefono.setSize(135, 24);
-        TextoTelefono.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoDireccion.getLocation().getY() + 40);
-        PanelDerecho.add(TextoTelefono);
+                "/content/images/menu/Fecha-BelizeHope-24x24.png"));
+        TextoFecha.setIcon(Icono);
+        TextoFecha.setSize(135, 24);
+        TextoFecha.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoIDCliente.getLocation().getY() + 40);
+        PanelDerecho.add(TextoFecha);
         
         // |---------------------Combobox--------------------------------------|
         JComboBox ComboBuscar = new JComboBox();
         ComboBuscar.setName("ComboBuscar");
         ComboBuscar.addItem("ID");
-        ComboBuscar.addItem("Nombre de Usuario");
-        ComboBuscar.addItem("Nombre");
-        ComboBuscar.addItem("Apellido Paterno");
-        ComboBuscar.addItem("Apellido Materno");
+        ComboBuscar.addItem("Matrícula");
+        ComboBuscar.addItem("ID Cliente");
         ComboBuscar.setSize(120, 20);
         ComboBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel);
         PanelFechaHoraContenido.add(ComboBuscar);
@@ -3130,7 +2795,7 @@ public class Menu extends javax.swing.JFrame {
         JTextField CampoBuscar = new JTextField();
         CampoBuscar.setName("CampoBuscar");
         CampoBuscar.setBorder(null);
-        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setText("Buscar Vehículo");
         CampoBuscar.setBackground(Color.WHITE);
         CampoBuscar.setForeground(ColorNoEscrito);
         CampoBuscar.setSize(120, 20);
@@ -3150,109 +2815,84 @@ public class Menu extends javax.swing.JFrame {
                 (int) TextoID.getLocation().getY());
         PanelCentral.add(CampoID);
         
-        // Campo para Username
-        JTextField CampoUsername = new JTextField();
-        CampoUsername.setName("CampoUsername");
-        CampoUsername.setBorder(null);
-        CampoUsername.setText("Nombre de Usuario");
-        CampoUsername.setBackground(Color.WHITE);
-        CampoUsername.setForeground(ColorNoEscrito);
-        CampoUsername.setSize(120, 20);
-        CampoUsername.setLocation((int) TextoUsername.getLocation().getX() +
-                (int) (TextoUsername.getSize().getWidth() + 10), 
-                (int) TextoUsername.getLocation().getY());
-        PanelCentral.add(CampoUsername);
+        // Campo para Matrícula
+        JTextField CampoMatricula = new JTextField();
+        CampoMatricula.setName("CampoMatricula");
+        CampoMatricula.setBorder(null);
+        CampoMatricula.setText("XXX-XXX-XXX");
+        CampoMatricula.setBackground(Color.WHITE);
+        CampoMatricula.setForeground(ColorNoEscrito);
+        CampoMatricula.setSize(120, 20);
+        CampoMatricula.setLocation((int) TextoMatricula.getLocation().getX() +
+                (int) (TextoMatricula.getSize().getWidth() + 10), 
+                (int) TextoMatricula.getLocation().getY());
+        PanelCentral.add(CampoMatricula);
         
-        // Campo para contraseña
-        JPasswordField CampoContrasena = new JPasswordField();
-        CampoContrasena.setName("CampoContrasena");
-        CampoContrasena.setBorder(null);
-        CampoContrasena.setText("Contraseña");
-        CampoContrasena.setBackground(Color.WHITE);
-        CampoContrasena.setForeground(ColorNoEscrito);
-        CampoContrasena.setSize(120, 20);
-        CampoContrasena.setLocation((int) TextoContrasena.getLocation().getX() +
-                (int) (TextoContrasena.getSize().getWidth() + 10), 
-                (int) TextoContrasena.getLocation().getY());
-        PanelCentral.add(CampoContrasena);
+        // Campo para Marca
+        JTextField CampoMarca = new JTextField();
+        CampoMarca.setName("CampoMarca");
+        CampoMarca.setBorder(null);
+        CampoMarca.setText("Marca");
+        CampoMarca.setBackground(Color.WHITE);
+        CampoMarca.setForeground(ColorNoEscrito);
+        CampoMarca.setSize(120, 20);
+        CampoMarca.setLocation((int) TextoMarca.getLocation().getX() +
+                (int) (TextoMarca.getSize().getWidth() + 10), 
+                (int) TextoMarca.getLocation().getY());
+        PanelCentral.add(CampoMarca);
         
-        // Campo para Rol
-        JTextField CampoRol = new JTextField();
-        CampoRol.setName("CampoRol");
-        CampoRol.setBorder(null);
-        CampoRol.setText("Rol");
-        CampoRol.setBackground(Color.WHITE);
-        CampoRol.setForeground(ColorNoEscrito);
-        CampoRol.setSize(120, 20);
-        CampoRol.setLocation((int) TextoRol.getLocation().getX() +
-                (int) (TextoRol.getSize().getWidth() + 10), 
-                (int) TextoRol.getLocation().getY());
-        PanelCentral.add(CampoRol);
+        // Campo para Modelo
+        JTextField CampoModelo = new JTextField();
+        CampoModelo.setName("CampoModelo");
+        CampoModelo.setBorder(null);
+        CampoModelo.setText("Modelo");
+        CampoModelo.setBackground(Color.WHITE);
+        CampoModelo.setForeground(ColorNoEscrito);
+        CampoModelo.setSize(120, 20);
+        CampoModelo.setLocation((int) TextoModelo.getLocation().getX() +
+                (int) (TextoModelo.getSize().getWidth() + 10), 
+                (int) TextoModelo.getLocation().getY());
+        PanelCentral.add(CampoModelo);
         
-        // Campo para Nombre
-        JTextField CampoNombre = new JTextField();
-        CampoNombre.setName("CampoNombre");
-        CampoNombre.setBorder(null);
-        CampoNombre.setText("Nombre(s)");
-        CampoNombre.setBackground(Color.WHITE);
-        CampoNombre.setForeground(ColorNoEscrito);
-        CampoNombre.setSize(120, 20);
-        CampoNombre.setLocation((int) TextoNombre.getLocation().getX() +
-                (int) (TextoNombre.getSize().getWidth() + 10), 
-                (int) TextoNombre.getLocation().getY());
-        PanelDerecho.add(CampoNombre);
+        // Campo para Año
+        JTextField CampoAnio = new JTextField();
+        CampoAnio.setName("CampoNombre");
+        CampoAnio.setBorder(null);
+        CampoAnio.setText("YYYY");
+        CampoAnio.setBackground(Color.WHITE);
+        CampoAnio.setForeground(ColorNoEscrito);
+        CampoAnio.setSize(120, 20);
+        CampoAnio.setLocation((int) TextoAnio.getLocation().getX() +
+                (int) (TextoAnio.getSize().getWidth() + 10), 
+                (int) TextoAnio.getLocation().getY());
+        PanelDerecho.add(CampoAnio);
         
-        // Campo para Apellido Paterno
-        JTextField CampoApellidoPaterno = new JTextField();
-        CampoApellidoPaterno.setName("CampoApellidoPaterno");
-        CampoApellidoPaterno.setBorder(null);
-        CampoApellidoPaterno.setText("Apellido Paterno");
-        CampoApellidoPaterno.setBackground(Color.WHITE);
-        CampoApellidoPaterno.setForeground(ColorNoEscrito);
-        CampoApellidoPaterno.setSize(120, 20);
-        CampoApellidoPaterno.setLocation((int) TextoApellidoPaterno.getLocation().getX() +
-                (int) (TextoApellidoPaterno.getSize().getWidth() + 10), 
-                (int) TextoApellidoPaterno.getLocation().getY());
-        PanelDerecho.add(CampoApellidoPaterno);
+        // Campo para ID de Cliente
+        JTextField CampoIDCliente = new JTextField();
+        CampoIDCliente.setName("CampoIDCliente");
+        CampoIDCliente.setBorder(null);
+        CampoIDCliente.setText("ID de Cliente");
+        CampoIDCliente.setBackground(Color.WHITE);
+        CampoIDCliente.setForeground(ColorNoEscrito);
+        CampoIDCliente.setSize(120, 20);
+        CampoIDCliente.setLocation((int) TextoIDCliente.getLocation().getX() +
+                (int) (TextoIDCliente.getSize().getWidth() + 10), 
+                (int) TextoIDCliente.getLocation().getY());
+        PanelDerecho.add(CampoIDCliente);
         
-        // Campo para Apellido Materno
-        JTextField CampoApellidoMaterno = new JTextField();
-        CampoApellidoMaterno.setName("CampoApellidoMaterno");
-        CampoApellidoMaterno.setBorder(null);
-        CampoApellidoMaterno.setText("Apellido Materno");
-        CampoApellidoMaterno.setBackground(Color.WHITE);
-        CampoApellidoMaterno.setForeground(ColorNoEscrito);
-        CampoApellidoMaterno.setSize(120, 20);
-        CampoApellidoMaterno.setLocation((int) TextoApellidoMaterno.getLocation().getX() +
-                (int) (TextoApellidoMaterno.getSize().getWidth() + 10), 
-                (int) TextoApellidoMaterno.getLocation().getY());
-        PanelDerecho.add(CampoApellidoMaterno);
+        // Campo para Fecha
+        JTextField CampoFecha = new JTextField();
+        CampoFecha.setName("CampoFecha");
+        CampoFecha.setBorder(null);
+        CampoFecha.setText("DD/MM/YYYY");
+        CampoFecha.setBackground(Color.WHITE);
+        CampoFecha.setForeground(ColorNoEscrito);
+        CampoFecha.setSize(120, 20);
+        CampoFecha.setLocation((int) TextoFecha.getLocation().getX() +
+                (int) (TextoFecha.getSize().getWidth() + 10), 
+                (int) TextoFecha.getLocation().getY());
+        PanelDerecho.add(CampoFecha);
         
-        // Campo para Dirección
-        JTextField CampoDireccion = new JTextField();
-        CampoDireccion.setName("CampoDireccion");
-        CampoDireccion.setBorder(null);
-        CampoDireccion.setText("Dirección");
-        CampoDireccion.setBackground(Color.WHITE);
-        CampoDireccion.setForeground(ColorNoEscrito);
-        CampoDireccion.setSize(120, 20);
-        CampoDireccion.setLocation((int) TextoDireccion.getLocation().getX() +
-                (int) (TextoDireccion.getSize().getWidth() + 10), 
-                (int) TextoDireccion.getLocation().getY());
-        PanelDerecho.add(CampoDireccion);
-        
-        // Campo para Teléfono
-        JTextField CampoTelefono = new JTextField();
-        CampoTelefono.setName("CampoTelefono");
-        CampoTelefono.setBorder(null);
-        CampoTelefono.setText("Teléfono");
-        CampoTelefono.setBackground(Color.WHITE);
-        CampoTelefono.setForeground(ColorNoEscrito);
-        CampoTelefono.setSize(120, 20);
-        CampoTelefono.setLocation((int) TextoTelefono.getLocation().getX() +
-                (int) (TextoTelefono.getSize().getWidth() + 10), 
-                (int) TextoTelefono.getLocation().getY());
-        PanelDerecho.add(CampoTelefono);
         
         // |---------------------Separadores-----------------------------------|
         // Color para separador
@@ -3278,93 +2918,71 @@ public class Menu extends javax.swing.JFrame {
                 (int) CampoID.getLocation().getY() + 20);
         PanelCentral.add(SeparadorID);
         
-        // Separador para CampoUsername
-        JSeparator SeparadorUsername = new JSeparator();
-        SeparadorUsername.setName("SeparadorUsername");
-        SeparadorUsername.setBorder(null);
-        SeparadorUsername.setBackground(Color.WHITE);
-        SeparadorUsername.setForeground(ColorSeparador);
-        SeparadorUsername.setSize(120, 15);
-        SeparadorUsername.setLocation((int) CampoUsername.getLocation().getX(), 
-                (int) CampoUsername.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorUsername);
+        // Separador para CampoMatricula
+        JSeparator SeparadorMatricula = new JSeparator();
+        SeparadorMatricula.setName("SeparadorMatricula");
+        SeparadorMatricula.setBorder(null);
+        SeparadorMatricula.setBackground(Color.WHITE);
+        SeparadorMatricula.setForeground(ColorSeparador);
+        SeparadorMatricula.setSize(120, 15);
+        SeparadorMatricula.setLocation((int) CampoMatricula.getLocation().getX(), 
+                (int) CampoMatricula.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorMatricula);
         
-        // Separador para CampoContrasena
-        JSeparator SeparadorContrasena = new JSeparator();
-        SeparadorContrasena.setName("SeparadorContrasena");
-        SeparadorContrasena.setBorder(null);
-        SeparadorContrasena.setBackground(Color.WHITE);
-        SeparadorContrasena.setForeground(ColorSeparador);
-        SeparadorContrasena.setSize(120, 15);
-        SeparadorContrasena.setLocation((int) CampoContrasena.getLocation().getX(), 
-                (int) CampoContrasena.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorContrasena);
+        // Separador para CampoMarca
+        JSeparator SeparadorMarca = new JSeparator();
+        SeparadorMarca.setName("SeparadorMarca");
+        SeparadorMarca.setBorder(null);
+        SeparadorMarca.setBackground(Color.WHITE);
+        SeparadorMarca.setForeground(ColorSeparador);
+        SeparadorMarca.setSize(120, 15);
+        SeparadorMarca.setLocation((int) CampoMarca.getLocation().getX(), 
+                (int) CampoMarca.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorMarca);
         
-        // Separador para CampoRol
-        JSeparator SeparadorRol = new JSeparator();
-        SeparadorRol.setName("SeparadorRol");
-        SeparadorRol.setBorder(null);
-        SeparadorRol.setBackground(Color.WHITE);
-        SeparadorRol.setForeground(ColorSeparador);
-        SeparadorRol.setSize(120, 15);
-        SeparadorRol.setLocation((int) CampoRol.getLocation().getX(), 
-                (int) CampoRol.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorRol);
+        // Separador para CampoModelo
+        JSeparator SeparadorModelo = new JSeparator();
+        SeparadorModelo.setName("SeparadorModelo");
+        SeparadorModelo.setBorder(null);
+        SeparadorModelo.setBackground(Color.WHITE);
+        SeparadorModelo.setForeground(ColorSeparador);
+        SeparadorModelo.setSize(120, 15);
+        SeparadorModelo.setLocation((int) CampoModelo.getLocation().getX(), 
+                (int) CampoModelo.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorModelo);
         
-        // Separador para CampoNombre
-        JSeparator SeparadorNombre = new JSeparator();
-        SeparadorNombre.setName("SeparadorNombre");
-        SeparadorNombre.setBorder(null);
-        SeparadorNombre.setBackground(Color.WHITE);
-        SeparadorNombre.setForeground(ColorSeparador);
-        SeparadorNombre.setSize(120, 15);
-        SeparadorNombre.setLocation((int) CampoNombre.getLocation().getX(), 
-                (int) CampoNombre.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorNombre);
+        // Separador para CampoAnio
+        JSeparator SeparadorAnio = new JSeparator();
+        SeparadorAnio.setName("SeparadorAnio");
+        SeparadorAnio.setBorder(null);
+        SeparadorAnio.setBackground(Color.WHITE);
+        SeparadorAnio.setForeground(ColorSeparador);
+        SeparadorAnio.setSize(120, 15);
+        SeparadorAnio.setLocation((int) CampoAnio.getLocation().getX(), 
+                (int) CampoAnio.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorAnio);
         
-        // Separador para CampoApellidoPaterno
-        JSeparator SeparadorApellidoPaterno = new JSeparator();
-        SeparadorApellidoPaterno.setName("SeparadorApellidoPaterno");
-        SeparadorApellidoPaterno.setBorder(null);
-        SeparadorApellidoPaterno.setBackground(Color.WHITE);
-        SeparadorApellidoPaterno.setForeground(ColorSeparador);
-        SeparadorApellidoPaterno.setSize(120, 15);
-        SeparadorApellidoPaterno.setLocation((int) CampoApellidoPaterno.getLocation().getX(), 
-                (int) CampoApellidoPaterno.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorApellidoPaterno);
+        // Separador para CampoIDCliente
+        JSeparator SeparadorIDCliente = new JSeparator();
+        SeparadorIDCliente.setName("SeparadorIDCliente");
+        SeparadorIDCliente.setBorder(null);
+        SeparadorIDCliente.setBackground(Color.WHITE);
+        SeparadorIDCliente.setForeground(ColorSeparador);
+        SeparadorIDCliente.setSize(120, 15);
+        SeparadorIDCliente.setLocation((int) CampoIDCliente.getLocation().getX(), 
+                (int) CampoIDCliente.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorIDCliente);
         
-        // Separador para CampoApellidoMaterno
-        JSeparator SeparadorApellidoMaterno = new JSeparator();
-        SeparadorApellidoMaterno.setName("SeparadorApellidoMaterno");
-        SeparadorApellidoMaterno.setBorder(null);
-        SeparadorApellidoMaterno.setBackground(Color.WHITE);
-        SeparadorApellidoMaterno.setForeground(ColorSeparador);
-        SeparadorApellidoMaterno.setSize(120, 15);
-        SeparadorApellidoMaterno.setLocation((int) CampoApellidoMaterno.getLocation().getX(), 
-                (int) CampoApellidoMaterno.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorApellidoMaterno);
-        
-        // Separador para CampoDireccion
-        JSeparator SeparadorDireccion = new JSeparator();
-        SeparadorDireccion.setName("SeparadorDireccion");
-        SeparadorDireccion.setBorder(null);
-        SeparadorDireccion.setBackground(Color.WHITE);
-        SeparadorDireccion.setForeground(ColorSeparador);
-        SeparadorDireccion.setSize(120, 15);
-        SeparadorDireccion.setLocation((int) CampoDireccion.getLocation().getX(), 
-                (int) CampoDireccion.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorDireccion);
-        
-        // Separador para CampoTelefono
-        JSeparator SeparadorTelefono = new JSeparator();
-        SeparadorTelefono.setName("SeparadorTelefono");
-        SeparadorTelefono.setBorder(null);
-        SeparadorTelefono.setBackground(Color.WHITE);
-        SeparadorTelefono.setForeground(ColorSeparador);
-        SeparadorTelefono.setSize(120, 15);
-        SeparadorTelefono.setLocation((int) CampoTelefono.getLocation().getX(), 
-                (int) CampoTelefono.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorTelefono);
+        // Separador para CampoFecha
+        JSeparator SeparadorFecha = new JSeparator();
+        SeparadorFecha.setName("SeparadorFecha");
+        SeparadorFecha.setBorder(null);
+        SeparadorFecha.setBackground(Color.WHITE);
+        SeparadorFecha.setForeground(ColorSeparador);
+        SeparadorFecha.setSize(120, 15);
+        SeparadorFecha.setLocation((int) CampoFecha.getLocation().getX(), 
+                (int) CampoFecha.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorFecha);
         
         // |---------------------Funciones de botones--------------------------|
         // Boton para Reestablecer campos
@@ -3375,22 +2993,18 @@ public class Menu extends javax.swing.JFrame {
             {
                 CampoID.setText("ID");
                 CampoID.setForeground(ColorNoEscrito);
-                CampoUsername.setText("Nombre de Usuario");
-                CampoUsername.setForeground(ColorNoEscrito);
-                CampoContrasena.setText("Contraseña");
-                CampoContrasena.setForeground(ColorNoEscrito);
-                CampoRol.setText("Rol");
-                CampoRol.setForeground(ColorNoEscrito);
-                CampoNombre.setText("Nombre(s)");
-                CampoNombre.setForeground(ColorNoEscrito);
-                CampoApellidoPaterno.setText("Apellido Paterno");
-                CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                CampoApellidoMaterno.setText("Apellido Materno");
-                CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                CampoDireccion.setText("Dirección");
-                CampoDireccion.setForeground(ColorNoEscrito);
-                CampoTelefono.setText("Teléfono");
-                CampoTelefono.setForeground(ColorNoEscrito);
+                CampoMatricula.setText("XXX-XXX-XXX");
+                CampoMatricula.setForeground(ColorNoEscrito);
+                CampoMarca.setText("Marca");
+                CampoMarca.setForeground(ColorNoEscrito);
+                CampoModelo.setText("Modelo");
+                CampoModelo.setForeground(ColorNoEscrito);
+                CampoAnio.setText("YYYY");
+                CampoAnio.setForeground(ColorNoEscrito);
+                CampoIDCliente.setText("ID de Cliente");
+                CampoIDCliente.setForeground(ColorNoEscrito);
+                CampoFecha.setText("DD/MM/YYYY");
+                CampoFecha.setForeground(ColorNoEscrito);
             }
         });
         
@@ -3408,7 +3022,7 @@ public class Menu extends javax.swing.JFrame {
                     Registrable = true;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /*ID = CampoID.getText();
                     Username = CampoUsername.getText();
                     Contrasena = String.valueOf(CampoContrasena.getPassword());
                     Rol = CampoRol.getText();
@@ -3570,7 +3184,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                     
                 };
             });
@@ -3589,7 +3203,7 @@ public class Menu extends javax.swing.JFrame {
                     Eliminable = false;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /*ID = CampoID.getText();
                     Username = CampoUsername.getText();
                    
                     
@@ -3663,7 +3277,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
         });
         
@@ -3698,7 +3312,7 @@ public class Menu extends javax.swing.JFrame {
                     String Buscar;
                     Usuario UsuarioTemp;
                     UsuarioTemp = new Usuario();
-                    Boolean Encontrado;
+                    /*Boolean Encontrado;
                     Color ColorEscribir = new Color(51, 51, 51);
                     Encontrado = false;
                     int BuscarPor, x, Indice;
@@ -3806,7 +3420,7 @@ public class Menu extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
                                     Buscar);
                         }
-                    }
+                    }*/
                 }
         });
         
@@ -3840,7 +3454,7 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Buscar Usuario") && 
+                if(Contenido.equals("Buscar Vehículo") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
@@ -3866,11 +3480,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Buscar Usuario"))
+                if(!Contenido.equals("Buscar Vehículo"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoBuscar.setText("Buscar Usuario");
+                        CampoBuscar.setText("Buscar Vehículo");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -3891,7 +3505,7 @@ public class Menu extends javax.swing.JFrame {
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Buscar Usuario"))
+                if(Contenido.equals("Buscar Vehículo"))
                 {
                     // Elimina contenido
                     CampoBuscar.setText("");
@@ -4039,15 +3653,15 @@ public class Menu extends javax.swing.JFrame {
 
         });
         
-        // |------------------------CampoUsername------------------------------|
-        // Se añade listener para enfoque de CampoUsername
-        CampoUsername.addFocusListener(new FocusListener(){
+        // |------------------------CampoMatricula-----------------------------|
+        // Se añade listener para enfoque de CampoMatricula
+        CampoMatricula.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
+                String Contenido = CampoMatricula.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4055,11 +3669,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Nombre de Usuario") && 
+                if(Contenido.equals("XXX-XXX-XXX") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoUsername.setText("");
+                    CampoMatricula.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -4073,7 +3687,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
+                String Contenido = CampoMatricula.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4081,11 +3695,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Nombre de Usuario"))
+                if(!Contenido.equals("XXX-XXX-XXX"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoUsername.setText("Nombre de Usuario");
+                        CampoMatricula.setText("XXX-XXX-XXX");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -4095,21 +3709,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoUsername
-        CampoUsername.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoMatricula
+        CampoMatricula.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoUsername.getText();
+                String Contenido = CampoMatricula.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Nombre de Usuario"))
+                if(Contenido.equals("XXX-XXX-XXX"))
                 {
                     // Elimina contenido
-                    CampoUsername.setText("");
+                    CampoMatricula.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -4121,41 +3735,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoUsername");
+                System.out.println("Mouse liberado de CampoMatricula");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoUsername");
+                System.out.println("Mouse ha ingresado en CampoMatricula");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoUsername");
+                System.out.println("Mouse ha salido de CampoMatricula");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoUsername");
+                System.out.println("Se ha hecho click en CampoMatricula");
             }
 
         });
         
-        // |------------------------CampoContrasena----------------------------|
-        // Se añade listener para enfoque de CampoContrasena
-        CampoContrasena.addFocusListener(new FocusListener(){
+        // |------------------------CampoMarca---------------------------------|
+        // Se añade listener para enfoque de CampoMarca
+        CampoMarca.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                String Contenido = CampoMarca.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4163,11 +3777,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Contraseña") && 
+                if(Contenido.equals("Marca") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoContrasena.setText("");
+                    CampoMarca.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -4181,7 +3795,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                String Contenido = CampoMarca.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4189,11 +3803,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Contraseña"))
+                if(!Contenido.equals("Marca"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoContrasena.setText("Contraseña");
+                        CampoMarca.setText("Marca");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -4203,21 +3817,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoContrasena
-        CampoContrasena.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoMarca
+        CampoMarca.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
+                String Contenido = CampoMarca.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Contraseña"))
+                if(Contenido.equals("Marca"))
                 {
                     // Elimina contenido
-                    CampoContrasena.setText("");
+                    CampoMarca.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -4229,41 +3843,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoContrasena");
+                System.out.println("Mouse liberado de CampoMarca");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoContrasena");
+                System.out.println("Mouse ha ingresado en CampoMarca");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoContrasena");
+                System.out.println("Mouse ha salido de CampoMarca");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoContrasena");
+                System.out.println("Se ha hecho click en CampoMarca");
             }
 
         });
         
-        // |------------------------CampoRol-----------------------------------|
-        // Se añade listener para enfoque de CampoRol
-        CampoRol.addFocusListener(new FocusListener(){
+        // |------------------------CampoModelo--------------------------------|
+        // Se añade listener para enfoque de CampoModelo
+        CampoModelo.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
+                String Contenido = CampoModelo.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4271,11 +3885,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Rol") && 
+                if(Contenido.equals("Modelo") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoRol.setText("");
+                    CampoModelo.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -4289,7 +3903,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
+                String Contenido = CampoModelo.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4297,11 +3911,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Rol"))
+                if(!Contenido.equals("Modelo"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoRol.setText("Rol");
+                        CampoModelo.setText("Modelo");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -4311,21 +3925,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoRol
-        CampoRol.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoModelo
+        CampoModelo.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoRol.getText();
+                String Contenido = CampoModelo.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Rol"))
+                if(Contenido.equals("Modelo"))
                 {
                     // Elimina contenido
-                    CampoRol.setText("");
+                    CampoModelo.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -4337,41 +3951,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoRol");
+                System.out.println("Mouse liberado de CampoModelo");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoRol");
+                System.out.println("Mouse ha ingresado en CampoModelo");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoRol");
+                System.out.println("Mouse ha salido de CampoModelo");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoRol");
+                System.out.println("Se ha hecho click en CampoModelo");
             }
 
         });
         
-        // |------------------------CampoNombre--------------------------------|
-        // Se añade listener para enfoque de CampoNombre
-        CampoNombre.addFocusListener(new FocusListener(){
+        // |------------------------CampoAnio----------------------------------|
+        // Se añade listener para enfoque de CampoAnio
+        CampoAnio.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoNombre.getText();
+                String Contenido = CampoAnio.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4379,11 +3993,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Nombre(s)") && 
+                if(Contenido.equals("YYYY") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoNombre.setText("");
+                    CampoAnio.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -4397,7 +4011,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoNombre.getText();
+                String Contenido = CampoAnio.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4405,11 +4019,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Nombre(s)"))
+                if(!Contenido.equals("YYYY"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoNombre.setText("Nombre(s)");
+                        CampoAnio.setText("YYYY");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -4419,21 +4033,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoNombre
-        CampoNombre.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoAnio
+        CampoAnio.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoNombre.getText();
+                String Contenido = CampoAnio.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Nombre(s)"))
+                if(Contenido.equals("YYYY"))
                 {
                     // Elimina contenido
-                    CampoNombre.setText("");
+                    CampoAnio.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -4445,41 +4059,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoNombre");
+                System.out.println("Mouse liberado de CampoAnio");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoNombre");
+                System.out.println("Mouse ha ingresado en CampoAnio");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoNombre");
+                System.out.println("Mouse ha salido de CampoAnio");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoNombre");
+                System.out.println("Se ha hecho click en CampoAnio");
             }
 
         });
         
-        // |------------------CampoApellidoPaterno-----------------------------|
-        // Se añade listener para enfoque de CampoApellidoPaterno
-        CampoApellidoPaterno.addFocusListener(new FocusListener(){
+        // |------------------CampoIDCliente-----------------------------------|
+        // Se añade listener para enfoque de CampoIDCliente
+        CampoIDCliente.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoIDCliente.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4487,11 +4101,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Apellido Paterno") && 
+                if(Contenido.equals("ID de Cliente") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoApellidoPaterno.setText("");
+                    CampoIDCliente.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -4505,7 +4119,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoIDCliente.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4513,11 +4127,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Apellido Paterno"))
+                if(!Contenido.equals("ID de Cliente"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoApellidoPaterno.setText("Apellido Paterno");
+                        CampoIDCliente.setText("ID de Cliente");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -4527,21 +4141,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoApellidoPaterno
-        CampoApellidoPaterno.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoIDCliente
+        CampoIDCliente.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoIDCliente.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Apellido Paterno"))
+                if(Contenido.equals("ID de Cliente"))
                 {
                     // Elimina contenido
-                    CampoApellidoPaterno.setText("");
+                    CampoIDCliente.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -4553,41 +4167,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoApellidoPaterno");
+                System.out.println("Mouse liberado de CampoIDCliente");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoApellidoPaterno");
+                System.out.println("Mouse ha ingresado en CampoIDCliente");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoApellidoPaterno");
+                System.out.println("Mouse ha salido de CampoIDCliente");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoApellidoPaterno");
+                System.out.println("Se ha hecho click en CampoIDCliente");
             }
 
         });
         
-        // |------------------CampoApellidoMaterno-----------------------------|
-        // Se añade listener para enfoque de CampoApellidoMaterno
-        CampoApellidoMaterno.addFocusListener(new FocusListener(){
+        // |------------------CampoFecha---------------------------------------|
+        // Se añade listener para enfoque de CampoFecha
+        CampoFecha.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoFecha.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4595,11 +4209,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Apellido Materno") && 
+                if(Contenido.equals("DD/MM/YYYY") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoApellidoMaterno.setText("");
+                    CampoFecha.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -4613,7 +4227,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoFecha.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -4621,11 +4235,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Apellido Materno"))
+                if(!Contenido.equals("DD/MM/YYYY"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoApellidoMaterno.setText("Apellido Materno");
+                        CampoFecha.setText("DD/MM/YYYY");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -4635,21 +4249,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoApellidoMaterno
-        CampoApellidoMaterno.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoFecha
+        CampoFecha.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoFecha.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Apellido Materno"))
+                if(Contenido.equals("DD/MM/YYYY"))
                 {
                     // Elimina contenido
-                    CampoApellidoMaterno.setText("");
+                    CampoFecha.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -4661,244 +4275,28 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoApellidoMaterno");
+                System.out.println("Mouse liberado de CampoFecha");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoApellidoMaterno");
+                System.out.println("Mouse ha ingresado en CampoFecha");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoApellidoMaterno");
+                System.out.println("Mouse ha salido de CampoFecha");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoApellidoMaterno");
-            }
-
-        });
-        
-        // |------------------------CampoDireccion-----------------------------|
-        // Se añade listener para enfoque de CampoDireccion
-        CampoDireccion.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Dirección") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoDireccion.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Dirección"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoDireccion.setText("Dirección");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoDireccion
-        CampoDireccion.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoDireccion.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Dirección"))
-                {
-                    // Elimina contenido
-                    CampoDireccion.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoDireccion");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoDireccion");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoDireccion");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoDireccion");
-            }
-
-        });
-        
-        // |------------------------CampoTelefono------------------------------|
-        // Se añade listener para enfoque de CampoTelefono
-        CampoTelefono.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Teléfono") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoTelefono.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Teléfono"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoTelefono.setText("Teléfono");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoTelefono
-        CampoTelefono.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoTelefono.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Teléfono"))
-                {
-                    // Elimina contenido
-                    CampoTelefono.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoTelefono");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoTelefono");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoTelefono");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoTelefono");
+                System.out.println("Se ha hecho click en CampoFecha");
             }
 
         });
@@ -5007,7 +4405,7 @@ public class Menu extends javax.swing.JFrame {
                 ImagenesOver[Cont]));
             Boton.setRolloverIcon(Icono);
             Boton.setSelectedIcon(Icono);
-            Boton.setSize(55, 40);
+            Boton.setSize(55, 45);
             Cont++;
         }
         // |------------------------Ubicaciones de botones---------------------|
@@ -5085,68 +4483,21 @@ public class Menu extends javax.swing.JFrame {
         System.out.println();
         PanelCentral.add(TextoID);
         
-        // Texto para campo Username
-        JLabel TextoUsername = new JLabel();
-        TextoUsername.setForeground(Color.BLACK);
-        TextoUsername.setBackground(Color.WHITE);
-        TextoUsername.setName("TextoUsername");
-        TextoUsername.setBorder(null);
-        TextoUsername.setToolTipText("<html><p><strong>Nombre de Usuario</strong></p></html>");
-        TextoUsername.setText("Username:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoUsername.setIcon(Icono);
-        TextoUsername.setSize(100, 24);
-        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoID.getLocation().getY() + 40);
-        PanelCentral.add(TextoUsername);
-        
-        // Texto para campo Contraseña
-        JLabel TextoContrasena = new JLabel();
-        TextoContrasena.setForeground(Color.BLACK);
-        TextoContrasena.setBackground(Color.WHITE);
-        TextoContrasena.setName("TextoContrasena");
-        TextoContrasena.setBorder(null);
-        TextoContrasena.setToolTipText("<html><p><strong>Contraseña</strong></p></html>");
-        TextoContrasena.setText("Contraseña:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Contrasena-24x24.png"));
-        TextoContrasena.setIcon(Icono);
-        TextoContrasena.setSize(100, 24);
-        TextoContrasena.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoUsername.getLocation().getY() + 40);
-        PanelCentral.add(TextoContrasena);
-        
-        // Texto para campo Rol
-        JLabel TextoRol = new JLabel();
-        TextoRol.setForeground(Color.BLACK);
-        TextoRol.setBackground(Color.WHITE);
-        TextoRol.setName("TextoRol");
-        TextoRol.setBorder(null);
-        TextoRol.setToolTipText("<html><p><strong>Rol</strong></p></html>");
-        TextoRol.setText("Rol:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoRol.setIcon(Icono);
-        TextoRol.setSize(100, 24);
-        TextoRol.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoContrasena.getLocation().getY() + 40);
-        PanelCentral.add(TextoRol);
-        
         // Texto para campo Nombre
         JLabel TextoNombre = new JLabel();
         TextoNombre.setForeground(Color.BLACK);
         TextoNombre.setBackground(Color.WHITE);
         TextoNombre.setName("TextoNombre");
         TextoNombre.setBorder(null);
-        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoNombre.setToolTipText("<html><p><strong>Nombre de Cliente</strong></p></html>");
         TextoNombre.setText("Nombre(s):");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
         TextoNombre.setIcon(Icono);
-        TextoNombre.setSize(135, 24);
-        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 30);
-        PanelDerecho.add(TextoNombre);
+        TextoNombre.setSize(100, 24);
+        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoID.getLocation().getY() + 40);
+        PanelCentral.add(TextoNombre);
         
         // Texto para campo Apellido Paterno
         JLabel TextoApellidoPaterno = new JLabel();
@@ -5160,8 +4511,7 @@ public class Menu extends javax.swing.JFrame {
                 "/content/images/signup/Nombre-BelizeHope-24x24.png"));
         TextoApellidoPaterno.setIcon(Icono);
         TextoApellidoPaterno.setSize(135, 24);
-        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoNombre.getLocation().getY() + 40);
+        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380, 30);
         PanelDerecho.add(TextoApellidoPaterno);
         
         // Texto para campo Apellido Materno
@@ -5180,43 +4530,10 @@ public class Menu extends javax.swing.JFrame {
                 (int) TextoApellidoPaterno.getLocation().getY() + 40);
         PanelDerecho.add(TextoApellidoMaterno);
         
-        // Texto para campo Dirección
-        JLabel TextoDireccion = new JLabel();
-        TextoDireccion.setForeground(Color.BLACK);
-        TextoDireccion.setBackground(Color.WHITE);
-        TextoDireccion.setName("TextoDireccion");
-        TextoDireccion.setBorder(null);
-        TextoDireccion.setToolTipText("<html><p><strong>Dirección</strong></p></html>");
-        TextoDireccion.setText("Dirección:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Direccion-BelizeHope-24x24.png"));
-        TextoDireccion.setIcon(Icono);
-        TextoDireccion.setSize(135, 24);
-        TextoDireccion.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoApellidoMaterno.getLocation().getY() + 40);
-        PanelDerecho.add(TextoDireccion);
-        
-        // Texto para campo Teléfono
-        JLabel TextoTelefono = new JLabel();
-        TextoTelefono.setForeground(Color.BLACK);
-        TextoTelefono.setBackground(Color.WHITE);
-        TextoTelefono.setName("TextoTelefono");
-        TextoTelefono.setBorder(null);
-        TextoTelefono.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
-        TextoTelefono.setText("Teléfono:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Telefono-BelizeHope-24x24.png"));
-        TextoTelefono.setIcon(Icono);
-        TextoTelefono.setSize(135, 24);
-        TextoTelefono.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoDireccion.getLocation().getY() + 40);
-        PanelDerecho.add(TextoTelefono);
-        
         // |---------------------Combobox--------------------------------------|
         JComboBox ComboBuscar = new JComboBox();
         ComboBuscar.setName("ComboBuscar");
         ComboBuscar.addItem("ID");
-        ComboBuscar.addItem("Nombre de Usuario");
         ComboBuscar.addItem("Nombre");
         ComboBuscar.addItem("Apellido Paterno");
         ComboBuscar.addItem("Apellido Materno");
@@ -5229,7 +4546,7 @@ public class Menu extends javax.swing.JFrame {
         JTextField CampoBuscar = new JTextField();
         CampoBuscar.setName("CampoBuscar");
         CampoBuscar.setBorder(null);
-        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setText("Buscar Cliente");
         CampoBuscar.setBackground(Color.WHITE);
         CampoBuscar.setForeground(ColorNoEscrito);
         CampoBuscar.setSize(120, 20);
@@ -5248,46 +4565,7 @@ public class Menu extends javax.swing.JFrame {
                 (int) (TextoID.getSize().getWidth() + 10), 
                 (int) TextoID.getLocation().getY());
         PanelCentral.add(CampoID);
-        
-        // Campo para Username
-        JTextField CampoUsername = new JTextField();
-        CampoUsername.setName("CampoUsername");
-        CampoUsername.setBorder(null);
-        CampoUsername.setText("Nombre de Usuario");
-        CampoUsername.setBackground(Color.WHITE);
-        CampoUsername.setForeground(ColorNoEscrito);
-        CampoUsername.setSize(120, 20);
-        CampoUsername.setLocation((int) TextoUsername.getLocation().getX() +
-                (int) (TextoUsername.getSize().getWidth() + 10), 
-                (int) TextoUsername.getLocation().getY());
-        PanelCentral.add(CampoUsername);
-        
-        // Campo para contraseña
-        JPasswordField CampoContrasena = new JPasswordField();
-        CampoContrasena.setName("CampoContrasena");
-        CampoContrasena.setBorder(null);
-        CampoContrasena.setText("Contraseña");
-        CampoContrasena.setBackground(Color.WHITE);
-        CampoContrasena.setForeground(ColorNoEscrito);
-        CampoContrasena.setSize(120, 20);
-        CampoContrasena.setLocation((int) TextoContrasena.getLocation().getX() +
-                (int) (TextoContrasena.getSize().getWidth() + 10), 
-                (int) TextoContrasena.getLocation().getY());
-        PanelCentral.add(CampoContrasena);
-        
-        // Campo para Rol
-        JTextField CampoRol = new JTextField();
-        CampoRol.setName("CampoRol");
-        CampoRol.setBorder(null);
-        CampoRol.setText("Rol");
-        CampoRol.setBackground(Color.WHITE);
-        CampoRol.setForeground(ColorNoEscrito);
-        CampoRol.setSize(120, 20);
-        CampoRol.setLocation((int) TextoRol.getLocation().getX() +
-                (int) (TextoRol.getSize().getWidth() + 10), 
-                (int) TextoRol.getLocation().getY());
-        PanelCentral.add(CampoRol);
-        
+                
         // Campo para Nombre
         JTextField CampoNombre = new JTextField();
         CampoNombre.setName("CampoNombre");
@@ -5299,7 +4577,7 @@ public class Menu extends javax.swing.JFrame {
         CampoNombre.setLocation((int) TextoNombre.getLocation().getX() +
                 (int) (TextoNombre.getSize().getWidth() + 10), 
                 (int) TextoNombre.getLocation().getY());
-        PanelDerecho.add(CampoNombre);
+        PanelCentral.add(CampoNombre);
         
         // Campo para Apellido Paterno
         JTextField CampoApellidoPaterno = new JTextField();
@@ -5327,31 +4605,6 @@ public class Menu extends javax.swing.JFrame {
                 (int) TextoApellidoMaterno.getLocation().getY());
         PanelDerecho.add(CampoApellidoMaterno);
         
-        // Campo para Dirección
-        JTextField CampoDireccion = new JTextField();
-        CampoDireccion.setName("CampoDireccion");
-        CampoDireccion.setBorder(null);
-        CampoDireccion.setText("Dirección");
-        CampoDireccion.setBackground(Color.WHITE);
-        CampoDireccion.setForeground(ColorNoEscrito);
-        CampoDireccion.setSize(120, 20);
-        CampoDireccion.setLocation((int) TextoDireccion.getLocation().getX() +
-                (int) (TextoDireccion.getSize().getWidth() + 10), 
-                (int) TextoDireccion.getLocation().getY());
-        PanelDerecho.add(CampoDireccion);
-        
-        // Campo para Teléfono
-        JTextField CampoTelefono = new JTextField();
-        CampoTelefono.setName("CampoTelefono");
-        CampoTelefono.setBorder(null);
-        CampoTelefono.setText("Teléfono");
-        CampoTelefono.setBackground(Color.WHITE);
-        CampoTelefono.setForeground(ColorNoEscrito);
-        CampoTelefono.setSize(120, 20);
-        CampoTelefono.setLocation((int) TextoTelefono.getLocation().getX() +
-                (int) (TextoTelefono.getSize().getWidth() + 10), 
-                (int) TextoTelefono.getLocation().getY());
-        PanelDerecho.add(CampoTelefono);
         
         // |---------------------Separadores-----------------------------------|
         // Color para separador
@@ -5377,38 +4630,6 @@ public class Menu extends javax.swing.JFrame {
                 (int) CampoID.getLocation().getY() + 20);
         PanelCentral.add(SeparadorID);
         
-        // Separador para CampoUsername
-        JSeparator SeparadorUsername = new JSeparator();
-        SeparadorUsername.setName("SeparadorUsername");
-        SeparadorUsername.setBorder(null);
-        SeparadorUsername.setBackground(Color.WHITE);
-        SeparadorUsername.setForeground(ColorSeparador);
-        SeparadorUsername.setSize(120, 15);
-        SeparadorUsername.setLocation((int) CampoUsername.getLocation().getX(), 
-                (int) CampoUsername.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorUsername);
-        
-        // Separador para CampoContrasena
-        JSeparator SeparadorContrasena = new JSeparator();
-        SeparadorContrasena.setName("SeparadorContrasena");
-        SeparadorContrasena.setBorder(null);
-        SeparadorContrasena.setBackground(Color.WHITE);
-        SeparadorContrasena.setForeground(ColorSeparador);
-        SeparadorContrasena.setSize(120, 15);
-        SeparadorContrasena.setLocation((int) CampoContrasena.getLocation().getX(), 
-                (int) CampoContrasena.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorContrasena);
-        
-        // Separador para CampoRol
-        JSeparator SeparadorRol = new JSeparator();
-        SeparadorRol.setName("SeparadorRol");
-        SeparadorRol.setBorder(null);
-        SeparadorRol.setBackground(Color.WHITE);
-        SeparadorRol.setForeground(ColorSeparador);
-        SeparadorRol.setSize(120, 15);
-        SeparadorRol.setLocation((int) CampoRol.getLocation().getX(), 
-                (int) CampoRol.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorRol);
         
         // Separador para CampoNombre
         JSeparator SeparadorNombre = new JSeparator();
@@ -5419,7 +4640,7 @@ public class Menu extends javax.swing.JFrame {
         SeparadorNombre.setSize(120, 15);
         SeparadorNombre.setLocation((int) CampoNombre.getLocation().getX(), 
                 (int) CampoNombre.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorNombre);
+        PanelCentral.add(SeparadorNombre);
         
         // Separador para CampoApellidoPaterno
         JSeparator SeparadorApellidoPaterno = new JSeparator();
@@ -5443,28 +4664,6 @@ public class Menu extends javax.swing.JFrame {
                 (int) CampoApellidoMaterno.getLocation().getY() + 20);
         PanelDerecho.add(SeparadorApellidoMaterno);
         
-        // Separador para CampoDireccion
-        JSeparator SeparadorDireccion = new JSeparator();
-        SeparadorDireccion.setName("SeparadorDireccion");
-        SeparadorDireccion.setBorder(null);
-        SeparadorDireccion.setBackground(Color.WHITE);
-        SeparadorDireccion.setForeground(ColorSeparador);
-        SeparadorDireccion.setSize(120, 15);
-        SeparadorDireccion.setLocation((int) CampoDireccion.getLocation().getX(), 
-                (int) CampoDireccion.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorDireccion);
-        
-        // Separador para CampoTelefono
-        JSeparator SeparadorTelefono = new JSeparator();
-        SeparadorTelefono.setName("SeparadorTelefono");
-        SeparadorTelefono.setBorder(null);
-        SeparadorTelefono.setBackground(Color.WHITE);
-        SeparadorTelefono.setForeground(ColorSeparador);
-        SeparadorTelefono.setSize(120, 15);
-        SeparadorTelefono.setLocation((int) CampoTelefono.getLocation().getX(), 
-                (int) CampoTelefono.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorTelefono);
-        
         // |---------------------Funciones de botones--------------------------|
         // Boton para Reestablecer campos
         BotonReestablecer.addActionListener(new ActionListener(){
@@ -5474,22 +4673,12 @@ public class Menu extends javax.swing.JFrame {
             {
                 CampoID.setText("ID");
                 CampoID.setForeground(ColorNoEscrito);
-                CampoUsername.setText("Nombre de Usuario");
-                CampoUsername.setForeground(ColorNoEscrito);
-                CampoContrasena.setText("Contraseña");
-                CampoContrasena.setForeground(ColorNoEscrito);
-                CampoRol.setText("Rol");
-                CampoRol.setForeground(ColorNoEscrito);
                 CampoNombre.setText("Nombre(s)");
                 CampoNombre.setForeground(ColorNoEscrito);
                 CampoApellidoPaterno.setText("Apellido Paterno");
                 CampoApellidoPaterno.setForeground(ColorNoEscrito);
                 CampoApellidoMaterno.setText("Apellido Materno");
                 CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                CampoDireccion.setText("Dirección");
-                CampoDireccion.setForeground(ColorNoEscrito);
-                CampoTelefono.setText("Teléfono");
-                CampoTelefono.setForeground(ColorNoEscrito);
             }
         });
         
@@ -5507,7 +4696,7 @@ public class Menu extends javax.swing.JFrame {
                     Registrable = true;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /*ID = CampoID.getText();
                     Username = CampoUsername.getText();
                     Contrasena = String.valueOf(CampoContrasena.getPassword());
                     Rol = CampoRol.getText();
@@ -5669,7 +4858,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                     
                 };
             });
@@ -5688,7 +4877,7 @@ public class Menu extends javax.swing.JFrame {
                     Eliminable = false;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /*ID = CampoID.getText();
                     Username = CampoUsername.getText();
                    
                     
@@ -5762,7 +4951,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
         });
         
@@ -5797,7 +4986,7 @@ public class Menu extends javax.swing.JFrame {
                     String Buscar;
                     Usuario UsuarioTemp;
                     UsuarioTemp = new Usuario();
-                    Boolean Encontrado;
+                    /*Boolean Encontrado;
                     Color ColorEscribir = new Color(51, 51, 51);
                     Encontrado = false;
                     int BuscarPor, x, Indice;
@@ -5905,7 +5094,7 @@ public class Menu extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
                                     Buscar);
                         }
-                    }
+                    }*/
                 }
         });
         
@@ -5939,7 +5128,7 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Buscar Usuario") && 
+                if(Contenido.equals("Buscar Cliente") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
@@ -5965,11 +5154,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Buscar Usuario"))
+                if(!Contenido.equals("Buscar Cliente"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoBuscar.setText("Buscar Usuario");
+                        CampoBuscar.setText("Buscar Cliente");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -5990,7 +5179,7 @@ public class Menu extends javax.swing.JFrame {
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Buscar Usuario"))
+                if(Contenido.equals("Buscar Cliente"))
                 {
                     // Elimina contenido
                     CampoBuscar.setText("");
@@ -6137,331 +5326,7 @@ public class Menu extends javax.swing.JFrame {
             }
 
         });
-        
-        // |------------------------CampoUsername------------------------------|
-        // Se añade listener para enfoque de CampoUsername
-        CampoUsername.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Nombre de Usuario") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoUsername.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Nombre de Usuario"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoUsername.setText("Nombre de Usuario");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoUsername
-        CampoUsername.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoUsername.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Nombre de Usuario"))
-                {
-                    // Elimina contenido
-                    CampoUsername.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoUsername");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoUsername");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoUsername");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoUsername");
-            }
-
-        });
-        
-        // |------------------------CampoContrasena----------------------------|
-        // Se añade listener para enfoque de CampoContrasena
-        CampoContrasena.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Contraseña") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoContrasena.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Contraseña"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoContrasena.setText("Contraseña");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoContrasena
-        CampoContrasena.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Contraseña"))
-                {
-                    // Elimina contenido
-                    CampoContrasena.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoContrasena");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoContrasena");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoContrasena");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoContrasena");
-            }
-
-        });
-        
-        // |------------------------CampoRol-----------------------------------|
-        // Se añade listener para enfoque de CampoRol
-        CampoRol.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Rol") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoRol.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Rol"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoRol.setText("Rol");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoRol
-        CampoRol.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoRol.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Rol"))
-                {
-                    // Elimina contenido
-                    CampoRol.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoRol");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoRol");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoRol");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoRol");
-            }
-
-        });
-        
+       
         // |------------------------CampoNombre--------------------------------|
         // Se añade listener para enfoque de CampoNombre
         CampoNombre.addFocusListener(new FocusListener(){
@@ -6782,222 +5647,6 @@ public class Menu extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e) 
             {
                 System.out.println("Se ha hecho click en CampoApellidoMaterno");
-            }
-
-        });
-        
-        // |------------------------CampoDireccion-----------------------------|
-        // Se añade listener para enfoque de CampoDireccion
-        CampoDireccion.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Dirección") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoDireccion.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Dirección"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoDireccion.setText("Dirección");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoDireccion
-        CampoDireccion.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoDireccion.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Dirección"))
-                {
-                    // Elimina contenido
-                    CampoDireccion.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoDireccion");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoDireccion");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoDireccion");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoDireccion");
-            }
-
-        });
-        
-        // |------------------------CampoTelefono------------------------------|
-        // Se añade listener para enfoque de CampoTelefono
-        CampoTelefono.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Teléfono") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoTelefono.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Teléfono"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoTelefono.setText("Teléfono");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoTelefono
-        CampoTelefono.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoTelefono.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Teléfono"))
-                {
-                    // Elimina contenido
-                    CampoTelefono.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoTelefono");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoTelefono");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoTelefono");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoTelefono");
             }
 
         });
@@ -7106,7 +5755,7 @@ public class Menu extends javax.swing.JFrame {
                 ImagenesOver[Cont]));
             Boton.setRolloverIcon(Icono);
             Boton.setSelectedIcon(Icono);
-            Boton.setSize(55, 40);
+            Boton.setSize(55, 45);
             Cont++;
         }
         // |------------------------Ubicaciones de botones---------------------|
@@ -7184,141 +5833,89 @@ public class Menu extends javax.swing.JFrame {
         System.out.println();
         PanelCentral.add(TextoID);
         
-        // Texto para campo Username
-        JLabel TextoUsername = new JLabel();
-        TextoUsername.setForeground(Color.BLACK);
-        TextoUsername.setBackground(Color.WHITE);
-        TextoUsername.setName("TextoUsername");
-        TextoUsername.setBorder(null);
-        TextoUsername.setToolTipText("<html><p><strong>Nombre de Usuario</strong></p></html>");
-        TextoUsername.setText("Username:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoUsername.setIcon(Icono);
-        TextoUsername.setSize(100, 24);
-        TextoUsername.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoID.getLocation().getY() + 40);
-        PanelCentral.add(TextoUsername);
-        
-        // Texto para campo Contraseña
-        JLabel TextoContrasena = new JLabel();
-        TextoContrasena.setForeground(Color.BLACK);
-        TextoContrasena.setBackground(Color.WHITE);
-        TextoContrasena.setName("TextoContrasena");
-        TextoContrasena.setBorder(null);
-        TextoContrasena.setToolTipText("<html><p><strong>Contraseña</strong></p></html>");
-        TextoContrasena.setText("Contraseña:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Contrasena-24x24.png"));
-        TextoContrasena.setIcon(Icono);
-        TextoContrasena.setSize(100, 24);
-        TextoContrasena.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoUsername.getLocation().getY() + 40);
-        PanelCentral.add(TextoContrasena);
-        
-        // Texto para campo Rol
-        JLabel TextoRol = new JLabel();
-        TextoRol.setForeground(Color.BLACK);
-        TextoRol.setBackground(Color.WHITE);
-        TextoRol.setName("TextoRol");
-        TextoRol.setBorder(null);
-        TextoRol.setToolTipText("<html><p><strong>Rol</strong></p></html>");
-        TextoRol.setText("Rol:");
-        Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/NombreUsuario-BelizeHope-24x24.png"));
-        TextoRol.setIcon(Icono);
-        TextoRol.setSize(100, 24);
-        TextoRol.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoContrasena.getLocation().getY() + 40);
-        PanelCentral.add(TextoRol);
-        
         // Texto para campo Nombre
         JLabel TextoNombre = new JLabel();
         TextoNombre.setForeground(Color.BLACK);
         TextoNombre.setBackground(Color.WHITE);
         TextoNombre.setName("TextoNombre");
         TextoNombre.setBorder(null);
-        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
-        TextoNombre.setText("Nombre(s):");
+        TextoNombre.setToolTipText("<html><p><strong>Nombre de Pieza</strong></p></html>");
+        TextoNombre.setText("Nombre:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
+                "/content/images/menu/Pieza-BelizeHope-24x24.png"));
         TextoNombre.setIcon(Icono);
-        TextoNombre.setSize(135, 24);
-        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 30);
-        PanelDerecho.add(TextoNombre);
+        TextoNombre.setSize(100, 24);
+        TextoNombre.setLocation((int) AnchoPanelCentral - 380, 
+                (int) TextoID.getLocation().getY() + 40);
+        PanelCentral.add(TextoNombre);
         
-        // Texto para campo Apellido Paterno
-        JLabel TextoApellidoPaterno = new JLabel();
-        TextoApellidoPaterno.setForeground(Color.BLACK);
-        TextoApellidoPaterno.setBackground(Color.WHITE);
-        TextoApellidoPaterno.setName("TextoApellidoPaterno");
-        TextoApellidoPaterno.setBorder(null);
-        TextoApellidoPaterno.setToolTipText("<html><p><strong>Apellido Paterno</strong></p></html>");
-        TextoApellidoPaterno.setText("Apellido Paterno:");
+        // Texto para campo Marca
+        JLabel TextoMarca = new JLabel();
+        TextoMarca.setForeground(Color.BLACK);
+        TextoMarca.setBackground(Color.WHITE);
+        TextoMarca.setName("TextoMarca");
+        TextoMarca.setBorder(null);
+        TextoMarca.setToolTipText("<html><p><strong>Marca</strong></p></html>");
+        TextoMarca.setText("Marca:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoApellidoPaterno.setIcon(Icono);
-        TextoApellidoPaterno.setSize(135, 24);
-        TextoApellidoPaterno.setLocation((int) AnchoPanelCentral - 380,
+                "/content/images/menu/Pieza-BelizeHope-24x24.png"));
+        TextoMarca.setIcon(Icono);
+        TextoMarca.setSize(100, 24);
+        TextoMarca.setLocation((int) AnchoPanelCentral - 380, 
                 (int) TextoNombre.getLocation().getY() + 40);
-        PanelDerecho.add(TextoApellidoPaterno);
+        PanelCentral.add(TextoMarca);
         
-        // Texto para campo Apellido Materno
-        JLabel TextoApellidoMaterno = new JLabel();
-        TextoApellidoMaterno.setForeground(Color.BLACK);
-        TextoApellidoMaterno.setBackground(Color.WHITE);
-        TextoApellidoMaterno.setName("TextoApellidoMaterno");
-        TextoApellidoMaterno.setBorder(null);
-        TextoApellidoMaterno.setToolTipText("<html><p><strong>Apellido Materno</strong></p></html>");
-        TextoApellidoMaterno.setText("Apellido Materno:");
+        // Texto para campo Costo
+        JLabel TextoCosto = new JLabel();
+        TextoCosto.setForeground(Color.BLACK);
+        TextoCosto.setBackground(Color.WHITE);
+        TextoCosto.setName("TextoCosto");
+        TextoCosto.setBorder(null);
+        TextoCosto.setToolTipText("<html><p><strong>Costo</strong></p></html>");
+        TextoCosto.setText("Costo:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Nombre-BelizeHope-24x24.png"));
-        TextoApellidoMaterno.setIcon(Icono);
-        TextoApellidoMaterno.setSize(135, 24);
-        TextoApellidoMaterno.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoApellidoPaterno.getLocation().getY() + 40);
-        PanelDerecho.add(TextoApellidoMaterno);
+                "/content/images/menu/Pieza-BelizeHope-24x24.png"));
+        TextoCosto.setIcon(Icono);
+        TextoCosto.setSize(135, 24);
+        TextoCosto.setLocation((int) AnchoPanelCentral - 380, 30);
+        PanelDerecho.add(TextoCosto);
         
-        // Texto para campo Dirección
-        JLabel TextoDireccion = new JLabel();
-        TextoDireccion.setForeground(Color.BLACK);
-        TextoDireccion.setBackground(Color.WHITE);
-        TextoDireccion.setName("TextoDireccion");
-        TextoDireccion.setBorder(null);
-        TextoDireccion.setToolTipText("<html><p><strong>Dirección</strong></p></html>");
-        TextoDireccion.setText("Dirección:");
+        // Texto para campo Descripción
+        JLabel TextoDescripcion = new JLabel();
+        TextoDescripcion.setForeground(Color.BLACK);
+        TextoDescripcion.setBackground(Color.WHITE);
+        TextoDescripcion.setName("TextoDescripcion");
+        TextoDescripcion.setBorder(null);
+        TextoDescripcion.setToolTipText("<html><p><strong>Descripción</strong></p></html>");
+        TextoDescripcion.setText("Descripción:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Direccion-BelizeHope-24x24.png"));
-        TextoDireccion.setIcon(Icono);
-        TextoDireccion.setSize(135, 24);
-        TextoDireccion.setLocation((int) AnchoPanelCentral - 380,
-                (int) TextoApellidoMaterno.getLocation().getY() + 40);
-        PanelDerecho.add(TextoDireccion);
+                "/content/images/menu/Descripción-BelizeHope-24x24.png"));
+        TextoDescripcion.setIcon(Icono);
+        TextoDescripcion.setSize(135, 24);
+        TextoDescripcion.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoCosto.getLocation().getY() + 40);
+        PanelDerecho.add(TextoDescripcion);
         
-        // Texto para campo Teléfono
-        JLabel TextoTelefono = new JLabel();
-        TextoTelefono.setForeground(Color.BLACK);
-        TextoTelefono.setBackground(Color.WHITE);
-        TextoTelefono.setName("TextoTelefono");
-        TextoTelefono.setBorder(null);
-        TextoTelefono.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
-        TextoTelefono.setText("Teléfono:");
+        // Texto para campo Stock
+        JLabel TextoStock = new JLabel();
+        TextoStock.setForeground(Color.BLACK);
+        TextoStock.setBackground(Color.WHITE);
+        TextoStock.setName("TextoStock");
+        TextoStock.setBorder(null);
+        TextoStock.setToolTipText("<html><p><strong>Stock</strong></p></html>");
+        TextoStock.setText("Stock:");
         Icono = new ImageIcon(getClass().getResource(
-                "/content/images/signup/Telefono-BelizeHope-24x24.png"));
-        TextoTelefono.setIcon(Icono);
-        TextoTelefono.setSize(135, 24);
-        TextoTelefono.setLocation((int) AnchoPanelCentral - 380, 
-                (int) TextoDireccion.getLocation().getY() + 40);
-        PanelDerecho.add(TextoTelefono);
+                "/content/images/menu/Stock-BelizeHope-24x24.png"));
+        TextoStock.setIcon(Icono);
+        TextoStock.setSize(135, 24);
+        TextoStock.setLocation((int) AnchoPanelCentral - 380,
+                (int) TextoDescripcion.getLocation().getY() + 40);
+        PanelDerecho.add(TextoStock);
         
         // |---------------------Combobox--------------------------------------|
         JComboBox ComboBuscar = new JComboBox();
         ComboBuscar.setName("ComboBuscar");
         ComboBuscar.addItem("ID");
-        ComboBuscar.addItem("Nombre de Usuario");
-        ComboBuscar.addItem("Nombre");
-        ComboBuscar.addItem("Apellido Paterno");
-        ComboBuscar.addItem("Apellido Materno");
         ComboBuscar.setSize(120, 20);
         ComboBuscar.setLocation((int) AnchoPanel - 380, (int) AltoPanel);
         PanelFechaHoraContenido.add(ComboBuscar);
@@ -7328,7 +5925,7 @@ public class Menu extends javax.swing.JFrame {
         JTextField CampoBuscar = new JTextField();
         CampoBuscar.setName("CampoBuscar");
         CampoBuscar.setBorder(null);
-        CampoBuscar.setText("Buscar Usuario");
+        CampoBuscar.setText("Buscar Pieza");
         CampoBuscar.setBackground(Color.WHITE);
         CampoBuscar.setForeground(ColorNoEscrito);
         CampoBuscar.setSize(120, 20);
@@ -7348,109 +5945,70 @@ public class Menu extends javax.swing.JFrame {
                 (int) TextoID.getLocation().getY());
         PanelCentral.add(CampoID);
         
-        // Campo para Username
-        JTextField CampoUsername = new JTextField();
-        CampoUsername.setName("CampoUsername");
-        CampoUsername.setBorder(null);
-        CampoUsername.setText("Nombre de Usuario");
-        CampoUsername.setBackground(Color.WHITE);
-        CampoUsername.setForeground(ColorNoEscrito);
-        CampoUsername.setSize(120, 20);
-        CampoUsername.setLocation((int) TextoUsername.getLocation().getX() +
-                (int) (TextoUsername.getSize().getWidth() + 10), 
-                (int) TextoUsername.getLocation().getY());
-        PanelCentral.add(CampoUsername);
-        
-        // Campo para contraseña
-        JPasswordField CampoContrasena = new JPasswordField();
-        CampoContrasena.setName("CampoContrasena");
-        CampoContrasena.setBorder(null);
-        CampoContrasena.setText("Contraseña");
-        CampoContrasena.setBackground(Color.WHITE);
-        CampoContrasena.setForeground(ColorNoEscrito);
-        CampoContrasena.setSize(120, 20);
-        CampoContrasena.setLocation((int) TextoContrasena.getLocation().getX() +
-                (int) (TextoContrasena.getSize().getWidth() + 10), 
-                (int) TextoContrasena.getLocation().getY());
-        PanelCentral.add(CampoContrasena);
-        
-        // Campo para Rol
-        JTextField CampoRol = new JTextField();
-        CampoRol.setName("CampoRol");
-        CampoRol.setBorder(null);
-        CampoRol.setText("Rol");
-        CampoRol.setBackground(Color.WHITE);
-        CampoRol.setForeground(ColorNoEscrito);
-        CampoRol.setSize(120, 20);
-        CampoRol.setLocation((int) TextoRol.getLocation().getX() +
-                (int) (TextoRol.getSize().getWidth() + 10), 
-                (int) TextoRol.getLocation().getY());
-        PanelCentral.add(CampoRol);
-        
         // Campo para Nombre
         JTextField CampoNombre = new JTextField();
         CampoNombre.setName("CampoNombre");
         CampoNombre.setBorder(null);
-        CampoNombre.setText("Nombre(s)");
+        CampoNombre.setText("Nombre");
         CampoNombre.setBackground(Color.WHITE);
         CampoNombre.setForeground(ColorNoEscrito);
         CampoNombre.setSize(120, 20);
         CampoNombre.setLocation((int) TextoNombre.getLocation().getX() +
                 (int) (TextoNombre.getSize().getWidth() + 10), 
                 (int) TextoNombre.getLocation().getY());
-        PanelDerecho.add(CampoNombre);
+        PanelCentral.add(CampoNombre);
         
-        // Campo para Apellido Paterno
-        JTextField CampoApellidoPaterno = new JTextField();
-        CampoApellidoPaterno.setName("CampoApellidoPaterno");
-        CampoApellidoPaterno.setBorder(null);
-        CampoApellidoPaterno.setText("Apellido Paterno");
-        CampoApellidoPaterno.setBackground(Color.WHITE);
-        CampoApellidoPaterno.setForeground(ColorNoEscrito);
-        CampoApellidoPaterno.setSize(120, 20);
-        CampoApellidoPaterno.setLocation((int) TextoApellidoPaterno.getLocation().getX() +
-                (int) (TextoApellidoPaterno.getSize().getWidth() + 10), 
-                (int) TextoApellidoPaterno.getLocation().getY());
-        PanelDerecho.add(CampoApellidoPaterno);
+        // Campo para Marca
+        JTextField CampoMarca = new JTextField();
+        CampoMarca.setName("CampoMarca");
+        CampoMarca.setBorder(null);
+        CampoMarca.setText("Marca");
+        CampoMarca.setBackground(Color.WHITE);
+        CampoMarca.setForeground(ColorNoEscrito);
+        CampoMarca.setSize(120, 20);
+        CampoMarca.setLocation((int) TextoMarca.getLocation().getX() +
+                (int) (TextoMarca.getSize().getWidth() + 10), 
+                (int) TextoMarca.getLocation().getY());
+        PanelCentral.add(CampoMarca);
         
-        // Campo para Apellido Materno
-        JTextField CampoApellidoMaterno = new JTextField();
-        CampoApellidoMaterno.setName("CampoApellidoMaterno");
-        CampoApellidoMaterno.setBorder(null);
-        CampoApellidoMaterno.setText("Apellido Materno");
-        CampoApellidoMaterno.setBackground(Color.WHITE);
-        CampoApellidoMaterno.setForeground(ColorNoEscrito);
-        CampoApellidoMaterno.setSize(120, 20);
-        CampoApellidoMaterno.setLocation((int) TextoApellidoMaterno.getLocation().getX() +
-                (int) (TextoApellidoMaterno.getSize().getWidth() + 10), 
-                (int) TextoApellidoMaterno.getLocation().getY());
-        PanelDerecho.add(CampoApellidoMaterno);
+        // Campo para Costo
+        JTextField CampoCosto = new JTextField();
+        CampoCosto.setName("CampoCosto");
+        CampoCosto.setBorder(null);
+        CampoCosto.setText("MXN");
+        CampoCosto.setBackground(Color.WHITE);
+        CampoCosto.setForeground(ColorNoEscrito);
+        CampoCosto.setSize(120, 20);
+        CampoCosto.setLocation((int) TextoCosto.getLocation().getX() +
+                (int) (TextoCosto.getSize().getWidth() + 10), 
+                (int) TextoCosto.getLocation().getY());
+        PanelDerecho.add(CampoCosto);
         
-        // Campo para Dirección
-        JTextField CampoDireccion = new JTextField();
-        CampoDireccion.setName("CampoDireccion");
-        CampoDireccion.setBorder(null);
-        CampoDireccion.setText("Dirección");
-        CampoDireccion.setBackground(Color.WHITE);
-        CampoDireccion.setForeground(ColorNoEscrito);
-        CampoDireccion.setSize(120, 20);
-        CampoDireccion.setLocation((int) TextoDireccion.getLocation().getX() +
-                (int) (TextoDireccion.getSize().getWidth() + 10), 
-                (int) TextoDireccion.getLocation().getY());
-        PanelDerecho.add(CampoDireccion);
+        // Campo para Descripción
+        JTextField CampoDescripcion = new JTextField();
+        CampoDescripcion.setName("CampoDescripcion");
+        CampoDescripcion.setBorder(null);
+        CampoDescripcion.setText("Descripción");
+        CampoDescripcion.setBackground(Color.WHITE);
+        CampoDescripcion.setForeground(ColorNoEscrito);
+        CampoDescripcion.setSize(120, 20);
+        CampoDescripcion.setLocation((int) TextoDescripcion.getLocation().getX() +
+                (int) (TextoDescripcion.getSize().getWidth() + 10), 
+                (int) TextoDescripcion.getLocation().getY());
+        PanelDerecho.add(CampoDescripcion);
         
-        // Campo para Teléfono
-        JTextField CampoTelefono = new JTextField();
-        CampoTelefono.setName("CampoTelefono");
-        CampoTelefono.setBorder(null);
-        CampoTelefono.setText("Teléfono");
-        CampoTelefono.setBackground(Color.WHITE);
-        CampoTelefono.setForeground(ColorNoEscrito);
-        CampoTelefono.setSize(120, 20);
-        CampoTelefono.setLocation((int) TextoTelefono.getLocation().getX() +
-                (int) (TextoTelefono.getSize().getWidth() + 10), 
-                (int) TextoTelefono.getLocation().getY());
-        PanelDerecho.add(CampoTelefono);
+        // Campo para Stock
+        JTextField CampoStock = new JTextField();
+        CampoStock.setName("CampoStock");
+        CampoStock.setBorder(null);
+        CampoStock.setText("Stock");
+        CampoStock.setBackground(Color.WHITE);
+        CampoStock.setForeground(ColorNoEscrito);
+        CampoStock.setSize(120, 20);
+        CampoStock.setLocation((int) TextoStock.getLocation().getX() +
+                (int) (TextoStock.getSize().getWidth() + 10), 
+                (int) TextoStock.getLocation().getY());
+        PanelDerecho.add(CampoStock);
         
         // |---------------------Separadores-----------------------------------|
         // Color para separador
@@ -7476,39 +6034,6 @@ public class Menu extends javax.swing.JFrame {
                 (int) CampoID.getLocation().getY() + 20);
         PanelCentral.add(SeparadorID);
         
-        // Separador para CampoUsername
-        JSeparator SeparadorUsername = new JSeparator();
-        SeparadorUsername.setName("SeparadorUsername");
-        SeparadorUsername.setBorder(null);
-        SeparadorUsername.setBackground(Color.WHITE);
-        SeparadorUsername.setForeground(ColorSeparador);
-        SeparadorUsername.setSize(120, 15);
-        SeparadorUsername.setLocation((int) CampoUsername.getLocation().getX(), 
-                (int) CampoUsername.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorUsername);
-        
-        // Separador para CampoContrasena
-        JSeparator SeparadorContrasena = new JSeparator();
-        SeparadorContrasena.setName("SeparadorContrasena");
-        SeparadorContrasena.setBorder(null);
-        SeparadorContrasena.setBackground(Color.WHITE);
-        SeparadorContrasena.setForeground(ColorSeparador);
-        SeparadorContrasena.setSize(120, 15);
-        SeparadorContrasena.setLocation((int) CampoContrasena.getLocation().getX(), 
-                (int) CampoContrasena.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorContrasena);
-        
-        // Separador para CampoRol
-        JSeparator SeparadorRol = new JSeparator();
-        SeparadorRol.setName("SeparadorRol");
-        SeparadorRol.setBorder(null);
-        SeparadorRol.setBackground(Color.WHITE);
-        SeparadorRol.setForeground(ColorSeparador);
-        SeparadorRol.setSize(120, 15);
-        SeparadorRol.setLocation((int) CampoRol.getLocation().getX(), 
-                (int) CampoRol.getLocation().getY() + 20);
-        PanelCentral.add(SeparadorRol);
-        
         // Separador para CampoNombre
         JSeparator SeparadorNombre = new JSeparator();
         SeparadorNombre.setName("SeparadorNombre");
@@ -7518,51 +6043,51 @@ public class Menu extends javax.swing.JFrame {
         SeparadorNombre.setSize(120, 15);
         SeparadorNombre.setLocation((int) CampoNombre.getLocation().getX(), 
                 (int) CampoNombre.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorNombre);
+        PanelCentral.add(SeparadorNombre);
         
-        // Separador para CampoApellidoPaterno
-        JSeparator SeparadorApellidoPaterno = new JSeparator();
-        SeparadorApellidoPaterno.setName("SeparadorApellidoPaterno");
-        SeparadorApellidoPaterno.setBorder(null);
-        SeparadorApellidoPaterno.setBackground(Color.WHITE);
-        SeparadorApellidoPaterno.setForeground(ColorSeparador);
-        SeparadorApellidoPaterno.setSize(120, 15);
-        SeparadorApellidoPaterno.setLocation((int) CampoApellidoPaterno.getLocation().getX(), 
-                (int) CampoApellidoPaterno.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorApellidoPaterno);
+        // Separador para CampoMarca
+        JSeparator SeparadorMarca = new JSeparator();
+        SeparadorMarca.setName("SeparadorMarca");
+        SeparadorMarca.setBorder(null);
+        SeparadorMarca.setBackground(Color.WHITE);
+        SeparadorMarca.setForeground(ColorSeparador);
+        SeparadorMarca.setSize(120, 15);
+        SeparadorMarca.setLocation((int) CampoMarca.getLocation().getX(), 
+                (int) CampoMarca.getLocation().getY() + 20);
+        PanelCentral.add(SeparadorMarca);
         
-        // Separador para CampoApellidoMaterno
-        JSeparator SeparadorApellidoMaterno = new JSeparator();
-        SeparadorApellidoMaterno.setName("SeparadorApellidoMaterno");
-        SeparadorApellidoMaterno.setBorder(null);
-        SeparadorApellidoMaterno.setBackground(Color.WHITE);
-        SeparadorApellidoMaterno.setForeground(ColorSeparador);
-        SeparadorApellidoMaterno.setSize(120, 15);
-        SeparadorApellidoMaterno.setLocation((int) CampoApellidoMaterno.getLocation().getX(), 
-                (int) CampoApellidoMaterno.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorApellidoMaterno);
+        // Separador para CampoCosto
+        JSeparator SeparadorCosto = new JSeparator();
+        SeparadorCosto.setName("SeparadorCosto");
+        SeparadorCosto.setBorder(null);
+        SeparadorCosto.setBackground(Color.WHITE);
+        SeparadorCosto.setForeground(ColorSeparador);
+        SeparadorCosto.setSize(120, 15);
+        SeparadorCosto.setLocation((int) CampoCosto.getLocation().getX(), 
+                (int) CampoCosto.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorCosto);
         
-        // Separador para CampoDireccion
-        JSeparator SeparadorDireccion = new JSeparator();
-        SeparadorDireccion.setName("SeparadorDireccion");
-        SeparadorDireccion.setBorder(null);
-        SeparadorDireccion.setBackground(Color.WHITE);
-        SeparadorDireccion.setForeground(ColorSeparador);
-        SeparadorDireccion.setSize(120, 15);
-        SeparadorDireccion.setLocation((int) CampoDireccion.getLocation().getX(), 
-                (int) CampoDireccion.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorDireccion);
+        // Separador para CampoDescripcion
+        JSeparator SeparadorDescripcion = new JSeparator();
+        SeparadorDescripcion.setName("SeparadorDescripcion");
+        SeparadorDescripcion.setBorder(null);
+        SeparadorDescripcion.setBackground(Color.WHITE);
+        SeparadorDescripcion.setForeground(ColorSeparador);
+        SeparadorDescripcion.setSize(120, 15);
+        SeparadorDescripcion.setLocation((int) CampoDescripcion.getLocation().getX(), 
+                (int) CampoDescripcion.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorDescripcion);
         
-        // Separador para CampoTelefono
-        JSeparator SeparadorTelefono = new JSeparator();
-        SeparadorTelefono.setName("SeparadorTelefono");
-        SeparadorTelefono.setBorder(null);
-        SeparadorTelefono.setBackground(Color.WHITE);
-        SeparadorTelefono.setForeground(ColorSeparador);
-        SeparadorTelefono.setSize(120, 15);
-        SeparadorTelefono.setLocation((int) CampoTelefono.getLocation().getX(), 
-                (int) CampoTelefono.getLocation().getY() + 20);
-        PanelDerecho.add(SeparadorTelefono);
+        // Separador para CampoStock
+        JSeparator SeparadorStock = new JSeparator();
+        SeparadorStock.setName("SeparadorStock");
+        SeparadorStock.setBorder(null);
+        SeparadorStock.setBackground(Color.WHITE);
+        SeparadorStock.setForeground(ColorSeparador);
+        SeparadorStock.setSize(120, 15);
+        SeparadorStock.setLocation((int) CampoStock.getLocation().getX(), 
+                (int) CampoStock.getLocation().getY() + 20);
+        PanelDerecho.add(SeparadorStock);
         
         // |---------------------Funciones de botones--------------------------|
         // Boton para Reestablecer campos
@@ -7573,22 +6098,16 @@ public class Menu extends javax.swing.JFrame {
             {
                 CampoID.setText("ID");
                 CampoID.setForeground(ColorNoEscrito);
-                CampoUsername.setText("Nombre de Usuario");
-                CampoUsername.setForeground(ColorNoEscrito);
-                CampoContrasena.setText("Contraseña");
-                CampoContrasena.setForeground(ColorNoEscrito);
-                CampoRol.setText("Rol");
-                CampoRol.setForeground(ColorNoEscrito);
-                CampoNombre.setText("Nombre(s)");
+                CampoNombre.setText("Nombre");
                 CampoNombre.setForeground(ColorNoEscrito);
-                CampoApellidoPaterno.setText("Apellido Paterno");
-                CampoApellidoPaterno.setForeground(ColorNoEscrito);
-                CampoApellidoMaterno.setText("Apellido Materno");
-                CampoApellidoMaterno.setForeground(ColorNoEscrito);
-                CampoDireccion.setText("Dirección");
-                CampoDireccion.setForeground(ColorNoEscrito);
-                CampoTelefono.setText("Teléfono");
-                CampoTelefono.setForeground(ColorNoEscrito);
+                CampoMarca.setText("Marca");
+                CampoMarca.setForeground(ColorNoEscrito);
+                CampoCosto.setText("MXN");
+                CampoCosto.setForeground(ColorNoEscrito);
+                CampoDescripcion.setText("Descripción");
+                CampoDescripcion.setForeground(ColorNoEscrito);
+                CampoStock.setText("Stock");
+                CampoStock.setForeground(ColorNoEscrito);
             }
         });
         
@@ -7606,7 +6125,7 @@ public class Menu extends javax.swing.JFrame {
                     Registrable = true;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /*ID = CampoID.getText();
                     Username = CampoUsername.getText();
                     Contrasena = String.valueOf(CampoContrasena.getPassword());
                     Rol = CampoRol.getText();
@@ -7768,7 +6287,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                     
                 };
             });
@@ -7787,7 +6306,7 @@ public class Menu extends javax.swing.JFrame {
                     Eliminable = false;
                     UsuarioTemp = new Usuario();
                     // Obtenemos valores de campos
-                    ID = CampoID.getText();
+                    /*ID = CampoID.getText();
                     Username = CampoUsername.getText();
                    
                     
@@ -7861,7 +6380,7 @@ public class Menu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
         });
         
@@ -7896,7 +6415,7 @@ public class Menu extends javax.swing.JFrame {
                     String Buscar;
                     Usuario UsuarioTemp;
                     UsuarioTemp = new Usuario();
-                    Boolean Encontrado;
+                    /*Boolean Encontrado;
                     Color ColorEscribir = new Color(51, 51, 51);
                     Encontrado = false;
                     int BuscarPor, x, Indice;
@@ -8004,7 +6523,7 @@ public class Menu extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el valor " +
                                     Buscar);
                         }
-                    }
+                    }*/
                 }
         });
         
@@ -8038,7 +6557,7 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Buscar Usuario") && 
+                if(Contenido.equals("Buscar Pieza") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
@@ -8064,11 +6583,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Buscar Usuario"))
+                if(!Contenido.equals("Buscar Pieza"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoBuscar.setText("Buscar Usuario");
+                        CampoBuscar.setText("Buscar Pieza");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -8089,7 +6608,7 @@ public class Menu extends javax.swing.JFrame {
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Buscar Usuario"))
+                if(Contenido.equals("Buscar Pieza"))
                 {
                     // Elimina contenido
                     CampoBuscar.setText("");
@@ -8237,330 +6756,6 @@ public class Menu extends javax.swing.JFrame {
 
         });
         
-        // |------------------------CampoUsername------------------------------|
-        // Se añade listener para enfoque de CampoUsername
-        CampoUsername.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Nombre de Usuario") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoUsername.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoUsername.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Nombre de Usuario"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoUsername.setText("Nombre de Usuario");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoUsername
-        CampoUsername.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoUsername.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Nombre de Usuario"))
-                {
-                    // Elimina contenido
-                    CampoUsername.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoUsername");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoUsername");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoUsername");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoUsername");
-            }
-
-        });
-        
-        // |------------------------CampoContrasena----------------------------|
-        // Se añade listener para enfoque de CampoContrasena
-        CampoContrasena.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Contraseña") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoContrasena.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Contraseña"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoContrasena.setText("Contraseña");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoContrasena
-        CampoContrasena.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = String.valueOf(CampoContrasena.getPassword());
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Contraseña"))
-                {
-                    // Elimina contenido
-                    CampoContrasena.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoContrasena");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoContrasena");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoContrasena");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoContrasena");
-            }
-
-        });
-        
-        // |------------------------CampoRol-----------------------------------|
-        // Se añade listener para enfoque de CampoRol
-        CampoRol.addFocusListener(new FocusListener(){
-            // Override para cuando se enfoca
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Rol") && 
-                        (ColorActual == ColorNoEscrito))
-                {
-                    // Limpiamos contenido
-                    CampoRol.setText("");
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-                else
-                {
-                    e.getComponent().setForeground(ColorEscribir);
-                }
-            }
-            
-            // Override para cuando se desenfoca
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // Obtiene contenido de campo
-                String Contenido = CampoRol.getText();
-                // Obtiene color de campo
-                Color ColorActual = e.getComponent().getForeground();
-                // Color cuando no se ha escrito nada
-                Color ColorNoEscrito = new Color(102, 102, 102);
-                // Color cuando se va a escribir algo
-                Color ColorEscribir = new Color(51, 51, 51);
-                // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Rol"))
-                {  
-                    if(Contenido.equals(""))
-                    {
-                        CampoRol.setText("Rol");
-                        if(ColorActual != ColorNoEscrito)
-                        {
-                            e.getComponent().setForeground(ColorNoEscrito);
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Listener para mouse en CampoRol
-        CampoRol.addMouseListener(new MouseListener(){
-            // Override para cuando se presiona
-            @Override
-            public void mousePressed(MouseEvent e) 
-            {
-                // Obtener contenido
-                String Contenido = CampoRol.getText();
-                Color ColorActual = e.getComponent().getForeground();
-                Color ColorEscrito = new Color(51, 51, 51);
-                // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Rol"))
-                {
-                    // Elimina contenido
-                    CampoRol.setText("");
-                }
-                if(ColorActual != ColorEscrito)
-                {
-                    e.getComponent().setForeground(ColorEscrito);
-                }
-            }
-
-            // Override para cuando se libera
-            @Override
-            public void mouseReleased(MouseEvent e) 
-            {
-                System.out.println("Mouse liberado de CampoRol");
-            }
-
-            // Override para cuando se coloca sobre
-            @Override
-            public void mouseEntered(MouseEvent e) 
-            {
-                System.out.println("Mouse ha ingresado en CampoRol");
-            }
-
-            // Override para cuando el mouse deja de estar sobre
-            @Override
-            public void mouseExited(MouseEvent e) 
-            {
-                System.out.println("Mouse ha salido de CampoRol");
-            }
-
-            // Override para cuando se hace click
-            @Override
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("Se ha hecho click en CampoRol");
-            }
-
-        });
-        
         // |------------------------CampoNombre--------------------------------|
         // Se añade listener para enfoque de CampoNombre
         CampoNombre.addFocusListener(new FocusListener(){
@@ -8577,7 +6772,7 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Nombre(s)") && 
+                if(Contenido.equals("Nombre") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
@@ -8603,11 +6798,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Nombre(s)"))
+                if(!Contenido.equals("Nombre"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoNombre.setText("Nombre(s)");
+                        CampoNombre.setText("Nombre");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -8628,7 +6823,7 @@ public class Menu extends javax.swing.JFrame {
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Nombre(s)"))
+                if(Contenido.equals("Nombre"))
                 {
                     // Elimina contenido
                     CampoNombre.setText("");
@@ -8669,15 +6864,15 @@ public class Menu extends javax.swing.JFrame {
 
         });
         
-        // |------------------CampoApellidoPaterno-----------------------------|
-        // Se añade listener para enfoque de CampoApellidoPaterno
-        CampoApellidoPaterno.addFocusListener(new FocusListener(){
+        // |------------------CampoMarca---------------------------------------|
+        // Se añade listener para enfoque de CampoMarca
+        CampoMarca.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoMarca.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -8685,11 +6880,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Apellido Paterno") && 
+                if(Contenido.equals("Marca") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoApellidoPaterno.setText("");
+                    CampoMarca.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -8703,7 +6898,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoMarca.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -8711,11 +6906,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Apellido Paterno"))
+                if(!Contenido.equals("Marca"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoApellidoPaterno.setText("Apellido Paterno");
+                        CampoMarca.setText("Marca");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -8725,21 +6920,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoApellidoPaterno
-        CampoApellidoPaterno.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoMarca
+        CampoMarca.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoApellidoPaterno.getText();
+                String Contenido = CampoMarca.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Apellido Paterno"))
+                if(Contenido.equals("Marca"))
                 {
                     // Elimina contenido
-                    CampoApellidoPaterno.setText("");
+                    CampoMarca.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -8751,41 +6946,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoApellidoPaterno");
+                System.out.println("Mouse liberado de CampoMarca");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoApellidoPaterno");
+                System.out.println("Mouse ha ingresado en CampoMarca");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoApellidoPaterno");
+                System.out.println("Mouse ha salido de CampoMarca");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoApellidoPaterno");
+                System.out.println("Se ha hecho click en CampoMarca");
             }
 
         });
         
-        // |------------------CampoApellidoMaterno-----------------------------|
-        // Se añade listener para enfoque de CampoApellidoMaterno
-        CampoApellidoMaterno.addFocusListener(new FocusListener(){
+        // |------------------CampoCosto---------------------------------------|
+        // Se añade listener para enfoque de CampoCosto
+        CampoCosto.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoCosto.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -8793,11 +6988,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Apellido Materno") && 
+                if(Contenido.equals("MXN") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoApellidoMaterno.setText("");
+                    CampoCosto.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -8811,7 +7006,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoCosto.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -8819,11 +7014,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Apellido Materno"))
+                if(!Contenido.equals("MXN"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoApellidoMaterno.setText("Apellido Materno");
+                        CampoCosto.setText("MXN");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -8833,21 +7028,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoApellidoMaterno
-        CampoApellidoMaterno.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoCosto
+        CampoCosto.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoApellidoMaterno.getText();
+                String Contenido = CampoCosto.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Apellido Materno"))
+                if(Contenido.equals("MXN"))
                 {
                     // Elimina contenido
-                    CampoApellidoMaterno.setText("");
+                    CampoCosto.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -8859,41 +7054,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoApellidoMaterno");
+                System.out.println("Mouse liberado de CampoCosto");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoApellidoMaterno");
+                System.out.println("Mouse ha ingresado en CampoCosto");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoApellidoMaterno");
+                System.out.println("Mouse ha salido de CampoCosto");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoApellidoMaterno");
+                System.out.println("Se ha hecho click en CampoCosto");
             }
 
         });
         
-        // |------------------------CampoDireccion-----------------------------|
-        // Se añade listener para enfoque de CampoDireccion
-        CampoDireccion.addFocusListener(new FocusListener(){
+        // |------------------------CampoDescripcion---------------------------|
+        // Se añade listener para enfoque de CampoDescripcion
+        CampoDescripcion.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
+                String Contenido = CampoDescripcion.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -8901,11 +7096,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Dirección") && 
+                if(Contenido.equals("Descripción") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoDireccion.setText("");
+                    CampoDescripcion.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -8919,7 +7114,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoDireccion.getText();
+                String Contenido = CampoDescripcion.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -8927,11 +7122,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Dirección"))
+                if(!Contenido.equals("Descripción"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoDireccion.setText("Dirección");
+                        CampoDescripcion.setText("Descripción");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -8941,21 +7136,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoDireccion
-        CampoDireccion.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoDescripcion
+        CampoDescripcion.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoDireccion.getText();
+                String Contenido = CampoDescripcion.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Dirección"))
+                if(Contenido.equals("Descripción"))
                 {
                     // Elimina contenido
-                    CampoDireccion.setText("");
+                    CampoDescripcion.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -8967,41 +7162,41 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoDireccion");
+                System.out.println("Mouse liberado de CampoDescripcion");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoDireccion");
+                System.out.println("Mouse ha ingresado en CampoDescripcion");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoDireccion");
+                System.out.println("Mouse ha salido de CampoDescripcion");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoDireccion");
+                System.out.println("Se ha hecho click en CampoDescripcion");
             }
 
         });
         
-        // |------------------------CampoTelefono------------------------------|
-        // Se añade listener para enfoque de CampoTelefono
-        CampoTelefono.addFocusListener(new FocusListener(){
+        // |------------------------CampoStock---------------------------------|
+        // Se añade listener para enfoque de CampoStock
+        CampoStock.addFocusListener(new FocusListener(){
             // Override para cuando se enfoca
             @Override
             public void focusGained(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
+                String Contenido = CampoStock.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -9009,11 +7204,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(Contenido.equals("Teléfono") && 
+                if(Contenido.equals("Stock") && 
                         (ColorActual == ColorNoEscrito))
                 {
                     // Limpiamos contenido
-                    CampoTelefono.setText("");
+                    CampoStock.setText("");
                     e.getComponent().setForeground(ColorEscribir);
                 }
                 else
@@ -9027,7 +7222,7 @@ public class Menu extends javax.swing.JFrame {
             public void focusLost(FocusEvent e)
             {
                 // Obtiene contenido de campo
-                String Contenido = CampoTelefono.getText();
+                String Contenido = CampoStock.getText();
                 // Obtiene color de campo
                 Color ColorActual = e.getComponent().getForeground();
                 // Color cuando no se ha escrito nada
@@ -9035,11 +7230,11 @@ public class Menu extends javax.swing.JFrame {
                 // Color cuando se va a escribir algo
                 Color ColorEscribir = new Color(51, 51, 51);
                 // Verifica contenido y color de campo son los predeterminados
-                if(!Contenido.equals("Teléfono"))
+                if(!Contenido.equals("Stock"))
                 {  
                     if(Contenido.equals(""))
                     {
-                        CampoTelefono.setText("Teléfono");
+                        CampoStock.setText("Stock");
                         if(ColorActual != ColorNoEscrito)
                         {
                             e.getComponent().setForeground(ColorNoEscrito);
@@ -9049,21 +7244,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         
-        // Listener para mouse en CampoTelefono
-        CampoTelefono.addMouseListener(new MouseListener(){
+        // Listener para mouse en CampoStock
+        CampoStock.addMouseListener(new MouseListener(){
             // Override para cuando se presiona
             @Override
             public void mousePressed(MouseEvent e) 
             {
                 // Obtener contenido
-                String Contenido = CampoTelefono.getText();
+                String Contenido = CampoStock.getText();
                 Color ColorActual = e.getComponent().getForeground();
                 Color ColorEscrito = new Color(51, 51, 51);
                 // Verifica si no tiene nada seteado aún
-                if(Contenido.equals("Teléfono"))
+                if(Contenido.equals("Stock"))
                 {
                     // Elimina contenido
-                    CampoTelefono.setText("");
+                    CampoStock.setText("");
                 }
                 if(ColorActual != ColorEscrito)
                 {
@@ -9075,28 +7270,28 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                System.out.println("Mouse liberado de CampoTelefono");
+                System.out.println("Mouse liberado de CampoStock");
             }
 
             // Override para cuando se coloca sobre
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                System.out.println("Mouse ha ingresado en CampoTelefono");
+                System.out.println("Mouse ha ingresado en CampoStock");
             }
 
             // Override para cuando el mouse deja de estar sobre
             @Override
             public void mouseExited(MouseEvent e) 
             {
-                System.out.println("Mouse ha salido de CampoTelefono");
+                System.out.println("Mouse ha salido de CampoStock");
             }
 
             // Override para cuando se hace click
             @Override
             public void mouseClicked(MouseEvent e) 
             {
-                System.out.println("Se ha hecho click en CampoTelefono");
+                System.out.println("Se ha hecho click en CampoStock");
             }
 
         });
@@ -9360,7 +7555,7 @@ public class Menu extends javax.swing.JFrame {
         TextoNombre.setBackground(Color.WHITE);
         TextoNombre.setName("TextoNombre");
         TextoNombre.setBorder(null);
-        TextoNombre.setToolTipText("<html><p><strong>Teléfono</strong></p></html>");
+        TextoNombre.setToolTipText("<html><p><strong>Nombre</strong></p></html>");
         TextoNombre.setText("Nombre(s):");
         Icono = new ImageIcon(getClass().getResource(
                 "/content/images/signup/Nombre-BelizeHope-24x24.png"));
